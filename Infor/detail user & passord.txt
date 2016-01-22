@@ -1,0 +1,19 @@
+DATABASE
+Host: sql6.freemysqlhosting.net
+Database name: sql6103629
+Database user: sql6103629
+Database password: pC9FKdykpj
+Port number: 3306
+**************************************
+SVN
+url: https://subversion.assembla.com/svn/happy-travel/
+user: happytravel
+pass: H@ppytr@v3l
+*********************************************
+DELOY ONLINE
+Hello, letuankiet146@gmail.com.
+Your SkaliCloud+ hosting trial account is now ready and waiting for you to deploy your code. Go to the dashboard at https://app.jelastic.skali.net/ and log in with these details:
+
+Login: letuankiet146@gmail.com
+Password: ypG8NOuNgb
+**********************************************
