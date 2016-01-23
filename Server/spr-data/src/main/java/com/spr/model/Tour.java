@@ -65,14 +65,48 @@ public class Tour {
 	@Column(name = "tour_active")
 	private Integer active;
 	
+	@Column (name="tour_arrive_place_id")
+	private Integer tourArrivePlaceId;
+	
+	@Column(name="tour_from_place_id")
+	private Integer tourFromPlaceId;
+	
 	@ManyToOne
-	@JoinColumn(name="tour_arrive_place_id")
+	@JoinColumn(name="tour_arrive_place_id", updatable=false, insertable = false)
 	private ArrivePlace arrivePlace;
 	
 	@ManyToOne
-	@JoinColumn(name="tour_from_place_id")
+	@JoinColumn(name="tour_from_place_id", updatable = false, insertable = false)
 	private FromPlace fromPlace;
 	
+
+	/**
+	 * @return the tourArrivePlaceId
+	 */
+	public Integer getTourArrivePlaceId() {
+		return tourArrivePlaceId;
+	}
+
+	/**
+	 * @param tourArrivePlaceId the tourArrivePlaceId to set
+	 */
+	public void setTourArrivePlaceId(Integer tourArrivePlaceId) {
+		this.tourArrivePlaceId = tourArrivePlaceId;
+	}
+
+	/**
+	 * @return the tourFromPlaceId
+	 */
+	public Integer getTourFromPlaceId() {
+		return tourFromPlaceId;
+	}
+
+	/**
+	 * @param tourFromPlaceId the tourFromPlaceId to set
+	 */
+	public void setTourFromPlaceId(Integer tourFromPlaceId) {
+		this.tourFromPlaceId = tourFromPlaceId;
+	}
 
 	public FromPlace getFromPlace() {
 		return fromPlace;

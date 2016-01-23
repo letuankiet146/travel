@@ -25,7 +25,7 @@ public class Customer {
 	private String customerName;
 	
 	@Column(name="customer_birth")
-	private Date customerBirth;
+	private String customerBirth;
 	
 	@Column(name="customer_sex")
 	private Integer customerSex;
@@ -89,14 +89,14 @@ public class Customer {
 	/**
 	 * @return the customerBirth
 	 */
-	public Date getCustomerBirth() {
+	public String getCustomerBirth() {
 		return customerBirth;
 	}
 
 	/**
 	 * @param customerBirth the customerBirth to set
 	 */
-	public void setCustomerBirth(Date customerBirth) {
+	public void setCustomerBirth(String customerBirth) {
 		this.customerBirth = customerBirth;
 	}
 
