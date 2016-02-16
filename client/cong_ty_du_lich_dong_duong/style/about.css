@@ -1,0 +1,85 @@
+.the-content{
+    font-size: 14px;
+    line-height: 28px;
+    color:#333333;
+    text-align: justify;
+    margin-bottom: 20px;
+    font-family: 'RobotoRegular';
+}    
+.the-content-l{
+    width: -moz-calc(100% - 300px);
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
+    float:left;
+}        
+.the-content-r{
+    width: 270px;
+    float:right;
+}
+.the-content .a-title{
+    font-size: 21px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.lshinhthanh{
+    position: relative;
+}
+.lshinhthanh:before{
+    position: absolute;
+    content:"";
+    background-color: #e5e5e5;
+    width: 5px;
+    height: 100%;
+    top: 0px;
+    left: 6px;
+    margin:10px 0px;
+    z-index: 0;
+}
+.lshinhthanh li{
+    position: relative;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333333;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    background: url(../images/about/icon-list.jpg) no-repeat 0px 5px;
+    z-index: 1;
+}
+.lshinhthanh li .title{
+    font-size: 20px;
+    line-height: 30px;
+    color: #d00008;
+}
+.submenu .title-menu .menu ul li a{
+	color: #666;
+	background-color: #F2E9D8;
+	padding: 10px 25px;
+	display: block;
+	position: relative;
+	font-weight: bold;
+}
+.submenu .title-menu .menu ul li.active a {
+    background: #262522 none repeat scroll 0% 0%;
+    color: #FFF;
+}
+.submenu .title-menu .menu ul li a:before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: 0%;
+    background: #262522 none repeat scroll 0% 0%;
+    opacity: 0;
+    z-index: 0;
+    transition: all 0.4s ease-out 0s;
+}
+@media screen and (max-width: 768px){
+    .the-content-l{
+        width: 100%;
+    }        
+    .the-content-r{
+        width: 100%;
+    }
+}
