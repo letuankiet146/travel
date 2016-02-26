@@ -5,6 +5,7 @@ package com.spr.service;
 
 import java.util.List;
 
+import com.spr.dto.TourDto;
 import com.spr.model.TourEntity;
 
 /**
@@ -16,6 +17,6 @@ public interface ITourService {
 	 * list tours in database
 	 * @return List<Tour>
 	 */
-	public List<TourEntity> listTour ();
+	public List<TourDto> listTour ();
 
 }

@@ -7,12 +7,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spr.dto.TourDto;
 import com.spr.model.TourEntity;
 import com.spr.service.ITourService;
 
@@ -26,9 +28,11 @@ public class TourController {
 	@Autowired
 	private ITourService iTourService;
 	
+	
+	
 	@RequestMapping (value = "/listTour", method = RequestMethod.GET )
-	public List<TourEntity> listTour (){
-		List<TourEntity> list = iTourService.listTour();
+	public List<TourDto> listTour (){
+		List<TourDto> list = iTourService.listTour();
 		return list;
 	}
 	

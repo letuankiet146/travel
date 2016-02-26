@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.dozer.DozerBeanMapper;
 import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -48,10 +49,13 @@ public class WebAppConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-		dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
+		dataSource.setDriverClassName(env
+				.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
 		dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
-		dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
-		dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
+		dataSource.setUsername(env
+				.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
+		dataSource.setPassword(env
+				.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
 
 		return dataSource;
 	}
@@ -60,25 +64,31 @@ public class WebAppConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource());
-		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
-		entityManagerFactoryBean.setPackagesToScan(env.getRequiredProperty(PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN));
-		
+		entityManagerFactoryBean
+				.setPersistenceProviderClass(HibernatePersistence.class);
+		entityManagerFactoryBean
+				.setPackagesToScan(env
+						.getRequiredProperty(PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN));
+
 		entityManagerFactoryBean.setJpaProperties(hibProperties());
-		
+
 		return entityManagerFactoryBean;
 	}
 
 	private Properties hibProperties() {
 		Properties properties = new Properties();
-		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT,	env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
-		properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
+		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT,
+				env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
+		properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL,
+				env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
 		return properties;
 	}
 
 	@Bean
 	public JpaTransactionManager transactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+		transactionManager.setEntityManagerFactory(entityManagerFactory()
+				.getObject());
 		return transactionManager;
 	}
 
@@ -90,7 +100,7 @@ public class WebAppConfig {
 		resolver.setViewClass(JstlView.class);
 		return resolver;
 	}
-	
+
 	@Bean
 	public ResourceBundleMessageSource messageSource() {
 		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
@@ -98,8 +108,9 @@ public class WebAppConfig {
 		source.setUseCodeAsDefaultMessage(true);
 		return source;
 	}
-	@Bean 
-	public WebMvcConfigurer corsConfigurer(){
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
@@ -108,6 +119,11 @@ public class WebAppConfig {
 				registry.addMapping("/tour/listTour").allowedOrigins("*");
 			}
 		};
+	}
+
+	@Bean
+	public DozerBeanMapper dozerBeanMapper() {
+		return new DozerBeanMapper();
 	}
 
 }
