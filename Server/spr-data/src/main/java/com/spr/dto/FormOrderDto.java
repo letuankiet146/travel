@@ -3,21 +3,11 @@
  */
 package com.spr.dto;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import lombok.Data;
 
 import org.dozer.Mapping;
 
-import com.spr.model.CustomerEntity;
 import com.spr.model.TourEntity;
-
-import lombok.Data;
 
 /**
  * @author TuanKiet
@@ -28,16 +18,31 @@ public class FormOrderDto {
 	@Mapping("formOrderId")
 	private Integer formOrderId;
 	
-	@Mapping("formOderTourId")
-	private Integer formOderTourId;
+	@Mapping("formOrderTourId")
+	private Integer formOrderTourId;
 
-	@Mapping("formOderTour")
-	private TourEntity formOderTour;
+	@Mapping("formrOrderTour")
+	private TourEntity formOrderTour;
 
-	private CustomerDto formOderCustomer;
+	private CustomerDto formOrderCustomer;
 
-	private String formOderDate;
+	private String formOrderDate;
 	
 	private String formOrderDeleteDate;
+	
+	@Mapping("formOrderQuantityAdults")
+	private Integer formOrderQuantityAdults;
+	
+	@Mapping("formOrderQuantityJuvenile")
+	private Integer formOrderQuantityJuvenile;
+	
+	@Mapping("formOrderQuantityChild")
+	private Integer formOrderQuantityChild;
+	
+	@Mapping("formOrderIsPay")
+	private Boolean formOrderIsPay;
+	
+	@Mapping("formOrderQuantityOtherRequire")
+	private String formOrderQuantityOtherRequire;
 
 }

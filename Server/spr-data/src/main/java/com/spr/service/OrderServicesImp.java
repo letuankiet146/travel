@@ -9,13 +9,13 @@ import com.spr.dto.FormOrderDto;
 import com.spr.model.CustomerEntity;
 import com.spr.model.FormOrderEntity;
 import com.spr.repository.CustomerRepository;
-import com.spr.repository.FormOderRepository;
+import com.spr.repository.FormOrderRepository;
 import com.spr.util.MyFormatDate;
 
 @Service
-public class OderServicesImp implements IOrderServices {
+public class OrderServicesImp implements IOrderServices {
 	@Autowired
-	FormOderRepository formOderRepo;
+	FormOrderRepository formOrderRepo;
 
 	@Autowired
 	CustomerRepository customerRepo;
@@ -28,10 +28,10 @@ public class OderServicesImp implements IOrderServices {
 		CustomerEntity customerEntity = new CustomerEntity();
 
 		
-//		customerEntity = mapper.map(formOrderDto.getFormOderCustomer(),CustomerEntity.class );
-		customerEntity.setData(formOrderDto.getFormOderCustomer());
+//		customerEntity = mapper.map(formOrderDto.getFormOrderCustomer(),CustomerEntity.class );
+		customerEntity.setData(formOrderDto.getFormOrderCustomer());
 		customerEntity.setCustomerBirth(MyFormatDate.stringToDate(formOrderDto
-				.getFormOderCustomer().getCustomerBirth()));
+				.getFormOrderCustomer().getCustomerBirth()));
 		//First: save into customer then save into formOrder 
 		
 		customerRepo.saveAndFlush(customerEntity);
@@ -39,8 +39,8 @@ public class OderServicesImp implements IOrderServices {
 		FormOrderEntity formOrderEntity = new FormOrderEntity();
 //		formOrderEntity = mapper.map(formOrderDto, FormOrderEntity.class);
 		formOrderEntity.setData(formOrderDto);
-		formOrderEntity.setFormOderCustomer(customerEntity);
-		FormOrderEntity formformOrderEntityNew = formOderRepo.saveAndFlush(formOrderEntity);
+		formOrderEntity.setFormOrderCustomer(customerEntity);
+		FormOrderEntity formformOrderEntityNew = formOrderRepo.saveAndFlush(formOrderEntity);
 		return formformOrderEntityNew.getFormOrderId();
 	}
 
