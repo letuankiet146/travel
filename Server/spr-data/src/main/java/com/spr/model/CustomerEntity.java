@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.spr.dto.CustomerDto;
+
 import lombok.Data;
 
 /**
@@ -66,4 +68,21 @@ public class CustomerEntity {
 	
 	@Column (name = "customer_delete_date")
 	private Date customerDeleteDate;
+	
+	public void setData (CustomerDto customerDto){
+		this.customerId = customerDto.getCustomerId();
+		this.customerName = customerDto.getCustomerName();
+		this.customerSex  = customerDto.getCustomerSex();
+		this.customerPhone =customerDto.getCustomerPhone();
+		this.customerEmail = customerDto.getCustomerEmail();
+		this.customerAddress = customerDto.getCustomerAddress();
+		this.customerVietNamId = customerDto.getCustomerVietNamId();
+		this.customerCompanyName =  customerDto.getCustomerCompanyName();
+		this.customerAddressCompany = customerDto.getCustomerAddressCompany();
+		this.customerPhoneCompany = customerDto.getCustomerPhoneCompany();
+		this.customerImage = customerDto.getCustomerImage();
+		this.customerAccountId =  customerDto.getCustomerAccountId();
+		this.customerDeleteDate = customerDto.getCustomerDeleteDate();
+		
+	}
 }

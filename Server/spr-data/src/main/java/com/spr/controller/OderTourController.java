@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spr.model.FormOrderEntity;
+import com.spr.dto.FormOrderDto;
 import com.spr.service.IOrderServices;
 
 @RestController
@@ -19,7 +19,7 @@ public class OderTourController {
 	private IOrderServices orderService;
 	
 	@RequestMapping(value="/orderTour", method=RequestMethod.POST )
-	public Integer orderTour (@RequestBody FormOrderEntity formOrder ){
+	public Integer orderTour (@RequestBody FormOrderDto formOrder ){
 		return orderService.orderTour(formOrder);
 	}
 

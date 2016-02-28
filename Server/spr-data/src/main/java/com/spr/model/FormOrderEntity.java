@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.spr.dto.FormOrderDto;
+
 import lombok.Data;
 
 /**
@@ -43,4 +45,9 @@ public class FormOrderEntity {
 	
 	@Column(name = "form_order_delete_date")
 	private Date formOrderDeleteDate;
+	
+	public void setData (FormOrderDto formOrderDto){
+		this.formOderTourId = formOrderDto.getFormOderTourId();
+		this.formOderTour = formOrderDto.getFormOderTour();
+	}
 }

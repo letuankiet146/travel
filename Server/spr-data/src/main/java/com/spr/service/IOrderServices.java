@@ -1,7 +1,7 @@
 package com.spr.service;
 
-import com.spr.model.FormOrderEntity;
+import com.spr.dto.FormOrderDto;
 
 public interface IOrderServices {
-	public Integer orderTour(FormOrderEntity formOrder);
+	public Integer orderTour(FormOrderDto formOrder);
 }
