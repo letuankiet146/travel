@@ -1,0 +1,32 @@
+####################### Phương thức đặt tour dành cho khách hàng:
+LINK [POST]: http://project-iuhhappytravel.rhcloud.com/spr-data/orderTour
+BODY: 
+{
+  "formOrderTourId": 9,
+  "formOrderCustomer": {
+    "customerId": 3,
+    "customerName": "Khach hang 4",
+    "customerBirth": "26/02/2016",
+    "customerSex": null,
+    "customerPhone": null,
+    "customerEmail": null,
+    "customerAddress": null,
+    "customerVietNamId": null,
+    "customerCompanyName": null,
+    "customerAddressCompany": null,
+    "customerPhoneCompany": null,
+    "customerImage": null,
+    "customerUser" : null,
+    "customerPassword" : null,
+    "customerType" : null,
+    "customerLock" : null
+    
+  },
+  "formOrderDate": null,
+  "formOrderDeleteDate": null
+}
+
+
+
+################### PHƯƠNG THỨC LẤY TẤT CẢ TOUR, DÀNH CHO TRANG CHỦ
+LINK: http://localhost:8080/spr-data/tour/listTour
