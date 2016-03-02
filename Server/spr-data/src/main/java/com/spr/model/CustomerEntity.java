@@ -78,22 +78,22 @@ public class CustomerEntity {
 	private Integer customerLock;
 	
 	public void setData (CustomerDto customerDto){
-		this.customerId = customerDto.getCustomerId();
-		this.customerName = customerDto.getCustomerName();
-		this.customerSex  = customerDto.getCustomerSex();
-		this.customerPhone =customerDto.getCustomerPhone();
-		this.customerEmail = customerDto.getCustomerEmail();
-		this.customerAddress = customerDto.getCustomerAddress();
-		this.customerVietNamId = customerDto.getCustomerVietNamId();
-		this.customerCompanyName =  customerDto.getCustomerCompanyName();
-		this.customerAddressCompany = customerDto.getCustomerAddressCompany();
-		this.customerPhoneCompany = customerDto.getCustomerPhoneCompany();
-		this.customerUser = customerDto.getCustomerUser();
-		this.customerPassword = customerDto.getCustomerPassword();
-		this.customerType = customerDto.getCustomerType();
-		this.customerLock = customerDto.getCustomerLock();
-		this.customerImage = customerDto.getCustomerImage();
-		this.customerDeleteDate = customerDto.getCustomerDeleteDate();
+		this.customerId = customerDto.getCustomerIdDto();
+		this.customerName = customerDto.getCustomerNameDto();
+		this.customerSex  = customerDto.getCustomerSexDto();
+		this.customerPhone =customerDto.getCustomerPhoneDto();
+		this.customerEmail = customerDto.getCustomerEmailDto();
+		this.customerAddress = customerDto.getCustomerAddressDto();
+		this.customerVietNamId = customerDto.getCustomerVietNamIdDto();
+		this.customerCompanyName =  customerDto.getCustomerCompanyNameDto();
+		this.customerAddressCompany = customerDto.getCustomerAddressCompanyDto();
+		this.customerPhoneCompany = customerDto.getCustomerPhoneCompanyDto();
+		this.customerUser = customerDto.getCustomerUserDto();
+		this.customerPassword = customerDto.getCustomerPasswordDto();
+		this.customerType = customerDto.getCustomerTypeDto();
+		this.customerLock = customerDto.getCustomerLockDto();
+		this.customerImage = customerDto.getCustomerImageDto();
+		this.customerDeleteDate = customerDto.getCustomerDeleteDateDto();
 		
 	}
 }

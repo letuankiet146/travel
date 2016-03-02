@@ -19,52 +19,52 @@ import lombok.Data;
 @Data
 public class CustomerDto {
 	@Mapping("customerId")
-	private Integer customerId;
+	private Integer customerIdDto;
 	
 	@Mapping("customerName")
-	private String customerName;
+	private String customerNameDto;
 	
-	private String customerBirth;
+	private String customerBirthDto;
 	
 	@Mapping("customerSex")
-	private Integer customerSex;
+	private Integer customerSexDto;
 	
 	@Mapping("customerPhone")
-	private String customerPhone;
+	private String customerPhoneDto;
 	
 	@Mapping("customerEmail")
-	private String customerEmail;
+	private String customerEmailDto;
 	
 	@Mapping("customerAddress")
-	private String customerAddress;
+	private String customerAddressDto;
 	
 	@Mapping("customerVietNamId")
-	private String customerVietNamId;
+	private String customerVietNamIdDto;
 	
 	@Mapping("customerCompanyName")
-	private String customerCompanyName;
+	private String customerCompanyNameDto;
 	
 	@Mapping("customerAddressCompany")
-	private String customerAddressCompany;
+	private String customerAddressCompanyDto;
 	
 	@Mapping("customerPhoneCompany")
-	private String customerPhoneCompany;
+	private String customerPhoneCompanyDto;
 	
 	@Mapping("customerImage")
-	private String customerImage;
+	private String customerImageDto;
 	
 	@Mapping("customerUser")
-	private String customerUser;
+	private String customerUserDto;
 
 	@Mapping("customerPassword")
-	private String customerPassword;
+	private String customerPasswordDto;
 
 	@Mapping("customerType")
-	private Integer customerType;
+	private Integer customerTypeDto;
 
 	@Mapping("customerLock")
-	private Integer customerLock;
+	private Integer customerLockDto;
 	
 	@Mapping("customerDeleteDate")
-	private Date customerDeleteDate;
+	private Date customerDeleteDateDto;
 }

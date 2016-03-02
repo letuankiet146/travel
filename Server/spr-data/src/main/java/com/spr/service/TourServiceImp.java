@@ -5,6 +5,7 @@ package com.spr.service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -36,11 +37,22 @@ public class TourServiceImp implements ITourService {
 		for (TourEntity tourEntity : listTourEntity){
 			TourDto tourDto = new TourDto();
 			tourDto = mapper.map(tourEntity, TourDto.class);
-			tourDto.setNgayKH(spdf.format(tourEntity.getNgayKH()));
-			tourDto.setNgayKT(spdf.format(tourEntity.getNgayKT()));
+//			tourDto.setNgayKH(spdf.format(tourEntity.getNgayKH()));
+//			tourDto.setNgayKT(spdf.format(tourEntity.getNgayKT()));
 			listTourDto.add(tourDto);
 		}
 		return listTourDto;
+	}
+
+	public Integer add(TourDto tourDto) {
+		
+		TourEntity tourEntity = new TourEntity();
+		tourEntity = mapper.map(tourDto, TourEntity.class);
+		tourEntity.setNgayKH(new Date());
+		tourEntity.setNgayKT(new Date());
+		tourRepo.saveAndFlush(tourEntity);
+		
+		return tourDto.getIdDto();
 	}
 
 }

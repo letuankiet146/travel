@@ -29,9 +29,9 @@ public class OrderServicesImp implements IOrderServices {
 
 		
 //		customerEntity = mapper.map(formOrderDto.getFormOrderCustomer(),CustomerEntity.class );
-		customerEntity.setData(formOrderDto.getFormOrderCustomer());
+		customerEntity.setData(formOrderDto.getFormOrderCustomerDto());
 		customerEntity.setCustomerBirth(MyFormatDate.stringToDate(formOrderDto
-				.getFormOrderCustomer().getCustomerBirth()));
+				.getFormOrderCustomerDto().getCustomerBirthDto()));
 		//First: save into customer then save into formOrder 
 		
 		customerRepo.saveAndFlush(customerEntity);

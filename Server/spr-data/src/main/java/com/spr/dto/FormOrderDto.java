@@ -16,33 +16,33 @@ import com.spr.model.TourEntity;
 @Data
 public class FormOrderDto {
 	@Mapping("formOrderId")
-	private Integer formOrderId;
+	private Integer formOrderIdDto;
 	
 	@Mapping("formOrderTourId")
-	private Integer formOrderTourId;
+	private Integer formOrderTourIdDto;
 
 	@Mapping("formrOrderTour")
-	private TourEntity formOrderTour;
+	private TourEntity formOrderTourDto;
 
-	private CustomerDto formOrderCustomer;
+	private CustomerDto formOrderCustomerDto;
 
-	private String formOrderDate;
+	private String formOrderDateDto;
 	
-	private String formOrderDeleteDate;
+	private String formOrderDeleteDateDto;
 	
 	@Mapping("formOrderQuantityAdults")
-	private Integer formOrderQuantityAdults;
+	private Integer formOrderQuantityAdultsDto;
 	
 	@Mapping("formOrderQuantityJuvenile")
-	private Integer formOrderQuantityJuvenile;
+	private Integer formOrderQuantityJuvenileDto;
 	
 	@Mapping("formOrderQuantityChild")
-	private Integer formOrderQuantityChild;
+	private Integer formOrderQuantityChildDto;
 	
 	@Mapping("formOrderIsPay")
-	private Boolean formOrderIsPay;
+	private Boolean formOrderIsPayDto;
 	
 	@Mapping("formOrderQuantityOtherRequire")
-	private String formOrderQuantityOtherRequire;
+	private String formOrderQuantityOtherRequireDto;
 
 }

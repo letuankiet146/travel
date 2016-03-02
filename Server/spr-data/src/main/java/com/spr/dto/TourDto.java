@@ -5,6 +5,8 @@ package com.spr.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import lombok.Data;
 
 import org.dozer.Mapping;
@@ -19,58 +21,63 @@ import com.spr.model.FromPlaceEntity;
 @Data
 public class TourDto {
 	@Mapping("id")
-	private Integer id;
+	private Integer idDto;
 	
 	@Mapping("idTour")
-	private String idTour;
+	private String idTourDto;
 	
 	@Mapping("tenTour")
-	private String tenTour;
+	private String tenTourDto;
 	
 	@Mapping("moTa")
-	private String moTa;
+	private String moTaDto;
 	
 	@Mapping("info")
-	private String info;
+	private String infoDto;
 	
 	@Mapping("image")
-	private String image;
+	private String imageDto;
 	
 	@Mapping("soCho")
-	private Integer soCho;
+	private Integer soChoDto;
 	
 	@Mapping("giaTour")
-	private String giaTour;
+	private String giaTourDto;
 	
 	@Mapping("giaTourKM")
-	private Float giaTourKM;
+	private Float giaTourKMDto;
 	
-	private String ngayKH;
+	@Mapping("ngayKH")
+	private Date ngayKHDto;
 	
-	private String ngayKT;
+	@Mapping("ngayKT")
+	private Date ngayKTDto;
 	
 	
 	@Mapping("idDichVu")
-	private Integer idDichVu;
+	private Integer idDichVuDto;
 	
 	@Mapping("view")
-	private Integer view;
+	private Integer viewDto;
 	
 	@Mapping("active")
-	private Integer active;
+	private Integer activeDto;
 	
 	@Mapping("tourArrivePlaceId")
-	private Integer tourArrivePlaceId;
+	private Integer tourArrivePlaceIdDto;
 	
 	@Mapping("tourFromPlaceId")
-	private Integer tourFromPlaceId;
+	private Integer tourFromPlaceIdDto;
 	
 	@Mapping("arrivePlace")
-	private ArrivePlaceEntity arrivePlace;
+	private ArrivePlaceEntity arrivePlaceDto;
 	
 	@Mapping("fromPlace")
-	private FromPlaceEntity fromPlace;
+	private FromPlaceEntity fromPlaceDto;
+	
+	@Mapping("tourGuiderId")
+	private Integer tourGuiderIdDto;
 	
 	@Mapping("tourDeleteDate")
-	private Date tourDeleteDate;
+	private Date tourDeleteDateDto;
 }

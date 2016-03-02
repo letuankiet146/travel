@@ -62,12 +62,12 @@ public class FormOrderEntity {
 	private String formOrderQuantityOtherRequire;
 	
 	public void setData (FormOrderDto formOrderDto){
-		this.formOrderTourId = formOrderDto.getFormOrderTourId();
-		this.formOrderTour = formOrderDto.getFormOrderTour();
-		this.formOrderQuantityAdults = formOrderDto.getFormOrderQuantityAdults();
-		this.formOrderQuantityJuvenile = formOrderDto.getFormOrderQuantityJuvenile();
-		this.formOrderQuantityChild = formOrderDto.getFormOrderQuantityChild();
-		this.formOrderIsPay = formOrderDto.getFormOrderIsPay();
-		this.formOrderQuantityOtherRequire = formOrderDto.getFormOrderQuantityOtherRequire();
+		this.formOrderTourId = formOrderDto.getFormOrderTourIdDto();
+		this.formOrderTour = formOrderDto.getFormOrderTourDto();
+		this.formOrderQuantityAdults = formOrderDto.getFormOrderQuantityAdultsDto();
+		this.formOrderQuantityJuvenile = formOrderDto.getFormOrderQuantityJuvenileDto();
+		this.formOrderQuantityChild = formOrderDto.getFormOrderQuantityChildDto();
+		this.formOrderIsPay = formOrderDto.getFormOrderIsPayDto();
+		this.formOrderQuantityOtherRequire = formOrderDto.getFormOrderQuantityOtherRequireDto();
 	}
 }

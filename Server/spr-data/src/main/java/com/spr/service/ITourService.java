@@ -18,5 +18,7 @@ public interface ITourService {
 	 * @return List<Tour>
 	 */
 	public List<TourDto> listTour ();
+	
+	public Integer add (TourDto tourDto);
 
 }
