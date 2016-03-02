@@ -20,7 +20,8 @@ public class OderTourController {
 	
 	@RequestMapping(value="/orderTour", method=RequestMethod.POST )
 	public Integer orderTour (@RequestBody FormOrderDto formOrder ){
-		return orderService.orderTour(formOrder);
+		int kq = orderService.orderTour(formOrder);
+		return kq;
 	}
 
 }

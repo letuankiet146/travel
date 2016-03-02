@@ -62,12 +62,20 @@ public class CustomerEntity {
 	@Column(name="customer_image")
 	private String customerImage;
 	
-	@ManyToOne
-	@JoinColumn (name="customer_account_id")
-	private AccountEntity customerAccountId;
-	
 	@Column (name = "customer_delete_date")
 	private Date customerDeleteDate;
+	
+	@Column(name = "customer_user")
+	private String customerUser;
+
+	@Column(name = "customer_password")
+	private String customerPassword;
+
+	@Column(name = "customer_type")
+	private Integer customerType;
+
+	@Column(name = "customer_lock")
+	private Integer customerLock;
 	
 	public void setData (CustomerDto customerDto){
 		this.customerId = customerDto.getCustomerId();
@@ -80,8 +88,11 @@ public class CustomerEntity {
 		this.customerCompanyName =  customerDto.getCustomerCompanyName();
 		this.customerAddressCompany = customerDto.getCustomerAddressCompany();
 		this.customerPhoneCompany = customerDto.getCustomerPhoneCompany();
+		this.customerUser = customerDto.getCustomerUser();
+		this.customerPassword = customerDto.getCustomerPassword();
+		this.customerType = customerDto.getCustomerType();
+		this.customerLock = customerDto.getCustomerLock();
 		this.customerImage = customerDto.getCustomerImage();
-		this.customerAccountId =  customerDto.getCustomerAccountId();
 		this.customerDeleteDate = customerDto.getCustomerDeleteDate();
 		
 	}

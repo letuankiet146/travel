@@ -30,10 +30,18 @@ public class StaffEntity {
 	@Column(name="staff_level")
 	private String staffLevel;
 	
-	@ManyToOne
-	@JoinColumn(name="staff_account_id")
-	private AccountEntity staffAccountId;
+	@Column(name = "staff_user")
+	private String staffUser;
+
+	@Column(name = "staff_password")
+	private String staffPassword;
+
+	@Column(name = "staff_type")
+	private Integer staffType;
+
+	@Column(name = "staff_lock")
+	private Integer staffLock;
 	
 	@Column (name="staff_delete_date")
-	private Date StaffDeleteDate;
+	private Date staffDeleteDate;
 }

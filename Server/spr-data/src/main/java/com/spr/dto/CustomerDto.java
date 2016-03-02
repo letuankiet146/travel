@@ -5,11 +5,12 @@ package com.spr.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import org.dozer.Mapping;
 
 import lombok.Data;
 
-import com.spr.model.AccountEntity;
 
 /**
  * @author TuanKiet
@@ -52,8 +53,17 @@ public class CustomerDto {
 	@Mapping("customerImage")
 	private String customerImage;
 	
-	@Mapping("customerAccountId")
-	private AccountEntity customerAccountId;
+	@Mapping("customerUser")
+	private String customerUser;
+
+	@Mapping("customerPassword")
+	private String customerPassword;
+
+	@Mapping("customerType")
+	private Integer customerType;
+
+	@Mapping("customerLock")
+	private Integer customerLock;
 	
 	@Mapping("customerDeleteDate")
 	private Date customerDeleteDate;
