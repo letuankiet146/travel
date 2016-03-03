@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.eclipse.jdt.internal.compiler.ast.FalseLiteral;
+
 import com.spr.dto.FormOrderDto;
 
 import lombok.Data;
@@ -37,8 +39,11 @@ public class FormOrderEntity {
 	private TourEntity formOrderTour;
 
 	@ManyToOne
-	@JoinColumn(name = "form_order_customer_id")
+	@JoinColumn(name = "form_order_customer_id", updatable= false, insertable = false)
 	private CustomerEntity formOrderCustomer;
+	
+	@Column(name="form_order_customer_id")
+	private Integer formOrderCustomerId;
 
 	@Column(name = "form_order_date")
 	private Date formOrderDate;

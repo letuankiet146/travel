@@ -23,10 +23,14 @@ public class FormOrderDto {
 	@Mapping("formOrderTourId")
 	private Integer formOrderTourIdDto;
 
+	@Mapping("formOrderCustomerId")
+	private Integer formOrderCustomerIdDto;
+	
 	private CustomerDto formOrderCustomerDto;
+	
+	private TourDto formOrderTourDto;
 
-	@Mapping("formOrderDate")
-	private Date formOrderDateDto;
+	private String formOrderDateDto;
 	
 	@Mapping ("formOrderDeleteDate")
 	private Date formOrderDeleteDateDto;

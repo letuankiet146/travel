@@ -1,5 +1,7 @@
 package com.spr.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,9 +21,15 @@ public class OderTourController {
 	private IOrderServices orderService;
 	
 	@RequestMapping(value="/orderTour", method=RequestMethod.POST )
-	public String orderTour (@RequestBody FormOrderDto formOrder ){
-		orderService.orderTour(formOrder);
+	public String addOrderTour (@RequestBody FormOrderDto formOrder ){
+		orderService.addOrderTour(formOrder);
 		return "Dat tour thanh cong";
+	}
+	
+	@RequestMapping(value="/listOrderTourId", method=RequestMethod.GET )
+	public List<FormOrderDto> listAllOrderTour (){
+		List<FormOrderDto> formOrderDtoList = orderService.listAllOrderTour();
+		return formOrderDtoList;
 	}
 
 }
