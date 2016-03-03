@@ -1,9 +1,11 @@
 ################### PHƯƠNG THỨC LẤY TẤT CẢ TOUR, DÀNH CHO TRANG CHỦ###########################################
-LINK:  http://project-iuhhappytravel.rhcloud.com/spr-data/tour/listTour
+LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/tour/listTour
 ##################################################################################################################
 
 
-
+######## PHƯƠNG THỨC LẤY TẤT CẢ CÁC THÔNG TIN MÀ KHÁCH HÀNG ĐÃ ĐẶT TOUR, DÙNG CHO TRANG /views/order-tours.php ##########
+LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/listOrderTourId
+#########################################################################################################################
 
 
 ####################### Phương thức đặt tour dành cho khách hàng:###################################################
