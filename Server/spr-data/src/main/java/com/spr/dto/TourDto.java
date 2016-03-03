@@ -42,10 +42,10 @@ public class TourDto {
 	private Integer soChoDto;
 	
 	@Mapping("giaTour")
-	private String giaTourDto;
+	private Integer giaTourDto;
 	
 	@Mapping("giaTourKM")
-	private Float giaTourKMDto;
+	private Integer giaTourKMDto;
 	
 //	@Mapping("ngayKH")
 	private String ngayKHDto;

@@ -49,10 +49,10 @@ public class TourEntity {
 	private Integer soCho;
 	
 	@Column(name = "tour_charge")
-	private String giaTour;
+	private Integer giaTour;
 	
 	@Column(name = "tour_sale_off")
-	private Float giaTourKM;
+	private Integer giaTourKM;
 	
 	@Column(name = "tour_day_start")
 	private Date ngayKH;

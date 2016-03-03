@@ -1,37 +1,55 @@
-####################### Phương thức đặt tour dành cho khách hàng:
+################### PHƯƠNG THỨC LẤY TẤT CẢ TOUR, DÀNH CHO TRANG CHỦ###########################################
+LINK:  http://project-iuhhappytravel.rhcloud.com/spr-data/tour/listTour
+##################################################################################################################
+
+
+
+
+
+####################### Phương thức đặt tour dành cho khách hàng:###################################################
+customerSexDto: 0 là con gái, 1 là con trai
+formOrderQuantityAdultsDto: Là số lượng người lớn. Lấy đúng 100% theo giá tour
+formOrderQuantityJuvenileDto: Số lượng người dưới 12 tuổi. Lấy 50% so với giá tour.
+formOrderQuantityChildDto: Là số lượng trẻ em (dưới 2 tuổi). Lấy 25% so với giá tour.
+formOrderIsPayDto: 0 là chưa thanh toán, 1 là đã thanh toán
+
+
 LINK [POST]: http://project-iuhhappytravel.rhcloud.com/spr-data/orderTour
 BODY: 
 {
-  "formOrderTourId": 9,
-  "formOrderCustomer": {
-    "customerId": 3,
-    "customerName": "Khach hang 4",
-    "customerBirth": "26/02/2016",
-    "customerSex": null,
-    "customerPhone": null,
-    "customerEmail": null,
-    "customerAddress": null,
-    "customerVietNamId": null,
-    "customerCompanyName": null,
-    "customerAddressCompany": null,
-    "customerPhoneCompany": null,
-    "customerImage": null,
-    "customerUser" : null,
-    "customerPassword" : null,
-    "customerType" : null,
-    "customerLock" : null
+  "formOrderTourIdDto": 9,
+  "formOrderCustomerDto": {
+    "customerNameDto": "Khach hang 5",
+    "customerBirthDto": "26/02/2016",
+    "customerSexDto": 0,
+    "customerPhoneDto": "09991123",
+    "customerEmailDto": "letuankiet146@gmail.com",
+    "customerAddressDto": "Binh Duong",
+    "customerVietNamIdDto": "28881048",
+    "customerCompanyNameDto": null,
+    "customerAddressCompanyDto": null,
+    "customerPhoneCompanyDto": null,
+    "customerImageDto": null,
+    "customerUserDto" : null,
+    "customerPasswordDto" : null,
+    "customerTypeDto" : null,
+    "customerLockDto" : null
     
   },
-  "formOrderDate": null,
-  "formOrderDeleteDate": null
+  "formOrderQuantityAdultsDto": 12,
+  "formOrderQuantityJuvenileDto": 2,
+  "formOrderQuantityChildDto": 6,
+  "formOrderIsPayDto": 0,
+  "formOrderQuantityOtherRequireDto": "day la yeu cau khac"
 }
+##################################################################################################################
 
 
 
-################### PHƯƠNG THỨC LẤY TẤT CẢ TOUR, DÀNH CHO TRANG CHỦ
-LINK:  http://project-iuhhappytravel.rhcloud.com/spr-data/tour/listTour
 
-################## PHƯƠNG THỨC THÊM TOUR  DÀNH CHO TRANG ADMIN
+
+
+################## PHƯƠNG THỨC THÊM TOUR  DÀNH CHO TRANG ADMIN###########################################
 ---------ngày KH và KT phải theo mặc định "dd/mm/yyyy". IdTourDto không được trùng
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
 {
@@ -64,3 +82,4 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
     },
     "tourDeleteDateDto": null
 }
+##################################################################################################################

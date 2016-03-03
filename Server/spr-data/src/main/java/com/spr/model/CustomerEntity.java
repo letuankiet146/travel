@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,7 +27,8 @@ import lombok.Data;
 @Data
 public class CustomerEntity {
 	@Id
-	@Column(name="customer_id")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name = "customer_id")
 	private Integer customerId;
 	
 	@Column(name="customer_name")
@@ -77,23 +80,23 @@ public class CustomerEntity {
 	@Column(name = "customer_lock")
 	private Integer customerLock;
 	
-	public void setData (CustomerDto customerDto){
-		this.customerId = customerDto.getCustomerIdDto();
-		this.customerName = customerDto.getCustomerNameDto();
-		this.customerSex  = customerDto.getCustomerSexDto();
-		this.customerPhone =customerDto.getCustomerPhoneDto();
-		this.customerEmail = customerDto.getCustomerEmailDto();
-		this.customerAddress = customerDto.getCustomerAddressDto();
-		this.customerVietNamId = customerDto.getCustomerVietNamIdDto();
-		this.customerCompanyName =  customerDto.getCustomerCompanyNameDto();
-		this.customerAddressCompany = customerDto.getCustomerAddressCompanyDto();
-		this.customerPhoneCompany = customerDto.getCustomerPhoneCompanyDto();
-		this.customerUser = customerDto.getCustomerUserDto();
-		this.customerPassword = customerDto.getCustomerPasswordDto();
-		this.customerType = customerDto.getCustomerTypeDto();
-		this.customerLock = customerDto.getCustomerLockDto();
-		this.customerImage = customerDto.getCustomerImageDto();
-		this.customerDeleteDate = customerDto.getCustomerDeleteDateDto();
-		
-	}
+//	public void setData (CustomerDto customerDto){
+//		this.customerId = customerDto.getCustomerIdDto();
+//		this.customerName = customerDto.getCustomerNameDto();
+//		this.customerSex  = customerDto.getCustomerSexDto();
+//		this.customerPhone =customerDto.getCustomerPhoneDto();
+//		this.customerEmail = customerDto.getCustomerEmailDto();
+//		this.customerAddress = customerDto.getCustomerAddressDto();
+//		this.customerVietNamId = customerDto.getCustomerVietNamIdDto();
+//		this.customerCompanyName =  customerDto.getCustomerCompanyNameDto();
+//		this.customerAddressCompany = customerDto.getCustomerAddressCompanyDto();
+//		this.customerPhoneCompany = customerDto.getCustomerPhoneCompanyDto();
+//		this.customerUser = customerDto.getCustomerUserDto();
+//		this.customerPassword = customerDto.getCustomerPasswordDto();
+//		this.customerType = customerDto.getCustomerTypeDto();
+//		this.customerLock = customerDto.getCustomerLockDto();
+//		this.customerImage = customerDto.getCustomerImageDto();
+//		this.customerDeleteDate = customerDto.getCustomerDeleteDateDto();
+//		
+//	}
 }

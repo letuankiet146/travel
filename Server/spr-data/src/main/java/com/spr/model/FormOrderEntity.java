@@ -64,13 +64,13 @@ public class FormOrderEntity {
 	@Column (name = "form_order_money")
 	private Integer formOrderMoney;
 	
-	public void setData (FormOrderDto formOrderDto){
-		this.formOrderTourId = formOrderDto.getFormOrderTourIdDto();
-		this.formOrderTour = formOrderDto.getFormOrderTourDto();
-		this.formOrderQuantityAdults = formOrderDto.getFormOrderQuantityAdultsDto();
-		this.formOrderQuantityJuvenile = formOrderDto.getFormOrderQuantityJuvenileDto();
-		this.formOrderQuantityChild = formOrderDto.getFormOrderQuantityChildDto();
-		this.formOrderIsPay = formOrderDto.getFormOrderIsPayDto();
-		this.formOrderQuantityOtherRequire = formOrderDto.getFormOrderQuantityOtherRequireDto();
-	}
+//	public void setData (FormOrderDto formOrderDto){
+//		this.formOrderTourId = formOrderDto.getFormOrderTourIdDto();
+//		this.formOrderTour = formOrderDto.getFormOrderTourDto();
+//		this.formOrderQuantityAdults = formOrderDto.getFormOrderQuantityAdultsDto();
+//		this.formOrderQuantityJuvenile = formOrderDto.getFormOrderQuantityJuvenileDto();
+//		this.formOrderQuantityChild = formOrderDto.getFormOrderQuantityChildDto();
+//		this.formOrderIsPay = formOrderDto.getFormOrderIsPayDto();
+//		this.formOrderQuantityOtherRequire = formOrderDto.getFormOrderQuantityOtherRequireDto();
+//	}
 }

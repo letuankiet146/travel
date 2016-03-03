@@ -24,6 +24,7 @@ public class CustomerDto {
 	@Mapping("customerName")
 	private String customerNameDto;
 	
+//	@Mapping("customerName")
 	private String customerBirthDto;
 	
 	@Mapping("customerSex")

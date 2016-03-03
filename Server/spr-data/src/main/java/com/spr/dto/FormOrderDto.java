@@ -3,6 +3,8 @@
  */
 package com.spr.dto;
 
+import java.util.Date;
+
 import lombok.Data;
 
 import org.dozer.Mapping;
@@ -21,14 +23,13 @@ public class FormOrderDto {
 	@Mapping("formOrderTourId")
 	private Integer formOrderTourIdDto;
 
-	@Mapping("formrOrderTour")
-	private TourEntity formOrderTourDto;
-
 	private CustomerDto formOrderCustomerDto;
 
-	private String formOrderDateDto;
+	@Mapping("formOrderDate")
+	private Date formOrderDateDto;
 	
-	private String formOrderDeleteDateDto;
+	@Mapping ("formOrderDeleteDate")
+	private Date formOrderDeleteDateDto;
 	
 	@Mapping("formOrderQuantityAdults")
 	private Integer formOrderQuantityAdultsDto;

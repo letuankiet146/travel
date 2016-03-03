@@ -19,9 +19,9 @@ public class OderTourController {
 	private IOrderServices orderService;
 	
 	@RequestMapping(value="/orderTour", method=RequestMethod.POST )
-	public Integer orderTour (@RequestBody FormOrderDto formOrder ){
-		int kq = orderService.orderTour(formOrder);
-		return kq;
+	public String orderTour (@RequestBody FormOrderDto formOrder ){
+		orderService.orderTour(formOrder);
+		return "Dat tour thanh cong";
 	}
 
 }
