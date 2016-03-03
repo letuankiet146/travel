@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spr.dto.TourDto;
 import com.spr.model.TourEntity;
 import com.spr.repository.TourRepository;
+import com.spr.util.MyFormatDate;
 
 /**
  * @author TuanKiet
@@ -48,8 +49,8 @@ public class TourServiceImp implements ITourService {
 		
 		TourEntity tourEntity = new TourEntity();
 		tourEntity = mapper.map(tourDto, TourEntity.class);
-		tourEntity.setNgayKH(new Date());
-		tourEntity.setNgayKT(new Date());
+		tourEntity.setNgayKH(MyFormatDate.stringToDate(tourDto.getNgayKHDto()));
+		tourEntity.setNgayKT(MyFormatDate.stringToDate(tourDto.getNgayKTDto()));
 		tourRepo.saveAndFlush(tourEntity);
 		
 		return tourDto.getIdDto();

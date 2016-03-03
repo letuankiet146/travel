@@ -44,5 +44,8 @@ public class FormOrderDto {
 	
 	@Mapping("formOrderQuantityOtherRequire")
 	private String formOrderQuantityOtherRequireDto;
+	
+	@Mapping("formOrderMoney")
+	private Integer formOrderMoneyDto;
 
 }

@@ -38,9 +38,9 @@ public class TourController {
 	}
 	
 	@RequestMapping (value = "/addTour", method = RequestMethod.POST )
-	public Integer addTour ( @RequestBody TourDto tourDto){
-		Integer id = iTourService.add(tourDto);
-		return id;
+	public String addTour ( @RequestBody TourDto tourDto){
+		iTourService.add(tourDto);
+		return "Them thanh cong";
 	}
 	
 

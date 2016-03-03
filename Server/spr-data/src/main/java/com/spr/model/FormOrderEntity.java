@@ -61,6 +61,9 @@ public class FormOrderEntity {
 	@Column (name="form_order_otherRequire")
 	private String formOrderQuantityOtherRequire;
 	
+	@Column (name = "form_order_money")
+	private Integer formOrderMoney;
+	
 	public void setData (FormOrderDto formOrderDto){
 		this.formOrderTourId = formOrderDto.getFormOrderTourIdDto();
 		this.formOrderTour = formOrderDto.getFormOrderTourDto();

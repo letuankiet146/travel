@@ -47,11 +47,11 @@ public class TourDto {
 	@Mapping("giaTourKM")
 	private Float giaTourKMDto;
 	
-	@Mapping("ngayKH")
-	private Date ngayKHDto;
+//	@Mapping("ngayKH")
+	private String ngayKHDto;
 	
-	@Mapping("ngayKT")
-	private Date ngayKTDto;
+//	@Mapping("ngayKT")
+	private String ngayKTDto;
 	
 	
 	@Mapping("idDichVu")

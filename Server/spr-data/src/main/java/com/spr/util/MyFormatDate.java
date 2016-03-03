@@ -19,6 +19,9 @@ public class MyFormatDate {
 		return dateStr;
 		
 	}
+	/*
+	 * Date String "dd/MM/yyyy"
+	 */
 	public static Date stringToDate(String myDateStr){
 		SimpleDateFormat spdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date myDate =null;
