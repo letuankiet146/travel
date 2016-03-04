@@ -35,12 +35,10 @@ public class TourServiceImp implements ITourService {
 	public List<TourDto> listTour() {
 		List<TourEntity> listTourEntity = tourRepo.findAll();
 		List<TourDto> listTourDto = new ArrayList<TourDto>();
-		SimpleDateFormat spdf = new SimpleDateFormat("dd/MM/yyyy");
 		for (TourEntity tourEntity : listTourEntity){
-			TourDto tourDto = new TourDto();
-			tourDto = mapper.map(tourEntity, TourDto.class);
-//			tourDto.setNgayKH(spdf.format(tourEntity.getNgayKH()));
-//			tourDto.setNgayKT(spdf.format(tourEntity.getNgayKT()));
+			TourDto tourDto = mapper.map(tourEntity, TourDto.class);
+			tourDto.setNgayKHDto(MyFormatDate.dateToString(tourEntity.getNgayKH()));
+			tourDto.setNgayKTDto(MyFormatDate.dateToString(tourEntity.getNgayKT()));
 			listTourDto.add(tourDto);
 		}
 		return listTourDto;
@@ -63,6 +61,7 @@ public class TourServiceImp implements ITourService {
 		conditionList.add(tourDtoCondition.getGiaTourDto().toString());
 		conditionList.add(tourDtoCondition.getArrivePlaceDto().getArrivePlaceName());
 		conditionList.add(MyFormatDate.stringToDate(tourDtoCondition.getNgayKHDto()).toString());
+		conditionList.add(tourDtoCondition.getArrivePlaceDto().getArrivePlaceAreaId().toString());
 		
 		return null;
 	}
