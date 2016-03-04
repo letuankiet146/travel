@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -35,9 +36,6 @@ public class TourEntity {
 	
 	@Column(name = "tour_name")
 	private String tenTour;
-	
-	@Column(name = "tour_description")
-	private String moTa;
 	
 	@Column(name = "tour_infor")
 	private String info;

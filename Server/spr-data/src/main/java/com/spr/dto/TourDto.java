@@ -29,9 +29,6 @@ public class TourDto {
 	@Mapping("tenTour")
 	private String tenTourDto;
 	
-	@Mapping("moTa")
-	private String moTaDto;
-	
 	@Mapping("info")
 	private String infoDto;
 	

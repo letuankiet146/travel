@@ -43,5 +43,11 @@ public class TourController {
 		return "Them thanh cong";
 	}
 	
+	@RequestMapping (value = "/searchTour", method = RequestMethod.POST)
+	public List<TourDto> searchTour (TourDto tourCondition){
+		List<TourDto> resultTourDtoList = null ;
+		return resultTourDtoList;
+	}
+	
 
 }

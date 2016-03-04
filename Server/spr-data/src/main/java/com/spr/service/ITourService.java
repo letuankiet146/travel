@@ -20,5 +20,7 @@ public interface ITourService {
 	public List<TourDto> listTour ();
 	
 	public Integer add (TourDto tourDto);
+	
+	public List<TourDto> searchTour(TourDto tourDtoCondition);
 
 }

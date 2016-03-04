@@ -55,9 +55,8 @@ BODY:
 ---------ngày KH và KT phải theo mặc định "dd/mm/yyyy". IdTourDto không được trùng
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
 {
-    "idTourDto": "id Khong duoc trung",
-    "tenTourDto": "LeTuanKietTour",
-    "moTaDto": "",
+    "idTourDto": "Demo 3",
+    "tenTourDto": "Demo Tour",
     "infoDto": "",
     "imageDto": "",
     "soChoDto": 0,
@@ -71,17 +70,6 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
     "tourArrivePlaceIdDto": 1,
     "tourGuiderIdDto": 1,
     "tourFromPlaceIdDto": 1,
-    "arrivePlaceDto": {
-      "arrivePlaceId": 1,
-      "arrivePlaceName": "Nha Trang",
-      "arrivePlaceAreaId": 1,
-      "arrivePlaceDeleteDate": null
-    },
-    "fromPlaceDto": {
-      "fromPlaceId": 1,
-      "fromPlaceName": "HCM",
-      "fromePlaceDeleteDate": null
-    },
     "tourDeleteDateDto": null
 }
 ##################################################################################################################
