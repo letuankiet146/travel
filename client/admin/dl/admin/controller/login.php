@@ -5,7 +5,7 @@
 	*------Xử lý đăng nhập
 	*=================================*/
 	if(isset($_POST['login'])){
-		$sql="SELECT * FROM account where account_user = '".$_POST['username']."' and account_password = '".$_POST['password']."'";
+		$sql="SELECT * FROM staff where staff_user = '".$_POST['username']."' and staff_password = '".$_POST['password']."'";
 		$query = mysql_query($sql);
 		$result = mysql_fetch_array($query);
 		if($result < 1){
@@ -14,10 +14,8 @@
 		}
 		else{
 			session_start();
-			$sql="SELECT * FROM account a join staff s on a.account_id = s.staff_account_id";
-			$query = mysql_query($sql);
-			$rows = mysql_fetch_array($query);
-			$_SESSION['username'] = $rows['staff_name'];
+			$_SESSION['username'] = $result['staff_name'];
+			$_SESSION['level'] = $result['staff_level'];
 			echo "<script>document.location.href='../index.php'</script>";
 		}
 	}

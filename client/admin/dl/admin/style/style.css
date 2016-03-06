@@ -66,6 +66,7 @@ body{
 .box-count ul li .num {
 	position:absolute;
 	top:-8px;
+	right: -10px;
 	color:#fff;
 	background:#4b93cc;
 	padding:0px 3px;
@@ -88,7 +89,7 @@ body{
 	position:relative;
 }
 .profile-box .section{
-	padding: 7px 33px 0 8px;
+	padding: 6px 33px 5px 8px;
 	float: left;
 }
 .profile-box .img{
@@ -113,10 +114,12 @@ body{
 .profile-box .opener{
 	float: left;
 	width: 39px;
-	line-height: 39px;
 	font-size: 14px;
 	border-left: 1px solid #000;
 	text-align:center;
+}
+.profile-box .opener i{
+	line-height:38px;
 }
 .profile ul.profile-menu{
 	position:absolute;

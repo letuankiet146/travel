@@ -1,13 +1,13 @@
 (function($){
 	$.fn.zPaging = function (options){
-		console.log("alo ola");
+		//console.log("alo ola");
 		//=================================================
 		//Các giá trị mặt định của options
 		//=================================================
 		var defaults = {
 				"rows": "#rows",
 				"pages": "#pages",
-				"content": ".content",
+				"paging": "#paging",
 				"items": 3,
 				"height": 57,
 				"currentPage": 1,
@@ -23,7 +23,7 @@
 		//=================================================
 		var rows = $(options.rows);
 		var pages = $(options.pages);
-		var content = $(options.content);
+		var paging = $(options.paging);
 		var btnPrevious = $(options.btnPrevious);
 		var btnNext = $(options.btnNext);
 		var txtCurrentPage = $(options.txtCurrentPage);
@@ -42,13 +42,13 @@
 		function init(){
 			// lay tong so trang
 			$.ajax({
-				url: '../controller/list-tour.php?type=count&items=' + options.items,
+				url: 'controller/list-tour.php?type=count&items=' + options.items,
 				type: 'GET',
 				dataType: 'json'
 			})
 			.done(function(data) {
 				options.total = data.total;
-				console.log(options);
+				//console.log(options);
 				pageInfo();
 				loadData(options.currentPage);
 			});
@@ -129,15 +129,15 @@
 		//=================================================
 		function setRowsHeight(){
 			var trHeight = (options.items * options.height + 34) + "px";
-			content.css("height",trHeight);
+			paging.css("height",trHeight);
 		}
 		//=================================================
 		//Hàm load các thông tin database đưa vào #rows
 		//=================================================
 		function loadData(page){
-			console.log("loadata");
+			//console.log("loadata");
 			$.ajax({
-				url: '../controller/list-tour.php?type=list',
+				url: 'controller/list-tour.php?type=list',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -173,7 +173,7 @@
 					});
 					// lay top hop the a.
 					aRows = options.rows + " tr td a#remove";
-					console.log(aRows);
+					//console.log(aRows);
 					$(aRows).on("click", function(e){
 						deleteItem(this);
 					});
@@ -188,8 +188,8 @@
 			var parent = $(obj).closest('tr');
 			var itemID = $(parent).attr("item-id");
 			var lastID = $(rows).children(':last').attr("item-id");;
-			console.log(lastID);
-			console.log(itemID);
+			//console.log(lastID);
+			//console.log(itemID);
 			
 			
 			//  ẩn item được xóa
@@ -197,7 +197,7 @@
 				durartion: 300,
 				done: function(){
 					$.ajax({
-						url: '../controller/list-tour.php?type=delete&id=' + itemID,
+						url: 'controller/list-tour.php?type=delete&id=' + itemID,
 						type: 'GET',
 						dataType: 'json'
 					});
@@ -210,12 +210,12 @@
 			});
 
 			$.ajax({
-				url: '../controller/list-tour.php?type=one&id=' + lastID,
+				url: 'controller/list-tour.php?type=one&id=' + lastID,
 				type: 'GET',
 				dataType: 'json'
 			})
 			.done(function(data) {
-				console.log(data);
+				//console.log(data);
 				if(data != false){
 					var str = 	'<tr item-id="' + data.tour_id + '">'+
 									'<td><input type="checkbox" name="" value=""></td>'+

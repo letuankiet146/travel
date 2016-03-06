@@ -201,6 +201,7 @@
 }
 .row{
 	margin-bottom: 10px;
+	position:relative;
 }
 .row label:first-child{
 	display:inline-block;
@@ -217,6 +218,11 @@
 	width:330px;
 	padding: 4px 0px;
 	text-indent: 5px;
+}
+.row .ui-datepicker-trigger{
+	position:absolute;
+	right: 8px;
+    top: 5px;
 }
 .red{
 	color:#f00;
@@ -235,6 +241,11 @@
 .thumb span{
 	font-size:85%;
 	color: #31708f;
+}
+.details label{
+	font-weight:bold;
+	display:block;
+	margin:5px 0px;
 }
 .btn{
 	background:url(../../images/module_footer_bg.png) repeat-x;

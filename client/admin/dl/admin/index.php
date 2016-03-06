@@ -24,7 +24,7 @@ if(isset($_SESSION['username']))
 	<!-- HEADER -->
 	<div id="header">
 		<div class="header-inner">
-			<div class="header-title"><a href="index.php">Website Admin</a></div>
+			<div class="header-title"><a href="index.php?page=home">Website Admin</a></div>
 			<div class="header-section">
 				<div class="section-inner">
 					<div class="box-count">
@@ -74,7 +74,7 @@ if(isset($_SESSION['username']))
 					<li class="menu">
 						<a href="#" class="title-order">Quản lý tour <i class="fa fa-caret-square-o-down"></i></a>
 						<ul class="menu-child">
-							<li><a href="views/list-tour.php"><i class="fa fa-list-alt"></i>Danh sách tour</a></li>
+							<li><a href="index.php?page=list-tour"><i class="fa fa-list-alt"></i>Danh sách tour</a></li>
 							<li><a href=""><i class="fa fa-list-alt"></i>Danh sách địa điểm</a></li>
 							<li><a href=""><i class="fa fa-list-alt"></i>Danh sách khách sạn</a></li>
 						</ul>
@@ -121,173 +121,22 @@ if(isset($_SESSION['username']))
 		<!-- MAIN-LEFT -->
 		<!-- MAIN-RIGHT -->
 		<div class="main-right">
+			<?php include 'config.php'; ?>
 			<div class="right">
-				<div class="breadcrumb">
-					<ul>
-						<li><a href="#">Trang chủ</a></li>
-					</ul>
-				</div>
-				<div class="news">
-					<div class="news-left">
-						<div class="diary">
-							<div class="title-inner"><h3>Nhật ký hoạt động</h3></div>
-							<div class="content-inner">
-							<div class="content">
-								<table cellspacing="0">
-									<thead>
-										<tr>
-											<th>STT</th>
-											<th>Nhân viên</th>
-											<th>Công việc thực hiện</th>
-											<th>Thời gian thực hiên</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Phạm Thành Thảo</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>Nguyễn Trường Cao Tuấn Khoa</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>10</td>
-											<td>Phạm Huỳnh Vũ Kiên</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>Phạm Thành Thảo</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>Nguyễn Trường Cao Tuấn Khoa</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>10</td>
-											<td>Phạm Huỳnh Vũ Kiên</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>Phạm Thành Thảo</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>Nguyễn Trường Cao Tuấn Khoa</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>10</td>
-											<td>Phạm Huỳnh Vũ Kiên</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>Phạm Thành Thảo</td>
-											<td>Xác nhận thanh toán thành công</td>
-											<td>21/07/2015 14:40</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							</div>
-						</div>
-						<div class="paging">
-							<p>page 1 of 10</p>
-							<ul>
-								<li class="goprev">&laquo; Trang sau</li>
-								<li class="current">
-									<input type="text" name="1" value="1" placeholder="" />
-								</li>
-								<li class="gonext">Trang Tiếp &raquo;</li>
-							</ul>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<div class="news-right">
-						<div class="notification">
-							<div class="title-inner"><h3>Chi tiết đơn hàng</h3></div>
-							<div class="order_list">
-							<div class="messages-box">
-								<div class="orders">
-									<a href=""><span>Đơn hàng mới</span><span>20</span></a>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="messages-box">
-								<div class="orders">
-									<a href=""><span>Đơn hàng chưa thanh toán</span><span>5</span></a>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="messages-box">
-								<div class="orders">
-									<a href=""><span>Đơn hàng bị trả lại</span><span>7</span></a>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="messages-box">
-								<div class="orders">
-									<a href=""><span>Đơn hàng bị hủy</span><span>8</span></a>
-									<div class="clear"></div>
-								</div>
-							</div>
-							</div>
-						</div>
-						<div class="notification">
-							<div class="title-inner"><h3>Thông báo chung</h3></div>
-							<div class="message_list">
-								<div class="messages-box">
-									<div class="messages">
-										<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-										<p>Thành Thảo</p>
-									</div>
-								</div>
-								<div class="messages-box">
-									<div class="messages">
-										<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-										<p>Thành Thảo</p>
-									</div>
-								</div>
-								<div class="messages-box">
-									<div class="messages">
-										<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-										<p>Thành Thảo</p>
-									</div>
-								</div>
-								<div class="messages-box">
-									<div class="messages">
-										<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-										<p>Thành Thảo</p>
-									</div>
-								</div>
-							</div>
-							<div class="search-notifi">
-								<form action="" method="get" accept-charset="utf-8">
-									<input type="text" name="" value="" placeholder="Tin nhắn" />
-									<input type="button" name="" value="" />
-								</form>
-							</div>
-						</div>
-					</div>
-					
-				</div>
+				<?php 
+					$page="";
+					if(isset($_GET['page'])){
+						$page = $_GET['page'];
+						switch ($page) {
+							case 'home':include("views/trangchu.php");break;
+							case 'list-tour':include("views/list-tour.php");break;
+							default:include("views/trangchu.php");break;
+						}
+					}
+					else{
+						include("views/trangchu.php");
+					}
+				?>
 			</div>
 		</div>
 		<!-- MAIN-RIGHT -->
