@@ -130,6 +130,7 @@ if(isset($_SESSION['username']))
 						switch ($page) {
 							case 'home':include("views/trangchu.php");break;
 							case 'list-tour':include("views/list-tour.php");break;
+							case 'edit-tour':include("views/edit-tour.php");break;
 							default:include("views/trangchu.php");break;
 						}
 					}

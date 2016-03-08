@@ -23,3 +23,11 @@ $(document).ready(function() {
 		$(this).closest('.right').find('.add-edit').slideToggle("700");
 	});
 });
+// LOAD AJAX
+// $(document).ready(function() {
+//     $('.btn-add').click(function() {
+//         //$(this).closest(".right").find('#add-edit-tour').css("display","none");
+//         $(this).closest(".right").find('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
+//     });
+    
+// });

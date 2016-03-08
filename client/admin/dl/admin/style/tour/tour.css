@@ -212,7 +212,7 @@
 .row select{
 	width:332px;
 	padding: 4px 0px;
-	text-indent: 5px;
+	text-indent: 1px;
 }
 .row input{
 	width:330px;
@@ -264,12 +264,26 @@
 	cursor:pointer;
 	font-weight:bold;
 	height:22px;
+	float:right;
+	    margin-right: 8px;
 }
 .btn-reset{
 	background:#d0d1d4 url(../../images/btn_submit.png);
+	height:24px;
 }
 .btn-add:hover{
 	color: #001217;
+}
+.btn .row{
+	float:right;
+	margin:-3px 0px 0px 0px ;
+}
+.btn .row select{
+	width: 135px;
+    padding: 2px 0px 3px 0px;
+    text-indent: 5px;
+    margin: 0px 10px 0px 0px;
+	
 }
 /*=============================================
 *-----------TIM KIEM TOUR
@@ -307,4 +321,7 @@
 }
 .search-box button:hover{
 	cursor:pointer;
+}
+#editTour{
+	display:block;
 }

@@ -7,6 +7,7 @@
 		var defaults = {
 				"rows": "#rows",
 				"pages": "#pages",
+				"status": "#status",
 				"paging": "#paging",
 				"items": 3,
 				"height": 57,
@@ -23,12 +24,14 @@
 		//=================================================
 		var rows = $(options.rows);
 		var pages = $(options.pages);
+		var status = $(options.status);
 		var paging = $(options.paging);
 		var btnPrevious = $(options.btnPrevious);
 		var btnNext = $(options.btnNext);
 		var txtCurrentPage = $(options.txtCurrentPage);
 		var lblpageInfo = $(options.pageInfo);
 		var aRows = '';
+		var aStatus = '';
 		
 		//=================================================
 		//Khởi tạp các hàm
@@ -79,15 +82,12 @@
 					}
 				}
 			});
-
-
 		}
 
 		//=================================================
 		//Hàm xử lý khi nhấn nut btnPrevious
 		//=================================================
 		function goPrevious(){
-
 			if(options.currentPage != 1){
 				var p = options.currentPage - 1;
 				loadData(p);
@@ -135,7 +135,6 @@
 		//Hàm load các thông tin database đưa vào #rows
 		//=================================================
 		function loadData(page){
-			//console.log("loadata");
 			$.ajax({
 				url: 'controller/list-tour.php?type=list',
 				type: 'POST',
@@ -151,31 +150,43 @@
 				if(data.length>0){
 					rows.empty();
 					$.each(data, function(i, val) {
+					var dayStart= val.tour_day_start; 
+					var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
+					var dayEnd = val.tour_day_end; 
+					var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
 					var str = 	'<tr item-id="' + val.tour_id + '">'+
 									'<td><input type="checkbox" name="" value=""></td>'+
 									'<td>' + val.tour_code + '</td>'+
 									'<td>' + val.tour_name + '</td>'+
-									'<td class="text-center">' + val.tour_day_start + '</td>'+
-									'<td class="text-center">' + val.tour_day_end +'</td>'+
+									'<td class="text-center" id="from">' + fdayStart + '</td>'+
+									'<td class="text-center" id="to">' + fdayEnd +'</td>'+
 									'<td class="text-center">' + val.tour_seat_number +'</td>'+
-									'<td>'+
-										'<select>'+
+									'<td class="text-center">'+
+										'<select class="status">'+
+											'<option value="' + val.tour_active +'">' + val.status_name +'</option>'+
+											'<option value="1">-----------------</option>'+
 											'<option value="1">Đang thực hiện</option>'+
 											'<option value="2">Chưa thực hiện</option>'+
-											'<option value="4">Đã thực hiện</option>'+
+											'<option value="3">Đã thực hiện</option>'+
 										'</select>'+
+										'<div id="load_status"></div>'+
 									'</td>'+
-									'<td class="text-center"><a href="#" title="Cập nhật"><i class="fa fa-refresh"></i></a></td>'+
-									'<td class="text-center"><a href="#" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
+									'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + val.tour_id + '" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
 									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
 								'</tr>';
 					rows.append(str);
 					});
 					// lay top hop the a.
 					aRows = options.rows + " tr td a#remove";
-					//console.log(aRows);
 					$(aRows).on("click", function(e){
-						deleteItem(this);
+						var x = confirm("Bạn có chắc chắn xóa không?");
+						if(x){
+							deleteItem(this);
+						}
+					});
+					aStatus = options.rows + " tr td select.status";
+					$(aStatus).on("change", function(e){
+						update_status(this);
 					});
 				}
 			});	
@@ -188,9 +199,6 @@
 			var parent = $(obj).closest('tr');
 			var itemID = $(parent).attr("item-id");
 			var lastID = $(rows).children(':last').attr("item-id");;
-			//console.log(lastID);
-			//console.log(itemID);
-			
 			
 			//  ẩn item được xóa
 			$(parent).fadeOut({
@@ -225,20 +233,56 @@
 									'<td class="text-center">' + data.tour_day_end +'</td>'+
 									'<td class="text-center">' + data.tour_seat_number +'</td>'+
 									'<td>'+
-										'<select>'+
+										'<select class="status" onchange="update_status(' + val.tour_id + ')">'+
+											'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
 											'<option value="1">Đang thực hiện</option>'+
 											'<option value="2">Chưa thực hiện</option>'+
-											'<option value="4">Đã thực hiện</option>'+
+											'<option value="3">Đã thực hiện</option>'+
 										'</select>'+
 									'</td>'+
-									'<td class="text-center"><a href="#" title="Cập nhật"><i class="fa fa-refresh"></i></a></td>'+
-									'<td class="text-center"><a href="#" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
+									'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + val.tour_id + '" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
 									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
 								'</tr>';
 					str = $(str).hide().appendTo(rows);
 					$(str).fadeIn(300);
 				}
 			});
+		}
+
+		//=================================================
+		//Hàm update status
+		//=================================================
+		function update_status(obj){
+			var status =$(obj).closest('tr').find('.status').val();
+			var itemID = $(obj).closest('tr').attr("item-id");
+			var mystatus = {
+				status: status,
+				tour_id: itemID
+			};
+			console.log(mystatus);
+			$.ajax({
+				url: 'controller/list-tour.php?type=updateStatus',
+				type: 'POST',
+				dataType: 'json',
+				data:mystatus,
+				beforeSend: function(){
+					$(obj).closest('tr').find('#load_status').append('<img src="images/loader.gif" />');
+				},
+				success: function(data){
+
+				},
+				statusCode: {
+					404:function(){
+						alert("khong tim thay trang");
+					},
+					200:function(){
+						setTimeout(function(){
+							$(obj).closest('tr').find('#load_status').css("display","none");
+						}, 2000);
+					}
+				}
+			});
+		//});
 		}
 	}
 })(jQuery);
