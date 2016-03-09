@@ -117,6 +117,7 @@ public class WebAppConfig {
 				// TODO Auto-generated method stub
 				super.addCorsMappings(registry);
 				registry.addMapping("/tour/listTour").allowedOrigins("*");
+				registry.addMapping("/tour/updateTour").allowedOrigins("*");
 				registry.addMapping("/tour/addTour").allowedOrigins("*");
 				registry.addMapping("/listOrderTourId").allowedOrigins("*");
 				registry.addMapping("/orderTour").allowedOrigins("*");
