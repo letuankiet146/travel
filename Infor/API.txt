@@ -55,7 +55,7 @@ BODY:
 ---------ngày KH và KT phải theo mặc định "dd/mm/yyyy". IdTourDto không được trùng
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
 {
-    "idTourDto": "Demo 3",
+    "idTourDto": "Demo 4",
     "tenTourDto": "Demo Tour",
     "infoDto": "",
     "imageDto": "",
@@ -65,11 +65,33 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
     "ngayKHDto": "13/3/2016",
     "ngayKTDto":"16/3/2016",
     "idDichVuDto": 1,
-    "viewDto": 1,
     "activeDto": 1,
     "tourArrivePlaceIdDto": 1,
     "tourGuiderIdDto": 1,
     "tourFromPlaceIdDto": 1,
+    "tourDeleteDateDto": null
+}
+##################################################################################################################
+
+####################PHƯƠNG THỨC UPDATE TOUR DÀNH CHO TRANG ADMIN##################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour
+{
+    "idDto": 9,
+    "idTourDto": "HCM-DN_EDIT",
+    "tenTourDto": "HCM Tour",
+    "infoDto": "Lịch trình tour",
+    "imageDto": "",
+    "soChoDto": 50,
+    "giaTourDto": 2000000,
+    "giaTourKMDto": 20,
+    "ngayKHDto": "23/03/2016",
+    "ngayKTDto": "26/03/2016",
+    "idDichVuDto": 1,
+    "viewDto": null,
+    "activeDto": 2,
+    "tourArrivePlaceIdDto": 3,
+    "tourFromPlaceIdDto": 1,
+    "tourGuiderIdDto": 1,
     "tourDeleteDateDto": null
 }
 ##################################################################################################################
