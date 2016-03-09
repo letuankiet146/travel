@@ -3,10 +3,7 @@
  */
 package com.spr.service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -18,6 +15,7 @@ import com.spr.dto.TourDto;
 import com.spr.model.TourEntity;
 import com.spr.repository.TourRepository;
 import com.spr.util.MyFormatDate;
+import com.spr.validation.TourValidator;
 
 /**
  * @author TuanKiet
@@ -30,6 +28,9 @@ public class TourServiceImp implements ITourService {
 	
 	@Autowired
 	private DozerBeanMapper mapper;
+	
+	@Autowired
+	private TourValidator validator;
 	
 	@Transactional
 	public List<TourDto> listTour() {
@@ -64,6 +65,27 @@ public class TourServiceImp implements ITourService {
 		conditionList.add(tourDtoCondition.getArrivePlaceDto().getArrivePlaceAreaId().toString());
 		
 		return null;
+	}
+
+	public String update(TourDto updateDto) {
+		TourEntity tourEntity = tourRepo.findOne(updateDto.getIdDto());
+		TourDto tourDto = mapper.map(tourEntity, TourDto.class);
+		tourDto.setNgayKHDto(MyFormatDate.dateToString(tourEntity.getNgayKH()));
+		tourDto.setNgayKTDto(MyFormatDate.dateToString(tourEntity.getNgayKT()));
+		tourDto.setDataUpdate(updateDto);
+		List<String> errorList = validator.checkExist(tourDto);
+		if (errorList.isEmpty()){
+			tourEntity = mapper.map(tourDto, TourEntity.class);
+			tourEntity.setNgayKH(MyFormatDate.stringToDate(tourDto.getNgayKHDto()));
+			tourEntity.setNgayKT(MyFormatDate.stringToDate(tourDto.getNgayKTDto()));
+			tourRepo.saveAndFlush(tourEntity);
+			return "Update thanh cong";
+		}
+		String errorReturn ="";
+		for (String error : errorList){
+			errorReturn = errorReturn + "\n" +error;
+		}
+		return errorReturn;
 	}
 
 }

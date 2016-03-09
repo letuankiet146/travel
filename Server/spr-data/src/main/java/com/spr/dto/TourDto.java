@@ -50,7 +50,6 @@ public class TourDto {
 //	@Mapping("ngayKT")
 	private String ngayKTDto;
 	
-	
 	@Mapping("idDichVu")
 	private Integer idDichVuDto;
 	
@@ -77,4 +76,21 @@ public class TourDto {
 	
 	@Mapping("tourDeleteDate")
 	private Date tourDeleteDateDto;
+	
+	public void setDataUpdate (TourDto tourDto){
+		this.idTourDto = tourDto.getIdTourDto();
+		this.tenTourDto = tourDto.getTenTourDto();
+		this.infoDto = tourDto.getInfoDto();
+		this.imageDto = tourDto.getImageDto();
+		this.soChoDto = tourDto.getSoChoDto();
+		this.giaTourDto = tourDto.getGiaTourDto();
+		this.giaTourKMDto = tourDto.getGiaTourKMDto();
+		this.ngayKHDto = tourDto.getNgayKHDto();
+		this.ngayKTDto = tourDto.getNgayKTDto();
+		this.idDichVuDto = tourDto.getIdDichVuDto();
+		this.activeDto = tourDto.getActiveDto();
+		this.tourArrivePlaceIdDto = tourDto.getTourArrivePlaceIdDto();
+		this.tourFromPlaceIdDto = tourDto.getTourFromPlaceIdDto();
+		this.tourGuiderIdDto = tourDto.getTourGuiderIdDto();
+	}
 }

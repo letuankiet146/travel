@@ -49,5 +49,11 @@ public class TourController {
 		return resultTourDtoList;
 	}
 	
+	@RequestMapping (value = "/updateTour", method= RequestMethod.POST)
+	public String updateTour (@RequestBody TourDto tourDtoUpdate){
+		String result =  iTourService.update(tourDtoUpdate);
+		return result;
+	}
+	
 
 }
