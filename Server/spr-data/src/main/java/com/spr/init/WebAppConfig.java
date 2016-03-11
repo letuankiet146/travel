@@ -128,7 +128,8 @@ public class WebAppConfig {
 
 	@Bean
 	public DozerBeanMapper dozerBeanMapper() {
-		return new DozerBeanMapper();
+		DozerBeanMapper mapper = new DozerBeanMapper();
+		return mapper;
 	}
 
 }
