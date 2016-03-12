@@ -121,6 +121,13 @@ public class WebAppConfig {
 				registry.addMapping("/tour/addTour").allowedOrigins("*");
 				registry.addMapping("/listOrderTourId").allowedOrigins("*");
 				registry.addMapping("/orderTour").allowedOrigins("*");
+				/*
+				 * History
+				 */
+				registry.addMapping("/history/delete/").allowedOrigins("*");
+				registry.addMapping("/history/add").allowedOrigins("*");
+				registry.addMapping("/history/list").allowedOrigins("*");
+				registry.addMapping("/history/list/{id}").allowedOrigins("*");
 				
 			}
 		};
