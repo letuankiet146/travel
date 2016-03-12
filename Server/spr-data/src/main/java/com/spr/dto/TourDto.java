@@ -121,7 +121,7 @@ public class TourDto {
 
 			this.ngayKTDto = tourDto.getNgayKTDto();
 		}
-		if (getIdDichVuDto() != null) {
+		if (tourDto.getIdDichVuDto() != null) {
 			this.idDichVuDto = tourDto.getIdDichVuDto();
 		}
 		if (tourDto.getActiveDto() != null) {
