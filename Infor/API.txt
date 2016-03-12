@@ -95,3 +95,24 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour
     "tourDeleteDateDto": null
 }
 ##################################################################################################################
+
+###################ADD HISTORY #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/history/add
+user la id cua staff, action: create, delete, update, content tạm thời để mặc định yk - vài hôm nữa tao làm thêm phần này
+{
+  "user": 2,
+  "action": "create",
+  "content": "a"
+}
+##################################################################################################################
+
+###################LIST ALL HISTORY #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/history/list
+
+###################LIST ONE HISTORY #############################################################################
+số 2 là id của history
+LINK: http://project-iuhhappytravel.rhcloud.com/history/list/2
+
+###################DELETE HISTORY #############################################################################
+số 2 là id của history
+LINK: http://project-iuhhappytravel.rhcloud.com/history/delete/2
