@@ -39,5 +39,10 @@ public class HistoryController {
 		return historyInterface.delete(id);
 	}
 	
+	@RequestMapping (value = "/update")
+	public String update (@RequestBody HistoryDto historyDto){
+		return historyInterface.update(historyDto);
+	}
+	
 
 }

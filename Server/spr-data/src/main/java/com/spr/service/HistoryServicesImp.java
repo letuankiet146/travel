@@ -38,7 +38,15 @@ public class HistoryServicesImp implements IHistoryServices {
 	}
 
 	public String update(HistoryDto historyDto) {
-		return null;
+		HistoryEntity historyEntity = historyRepo.findOne(historyDto.getId());
+		if (historyEntity!=null){
+			HistoryDto historyDtoOld = mapper.map(historyEntity, HistoryDto.class);
+			mapper.map(historyDto, historyDtoOld);
+			historyEntity = mapper.map(historyDtoOld, HistoryEntity.class);
+			historyRepo.saveAndFlush(historyEntity);
+			return "Cap nhat lich su thanh cong";
+		}
+		return "Khong tim thay du lieu de update";
 	}
 
 	public List<HistoryDto> listAll() {

@@ -5,6 +5,8 @@ package com.spr.dto;
 
 import java.util.Date;
 
+import com.spr.model.StaffEntity;
+
 import lombok.Data;
 
 /**
@@ -23,6 +25,8 @@ public class HistoryDto {
 	private String content;
 	
 	private Date createDate;
+	
+	private StaffEntity staffEntity;
 	
 	/*
 	 * not mapping
