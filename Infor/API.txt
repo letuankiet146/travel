@@ -97,7 +97,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour
 ##################################################################################################################
 
 ###################ADD HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/history/add
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/add
 user la id cua staff, action: create, delete, update, content tạm thời để mặc định yk - vài hôm nữa tao làm thêm phần này
 {
   "user": 2,
@@ -107,12 +107,31 @@ user la id cua staff, action: create, delete, update, content tạm thời để
 ##################################################################################################################
 
 ###################LIST ALL HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/history/list
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list
 
 ###################LIST ONE HISTORY #############################################################################
 số 2 là id của history
-LINK: http://project-iuhhappytravel.rhcloud.com/history/list/2
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list/2
 
 ###################DELETE HISTORY #############################################################################
 số 2 là id của history
-LINK: http://project-iuhhappytravel.rhcloud.com/history/delete/2
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/2
+
+
+
+
+###################ADD NOTIFICATION #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/add
+user la id cua staff
+{
+    "user": 1,
+    "content": "thong bao 2"
+}
+##################################################################################################################
+
+###################LIST ALL NOTIFICATION #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/list
+
+###################DELETE NOTIFICATION #############################################################################
+số 2 là id của notification
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/delete/2
