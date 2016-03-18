@@ -69,7 +69,8 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
     "tourArrivePlaceIdDto": 1,
     "tourGuiderIdDto": 1,
     "tourFromPlaceIdDto": 1,
-    "tourDeleteDateDto": null
+    "tourDeleteDateDto": null,
+    "idUserAdd": null
 }
 ##################################################################################################################
 
@@ -92,9 +93,25 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour
     "tourArrivePlaceIdDto": 3,
     "tourFromPlaceIdDto": 1,
     "tourGuiderIdDto": 1,
-    "tourDeleteDateDto": null
+    "tourDeleteDateDto": null,
+    "idUserAdd": null
 }
 ##################################################################################################################
+
+####################PHƯƠNG THỨC XÓA TOUR DÀNH CHO TRANG ADMIN##################################################
+741 là id của tour, 1 là id của staff
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/741/1
+
+
+
+
+
+
+
+
+
+
+
 
 ###################ADD HISTORY #############################################################################
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/add
