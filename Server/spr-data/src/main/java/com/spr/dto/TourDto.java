@@ -85,6 +85,8 @@ public class TourDto {
 
 	@Mapping("tourDeleteDate")
 	private Date tourDeleteDateDto;
+	
+	private Integer idUserAdd;
 
 	public void setDataUpdate(TourDto tourDto) {
 		if (tourDto.getIdTourDto() != null) {

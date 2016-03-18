@@ -127,7 +127,15 @@ public class WebAppConfig {
 				registry.addMapping("/history/delete/").allowedOrigins("*");
 				registry.addMapping("/history/add").allowedOrigins("*");
 				registry.addMapping("/history/list").allowedOrigins("*");
-				registry.addMapping("/history/list/{id}").allowedOrigins("*");
+				registry.addMapping("/history/update/").allowedOrigins("*");
+				
+				/*
+				 * Notification
+				 */
+				registry.addMapping("/notification/delete/").allowedOrigins("*");
+				registry.addMapping("/notification/add").allowedOrigins("*");
+				registry.addMapping("/notification/update").allowedOrigins("*");
+				registry.addMapping("/notification/list").allowedOrigins("*");
 				
 			}
 		};

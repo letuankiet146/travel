@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,6 +54,11 @@ public class TourController {
 	public String updateTour (@RequestBody TourDto tourDtoUpdate){
 		String result =  iTourService.update(tourDtoUpdate);
 		return result;
+	}
+	
+	@RequestMapping(value = "/deleteTour/{id}/{idUser}", method=RequestMethod.GET)
+	public String deleteTour (@PathVariable (value="id") Integer id, @PathVariable (value="idUser") Integer idUser){
+		return iTourService.delete(id, idUser);
 	}
 	
 

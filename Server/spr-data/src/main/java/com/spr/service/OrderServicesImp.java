@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spr.dto.CustomerDto;
 import com.spr.dto.FormOrderDto;
+import com.spr.dto.HistoryDto;
 import com.spr.dto.TourDto;
 import com.spr.model.CustomerEntity;
 import com.spr.model.FormOrderEntity;
+import com.spr.model.HistoryEntity;
 import com.spr.model.TourEntity;
 import com.spr.repository.CustomerRepository;
 import com.spr.repository.FormOrderRepository;
@@ -23,6 +25,9 @@ import com.spr.util.MyFormatDate;
 
 @Service
 public class OrderServicesImp implements IOrderServices {
+	@Autowired
+	private IHistoryServices historyInterface;
+	
 	@Autowired
 	FormOrderRepository formOrderRepo;
 
@@ -46,6 +51,7 @@ public class OrderServicesImp implements IOrderServices {
 
 		// First: save into customer then save into formOrder
 		customerRepo.saveAndFlush(customerEntity);
+		
 
 		FormOrderEntity formOrderEntity = new FormOrderEntity();
 		TourEntity tourEntity = tourRepo.findOne(formOrderDto
@@ -63,6 +69,15 @@ public class OrderServicesImp implements IOrderServices {
 		formOrderEntity.setFormOrderDate(new Date());
 		FormOrderEntity formformOrderEntityNew = formOrderRepo
 				.saveAndFlush(formOrderEntity);
+		/*
+		 * Save history
+		 */
+		HistoryDto historyDto = new HistoryDto();
+		historyDto.setUser(1);
+		historyDto.setAction("Create_Tour");
+		historyDto.setContent(formOrderDto.toString());
+		historyInterface.add(historyDto);
+		
 		return formformOrderEntityNew.getFormOrderId();
 	}
 
