@@ -20,12 +20,11 @@
 		$total["total"] = $pages;
 		echo json_encode($total);
 	}
-
+ 
 	//=================================================
 	// lấy các phần tử trang hiện thời
 	//=================================================
 	if($type == "list"){
-		
 		$items = (int)$_POST["items"];
 		$currentPage = (int)$_POST["currentPage"];
 		$offset = ($currentPage - 1) * $items;
@@ -60,26 +59,30 @@
 	}
 
 	//=================================================
-	// Update thông tin
+	// Xóa dữ liệu theo mảng (ARRAY)
 	//=================================================
-	if($type == "update"){
-		$lastID = (int)$_GET["id"];
-		$sql = "SELECT * FROM tour t join from_place f on t.tour_from_place_id=f.from_place_id join guider g on t.tour_guider_id=g.guider_id join arrive_place a on t.tour_arrive_place_id=a.arrive_place_id where tour_id = " . $lastID;
-		$result = mysql_query($sql,$con);
-		$tour = array();
-		$tour = mysql_fetch_assoc($result);
-		echo json_encode($tour);
+	if($type == "chk"){
+		$chk=$_POST['chk'];//dem so phan tu
+		$array = explode(",", $chk);
+		$count = count($array);
+	    foreach($array as $vl)
+	    {
+	        $sql="DELETE FROM tour where tour_id=$vl";
+	        mysql_query($sql);
+	    }
 	}
 
 	//=================================================
-	// Update status
+	// select địa điểm đến
 	//=================================================
-	if($type == "updateStatus"){
-		$tour_id = (int)$_POST["tour_id"];
-		$status = (int)$_POST['status'];
-		$sql = "UPDATE tour SET tour_active=" . $status . " WHERE tour_id=" . $tour_id;
+	if($type == "arrive"){
+		$area_id = (int)$_POST["areaIdDto"];
+		$sql = "SELECT * FROM arrive_place where arrive_place_area_id = " . $area_id;
 		$result = mysql_query($sql,$con);
-		$tour = mysql_fetch_assoc($result);
-		echo json_encode($tour);
+		$arrives = array();
+		while($row = mysql_fetch_assoc($result)){
+			$arrives[] = $row;
+		}
+		echo json_encode($arrives);
 	}
 ?>

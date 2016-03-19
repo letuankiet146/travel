@@ -17,7 +17,6 @@ if(isset($_SESSION['username']))
 	<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
 	<script type="text/javascript" src="js/click.js"></script>
 	<!-- MODULE MAIN -->
-	<link rel="stylesheet" type="text/css" href="style/main/main.css" />
 </head>
 <body>
 <div class="ad-wrapper">
@@ -90,8 +89,8 @@ if(isset($_SESSION['username']))
 					<li class="menu">
 						<a href="#" class="title-order">Khách hàng<i class="fa fa-caret-square-o-down"></i></a>
 						<ul class="menu-child">
-							<li><a href=""><i class="fa fa-usd"></i>Danh sách khách hàng</a></li>
-							<li><a href=""><i class="fa fa-compress"></i>Liên hệ từ khách hàng</a></li>
+							<li><a href="index.php?page=customer"><i class="fa fa-usd"></i>Danh sách khách hàng</a></li>
+							<li><a href="index.php?page=contact"><i class="fa fa-compress"></i>Liên hệ từ khách hàng</a></li>
 							<li><a href=""><i class="fa fa-users"></i>Nhóm khách hàng</a></li>
 						</ul>
 					</li>
@@ -128,14 +127,17 @@ if(isset($_SESSION['username']))
 					if(isset($_GET['page'])){
 						$page = $_GET['page'];
 						switch ($page) {
-							case 'home':include("views/trangchu.php");break;
+							case 'home':include("views/home.php");break;
 							case 'list-tour':include("views/list-tour.php");break;
 							case 'edit-tour':include("views/edit-tour.php");break;
+							case 'customer':include("views/customer/customer.php");break;
+							case 'edit-customer':include("views/customer/edit-customer.php");break;
+							case 'contact':include("views/customer/contact.php");break;
 							default:include("views/trangchu.php");break;
 						}
 					}
 					else{
-						include("views/trangchu.php");
+						include("views/home.php");
 					}
 				?>
 			</div>

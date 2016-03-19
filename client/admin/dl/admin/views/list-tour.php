@@ -1,11 +1,11 @@
-	<script type="text/javascript" src="js/paging.js"></script>
+	<script type="text/javascript" src="js/list-tour/paging.js"></script>
 	<!-- DATEPICKER -->
 	<link rel="stylesheet" type="text/css" href="js/datepicker/datepicker.css" />
 	<script type="text/javascript" src="js/datepicker/datepicker.js"></script>
 	<!-- MODULE MAIN -->
 	<link rel="stylesheet" type="text/css" href="style/tour/tour.css" />
 	<!--<script type="text/javascript" > var sodong = 8;</script>-->
-	<script type="text/javascript" src="ajax/add-tour.js"></script>
+	<script type="text/javascript" src="js/list-tour/add-update.js"></script>
 	<script type="text/javascript">
         $(function() {
             $( "#ngayKHDto" ).datepicker({
@@ -48,8 +48,8 @@
 							<div class="row">
 								<label for="">Loại tour<span class="red"> ( * )</span>
 								</label>
-								<select id="loaitour">
-								<option value="0">---------------------</option>
+								<select id="areaIdDto" onchange="ajax_arrive()">
+								<option value="0">Chọn loại tour</option>
 								<?php 
 									$sql = "SELECT * FROM area";
 									$query = mysql_query($sql);
@@ -60,13 +60,23 @@
 								</select>
 							</div>
 							<div class="row">
+								<?php 
+									$sql="SELECT tour_id FROM tour ORDER BY tour_id DESC";
+									$query=mysql_query($sql);
+									$row=mysql_fetch_array($query);
+									$id=$row['tour_id']+1;
+								?>
 								<label for="">Mã tour<span class="red"> ( * )</span></label>
-								<label><input id="idTourDto" type="text" name="idTourDto" value="" /></label>
+								<label><input id="idTourDto" type="text" name="idTourDto" value="MTDLDD<?php echo $id; ?>" disabled  /></label>
+							</div>
+							<div class="row">
+								<label for="">Tên tour <span class="red"> ( * )</span></label>
+								<label><input id="tenTourDto" type="text" name="" value="" placeholder="Nhập tên tour" /></label>
 							</div>
 							<div class="row">
 								<label for="">Nơi khởi hành <span class="red"> ( * )</span></label>
 								<select id="tourFromPlaceIdDto">
-									<option value="0">---------------------</option>
+									<option value="0">Chọn nơi khỏi hành</option>
 								<?php 
 									$sql = "SELECT * FROM from_place";
 									$query = mysql_query($sql);
@@ -77,23 +87,15 @@
 								</select>
 							</div>
 							<div class="row">
-								<label for="">Ngày khởi hành <span class="red"> ( * )</span></label>
-								<label><input id="ngayKHDto" type="text" name="" value="" placeholder="dd/mm/yyyy" /></label>
+								<label for="">Địa điểm đến <span class="red"> ( * )</span></label>
+								<select id="tourArrivePlaceIdDto">
+									<option value="0">Chọn địa điểm đến</option>
+								</select>
 							</div>
-							<div class="row">
-								<label for="">Giá khuyến mãi <span class="red"> ( * )</span></label>
-								<label><input id="giaTourKMDto" type="text" name="" value="" /></label>
-							</div>
-							<div class="row">
-								<label for="">Số lượng <span class="red"> ( * )</span></label>
-								<label><input id="soChoDto" type="text" name="" value="" /></label>
-							</div>
-						</div>
-						<div class="info-r">
 							<div class="row">
 								<label for="">Hướng dẫn viên <span class="red"> ( * )</span></label>
 								<select id="tourGuiderIdDto">
-									<option value="0">---------------------</option>
+									<option value="0">Chọn hướng dẫn viên</option>
 								<?php 
 									$sql = "SELECT * FROM guider";
 									$query = mysql_query($sql);
@@ -102,39 +104,38 @@
 									<option value="<?php echo $rows['guider_id'] ?>"><?php echo $rows['guider_name'] ?></option>
 								<?php } ?>
 								</select>
+							</div>	
+						</div>
+						<div class="info-r">
+							<div class="row">
+								<label for="">Số lượng <span class="red"> ( * )</span></label>
+								<label><input id="soChoDto" type="text" name="" value=""
+								placeholder="Nhập số lượng người tham gia" /></label>
 							</div>
 							<div class="row">
-								<label for="">Tên tour <span class="red"> ( * )</span></label>
-								<label><input id="tenTourDto" type="text" name="" value="" /></label>
-							</div>
-							<div class="row">
-								<label for="">Địa điểm đến <span class="red"> ( * )</span></label>
-								<select id="tourArrivePlaceIdDto">
-									<option value="0">---------------------</option>
-								<?php 
-									$sql = "SELECT * FROM from_place";
-									$query = mysql_query($sql);
-									while($rows = mysql_fetch_array($query)){
-								?>
-									<option value="<?php echo $rows['from_place_id'] ?>"><?php echo $rows['from_place_name'] ?></option>
-								<?php } ?>
-								</select>
+								<label for="">Ngày khởi hành <span class="red"> ( * )</span></label>
+								<label><input id="ngayKHDto" type="text" name="" value="" placeholder="dd/mm/yyyy" /></label>
+								<input id="today" type="hidden" name="today" value="<?php echo date("d/m/Y") ?>" />
 							</div>
 							<div class="row">
 								<label for="">Ngày kết thúc <span class="red"> ( * )</span></label>
 								<label><input id="ngayKTDto" type="text" name="" value="" placeholder="dd/mm/yyyy" /></label>
 							</div>
 							<div class="row">
-								<label for="">Giá tour</label>
-								<label><input id="giaTourDto" type="text" name="" value="" /></label>
-							</div>
-							<div class="row">
 								<label for="">Dịch vụ <span class="red"> ( * )</span></label>
 								<select id="idDichVuDto">
-									<option value="0">---------------------</option>
+									<option value="0">Chọn loại dịch vụ</option>
 									<option value="1">Dịch vụ 1</option>
 									<option value="2">Dịch vụ 2</option>
 								</select>
+							</div>
+							<div class="row">
+								<label for="">Giá khuyến mãi <span class="red"> ( * )</span></label>
+								<label><input id="giaTourKMDto" type="text" name="" value="" placeholder="Nhập giá khuyến mãi" /></label>
+							</div>
+							<div class="row">
+								<label for="">Giá tour</label>
+								<label><input id="giaTourDto" type="text" name="" value="" placeholder="Nhập giá tour" /></label>
 							</div>
 						</div>
 						<div class="clear"></div>
@@ -157,7 +158,6 @@
 				<div class="btn">
 					<input class="btn-reset" type="reset" name="" value="Nhập lại" />
 					<a class="btn-add" href="#" onclick="click_load()" >Tạo tour</a>
-					<!-- <input class="btn-add" type="submit" name="" onclick="click_load()" value="Tạo tour" /> -->
 					<div class="row">
 						<label for="">Trạng thái</label>
 						<select id="activeDto">
@@ -193,7 +193,7 @@
 				<div class="title-inner-r">
 					<ul>
 						<li id="add-tour">Tạo tour</li>
-						<li id="del-tour">Xóa tour</li>
+						<li id="del-tour" onclick="del_array()">Xóa tour</li>
 					</ul>
 				</div>
 				<div class="clear"></div>

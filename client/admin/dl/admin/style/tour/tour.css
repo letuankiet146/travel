@@ -208,6 +208,7 @@
 	width:140px;
 	font-weight:bold;
 	line-height:27px;
+	position:relative;
 }
 .row select{
 	width:332px;
@@ -226,6 +227,8 @@
 }
 .red{
 	color:#f00;
+	position:absolute;
+	right:5px;
 }
 .info-r{
 	float:right;
@@ -241,6 +244,12 @@
 .thumb span{
 	font-size:85%;
 	color: #31708f;
+}
+.details {
+	margin-bottom:20px;
+}
+.details textarea{
+	padding:5px;
 }
 .details label{
 	font-weight:bold;
@@ -265,7 +274,7 @@
 	font-weight:bold;
 	height:22px;
 	float:right;
-	    margin-right: 8px;
+	margin-right: 8px;
 }
 .btn-reset{
 	background:#d0d1d4 url(../../images/btn_submit.png);
@@ -279,7 +288,7 @@
 	margin:-3px 0px 0px 0px ;
 }
 .btn .row select{
-	width: 135px;
+	width: 160px;
     padding: 2px 0px 3px 0px;
     text-indent: 5px;
     margin: 0px 10px 0px 0px;

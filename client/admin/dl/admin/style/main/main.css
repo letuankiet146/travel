@@ -60,15 +60,30 @@
 	text-indent: 10px;
 	height: 34px;
 }
-.content thead th:nth-child(3){
-	width:285px;
+.content thead tr th{
+	border-top: 1px solid #DEDEDE;
+	border-right: 1px solid #DEDEDE;
+}
+.content thead th:last-child{
+	width:155px;
+}
+.content thead th:first-child{
+	width:185px;
 }
 .content tr td{
 	padding:10px 10px;
 }
-.content tr td:first-child,.content tr td:last-child{
-	text-align:center;
+.content tr td{
+	padding:10px 10px;
+	border-bottom: 1px solid #DEDEDE;
+	border-right: 1px solid #DEDEDE;	
 }
+.content tr:nth-child(2n){
+	background:#B5E5EF;
+}
+/* .content tr td:first-child,.content tr td:last-child{
+	text-align:center;
+} */
 .news-right{
 	float: right;
 	width: 30%;
