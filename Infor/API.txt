@@ -162,3 +162,7 @@ crud khach hang
 duong dan hinh anh (*)
 database utf8(*)
 order tour (*)
+
+----------- 21/03/2016 nhờ Kiệt làm ----------
+tạo relationship cho table tour vs status, form_order vs status (có làm mak hok dk... hjhj)
+check mã không trùng colume form_order_code(mới tạo thêm) trong table form_order
