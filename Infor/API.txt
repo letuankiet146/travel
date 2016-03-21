@@ -21,7 +21,7 @@ formOrderQuantityChildDto: Là số lượng trẻ em (dưới 2 tuổi). Lấy 
 formOrderIsPayDto: 0 là chưa thanh toán, 1 là đã thanh toán
 
 
-LINK [POST]: http://project-iuhhappytravel.rhcloud.com/spr-data/orderTour
+LINK [POST]: http://project-iuhhappytravel.rhcloud.com/spr-data/orderTour (XONG)
 BODY: 
 {
   "formOrderTourIdDto": 9,
@@ -58,7 +58,7 @@ BODY:
 
 ################## PHƯƠNG THỨC THÊM TOUR  DÀNH CHO TRANG ADMIN###########################################
 ---------ngày KH và KT phải theo mặc định "dd/mm/yyyy". IdTourDto không được trùng
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour (XONG)
 {
     "idTourDto": "Demo 4",
     "tenTourDto": "Demo Tour",
@@ -80,7 +80,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour
 ##################################################################################################################
 
 ####################PHƯƠNG THỨC UPDATE TOUR DÀNH CHO TRANG ADMIN##################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour (XONG)
 {
     "idDto": 9,
     "idTourDto": "HCM-DN_EDIT",
@@ -105,13 +105,13 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour
 
 ####################PHƯƠNG THỨC XÓA TOUR DÀNH CHO TRANG ADMIN##################################################
 741 là id của tour, 1 là id của staff
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/741/1
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/741/1 (XONG)
 
 
 ##################################################################################################################
 
 ####################PHƯƠNG THỨC XÓA NHIỀU TOUR DÀNH CHO TRANG ADMIN##################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/1
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/1 (KHông cung host)
 1 laf id cuả user đang thực hiện xóa.
 Body là mảng gồm nhiều số, các số là id của tour.
 BODY: [9,746,747] 
@@ -125,7 +125,7 @@ BODY: [9,746,747]
 
 
 ###################ADD HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/add
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/add (XONG)
 user la id cua staff, action: create, delete, update, content tạm thời để mặc định yk - vài hôm nữa tao làm thêm phần này
 {
   "user": 2,
@@ -135,18 +135,18 @@ user la id cua staff, action: create, delete, update, content tạm thời để
 ##################################################################################################################
 
 ###################LIST ALL HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list (XONG)
 
 ###################LIST ONE HISTORY #############################################################################
 số 2 là id của history
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list/2
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list/2 (XONG)
 
 ###################DELETE HISTORY #############################################################################
 số 2 là id của history
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/2
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/2 (XONG)
 
 ###################XÓA NHIỀU HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/ (không cùng host)
 BODY: [85,86,87]
 
 
@@ -162,7 +162,7 @@ user la id cua staff
 ##################################################################################################################
 
 ###################LIST ALL NOTIFICATION #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/list
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/list (liên kiết table staff lấy tên nhân viên.)
 
 ###################DELETE NOTIFICATION #############################################################################
 số 2 là id của notification
