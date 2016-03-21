@@ -9,6 +9,8 @@ import java.util.List;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,8 +41,9 @@ public class TourServiceImp implements ITourService {
 	private TourValidator validator;
 	
 	@Transactional
-	public List<TourDto> listTour() {
-		List<TourEntity> listTourEntity = tourRepo.findAll();
+	public Page<TourEntity> listTour(Pageable pageRequest) {
+		int pageCount= pageRequest.getPageSize();
+		Page<TourEntity> listTourEntity = tourRepo.findAll(pageRequest);
 		List<TourDto> listTourDto = new ArrayList<TourDto>();
 		for (TourEntity tourEntity : listTourEntity){
 			TourDto tourDto = mapper.map(tourEntity, TourDto.class);
@@ -48,7 +51,7 @@ public class TourServiceImp implements ITourService {
 			tourDto.setNgayKTDto(MyFormatDate.dateToString(tourEntity.getNgayKT()));
 			listTourDto.add(tourDto);
 		}
-		return listTourDto;
+		return listTourEntity;
 	}
 
 	public Integer add(TourDto tourDto) {
@@ -62,7 +65,7 @@ public class TourServiceImp implements ITourService {
 		 * Save history
 		 */
 		HistoryDto historyDto = new HistoryDto();
-		historyDto.setUser(1);
+		historyDto.setUser(tourDto.getIdUserAdd());
 		historyDto.setAction("Create_Tour");
 		historyDto.setContent(tourDto.toString());
 		historyInterface.add(historyDto);
@@ -132,6 +135,31 @@ public class TourServiceImp implements ITourService {
 			return "Khong tim thay tour de xoa";
 		}
 		return "ID tour khong hop le";
+	}
+
+	public String deleteMulti(List<Integer> idList, Integer idUser) {
+		if (idUser <=0){
+			return "ID user khong hop le";
+		}
+		for (Integer id: idList){
+			if (id <=0){
+				return "ID tour khong hop le";
+			}
+			if (tourRepo.exists(id)){
+				TourEntity tourEntity = tourRepo.findOne(id);
+				tourEntity.setTourDeleteDate(new Date());
+				tourRepo.saveAndFlush(tourEntity);
+				/*
+				 * Save history
+				 */
+				HistoryDto historyDto = new HistoryDto();
+				historyDto.setUser(idUser);
+				historyDto.setAction("Delete_Tour");
+				historyDto.setContent("Xoa tour co id ="+tourEntity.getId());
+				historyInterface.add(historyDto);
+			}
+		}
+		return "Xoa thanh cong";
 	}
 
 }

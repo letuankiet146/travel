@@ -5,11 +5,9 @@ package com.spr.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +31,8 @@ public class TourController {
 	
 	
 	@RequestMapping (value = "/listTour", method = RequestMethod.GET )
-	public List<TourDto> listTour (){
-		List<TourDto> list = iTourService.listTour();
+	public Page<TourEntity> listTour (Pageable pageRequest){
+		Page<TourEntity>  list = iTourService.listTour(pageRequest);
 		return list;
 	}
 	
@@ -59,6 +57,11 @@ public class TourController {
 	@RequestMapping(value = "/deleteTour/{id}/{idUser}", method=RequestMethod.GET)
 	public String deleteTour (@PathVariable (value="id") Integer id, @PathVariable (value="idUser") Integer idUser){
 		return iTourService.delete(id, idUser);
+	}
+	
+	@RequestMapping (value = "/deleteTour/{idUser}", method = RequestMethod.POST)
+	public String deleteMultiTour (@RequestBody List<Integer> idList, @PathVariable Integer idUser){
+		return iTourService.deleteMulti(idList, idUser);
 	}
 	
 

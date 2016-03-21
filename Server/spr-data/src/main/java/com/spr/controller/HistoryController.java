@@ -39,6 +39,11 @@ public class HistoryController {
 		return historyInterface.delete(id);
 	}
 	
+	@RequestMapping(value="/delete/")
+	public String delete (@RequestBody List<Integer> idList){
+		return historyInterface.deleteMulti(idList);
+	}
+	
 	@RequestMapping (value = "/update")
 	public String update (@RequestBody HistoryDto historyDto){
 		return historyInterface.update(historyDto);

@@ -64,4 +64,16 @@ public class HistoryServicesImp implements IHistoryServices {
 		return historyDto;
 	}
 
+	public String deleteMulti(List<Integer> idList) {
+		for (Integer id : idList){
+			if (id<=0){
+				return "Xoa khong thanh cong";
+			}
+			if (historyRepo.exists(id)){
+				historyRepo.delete(id);
+			}
+		}
+		return "Xoa thanh cong";
+	}
+
 }

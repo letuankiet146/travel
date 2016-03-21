@@ -31,5 +31,10 @@ public class OderTourController {
 		List<FormOrderDto> formOrderDtoList = orderService.listAllOrderTour();
 		return formOrderDtoList;
 	}
+	
+	@RequestMapping (value = "/deleteOrderTour")
+	public String deleteMulti (@RequestBody List<Integer> idList){
+		return orderService.deleteMulti(idList);
+	}
 
 }

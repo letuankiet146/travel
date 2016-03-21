@@ -14,6 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -31,6 +32,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @ComponentScan("com.spr")
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories("com.spr.repository")
+@EnableSpringDataWebSupport
 public class WebAppConfig {
 
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";

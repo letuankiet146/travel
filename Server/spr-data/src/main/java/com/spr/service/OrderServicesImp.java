@@ -111,4 +111,16 @@ public class OrderServicesImp implements IOrderServices {
 		}
 		return formOrderDtoList;
 	}
+
+	public String deleteMulti(List<Integer> idList) {
+		for (Integer id : idList){
+			if (formOrderRepo.exists(id)){
+				formOrderRepo.delete(id);
+			}
+			else {
+				return "Xoa khong thanh cong";
+			}
+		}
+		return "Xoa thanh cong";
+	}
 }

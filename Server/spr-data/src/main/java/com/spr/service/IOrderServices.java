@@ -7,4 +7,5 @@ import com.spr.dto.FormOrderDto;
 public interface IOrderServices {
 	public Integer addOrderTour(FormOrderDto formOrder);
 	public List<FormOrderDto> listAllOrderTour();
+	public String deleteMulti(List<Integer> idList);
 }

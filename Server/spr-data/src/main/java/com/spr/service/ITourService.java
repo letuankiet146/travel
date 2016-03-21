@@ -5,6 +5,9 @@ package com.spr.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.spr.dto.TourDto;
 import com.spr.model.TourEntity;
 
@@ -17,7 +20,7 @@ public interface ITourService {
 	 * list tours in database
 	 * @return List<Tour>
 	 */
-	public List<TourDto> listTour ();
+	public Page<TourEntity> listTour (Pageable pageRequest);
 	
 	public Integer add (TourDto tourDto);
 	
@@ -26,5 +29,7 @@ public interface ITourService {
 	public String update (TourDto updateDto);
 	
 	public String delete(Integer id, Integer userId);
+	
+	public String deleteMulti(List<Integer> idList, Integer idUser);
 
 }

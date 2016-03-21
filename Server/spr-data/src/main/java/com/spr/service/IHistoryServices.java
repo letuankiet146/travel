@@ -11,4 +11,5 @@ public interface IHistoryServices {
 	public String update (HistoryDto historyDto);
 	public List<HistoryDto> listAll ();
 	public HistoryDto listId(Integer id);
+	public String deleteMulti(List<Integer> idList);
 }
