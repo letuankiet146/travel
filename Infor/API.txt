@@ -7,6 +7,11 @@ LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/tour/listTour
 LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/listOrderTourId
 #########################################################################################################################
 
+######## PHƯƠNG THỨC XÓA NHIỀU TOUR ##########
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/deleteOrderTour
+BODY [24,25,26]
+#########################################################################################################################
+
 
 ####################### Phương thức đặt tour dành cho khách hàng:###################################################
 customerSexDto: 0 là con gái, 1 là con trai
@@ -103,7 +108,13 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/741/1
 
 
+##################################################################################################################
 
+####################PHƯƠNG THỨC XÓA NHIỀU TOUR DÀNH CHO TRANG ADMIN##################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/1
+1 laf id cuả user đang thực hiện xóa.
+Body là mảng gồm nhiều số, các số là id của tour.
+BODY: [9,746,747] 
 
 
 
@@ -134,6 +145,10 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list/2
 số 2 là id của history
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/2
 
+###################XÓA NHIỀU HISTORY #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/
+BODY: [85,86,87]
+
 
 
 
@@ -156,7 +171,6 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/delete/2
 
 
 ////////////yeu cau KIET lam /////////////
-Xoa mang tour, history (*)
 don dat tour
 crud khach hang
 duong dan hinh anh (*)
@@ -166,3 +180,4 @@ order tour (*)
 ----------- 21/03/2016 nhờ Kiệt làm ----------
 tạo relationship cho table tour vs status, form_order vs status (có làm mak hok dk... hjhj)
 check mã không trùng colume form_order_code(mới tạo thêm) trong table form_order
+ktra list xem co delete !=null chua
