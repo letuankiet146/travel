@@ -22,8 +22,7 @@ public class OderTourController {
 	
 	@RequestMapping(value="/orderTour", method=RequestMethod.POST )
 	public String addOrderTour (@RequestBody FormOrderDto formOrder ){
-		orderService.addOrderTour(formOrder);
-		return "Dat tour thanh cong";
+			return orderService.addOrderTour(formOrder);
 	}
 	
 	@RequestMapping(value="/listOrderTourId", method=RequestMethod.GET )

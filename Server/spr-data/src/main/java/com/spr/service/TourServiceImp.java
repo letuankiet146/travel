@@ -41,17 +41,19 @@ public class TourServiceImp implements ITourService {
 	private TourValidator validator;
 	
 	@Transactional
-	public Page<TourEntity> listTour(Pageable pageRequest) {
-		int pageCount= pageRequest.getPageSize();
-		Page<TourEntity> listTourEntity = tourRepo.findAll(pageRequest);
+	public List<TourDto> listTour() {
+		List<TourEntity> listTourEntity = tourRepo.findAll();
 		List<TourDto> listTourDto = new ArrayList<TourDto>();
 		for (TourEntity tourEntity : listTourEntity){
-			TourDto tourDto = mapper.map(tourEntity, TourDto.class);
-			tourDto.setNgayKHDto(MyFormatDate.dateToString(tourEntity.getNgayKH()));
-			tourDto.setNgayKTDto(MyFormatDate.dateToString(tourEntity.getNgayKT()));
-			listTourDto.add(tourDto);
+			if (tourEntity.getTourDeleteDate()==null){
+				TourDto tourDto = mapper.map(tourEntity, TourDto.class);
+				tourDto.setNgayKHDto(MyFormatDate.dateToString(tourEntity.getNgayKH()));
+				tourDto.setNgayKTDto(MyFormatDate.dateToString(tourEntity.getNgayKT()));
+				listTourDto.add(tourDto);
+			}
+			
 		}
-		return listTourEntity;
+		return listTourDto;
 	}
 
 	public Integer add(TourDto tourDto) {

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,6 +24,10 @@ public class NotificationEntity {
 	
 	@Column(name="user")
 	private Integer user;
+	
+	@ManyToOne
+	@JoinColumn(name="user", insertable=false, updatable=false)
+	private StaffEntity staffEntity;
 	
 	@Column(name="content")
 	private String content;

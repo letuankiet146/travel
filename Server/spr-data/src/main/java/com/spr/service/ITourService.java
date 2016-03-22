@@ -20,7 +20,7 @@ public interface ITourService {
 	 * list tours in database
 	 * @return List<Tour>
 	 */
-	public Page<TourEntity> listTour (Pageable pageRequest);
+	public List<TourDto> listTour ();
 	
 	public Integer add (TourDto tourDto);
 	

@@ -41,7 +41,7 @@ public class OrderServicesImp implements IOrderServices {
 	private DozerBeanMapper mapper;
 
 	@Transactional
-	public Integer addOrderTour(FormOrderDto formOrderDto) {
+	public String addOrderTour(FormOrderDto formOrderDto) {
 		CustomerEntity customerEntity = new CustomerEntity();
 
 		customerEntity = mapper.map(formOrderDto.getFormOrderCustomerDto(),
@@ -56,6 +56,9 @@ public class OrderServicesImp implements IOrderServices {
 		FormOrderEntity formOrderEntity = new FormOrderEntity();
 		TourEntity tourEntity = tourRepo.findOne(formOrderDto
 				.getFormOrderTourIdDto());
+		if (tourEntity==null || tourEntity.getTourDeleteDate()!=null){
+			return "Khong tim thay tour";
+		}
 		// tinh tien
 		int money = CalcMoney.calculateMoney(
 				formOrderDto.getFormOrderQuantityAdultsDto(),
@@ -78,7 +81,7 @@ public class OrderServicesImp implements IOrderServices {
 		historyDto.setContent(formOrderDto.toString());
 		historyInterface.add(historyDto);
 		
-		return formformOrderEntityNew.getFormOrderId();
+		return "Dat tour thanh cong: ID="+formformOrderEntityNew.getFormOrderId();
 	}
 
 	public List<FormOrderDto> listAllOrderTour() {

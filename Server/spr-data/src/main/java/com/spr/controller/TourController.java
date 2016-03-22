@@ -31,8 +31,8 @@ public class TourController {
 	
 	
 	@RequestMapping (value = "/listTour", method = RequestMethod.GET )
-	public Page<TourEntity> listTour (Pageable pageRequest){
-		Page<TourEntity>  list = iTourService.listTour(pageRequest);
+	public List<TourDto> listTour (){
+		List<TourDto>  list = iTourService.listTour();
 		return list;
 	}
 	

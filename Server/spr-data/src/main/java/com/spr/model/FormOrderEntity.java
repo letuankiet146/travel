@@ -31,7 +31,7 @@ public class FormOrderEntity {
 	@Column(name = "form_order_id")
 	private Integer formOrderId;
 
-	@Column(name = "form_order_tour_id")
+	@Column(name = "form_order_code")
 	private Integer formOrderTourId;
 
 	@ManyToOne
