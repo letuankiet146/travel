@@ -3,6 +3,8 @@
  */
 package com.spr.dto;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
@@ -87,6 +89,9 @@ public class TourDto {
 	private Date tourDeleteDateDto;
 	
 	private Integer idUserAdd;
+	
+	@Mapping("tourImageByte")
+	private byte[] tourImageByteDto;
 
 	public void setDataUpdate(TourDto tourDto) {
 		if (tourDto.getIdTourDto() != null) {
@@ -100,8 +105,19 @@ public class TourDto {
 			this.infoDto = tourDto.getInfoDto();
 		}
 		if (tourDto.getImageDto() != null) {
-
-			this.imageDto = tourDto.getImageDto();
+			/*
+			 * covert image path to byte
+			 */
+			File fileImage = new File(tourDto.getImageDto());
+			byte[] bFile = new byte[(int)fileImage.length()];
+			try {
+				FileInputStream fis  =  new FileInputStream(fileImage);
+				fis.read(bFile);
+				fis.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			this.tourImageByteDto = bFile;
 		}
 		if (tourDto.getSoChoDto() != null) {
 

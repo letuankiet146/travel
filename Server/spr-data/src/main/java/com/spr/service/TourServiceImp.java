@@ -3,6 +3,9 @@
  */
 package com.spr.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,6 +65,20 @@ public class TourServiceImp implements ITourService {
 		tourEntity = mapper.map(tourDto, TourEntity.class);
 		tourEntity.setNgayKH(MyFormatDate.stringToDate(tourDto.getNgayKHDto()));
 		tourEntity.setNgayKT(MyFormatDate.stringToDate(tourDto.getNgayKTDto()));
+		
+		/*
+		 * covert image path to byte
+		 */
+		File fileImage = new File(tourDto.getImageDto());
+		byte[] bFile = new byte[(int)fileImage.length()];
+		try {
+			FileInputStream fis  =  new FileInputStream(fileImage);
+			fis.read(bFile);
+			fis.close();
+		} catch (Exception e) {
+			return -2;
+		}
+		tourEntity.setTourImageByte(bFile);
 		tourRepo.saveAndFlush(tourEntity);
 		/*
 		 * Save history
@@ -97,6 +114,7 @@ public class TourServiceImp implements ITourService {
 			tourEntity = mapper.map(tourDto, TourEntity.class);
 			tourEntity.setNgayKH(MyFormatDate.stringToDate(tourDto.getNgayKHDto()));
 			tourEntity.setNgayKT(MyFormatDate.stringToDate(tourDto.getNgayKTDto()));
+			
 			tourRepo.saveAndFlush(tourEntity);
 			/*
 			 * Save history
