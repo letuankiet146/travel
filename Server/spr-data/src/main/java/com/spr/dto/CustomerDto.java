@@ -21,10 +21,13 @@ public class CustomerDto {
 	@Mapping("customerId")
 	private Integer customerIdDto;
 	
+	@Mapping ("customerCode")
+	private String customerCode;
+	
 	@Mapping("customerName")
 	private String customerNameDto;
 	
-//	@Mapping("customerName")
+//	@Mapping("customerBirth")
 	private String customerBirthDto;
 	
 	@Mapping("customerSex")

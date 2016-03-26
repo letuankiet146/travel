@@ -31,6 +31,9 @@ public class CustomerEntity {
 	@Column (name = "customer_id")
 	private Integer customerId;
 	
+	@Column(name="customer_code")
+	private String customerCode;
+	
 	@Column(name="customer_name")
 	private String customerName;
 	
