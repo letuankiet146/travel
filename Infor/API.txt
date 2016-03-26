@@ -63,7 +63,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour (XONG)
     "idTourDto": "Demo 4",
     "tenTourDto": "Demo Tour",
     "infoDto": "",
-    "imageDto": "",
+    "imageDto": "D:\\Image\\travel.jpg",
     "soChoDto": 0,
     "giaTourDto": "0",
     "giaTourKMDto": null,
@@ -86,7 +86,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour (XONG)
     "idTourDto": "HCM-DN_EDIT",
     "tenTourDto": "HCM Tour",
     "infoDto": "Lịch trình tour",
-    "imageDto": "",
+    "imageDto": "D:\\Image\\travel.jpg",
     "soChoDto": 50,
     "giaTourDto": 2000000,
     "giaTourKMDto": 20,
@@ -242,7 +242,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34
 
 
 ////////////yeu cau KIET lam /////////////
-crud khach hang
+
 duong dan hinh anh (*)
 database utf8(*)
 order tour (*)
