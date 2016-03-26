@@ -170,6 +170,77 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/delete/2
 
 
 
+
+
+
+
+
+
+
+###################LIST ALL CUSTOMER #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/list 
+
+###################ADD CUSTOMER #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/ 
+BODY: customerCode mày random trên client rồi gán vào nha. Trừ customerCode thì các cột khác có thể null nếu như thông
+tin không có.
+    {
+    "customerCode": "Random",
+    "customerNameDto": "Phạm Thành Thảo",
+    "customerBirthDto": "26/02/2016",
+    "customerSexDto": 0,
+    "customerPhoneDto": "0975293398",
+    "customerEmailDto": "letuankiet146@gmail.com",
+    "customerAddressDto": "Binh Duong",
+    "customerVietNamIdDto": "28881048",
+    "customerCompanyNameDto": null,
+    "customerAddressCompanyDto": null,
+    "customerPhoneCompanyDto": null,
+    "customerImageDto": null,
+    "customerUserDto": null,
+    "customerPasswordDto": "111111",
+    "customerTypeDto": null,
+    "customerLockDto": null,
+    "customerDeleteDateDto": null
+  }
+
+
+  ###################UPDATE CUSTOMER #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/update/ 
+BODY Ngoại trừ id thì tất cả có thể null nếu như không muốn đưa vào.
+{
+    "customerIdDto": 21,
+    "customerCode": "Random",
+    "customerNameDto": "Phạm Thành Thảo",
+    "customerBirthDto": "26/02/2016",
+    "customerSexDto": 0,
+    "customerPhoneDto": "0975293398",
+    "customerEmailDto": "letuankiet146@gmail.com",
+    "customerAddressDto": "Binh Duong",
+    "customerVietNamIdDto": "28881048",
+    "customerCompanyNameDto": null,
+    "customerAddressCompanyDto": null,
+    "customerPhoneCompanyDto": null,
+    "customerImageDto": null,
+    "customerUserDto": null,
+    "customerPasswordDto": "111111",
+    "customerTypeDto": null,
+    "customerLockDto": null,
+    "customerDeleteDateDto": null
+  }
+
+
+ ###################DELETE MẢNG CUSTOMER #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/ 
+Khi xóa thì cột delete date sẽ điền vào ngày hiện tại. Chứ record trong bảng không có mất nha m.
+BODY [34,37]
+
+
+ ###################DELETE MẢNG CUSTOMER #############################################################################
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34
+34 là id của customer 
+
+
 ////////////yeu cau KIET lam /////////////
 crud khach hang
 duong dan hinh anh (*)
