@@ -128,6 +128,7 @@ body{
 	right: 0px;
 	box-shadow: 0 6px 12px rgba(0,0,0,.175);
 	display:none;
+	background:#fff;
 }
 .profile ul.profile-menu li{
 	padding:10px;

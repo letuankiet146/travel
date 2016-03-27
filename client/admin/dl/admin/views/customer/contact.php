@@ -1,10 +1,5 @@
 	<script type="text/javascript" src="js/customer/paging.js"></script>
-	<!-- DATEPICKER -->
-	<link rel="stylesheet" type="text/css" href="js/datepicker/datepicker.css" />
-	<script type="text/javascript" src="js/datepicker/datepicker.js"></script>
-	<!-- MODULE MAIN -->
-	<link rel="stylesheet" type="text/css" href="style/tour/tour.css" />
-	<!--<script type="text/javascript" > var sodong = 8;</script>-->
+	<link rel="stylesheet" type="text/css" href="style/customer/customer.css" />
 	<script type="text/javascript" src="js/customer/customer.js"></script>
 	<script type="text/javascript">
         $(function() {
@@ -59,12 +54,12 @@
 				<table cellspacing="0">
 					<thead>
 						<tr>
-							<th></th>
-							<th class="text-center">Tên khách hàng</th>
-							<th class="text-center">Nội dung ý kiến</th>
+							<th>Tên khách hàng</th>
+							<th>Nội dung ý kiến</th>
 							<th>Email</th>
-							<th class="text-center">Trạng thái</th>
-							<th colspan="2" class="text-center">Chức năng</th>
+							<th>Số điện thoại</th>
+							<th>Trạng thái</th>
+							<th colspan="3">Chức năng</th>
 						</tr>
 					</thead>
 					<tbody id="rowsContact">

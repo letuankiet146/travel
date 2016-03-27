@@ -6,7 +6,7 @@
 	//=================================================
 	if($type == "count"){
 		$items = (int)$_GET["items"];
-		$sql= "SELECT COUNT(tour_id) FROM tour WHERE tour_delete_date is null";
+		$sql= "SELECT COUNT(id) FROM history WHERE delete_date is null";
 		$result = mysql_query($sql,$con);
 		$totalItem = mysql_result($result, 0);
 		$total = array("total" => 0);
@@ -28,14 +28,13 @@
 		$items = (int)$_POST["items"];
 		$currentPage = (int)$_POST["currentPage"];
 		$offset = ($currentPage - 1) * $items;
-		$sql = "SELECT * FROM tour t join status s on t.tour_active=s.status_id WHERE t.tour_delete_date is null ORDER BY tour_id DESC LIMIT " . $offset . "," . $items ."";
+		$sql = "SELECT * FROM history h join staff s on h.user=s.staff_id WHERE h.delete_date is null ORDER BY id DESC LIMIT " . $offset . "," . $items ."";
 		$result = mysql_query($sql,$con);
-		$tours = array();
+		$historys = array();
 		while($row = mysql_fetch_assoc($result)){
-			$tours[] = $row;
+			$historys[] = $row;
 		}
-		print_r($tour);
-		echo json_encode($tours);
+		echo json_encode($historys);
 	}
 
 	//=================================================
@@ -63,13 +62,9 @@
 	// Xóa dữ liệu theo mảng (ARRAY)
 	//=================================================
 	if($type == "chk"){
-		$chk=$_POST['chk'];
-
+		$chk=$_POST['chk'];//dem so phan tu
 		$array = explode(",", $chk);
-
-		
 		$count = count($array);
-		print_r($count);
 	    foreach($array as $vl)
 	    {
 	        $sql="DELETE FROM tour where tour_id=$vl";
@@ -77,17 +72,4 @@
 	    }
 	}
 
-	//=================================================
-	// select địa điểm đến
-	//=================================================
-	if($type == "arrive"){
-		$area_id = (int)$_POST["areaIdDto"];
-		$sql = "SELECT * FROM arrive_place where arrive_place_area_id = " . $area_id;
-		$result = mysql_query($sql,$con);
-		$arrives = array();
-		while($row = mysql_fetch_assoc($result)){
-			$arrives[] = $row;
-		}
-		echo json_encode($arrives);
-	}
 ?>

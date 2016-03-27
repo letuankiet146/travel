@@ -1,3 +1,17 @@
+$(document).ready(function() {
+	$("#add-customer").click(function(e) {
+		alert("click");
+		// $.ajax({
+		// 	url: 'views/customer/add-customer.php',
+		// 	dataType: 'text',
+		// })
+		// .done(function(data) {
+		// 	$("#add-customer").html(data);
+		// })
+		// $(this).closest('.right').find('.add-edit').slideToggle("1000");
+	});
+});
+
 function click_load(){
 	var giaTourKMDto=document.getElementById("giaTourKMDto");
 	var soChoDto=document.getElementById("soChoDto");

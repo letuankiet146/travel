@@ -1,6 +1,5 @@
 (function($){
 	$.fn.zPaging = function (options){
-		//console.log("alo ola");
 		//=================================================
 		//Các giá trị mặt định của options
 		//=================================================
@@ -149,31 +148,31 @@
 				if(data.length>0){
 					rows.empty();
 					$.each(data, function(i, val) {
-					var dayStart= val.tour_day_start; 
-					var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
-					var dayEnd = val.tour_day_end; 
-					var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
-					var str = 	'<tr item-id="' + val.tour_id + '">'+
-									'<td><input  type="checkbox" name="chk[]" class="chk" value="' + val.tour_id + '"></td>'+
-									'<td>' + val.tour_code + '</td>'+
-									'<td>' + val.tour_name + '</td>'+
-									'<td class="text-center" id="from">' + fdayStart + '</td>'+
-									'<td class="text-center" id="to">' + fdayEnd +'</td>'+
-									'<td class="text-center">' + val.tour_seat_number +'</td>'+
-									'<td class="text-center">'+
-										'<select class="status">'+
-											'<option value="' + val.tour_active +'">' + val.status_name +'</option>'+
-											'<option value="1">-----------------</option>'+
-											'<option value="1">Đang thực hiện</option>'+
-											'<option value="2">Chưa thực hiện</option>'+
-											'<option value="3">Đã thực hiện</option>'+
-										'</select>'+
-										'<div id="load_status"></div>'+
-									'</td>'+
-									'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + val.tour_id + '" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
-									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-								'</tr>';
-					rows.append(str);
+						var dayStart= val.tour_day_start; 
+						var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
+						var dayEnd = val.tour_day_end; 
+						var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
+						var str = 	'<tr item-id="' + val.tour_id + '">'+
+										'<td>' + val.tour_code + '</td>'+
+										'<td>' + val.tour_name + '</td>'+
+										'<td class="text-center" id="from">' + fdayStart + '</td>'+
+										'<td class="text-center" id="to">' + fdayEnd +'</td>'+
+										'<td class="text-center">' + val.tour_seat_number +'</td>'+
+										'<td class="text-center">'+
+											'<select class="status">'+
+												'<option value="' + val.tour_active +'">' + val.status_name +'</option>'+
+												'<option value="1">-----------------</option>'+
+												'<option value="1">Đang thực hiện</option>'+
+												'<option value="2">Chưa thực hiện</option>'+
+												'<option value="3">Đã thực hiện</option>'+
+											'</select>'+
+											'<div id="load_status"></div>'+
+										'</td>'+
+										'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + val.tour_id + '" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
+										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+										'<td><input  type="checkbox" name="chk[]" class="chk" value="' + val.tour_id + '"></td>'+
+									'</tr>';
+						rows.append(str);
 					});
 					// lay top hop the a.
 					aRows = options.rows + " tr td a#remove";
@@ -197,14 +196,16 @@
 		function deleteItem(obj){
 			var parent = $(obj).closest('tr');
 			var itemID = $(parent).attr("item-id");
-			var lastID = $(rows).children(':last').attr("item-id");;
+			var lastID = $(rows).children(':last').attr("item-id");
+			var idUserAdd =$("#idUserAdd").val();
 			
 			//  ẩn item được xóa
 			$(parent).fadeOut({
-				durartion: 300,
+				durartion: 3000,
 				done: function(){
 					$.ajax({
-						url: 'controller/list-tour.php?type=delete&id=' + itemID,
+						// url: 'controller/list-tour.php?type=delete&id=' + itemID,
+						url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/' + itemID + '/' + idUserAdd,
 						type: 'GET',
 						dataType: 'json'
 					});
@@ -216,36 +217,37 @@
 				}
 			});
 
-			$.ajax({
-				url: 'controller/list-tour.php?type=one&id=' + lastID,
-				type: 'GET',
-				dataType: 'json'
-			})
-			.done(function(data) {
-				//console.log(data);
-				if(data != false){
-					var str = 	'<tr item-id="' + data.tour_id + '">'+
-									'<td><input type="checkbox" name="" value=""></td>'+
-									'<td>' + data.tour_code + '</td>'+
-									'<td>' + data.tour_name + '</td>'+
-									'<td class="text-center">' + data.tour_day_start + '</td>'+
-									'<td class="text-center">' + data.tour_day_end +'</td>'+
-									'<td class="text-center">' + data.tour_seat_number +'</td>'+
-									'<td>'+
-										'<select class="status" >'+
-											'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
-											'<option value="1">Đang thực hiện</option>'+
-											'<option value="2">Chưa thực hiện</option>'+
-											'<option value="3">Đã thực hiện</option>'+
-										'</select>'+
-									'</td>'+
-									'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + data.tour_id + '" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
-									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-								'</tr>';
-					str = $(str).hide().appendTo(rows);
-					$(str).fadeIn(300);
-				}
-			});
+			// $.ajax({
+			// 	url: 'controller/list-tour.php?type=one&id=' + lastID,
+			// 	type: 'GET',
+			// 	dataType: 'json'
+			// })
+			// .done(function(data) {
+			// 	//console.log(data);
+			// 	if(data != false){
+
+			// 		var str = 	'<tr item-id="' + data.tour_id + '">'+
+			// 						'<td><input type="checkbox" name="" value=""></td>'+
+			// 						'<td>' + data.tour_code + '</td>'+
+			// 						'<td>' + data.tour_name + '</td>'+
+			// 						'<td class="text-center">' + data.tour_day_start + '</td>'+
+			// 						'<td class="text-center">' + data.tour_day_end +'</td>'+
+			// 						'<td class="text-center">' + data.tour_seat_number +'</td>'+
+			// 						'<td>'+
+			// 							'<select class="status" >'+
+			// 								'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
+			// 								'<option value="1">Đang thực hiện</option>'+
+			// 								'<option value="2">Chưa thực hiện</option>'+
+			// 								'<option value="3">Đã thực hiện</option>'+
+			// 							'</select>'+
+			// 						'</td>'+
+			// 						'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + data.tour_id + '" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
+			// 						'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+			// 					'</tr>';
+			// 		str = $(str).hide().appendTo(rows);
+			// 		$(str).fadeIn(15000);
+			// 	}
+			// });
 		}
 
 		//=================================================
@@ -288,7 +290,6 @@
 	}
 })(jQuery);
 $(document).ready(function(e) {
-	// var obj = {'items' : sodong};
-	var obj = {'items' : 9};
+	var obj = {'items' : 8};
 	$("#paging").zPaging(obj);
 });

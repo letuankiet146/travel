@@ -10,7 +10,7 @@
 				"status": "#status",
 				"paging": "#paging",
 				"items": 3,
-				"height": 57,
+				"height": 93,
 				"currentPage": 1,
 				"total" : 0,
 				"btnPrevious" : ".goprev",
@@ -23,6 +23,7 @@
 		//Các biến sử dụng trong Plugin
 		//=================================================
 		var rows = $(options.rows);
+		var orderDetail = $(options.orderDetail);
 		var pages = $(options.pages);
 		var status = $(options.status);
 		var paging = $(options.paging);
@@ -38,20 +39,19 @@
 		//=================================================
 		init();
 		setRowsHeight();
-
+ 
 		//=================================================
 		//Ham khỏi động
 		//=================================================
 		function init(){
 			// lay tong so trang
 			$.ajax({
-				url: 'controller/list-tour.php?type=count&items=' + options.items,
+				url: 'controller/order-tour.php?type=count&items=' + options.items,
 				type: 'GET',
 				dataType: 'json'
 			})
 			.done(function(data) {
 				options.total = data.total;
-				//console.log(options);
 				pageInfo();
 				loadData(options.currentPage);
 			});
@@ -136,7 +136,7 @@
 		//=================================================
 		function loadData(page){
 			$.ajax({
-				url: 'controller/list-tour.php?type=list',
+				url: 'controller/order-tour.php?type=list',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -146,35 +146,33 @@
 				}
 			})
 			.done(function(data) {
-				// console.log(data);
 				if(data.length>0){
 					rows.empty();
 					$.each(data, function(i, val) {
-					var dayStart= val.tour_day_start; 
-					var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
-					var dayEnd = val.tour_day_end; 
-					var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
-					var str = 	'<tr item-id="' + val.tour_id + '">'+
-									'<td><input type="checkbox" name="" value=""></td>'+
-									'<td>' + val.tour_code + '</td>'+
-									'<td>' + val.tour_name + '</td>'+
-									'<td class="text-center" id="from">' + fdayStart + '</td>'+
-									'<td class="text-center" id="to">' + fdayEnd +'</td>'+
-									'<td class="text-center">' + val.tour_seat_number +'</td>'+
-									'<td class="text-center">'+
-										'<select class="status">'+
-											'<option value="' + val.tour_active +'">' + val.status_name +'</option>'+
-											'<option value="1">-----------------</option>'+
-											'<option value="1">Đang thực hiện</option>'+
-											'<option value="2">Chưa thực hiện</option>'+
-											'<option value="3">Đã thực hiện</option>'+
-										'</select>'+
-										'<div id="load_status"></div>'+
-									'</td>'+
-									'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + val.tour_id + '" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
-									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-								'</tr>';
-					rows.append(str);
+						var dayOrder= val.form_order_date; 
+						var form_order_date = $.datepicker.formatDate( "dd-mm-yy", new Date(dayOrder) );
+						var str = 	'<tr item-id="' + val.form_order_id + '">'+
+										'<td>' + val.form_order_code + '</td>'+
+										'<td>'+
+											'<div>Họ tên: <strong>' + val.customer_name + '</strong><span class="red"> (' + val.group_users_name + ')</span></div>'+
+											'<div>Email : ' + val.customer_email + '</div>'+
+											'<div>Điện thoại : ' + val.customer_phone + '</div>'+
+											'<div>Địa chỉ : ' + val.form_order_id + '</div>'+
+										'</td>'+
+										'<td class="text-center">' + form_order_date + '</td>'+
+										'<td class="text-center">' + val.form_order_money + '</td>'+
+										'<td class="text-center">'+
+											'<select>'+
+												'<option value="' + val.form_order_isPay + '">' + val.status_name + '</option>'+
+												'<option value="5">Đã thanh toán</option>'+
+												'<option value="6">Chưa thanh toán</option>'+
+											'</select>'+
+										'</td>'+
+										'<td class="text-center"><a class="btn-view" href="#" title="Xem chi tiết"><i class="fa fa-info-circle"></i></a></td>'+
+										'<td class="text-center"><a href="" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+										'<td><input type="checkbox" name="" value=""></td>'+
+									'</tr>';
+						rows.append(str);
 					});
 					// lay top hop the a.
 					aRows = options.rows + " tr td a#remove";
@@ -188,6 +186,21 @@
 					$(aStatus).on("change", function(e){
 						update_status(this);
 					});
+					aRows = options.rows + " tr td a.btn-view";
+					$(aRows).on("click", function(e){
+						$(this).closest('.right').find('.add-edit').fadeIn(500);
+						var itemID = $(this).closest('tr').attr("item-id");
+						$.ajax({
+							url: 'views/order-tour/order-detail.php',
+							type: 'POST',
+							dataType: 'text',
+							data:{itemID: itemID},
+							// context: document.body,
+						})
+						.done(function(data) {
+							$("#orderDetail").html(data);
+						})
+					});
 				}
 			});	
 		}
@@ -198,14 +211,15 @@
 		function deleteItem(obj){
 			var parent = $(obj).closest('tr');
 			var itemID = $(parent).attr("item-id");
-			var lastID = $(rows).children(':last').attr("item-id");;
+			var lastID = $(rows).children(':last').attr("item-id");
+			var idUserAdd =$("#idUserAdd").val();
 			
 			//  ẩn item được xóa
 			$(parent).fadeOut({
-				durartion: 300,
+				durartion: 3000,
 				done: function(){
 					$.ajax({
-						url: 'controller/list-tour.php?type=delete&id=' + itemID,
+						url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/' + itemID + '/' + idUserAdd,
 						type: 'GET',
 						dataType: 'json'
 					});
@@ -214,37 +228,6 @@
 					}
 					init();
 					$(this).remove();
-				}
-			});
-
-			$.ajax({
-				url: 'controller/list-tour.php?type=one&id=' + lastID,
-				type: 'GET',
-				dataType: 'json'
-			})
-			.done(function(data) {
-				//console.log(data);
-				if(data != false){
-					var str = 	'<tr item-id="' + data.tour_id + '">'+
-									'<td><input type="checkbox" name="" value=""></td>'+
-									'<td>' + data.tour_code + '</td>'+
-									'<td>' + data.tour_name + '</td>'+
-									'<td class="text-center">' + data.tour_day_start + '</td>'+
-									'<td class="text-center">' + data.tour_day_end +'</td>'+
-									'<td class="text-center">' + data.tour_seat_number +'</td>'+
-									'<td>'+
-										'<select class="status" onchange="update_status(' + val.tour_id + ')">'+
-											'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
-											'<option value="1">Đang thực hiện</option>'+
-											'<option value="2">Chưa thực hiện</option>'+
-											'<option value="3">Đã thực hiện</option>'+
-										'</select>'+
-									'</td>'+
-									'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + val.tour_id + '" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
-									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-								'</tr>';
-					str = $(str).hide().appendTo(rows);
-					$(str).fadeIn(300);
 				}
 			});
 		}
@@ -256,15 +239,16 @@
 			var status =$(obj).closest('tr').find('.status').val();
 			var itemID = $(obj).closest('tr').attr("item-id");
 			var mystatus = {
-				status: status,
-				tour_id: itemID
+				idDto: itemID,
+			   	activeDto: status
 			};
 			console.log(mystatus);
 			$.ajax({
-				url: 'controller/list-tour.php?type=updateStatus',
-				type: 'POST',
-				dataType: 'json',
-				data:mystatus,
+				url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour',
+				type: "POST",
+				dataType: "json",
+				contentType: "application/json", 
+				data :JSON.stringify(mystatus),
 				beforeSend: function(){
 					$(obj).closest('tr').find('#load_status').append('<img src="images/loader.gif" />');
 				},
@@ -284,10 +268,34 @@
 			});
 		//});
 		}
+
+		//=================================================
+		//Hàm load don hang chi tiet
+		//=================================================
+		function update_order(obj){
+			var itemID = $(obj).closest('tr').attr('item-id');
+			console.log(itemID);
+			$.ajax({
+				url: 'controller/order-tour/order-tour.php?type=updateOrder',
+				type: 'POST',
+				dataType: 'json',
+				data: {itemID: itemID},
+			})
+			.done(function(data) {
+
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		}
 	}
 })(jQuery);
 $(document).ready(function(e) {
 	// var obj = {'items' : sodong};
-	var obj = {'items' : 7};
+	var obj = {'items' : 3};
 	$("#paging").zPaging(obj);
 });

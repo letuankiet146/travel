@@ -6,7 +6,7 @@
 	//=================================================
 	if($type == "count"){
 		$items = (int)$_GET["items"];
-		$sql= "SELECT COUNT(tour_id) FROM tour WHERE tour_delete_date is null";
+		$sql= "SELECT COUNT(form_order_id) FROM form_order WHERE form_order_delete_date is null";
 		$result = mysql_query($sql,$con);
 		$totalItem = mysql_result($result, 0);
 		$total = array("total" => 0);
@@ -28,14 +28,13 @@
 		$items = (int)$_POST["items"];
 		$currentPage = (int)$_POST["currentPage"];
 		$offset = ($currentPage - 1) * $items;
-		$sql = "SELECT * FROM tour t join status s on t.tour_active=s.status_id WHERE t.tour_delete_date is null ORDER BY tour_id DESC LIMIT " . $offset . "," . $items ."";
+		$sql = "SELECT * FROM form_order f join customer c on f.form_order_customer_id=c.customer_id join tour t on f.form_order_tour_id=t.tour_id join status st on f.form_order_isPay=st.status_id join group_users g on c.customer_group=g.group_users_id WHERE f.form_order_delete_date is null ORDER BY f.form_order_id DESC LIMIT " . $offset . "," . $items ."";
 		$result = mysql_query($sql,$con);
-		$tours = array();
+		$orders = array();
 		while($row = mysql_fetch_assoc($result)){
-			$tours[] = $row;
+			$orders[] = $row;
 		}
-		print_r($tour);
-		echo json_encode($tours);
+		echo json_encode($orders);
 	}
 
 	//=================================================
@@ -63,13 +62,9 @@
 	// Xóa dữ liệu theo mảng (ARRAY)
 	//=================================================
 	if($type == "chk"){
-		$chk=$_POST['chk'];
-
+		$chk=$_POST['chk'];//dem so phan tu
 		$array = explode(",", $chk);
-
-		
 		$count = count($array);
-		print_r($count);
 	    foreach($array as $vl)
 	    {
 	        $sql="DELETE FROM tour where tour_id=$vl";
@@ -78,16 +73,15 @@
 	}
 
 	//=================================================
-	// select địa điểm đến
+	// lấy 1 phần tử theo form_order_id
 	//=================================================
-	if($type == "arrive"){
-		$area_id = (int)$_POST["areaIdDto"];
-		$sql = "SELECT * FROM arrive_place where arrive_place_area_id = " . $area_id;
+	if($type == "updateOrder"){
+		$itemID = (int)$_POST["itemID"];
+		$sql = "SELECT * FROM form_order f join customer c on f.form_order_customer_id=c.customer_id join tour t on f.form_order_tour_id=t.tour_id join status st on f.form_order_isPay=st.status_id WHERE f.form_order_id = " . $itemID;
 		$result = mysql_query($sql,$con);
-		$arrives = array();
-		while($row = mysql_fetch_assoc($result)){
-			$arrives[] = $row;
-		}
-		echo json_encode($arrives);
+		$orders = array();
+		$orders = mysql_fetch_assoc($result);
+		echo json_encode($orders);
 	}
+
 ?>

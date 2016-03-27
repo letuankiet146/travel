@@ -9,11 +9,6 @@ $(document).ready(function() {
 	});
 });
 $(document).ready(function() {
-	$('#add-tour').click(function() {
-		$(this).closest('.right').find('.add-edit').slideToggle("700");
-	});
-});
-$(document).ready(function() {
 	$('.btn-exit').click(function() {
 		$(this).closest('.right').find('.add-edit').slideToggle("700");
 	});
@@ -23,11 +18,30 @@ $(document).ready(function() {
 		$(this).closest('.right').find('.add-edit').slideToggle("700");
 	});
 });
-// LOAD AJAX
-// $(document).ready(function() {
-//     $('.btn-add').click(function() {
-//         //$(this).closest(".right").find('#add-edit-tour').css("display","none");
-//         $(this).closest(".right").find('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
-//     });
-    
-// });
+
+$(document).ready(function() {
+	$("#add-tour").click(function(event) {
+		$(this).closest('.right').find('.add-edit').slideToggle("1000");
+		$.ajax({
+			url: 'views/list-tour/add-tour.php',
+			dataType: 'text',
+		})
+		.done(function(data) {
+			$("#creatTour").html(data);
+		})
+	});
+});
+
+$(document).ready(function() {
+	$("#add-customer").click(function(e) {
+		$(this).closest('.right').find('.add-edit').slideToggle("1000");
+		// $.ajax({
+		// 	url: 'views/customer/add-customer.php',
+		// 	dataType: 'text',
+		// })
+		// .done(function(data) {
+		// 	$("#add-customer").html(data);
+		// })
+		
+	});
+});

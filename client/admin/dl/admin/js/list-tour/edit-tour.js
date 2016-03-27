@@ -14,7 +14,7 @@ function click_load(){
 	var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
 	var date = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((1[6-9]|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/;
 	var number=/^[0-9.]+$/;
-	
+
 	if(this.areaIdDto.value < 1) {
       alert("Chọn loại tour");
       this.areaIdDto.focus();
@@ -105,20 +105,17 @@ function click_load(){
 		giaTourDto.focus();
 		return(false);
 	}
-	else if(this.imageDto.value == "") {
-		alert("Yêu cầu chọn ảnh đại diện");
-		this.imageDto.focus();
-		return false;
-	}
     else{
-		add_tour();
-	}	
+			Update_Tour();	
+	}
 }
 
 //======================================
-//===========tạo tour===================
+//=========Cập nhật tour================
 //======================================
-function add_tour(){
+function Update_Tour(){
+
+	var touridDto =$("#touridDto").val();
 	var giaTourDto =$("#giaTourDto").val();
 	var soChoDto =$("#soChoDto").val();
 	var giaTourKMDto =$("#giaTourKMDto").val();
@@ -134,9 +131,9 @@ function add_tour(){
     var activeDto =$("#activeDto").val();
     var idUserAdd =$("#idUserAdd").val();
     var infoDto =CKEDITOR.instances['infoDto'].getData();
-    var imageDto =$("#imageDto").val();
-
+	
 	var mydata = {
+		idDto: touridDto,
 		idTourDto: idTourDto,
 	   	tenTourDto: tenTourDto,
 	   	infoDto: infoDto,
@@ -147,6 +144,7 @@ function add_tour(){
 	   	ngayKHDto: ngayKHDto,
 	   	ngayKTDto:ngayKTDto,
 	   	idDichVuDto: idDichVuDto,
+	   	viewDto: null,
 	   	activeDto: activeDto,
 	   	tourArrivePlaceIdDto: tourArrivePlaceIdDto,
 	   	tourGuiderIdDto: tourGuiderIdDto,
@@ -156,7 +154,7 @@ function add_tour(){
 	};
 	console.log(mydata);
 	$.ajax({
-		url : "http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour",
+		url : "http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 
@@ -165,98 +163,26 @@ function add_tour(){
             $('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
         },
 		success: function(data){ 
-			//location.reload();
+
 		},
 		statusCode: {
 			404:function(){
-				alert("khong tim thay trang.");
+				alert("khong tim thay trang");
+				document.location.href='index.php';
 			},
 			200:function(){
-				alert("Tạo tour thành công.");
-				location.reload();
+				alert("Cập nhật thành công");
+				document.location.href='index.php?page=list-tour';
+			},
+			500:function(){
+				alert("Lỗi cập nhật!!! Vui lòng kiểm tra dữ liệu nhập vào");
+				document.location.href='index.php?page=edit-tour&Id=' + id;
 			}
 		}
 	});
 }
 
-//======================================
-//===Load địa điểm đến theo Loại tour===
-//======================================
-function ajax_arrive(){
-    var areaIdDto =$("#areaIdDto").val();
-	$.ajax({
-		url : "controller/list-tour.php?type=arrive",
-		type: "POST",
-		dataType: "json",
-		cache: false,
-		data:{
-			"areaIdDto": areaIdDto
-		}
-	})
-	.done(function(data) {
-		var str='';
-		str+='<option value="0">Chọn địa điểm đến</option>';
-		$.each(data, function(i, val) {
-			str += '<option value="' + val.arrive_place_id + '">' + val.arrive_place_name + ' </option>';
-			$('#tourArrivePlaceIdDto').html(str);
-		});
-	});
-}
 
-//======================================
-//=======Xóa tour theo mảng ARRAY=======
-//======================================
-function del_array(){
-	var x = confirm("Bạn có chắc chắn xóa không?");
-	if(x){
-	   	var elem = document.getElementsByTagName("input");
-		var names = [];
-		for (var i = 0; i < elem.length; ++i) {
-			if (elem[i].checked){
-			    if (typeof elem[i].attributes.class !== "undfined") {
-			      	if(elem[i].attributes.class.value === "chk"){
-			       		names.push(elem[i].value);
-			      	}
-			    }
-			}
-		}
-		var chk = "[" + names.join(",") + "]";
-		alert(chk);
-		//var fields = $( ":input" ).serializeArray();
-     	//console.log(fields);
-  //   	jQuery.each( fields, function( i, field ) {
-	 //      $( "#results" ).append( field.value + " " );
-	 //      var a = [];
-	 //      a += field.value;
-	 //      console.log(a);
-	 //      var mydata = {fields : a};
-	 //    });
-	 
-	 	// var foo = new Array(817,816);
-	 	// console.log(foo);
-	    var mydata = {chk : chk};
-	    console.log(mydata);
-		var idUserAdd =$("#idUserAdd").val();
-		$.ajax({
-			// url: 'controller/list-tour.php?type=chk',
-			// type: 'POST',
-			// data: {chk: chk},
-			url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/' + idUserAdd,
-			type: 'POST',
-			dataType: "json",
-			contentType: "application/json",
-			data:JSON.stringify(mydata),
-			// data:foo,
-		})
-		.done(function(data) {
-			console.log(data);
-		})
-		.fail(function(error) {
-			console.log(error);
-		})
-		.always(function() {
-			// location.reload();
-		});
-	}
-}
+
+
 

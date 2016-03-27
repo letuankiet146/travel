@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="style/main/main.css" />
-<!-- <script src="js/home.js" type="text/javascript"></script> -->
+<script src="js/home/paging.js" type="text/javascript"></script>
+<script src="js/home/home.js" type="text/javascript"></script>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="#">Trang chủ</a></li>
@@ -8,79 +9,40 @@
 <div class="news">
 	<div class="news-left">
 		<div class="diary">
-			<div class="title-inner"><h3>Nhật ký hoạt động</h3></div>
+			<div class="title-inner">
+				<h3 class="title-inner-l">Nhật ký hoạt động</h3>
+				<?php if(admin()) { ?>
+					<div class="title-inner-r">
+						<ul>
+							<li id="del-tour" onclick="del_array()">Xóa nhật ký</li>
+						</ul>
+					</div>
+				<?php }	?>
+				<div class="clear"></div>
+			</div>
 			<div class="content-inner">
-			<div class="content">
+			<div class="content" id="paging">
 				<table cellspacing="0">
 					<thead>
 						<tr>
 							<th>Nhân viên</th>
-							<th>Công việc thực hiện</th>
-							<th>Thời gian thực hiên</th>
+							<th>Công việc</th>
+							<th>Thông tin chi tiết</th>
+							<th>Thời gian</th>
+							<th></th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>Phạm Thành Thảo</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Nguyễn Trường Cao Tuấn</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Phạm Huỳnh Vũ Kiên</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Phạm Thành Thảo</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Nguyễn Trường Cao Tuấn Khoa</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Phạm Huỳnh Vũ Kiên</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Phạm Thành Thảo</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Nguyễn Trường Cao Tuấn Khoa</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Phạm Huỳnh Vũ Kiên</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-						<tr>
-							<td>Phạm Thành Thảo</td>
-							<td>Xác nhận thanh toán thành công</td>
-							<td>21/07/2015 14:40</td>
-						</tr>
-					</tbody>
+					<tbody id="rows"></tbody>
 				</table>
 			</div>
-			</div>
+			</div> 
 		</div>
-		<div class="paging">
-			<p>page 1 of 10</p>
+		<div class="paging" id="pages">
+			<p id="pageInfo"></p>
 			<ul>
 				<li class="goprev">&laquo; Trang sau</li>
 				<li class="current">
-					<input type="text" name="1" value="1" placeholder="" />
+					<input id="CurrentPage" type="text" name="1" value="" placeholder="">
 				</li>
 				<li class="gonext">Trang Tiếp &raquo;</li>
 			</ul>
@@ -119,32 +81,7 @@
 		</div>
 		<div class="notification">
 			<div class="title-inner"><h3>Thông báo chung</h3></div>
-			<div class="message_list">
-				<div class="messages-box">
-					<div class="messages">
-						<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-						<p>Thành Thảo</p>
-					</div>
-				</div>
-				<div class="messages-box">
-					<div class="messages">
-						<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-						<p>Thành Thảo</p>
-					</div>
-				</div>
-				<div class="messages-box">
-					<div class="messages">
-						<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-						<p>Thành Thảo</p>
-					</div>
-				</div>
-				<div class="messages-box">
-					<div class="messages">
-						<p>Yêu cầu nhân viên báo cáo doanh thu tháng 10.</p>
-						<p>Thành Thảo</p>
-					</div>
-				</div>
-			</div>
+			<div class="message_list" id="message_list"></div>
 			<div class="search-notifi">
 				<form action="" method="get" accept-charset="utf-8">
 					<input type="text" name="" value="" placeholder="Tin nhắn" />

@@ -1,11 +1,9 @@
-	<!-- <script type="text/javascript" src="js/list-tour/paging.js"></script> -->
 	<!-- DATEPICKER -->
 	<link rel="stylesheet" type="text/css" href="js/datepicker/datepicker.css" />
 	<script type="text/javascript" src="js/datepicker/datepicker.js"></script>
 	<!-- MODULE MAIN -->
 	<link rel="stylesheet" type="text/css" href="style/tour/tour.css" />
-	<!--<script type="text/javascript" > var sodong = 8;</script>-->
-	<script type="text/javascript" src="js/list-tour/add-update.js"></script>	
+	<script type="text/javascript" src="js/list-tour/edit-tour.js"></script>	
 	<script type="text/javascript">
         $(function() {
             $( "#ngayKHDto" ).datepicker({
@@ -24,6 +22,7 @@
     </script>
     <?php 
     	$id=$_GET["Id"]; 
+
     	$sql = "SELECT * FROM tour t join from_place f on t.tour_from_place_id=f.from_place_id join guider g on t.tour_guider_id=g.guider_id join arrive_place a on t.tour_arrive_place_id=a.arrive_place_id join services s on t.tour_service_id=s.services_id join area ar on a.arrive_place_area_id=ar.area_id where tour_id = " . $id;
     	$query=mysql_query($sql);
     	$row=mysql_fetch_array($query);
@@ -33,8 +32,8 @@
 		$fdayEnd = date("d/m/Y", strtotime($dayEnd));
 		$area_id = $row['arrive_place_area_id'];
 		$today = date("d/m/Y");
-    	{
     ?>
+    <input type="hidden" id="touridDto" name="touridDto" value="<?php echo $id; ?>" />
 	<div class="breadcrumb">
 		<ul>
 			<li><a href="#">Trang chủ</a></li>
@@ -156,7 +155,6 @@
 					</div>
 					<div class="thumb">
 						<label>Ảnh minh họa Ảnh minh họa <span>(chỉ cho phép .JPG, .PNG, .GIF và dung lượng tối đa là 500Kb)</span></label>
-						<input id="imageDto1" type="hidden" name="imageDto1" value="<?php echo $row['tour_image']; ?>" />
 						<input id="imageDto" type="file" name="imageDto" value="<?php echo $row['tour_image']; ?>" />
 						<p style="margin-left: 75px"><?php echo $row['tour_image']; ?></p>
 					</div>
@@ -173,7 +171,7 @@
 				</div>
 				<div class="btn">
 					<input class="btn-reset" type="reset" name="" value="Nhập lại" />
-					<a class="btn-add" onclick="click_load()" >Cập nhật</a>
+					<a class="btn-add" href="#" onclick="click_load()" >Cập nhật</a>
 					<div class="row">
 						<label for="">Trạng thái</label>
 						<select id="activeDto">
@@ -200,6 +198,3 @@
 			<div class="clear"></div>
 		</div>
 	</div>
-	
-	<?php } ?>	
-

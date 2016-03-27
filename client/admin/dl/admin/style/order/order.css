@@ -92,8 +92,7 @@
 }
 .content thead tr{
 	background: url(../../images/table_sorter_header.png) repeat-x;
-	text-align: left;
-	text-indent: 10px;
+	text-align: center;
 	height: 34px;
 	
 }
@@ -101,8 +100,8 @@
 	border-top: 1px solid #DEDEDE;
 	border-right: 1px solid #DEDEDE;
 }
-.content thead th:nth-child(3){
-	width:350px;
+#paging thead th:nth-child(2){
+	width:430px;
 }
 .content tr td{
 	padding:10px 10px;
@@ -175,6 +174,9 @@
 	border: 1px solid #DEDEDE;
 	box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
 	margin-bottom: 20px;
+}
+.add-edit thead tr th:nth-child(2){
+	width:380px;
 }
 .info{
 

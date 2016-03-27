@@ -5,7 +5,7 @@
 	*------Xử lý đăng nhập
 	*=================================*/
 	if(isset($_POST['login'])){
-		$sql="SELECT * FROM staff where staff_user = '".$_POST['username']."' and staff_password = '".$_POST['password']."'";
+		$sql="SELECT * FROM staff s join group_users g on s.staff_level=g.group_users_id where staff_user = '".$_POST['username']."' and staff_password = '".$_POST['password']."'";
 		$query = mysql_query($sql);
 		$result = mysql_fetch_array($query);
 		if($result < 1){
@@ -14,6 +14,7 @@
 		}
 		else{
 			session_start();
+			$_SESSION['id'] = $result['staff_id'];
 			$_SESSION['username'] = $result['staff_name'];
 			$_SESSION['level'] = $result['staff_level'];
 			echo "<script>document.location.href='../index.php'</script>";
@@ -27,6 +28,6 @@
 		echo "<script>alert('Đã thoát khỏi hệ thống!!!');</script>";
 		echo"<script>document.location.href='../index.php' </script>";
 	}
-	include("../views/login.phtml");
+	include("../views/login.php");
 
 ?>

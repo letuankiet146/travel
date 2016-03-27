@@ -47,7 +47,7 @@
 		function init(){
 			// lay tong so trang
 			$.ajax({
-				url: 'controller/list-tour.php?type=count&items=' + options.items,
+				url: 'controller/customer.php?type=count&items=' + options.items,
 				type: 'GET',
 				dataType: 'json'
 			})
@@ -142,7 +142,7 @@
 		//=================================================
 		function loadData(page){
 			$.ajax({
-				url: 'controller/list-tour.php?type=list',
+				url: 'controller/customer.php?type=list',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -156,30 +156,31 @@
 				if(data.length>0){
 					rows.empty();
 					$.each(data, function(i, val) {
+						options.total = val.total;
 					var dayStart= val.tour_day_start; 
 					var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
 					var dayEnd = val.tour_day_end; 
 					var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
-					var str = 	'<tr item-id="' + val.tour_id + '">'+
-									'<td><input type="checkbox" name="" value=""></td>'+
-									'<td>' + val.tour_code + '</td>'+
-									'<td>' + val.tour_code + '</td>'+
-									'<td>' + val.tour_name + '</td>'+
-									'<td class="text-center" id="from">' + fdayStart + '</td>'+
-									'<td class="text-center" id="to">' + fdayEnd +'</td>'+
+					var str = 	'<tr item-id="' + val.customer_id + '">'+
+									'<td>' + val.customer_code + '</td>'+
+									'<td>' + val.customer_name + '</td>'+
+									'<td>' + val.customer_email + '</td>'+
+									'<td class="text-center" id="from">' + val.customer_phone + '</td>'+
+									'<td class="text-center" id="to">' + options.total + '</td>'+
 									'<td class="text-center">'+
 										'<select class="status">'+
-											'<option value="' + val.tour_active +'">' + val.status_name +'</option>'+
+											'<option value="' + val.customer_group +'">' + val.group_users_name +'</option>'+
 											'<option value="0">-----------------</option>'+
-											'<option value="1">Khách hàng thân thiết</option>'+
-											'<option value="2">Khách hàng tiềm năng</option>'+
-											'<option value="2">Khách vãng lai</option>'+
-											'<option value="3">Khách VIP</option>'+
+											'<option value="7">Khách vãng lai</option>'+
+											'<option value="8">Khách hàng tiềm năng</option>'+
+											'<option value="9">Khách hàng thân thiết</option>'+
+											'<option value="10">Khách VIP</option>'+
 										'</select>'+
 										'<div id="load_status"></div>'+
 									'</td>'+
-									'<td class="text-center"><a id="update" href="index.php?page=edit-customer&Id=' + val.tour_id + '" title="Xem &#38; Sửa"><i class="fa fa-info-circle"></i></a></td>'+
+									'<td class="text-center"><a id="update" href="index.php?page=edit-customer&Id=' + val.customer_id + '" title="Xem &#38; Sửa"><i class="fa fa-info-circle"></i></a></td>'+
 									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+									'<td><input type="checkbox" name="" value=""></td>'+
 								'</tr>';
 					rows.append(str);
 					});
@@ -204,7 +205,7 @@
 		//=================================================
 		function loadDataContact(page){
 			$.ajax({
-				url: 'controller/list-tour.php?type=list',
+				url: 'controller/customer.php?type=list1',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -270,7 +271,7 @@
 				durartion: 300,
 				done: function(){
 					$.ajax({
-						url: 'controller/list-tour.php?type=delete&id=' + itemID,
+						url: 'controller/customer.php?type=delete&id=' + itemID,
 						type: 'GET',
 						dataType: 'json'
 					});
@@ -283,7 +284,7 @@
 			});
 
 			$.ajax({
-				url: 'controller/list-tour.php?type=one&id=' + lastID,
+				url: 'controller/customer.php?type=one&id=' + lastID,
 				type: 'GET',
 				dataType: 'json'
 			})
@@ -326,7 +327,7 @@
 			};
 			console.log(mystatus);
 			$.ajax({
-				// url: 'controller/list-tour.php?type=updateStatus',
+				// url: 'controller/customer.php?type=updateStatus',
 				url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour',
 				type: 'POST',
 				dataType: 'json',
