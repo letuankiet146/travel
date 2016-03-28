@@ -1,4 +1,4 @@
-﻿################### PHƯƠNG THỨC LẤY TẤT CẢ TOUR, DÀNH CHO TRANG CHỦ###########################################
+################### PHƯƠNG THỨC LẤY TẤT CẢ TOUR, DÀNH CHO TRANG CHỦ###########################################
 LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/tour/listTour
 ##################################################################################################################
 
@@ -27,6 +27,7 @@ BODY:
   "formOrderTourIdDto": 9,
   "formOrderCustomerDto": {
     "customerNameDto": "Khach hang 5",
+    "customerCode": "Random",
     "customerBirthDto": "26/02/2016",
     "customerSexDto": 0,
     "customerPhoneDto": "09991123",
@@ -46,7 +47,7 @@ BODY:
   "formOrderQuantityAdultsDto": 12,
   "formOrderQuantityJuvenileDto": 2,
   "formOrderQuantityChildDto": 6,
-  "formOrderIsPayDto": 0,
+  "formOrderIsPayDto": 5,
   "formOrderQuantityOtherRequireDto": "day la yeu cau khac"
 }
 ##################################################################################################################
@@ -243,6 +244,13 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34
 
 ////////////yeu cau KIET lam /////////////
 
-duong dan hinh anh (*)
-database utf8(*)
-order tour (*)
+1. sửa hình ảnh.
+2. email random password cho khách hàng
+3. Delete mảng do Thảo làm.
+4. Update API của orderTour controller
+5. Group user tbl - Staff; groupUser tbl - Customer
+6. Chỉnh sửa history content.
+7. Tạo bảng ý kiến khách hàng (Liên kết với bảng khách hàng, thêm id,nội dung ý kiến). Chỉ tạo bảng
+8. Xoa nhieu
+9. Customemr, notification chưa có history
+
