@@ -1,0 +1,54 @@
+package com.travel.api;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.travel.dto.HistoryDto;
+import com.travel.services.IHistoryServices;
+
+
+@RestController
+@RequestMapping("/history")
+public class HistoryController {
+	@Autowired
+	private IHistoryServices historyInterface;
+	
+	@RequestMapping(value="/list")
+	public List<HistoryDto> list (){
+		List<HistoryDto> historyDtoList = historyInterface.listAll();
+		return historyDtoList;
+	}
+	
+	@RequestMapping(value="/list/{id}")
+	public HistoryDto list (@PathVariable Integer id){
+		HistoryDto historyDto = historyInterface.listId(id);
+		return historyDto;
+	}
+	
+	@RequestMapping(value = "/add")
+	public String add (@RequestBody HistoryDto historyDto){
+		return historyInterface.add(historyDto);
+	}
+	
+	@RequestMapping(value="/delete/{id}")
+	public String delete (@PathVariable Integer id){
+		return historyInterface.delete(id);
+	}
+	
+	@RequestMapping(value="/delete/")
+	public String delete (@RequestBody List<Integer> idList){
+		return historyInterface.deleteMulti(idList);
+	}
+	
+	@RequestMapping (value = "/update")
+	public String update (@RequestBody HistoryDto historyDto){
+		return historyInterface.update(historyDto);
+	}
+	
+
+}
