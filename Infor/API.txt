@@ -1,14 +1,14 @@
 ################### PHƯƠNG THỨC LẤY TẤT CẢ TOUR, DÀNH CHO TRANG CHỦ###########################################
-LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/tour/listTour
+LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/tour/listTour
 ##################################################################################################################
 
 
 ######## PHƯƠNG THỨC LẤY TẤT CẢ CÁC THÔNG TIN MÀ KHÁCH HÀNG ĐÃ ĐẶT TOUR, DÙNG CHO TRANG /views/order-tours.php ##########
-LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/listOrderTourId
+LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/listOrderTourId
 #########################################################################################################################
 
 ######## PHƯƠNG THỨC XÓA NHIỀU TOUR ##########
-LINK: http://project-iuhhappytravel.rhcloud.com/deleteOrderTour
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/deleteOrderTour
 BODY [24,25,26]
 #########################################################################################################################
 
@@ -21,7 +21,7 @@ formOrderQuantityChildDto: Là số lượng trẻ em (dưới 2 tuổi). Lấy 
 formOrderIsPayDto: 0 là chưa thanh toán, 1 là đã thanh toán
 
 
-LINK [POST]: http://project-iuhhappytravel.rhcloud.com/orderTour (XONG)
+LINK [POST]: http://project-iuhhappytravel.rhcloud.com/spr-data/orderTour (XONG)
 BODY: 
 {
   "formOrderTourIdDto": 9,
@@ -59,7 +59,7 @@ BODY:
 
 ################## PHƯƠNG THỨC THÊM TOUR  DÀNH CHO TRANG ADMIN###########################################
 ---------ngày KH và KT phải theo mặc định "dd/mm/yyyy". IdTourDto không được trùng
-LINK: http://project-iuhhappytravel.rhcloud.com/tour/addTour (XONG)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour (XONG)
 {
     "idTourDto": "Demo 4",
     "tenTourDto": "Demo Tour",
@@ -81,7 +81,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/tour/addTour (XONG)
 ##################################################################################################################
 
 ####################PHƯƠNG THỨC UPDATE TOUR DÀNH CHO TRANG ADMIN##################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/tour/updateTour (XONG)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour (XONG)
 {
     "idDto": 9,
     "idTourDto": "HCM-DN_EDIT",
@@ -106,13 +106,13 @@ LINK: http://project-iuhhappytravel.rhcloud.com/tour/updateTour (XONG)
 
 ####################PHƯƠNG THỨC XÓA TOUR DÀNH CHO TRANG ADMIN##################################################
 741 là id của tour, 1 là id của staff
-LINK: http://project-iuhhappytravel.rhcloud.com/tour/deleteTour/741/1 (XONG)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/741/1 (XONG)
 
 
 ##################################################################################################################
 
 ####################PHƯƠNG THỨC XÓA NHIỀU TOUR DÀNH CHO TRANG ADMIN##################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/tour/deleteTour/1 (KHông cung host)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/1 (KHông cung host)
 1 laf id cuả user đang thực hiện xóa.
 Body là mảng gồm nhiều số, các số là id của tour.
 BODY: [9,746,747] 
@@ -126,7 +126,7 @@ BODY: [9,746,747]
 
 
 ###################ADD HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/history/add (XONG)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/add (XONG)
 user la id cua staff, action: create, delete, update, content tạm thời để mặc định yk - vài hôm nữa tao làm thêm phần này
 {
   "user": 2,
@@ -136,25 +136,25 @@ user la id cua staff, action: create, delete, update, content tạm thời để
 ##################################################################################################################
 
 ###################LIST ALL HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/history/list (XONG)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list (XONG)
 
 ###################LIST ONE HISTORY #############################################################################
 số 2 là id của history
-LINK: http://project-iuhhappytravel.rhcloud.com/history/list/2 (XONG)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/list/2 (XONG)
 
 ###################DELETE HISTORY #############################################################################
 số 2 là id của history
-LINK: http://project-iuhhappytravel.rhcloud.com/history/delete/2 (XONG)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/2 (XONG)
 
 ###################XÓA NHIỀU HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/history/delete/ (không cùng host)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/ (không cùng host)
 BODY: [85,86,87]
 
 
 
 
 ###################ADD NOTIFICATION #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/notification/add
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/add
 user la id cua staff
 {
     "user": 1,
@@ -163,11 +163,11 @@ user la id cua staff
 ##################################################################################################################
 
 ###################LIST ALL NOTIFICATION #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/notification/list (liên kiết table staff lấy tên nhân viên.)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/list (liên kiết table staff lấy tên nhân viên.)
 
 ###################DELETE NOTIFICATION #############################################################################
 số 2 là id của notification
-LINK: http://project-iuhhappytravel.rhcloud.com/notification/delete/2
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/delete/2
 
 
 
@@ -179,10 +179,10 @@ LINK: http://project-iuhhappytravel.rhcloud.com/notification/delete/2
 
 
 ###################LIST ALL CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/customer/list 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/list 
 
 ###################ADD CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/customer/add/ 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/ 
 BODY: customerCode mày random trên client rồi gán vào nha. Trừ customerCode thì các cột khác có thể null nếu như thông
 tin không có.
     {
@@ -202,12 +202,13 @@ tin không có.
     "customerPasswordDto": "111111",
     "customerTypeDto": null,
     "customerLockDto": null,
-    "customerDeleteDateDto": null
+    "customerDeleteDateDto": null,
+    "idUserAdd": 2
   }
 
 
   ###################UPDATE CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/customer/update/ 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/update/ 
 BODY Ngoại trừ id thì tất cả có thể null nếu như không muốn đưa vào.
 {
     "customerIdDto": 21,
@@ -227,18 +228,19 @@ BODY Ngoại trừ id thì tất cả có thể null nếu như không muốn đ
     "customerPasswordDto": "111111",
     "customerTypeDto": null,
     "customerLockDto": null,
-    "customerDeleteDateDto": null
+    "customerDeleteDateDto": null,
+    "idUserAdd": 2
   }
 
 
  ###################DELETE MẢNG CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/customer/delete/ 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/2 
 Khi xóa thì cột delete date sẽ điền vào ngày hiện tại. Chứ record trong bảng không có mất nha m.
 BODY [34,37]
 
 
  ###################DELETE MẢNG CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/customer/delete/34
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34/2
 34 là id của customer 
 
 
