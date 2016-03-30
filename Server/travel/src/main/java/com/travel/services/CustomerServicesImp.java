@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.travel.dto.CustomerDto;
+import com.travel.dto.HistoryDto;
 import com.travel.model.CustomerEntity;
 import com.travel.repository.CustomerRepository;
 import com.travel.util.MyFormatDate;
+
 
 
 @Service
@@ -21,22 +23,43 @@ public class CustomerServicesImp implements ICustomerServices {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private DozerBeanMapper mapper;
+	
+	@Autowired
+	private IHistoryServices historyInterface;
 	public String add(CustomerDto customerDto) {
 		if (customerDto!=null){
 			CustomerEntity customerEntity = mapper.map(customerDto, CustomerEntity.class);
 			customerEntity.setCustomerBirth(MyFormatDate.stringToDate(customerDto.getCustomerBirthDto()));
 			customerRepository.saveAndFlush(customerEntity);
+			
+			/*
+			 * Save history
+			 */
+			HistoryDto historyDto = new HistoryDto();
+			historyDto.setUser(customerDto.getIdUserAdd());
+			historyDto.setAction("Create_Customer");
+			historyDto.setContent(customerDto.getCustomerCode());
+			historyInterface.add(historyDto);
+			
 			return "Them thanh cong";
 		}
 		return "Them khong thanh cong";
 	}
 
-	public String delete(Integer id) {
+	public String delete(Integer id,Integer userId) {
 		if (customerRepository.exists(id)){
 			CustomerEntity customerEntity = customerRepository.findOne(id);
 			if (customerEntity.getCustomerDeleteDate()==null){
 				customerEntity.setCustomerDeleteDate(new Date());
 				customerRepository.saveAndFlush(customerEntity);
+				/*
+				 * Save history
+				 */
+				HistoryDto historyDto = new HistoryDto();
+				historyDto.setUser(userId);
+				historyDto.setAction("Delete_Customer");
+				historyDto.setContent("Xoa khach hang co id ="+customerEntity.getCustomerId());
+				historyInterface.add(historyDto);
 				return "Xoa thanh cong";
 			}
 			return "Khong tim thay khach hang can xoa";
@@ -44,7 +67,7 @@ public class CustomerServicesImp implements ICustomerServices {
 		return "Khong tim thay khach hang can xoa";
 	}
 
-	public String deleteMul(List<Integer> listId) {
+	public String deleteMul(List<Integer> listId, Integer userId) {
 		for (Integer id : listId){
 			if (customerRepository.exists(id)){
 				CustomerEntity customerEntity = customerRepository.findOne(id);
@@ -52,6 +75,14 @@ public class CustomerServicesImp implements ICustomerServices {
 					customerEntity.setCustomerDeleteDate(new Date());
 					customerRepository.saveAndFlush(customerEntity);
 				}
+				/*
+				 * Save history
+				 */
+				HistoryDto historyDto = new HistoryDto();
+				historyDto.setUser(userId);
+				historyDto.setAction("Delete_Customer");
+				historyDto.setContent("Xoa tour co id ="+customerEntity.getCustomerId());
+				historyInterface.add(historyDto);
 			}
 		}
 		return "Xoa thanh cong";
@@ -61,11 +92,17 @@ public class CustomerServicesImp implements ICustomerServices {
 		if (customerDto !=null){
 			CustomerEntity customerEntity = customerRepository.findOne(customerDto.getCustomerIdDto());
 			if (customerEntity!=null){
-				String codeCustomer = customerEntity.getCustomerCode();
 				customerEntity = mapper.map(customerDto, CustomerEntity.class);
 				customerEntity.setCustomerBirth(MyFormatDate.stringToDate(customerDto.getCustomerBirthDto()));
-				customerEntity.setCustomerCode(codeCustomer);
 				customerRepository.saveAndFlush(customerEntity);
+				/*
+				 * Save history
+				 */
+				HistoryDto historyDto = new HistoryDto();
+				historyDto.setUser(customerDto.getIdUserAdd());
+				historyDto.setAction("Update_Customer");
+				historyDto.setContent("Update khach hang: "+customerDto.getCustomerCode());
+				historyInterface.add(historyDto);
 				return "Update thanh cong";
 			}
 		}

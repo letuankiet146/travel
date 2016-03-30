@@ -5,11 +5,9 @@ package com.travel.dto;
 
 import java.util.Date;
 
-import javax.persistence.Column;
+import lombok.Data;
 
 import org.dozer.Mapping;
-
-import lombok.Data;
 
 
 /**
@@ -71,4 +69,6 @@ public class CustomerDto {
 	
 	@Mapping("customerDeleteDate")
 	private Date customerDeleteDateDto;
+	
+	private Integer idUserAdd;
 }

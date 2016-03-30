@@ -61,8 +61,6 @@ public class TourEntity {
 	@Column(name = "tour_service_id")
 	private Integer idDichVu;
 	
-	@Column(name = "tour_view")
-	private Integer view;
 	
 	@Column(name = "tour_active")
 	private Integer active;

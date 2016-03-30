@@ -3,8 +3,6 @@
  */
 package com.travel.services;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +18,8 @@ import com.travel.model.TourEntity;
 import com.travel.repository.TourRepository;
 import com.travel.util.MyFormatDate;
 import com.travel.validator.TourValidator;
+
+
 
 
 
@@ -72,10 +72,10 @@ public class TourServiceImp implements ITourService {
 		HistoryDto historyDto = new HistoryDto();
 		historyDto.setUser(tourDto.getIdUserAdd());
 		historyDto.setAction("Create_Tour");
-		historyDto.setContent(tourDto.toString());
+		historyDto.setContent(tourEntity.getIdTour());
 		historyInterface.add(historyDto);
 		
-		return tourDto.getIdDto();
+		return tourEntity.getId();
 	}
 
 	public List<TourDto> searchTour(TourDto tourDtoCondition) {

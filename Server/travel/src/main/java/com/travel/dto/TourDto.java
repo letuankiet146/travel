@@ -56,8 +56,6 @@ public class TourDto {
 	@Mapping("idDichVu")
 	private Integer idDichVuDto;
 
-	@Mapping("view")
-	private Integer viewDto;
 
 	@Mapping("active")
 	private Integer activeDto;

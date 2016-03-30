@@ -29,14 +29,14 @@ public class CustomerController {
 		return customerService.listAll();
 	}
 	
-	@RequestMapping(value = "/delete/{id}")
-	public String delete(@PathVariable Integer id){
-		return customerService.delete(id);
+	@RequestMapping(value = "/delete/{id}/{userId}")
+	public String delete(@PathVariable Integer id,@PathVariable Integer userId){
+		return customerService.delete(id,userId);
 	}
 	
-	@RequestMapping (value = "/delete")
-	public String delete (@RequestBody List<Integer> listId){
-		return customerService.deleteMul(listId);
+	@RequestMapping (value = "/delete/{userId}")
+	public String delete (@RequestBody List<Integer> listId, @PathVariable Integer userId){
+		return customerService.deleteMul(listId,  userId);
 	}
 	
 	@RequestMapping(value ="/update")
