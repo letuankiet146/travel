@@ -52,7 +52,8 @@ public class ConfigBean {
 				
 				registry.addMapping("/orderTour").allowedOrigins("*");
 				registry.addMapping("/listOrderTourId").allowedOrigins("*");
-				registry.addMapping("/deleteOrderTour").allowedOrigins("*");
+				registry.addMapping("/deleteOrderTour/{idUser}").allowedOrigins("*");
+				registry.addMapping("/updateOrderTour").allowedOrigins("*");
 				
 				/*
 				 * Tour

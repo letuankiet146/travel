@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,9 +32,14 @@ public class OderTourController {
 		return formOrderDtoList;
 	}
 	
-	@RequestMapping (value = "/deleteOrderTour")
-	public String deleteMulti (@RequestBody List<Integer> idList){
-		return orderService.deleteMulti(idList);
+	@RequestMapping (value = "/deleteOrderTour/{idUser}")
+	public String deleteMulti (@RequestBody List<Integer> idList, @PathVariable Integer idUser){
+		return orderService.deleteMulti(idList,idUser);
+	}
+	
+	@RequestMapping (value ="/updateOrderTour")
+	public String update (@RequestBody FormOrderDto formOrderDto){
+		return orderService.updateOrderTour(formOrderDto);
 	}
 
 }

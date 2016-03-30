@@ -28,7 +28,7 @@ public class StaffEntity {
 	private String staffName;
 	
 	@Column(name="staff_level")
-	private String staffLevel;
+	private Integer staffLevel;
 	
 	@Column(name = "staff_user")
 	private String staffUser;

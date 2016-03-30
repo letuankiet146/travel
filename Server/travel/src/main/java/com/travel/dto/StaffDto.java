@@ -16,7 +16,7 @@ public class StaffDto {
 	private String staffName;
 	
 	@Mapping("staffLevel")
-	private String staffLevel;
+	private Integer staffLevel;
 	
 	@Mapping("staffUser")
 	private String staffUser;

@@ -18,11 +18,14 @@ public class FormOrderDto {
 	@Mapping("formOrderId")
 	private Integer formOrderIdDto;
 	
-	@Mapping("formOrderTourId")
-	private Integer formOrderTourIdDto;
+	@Mapping("formOrderTourCode")
+	private String formOrderTourCodeDto;
 
 	@Mapping("formOrderCustomerId")
 	private Integer formOrderCustomerIdDto;
+	
+	@Mapping("formOrderTourId")
+	private Integer formOrderTourIdDto;
 	
 	private CustomerDto formOrderCustomerDto;
 	
@@ -50,5 +53,7 @@ public class FormOrderDto {
 	
 	@Mapping("formOrderMoney")
 	private Integer formOrderMoneyDto;
+	
+	private Integer idUserAdd;
 
 }

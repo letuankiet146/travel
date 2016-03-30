@@ -28,7 +28,7 @@ public class FormOrderEntity {
 	private Integer formOrderId;
 
 	@Column(name = "form_order_code")
-	private Integer formOrderTourId;
+	private String formOrderTourCode;
 
 	@ManyToOne
 	@JoinColumn(name = "form_order_tour_id", updatable = false, insertable = false)
@@ -37,6 +37,9 @@ public class FormOrderEntity {
 	@ManyToOne
 	@JoinColumn(name = "form_order_customer_id", updatable= false, insertable = false)
 	private CustomerEntity formOrderCustomer;
+	
+	@Column(name="form_order_tour_id")
+	private Integer formOrderTourId;
 	
 	@Column(name="form_order_customer_id")
 	private Integer formOrderCustomerId;

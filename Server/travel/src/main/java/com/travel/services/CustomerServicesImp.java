@@ -38,7 +38,7 @@ public class CustomerServicesImp implements ICustomerServices {
 			HistoryDto historyDto = new HistoryDto();
 			historyDto.setUser(customerDto.getIdUserAdd());
 			historyDto.setAction("Create_Customer");
-			historyDto.setContent(customerDto.getCustomerCode());
+			historyDto.setContent("ID="+customerDto.getCustomerCode());
 			historyInterface.add(historyDto);
 			
 			return "Them thanh cong";

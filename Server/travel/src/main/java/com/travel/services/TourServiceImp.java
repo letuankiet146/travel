@@ -72,7 +72,7 @@ public class TourServiceImp implements ITourService {
 		HistoryDto historyDto = new HistoryDto();
 		historyDto.setUser(tourDto.getIdUserAdd());
 		historyDto.setAction("Create_Tour");
-		historyDto.setContent(tourEntity.getIdTour());
+		historyDto.setContent("ID="+tourEntity.getIdTour());
 		historyInterface.add(historyDto);
 		
 		return tourEntity.getId();
@@ -108,7 +108,7 @@ public class TourServiceImp implements ITourService {
 			HistoryDto historyDto = new HistoryDto();
 			historyDto.setUser(tourDto.getIdUserAdd());
 			historyDto.setAction("Update_Tour");
-			historyDto.setContent(tourDto.toString());
+			historyDto.setContent("ID="+tourDto.getIdTourDto());
 			historyInterface.add(historyDto);
 			return "Update thanh cong";
 		}

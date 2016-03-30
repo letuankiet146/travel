@@ -78,9 +78,9 @@ public class OrderServicesImp implements IOrderServices {
 		 * Save history
 		 */
 		HistoryDto historyDto = new HistoryDto();
-		historyDto.setUser(1);
-		historyDto.setAction("Create_Tour");
-		historyDto.setContent(formOrderDto.toString());
+		historyDto.setUser(formOrderDto.getIdUserAdd());
+		historyDto.setAction("Create_Order");
+		historyDto.setContent("ID="+formOrderDto.getFormOrderIdDto().toString());
 		historyInterface.add(historyDto);
 		
 		return "Dat tour thanh cong: ID="+formformOrderEntityNew.getFormOrderId();
@@ -117,15 +117,46 @@ public class OrderServicesImp implements IOrderServices {
 		return formOrderDtoList;
 	}
 
-	public String deleteMulti(List<Integer> idList) {
+	public String deleteMulti(List<Integer> idList, Integer idUser) {
 		for (Integer id : idList){
 			if (formOrderRepo.exists(id)){
 				formOrderRepo.delete(id);
+				/*
+				 * Save history
+				 */
+				HistoryDto historyDto = new HistoryDto();
+				historyDto.setUser(idUser);
+				historyDto.setAction("Delete_Order");
+				historyDto.setContent("ID="+id);
+				historyInterface.add(historyDto);
 			}
 			else {
 				return "Xoa khong thanh cong";
 			}
 		}
+		
 		return "Xoa thanh cong";
+	}
+
+	@Override
+	public String updateOrderTour(FormOrderDto formOrderDto) {
+		if (formOrderDto !=null){
+			FormOrderEntity formOrderEntity = formOrderRepo.findOne(formOrderDto.getFormOrderIdDto());
+			if (formOrderEntity !=null){
+				mapper.map(formOrderDto, formOrderEntity);
+				formOrderRepo.saveAndFlush(formOrderEntity);
+				/*
+				 * Save history
+				 */
+				HistoryDto historyDto = new HistoryDto();
+				historyDto.setUser(formOrderDto.getIdUserAdd());
+				historyDto.setAction("Update_Order");
+				historyDto.setContent(formOrderDto.getFormOrderIdDto().toString());
+				historyInterface.add(historyDto);
+				return "Update thanh cong";
+			}
+			return "Khong tim thay don dat tour";
+		}
+		return "Gia tri update khong hop le";
 	}
 }
