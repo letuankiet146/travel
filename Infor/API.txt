@@ -70,7 +70,8 @@ BODY:
   "formOrderQuantityJuvenileDto": 2,
   "formOrderQuantityChildDto": 6,
   "formOrderIsPayDto": 5,
-  "formOrderQuantityOtherRequireDto": "day la yeu cau khac"
+  "formOrderQuantityOtherRequireDto": "day la yeu cau khac",
+  "idUserAdd" :2
 }
 ##################################################################################################################
 
@@ -201,11 +202,12 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/list (XONG)
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/ 
 BODY: customerCode mày random trên client rồi gán vào nha. Trừ customerCode thì các cột khác có thể null nếu như thông
 tin không có.
-    {
-    "customerCode": "Random",
-    "customerNameDto": "Phạm Thành Thảo",
+     {
+    "customerIdDto": 21,
+    "customerCode": "MAKH21",
+    "customerNameDto": "Ph?m Thành Th?o",
     "customerBirthDto": "26/02/2016",
-    "customerSexDto": 0,
+    "customerSexDto": "0",
     "customerPhoneDto": "0975293398",
     "customerEmailDto": "letuankiet146@gmail.com",
     "customerAddressDto": "Binh Duong",
@@ -219,29 +221,12 @@ tin không có.
     "customerTypeDto": null,
     "customerLockDto": null,
     "customerDeleteDateDto": null,
-    "idUserAdd": 2
-  }
-
-    {
-    "customerCode": "Random",
-    "customerNameDto": "Phạm Thành Thảo",
-    "customerBirthDto": "26/02/2016",
-    "customerSexDto": "nam",
-    "customerPhoneDto": "0975293398",
-    "customerEmailDto": "letuankiet146@gmail.com",
-    "customerAddressDto": "Binh Duong",
-    "customerVietNamIdDto": null,
-    "customerCompanyNameDto": "",
-    "customerAddressCompanyDto": "",
-    "customerPhoneCompanyDto": "",
-    "customerImageDto": null,
-    "customerUserDto": null,
-    "customerPasswordDto": "111111",
-    "customerTypeDto": null,
-    "customerLockDto": null,
-    "customerDeleteDateDto": null,
-    "idUserAdd": 2
-  }
+    "customerGroupDto": 9,
+    "customerCityDto": null,
+    "customerCountryDto": null,
+    "customerNoteDto": "khách hàng khó",
+    "idUserAdd": null
+  },
 
   ###################UPDATE CUSTOMER #############################################################################
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/update/ 
