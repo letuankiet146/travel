@@ -39,7 +39,6 @@ public class CustomerEntity {
 	@Column(name="customer_sex")
 	private Integer customerSex;
 	
-	@Size(min=10, max=11)
 	@Column(name="customer_phone")
 	private String customerPhone;
 	

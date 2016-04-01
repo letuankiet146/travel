@@ -55,5 +55,39 @@ public class FormOrderDto {
 	private Integer formOrderMoneyDto;
 	
 	private Integer idUserAdd;
+	
+	public void setData (FormOrderDto formOrderDto){
+		if (formOrderDto.getFormOrderTourCodeDto()!=null){
+			this.formOrderTourCodeDto = formOrderDto.getFormOrderTourCodeDto();
+		}
+		if (formOrderDto.getFormOrderCustomerIdDto()!=null){
+			this.formOrderCustomerIdDto = formOrderDto.getFormOrderCustomerIdDto();
+		}
+		if (formOrderDto.getFormOrderTourIdDto()!=null){
+			this.formOrderTourIdDto = formOrderDto.getFormOrderTourIdDto();
+		}
+		if (formOrderDto.getFormOrderDeleteDateDto()!=null){
+			this.formOrderDeleteDateDto = formOrderDto.getFormOrderDeleteDateDto();
+		}
+		if (formOrderDto.getFormOrderQuantityAdultsDto()!=null){
+			this.formOrderQuantityAdultsDto = formOrderDto.getFormOrderQuantityAdultsDto();
+		}
+		if (formOrderDto.getFormOrderQuantityJuvenileDto()!=null){
+			this.formOrderQuantityJuvenileDto = formOrderDto.getFormOrderQuantityJuvenileDto();
+		}
+		if (formOrderDto.getFormOrderQuantityChildDto()!=null){
+			this.formOrderQuantityChildDto = formOrderDto.getFormOrderQuantityChildDto();
+		}
+		if (formOrderDto.getFormOrderMoneyDto()!=null){
+			this.formOrderMoneyDto = formOrderDto.getFormOrderMoneyDto();
+		}
+		
+		if (formOrderDto.getFormOrderIsPayDto()!=null){
+			this.formOrderIsPayDto = formOrderDto.getFormOrderIsPayDto();
+		}
+		if (formOrderDto.getFormOrderQuantityOtherRequireDto()!=null){
+			this.formOrderQuantityOtherRequireDto = formOrderDto.getFormOrderQuantityOtherRequireDto();
+		}
+	}
 
 }

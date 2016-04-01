@@ -41,5 +41,10 @@ public class OderTourController {
 	public String update (@RequestBody FormOrderDto formOrderDto){
 		return orderService.updateOrderTour(formOrderDto);
 	}
+	
+	@RequestMapping (value = "/delete/{id}")
+	public String deleteId (@PathVariable Integer id){
+		return orderService.delete(id);
+	}
 
 }

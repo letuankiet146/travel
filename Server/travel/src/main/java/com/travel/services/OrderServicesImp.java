@@ -80,7 +80,7 @@ public class OrderServicesImp implements IOrderServices {
 		HistoryDto historyDto = new HistoryDto();
 		historyDto.setUser(formOrderDto.getIdUserAdd());
 		historyDto.setAction("Create_Order");
-		historyDto.setContent("ID="+formOrderDto.getFormOrderIdDto().toString());
+		historyDto.setContent("ID="+formOrderEntity.getFormOrderId().toString());
 		historyInterface.add(historyDto);
 		
 		return "Dat tour thanh cong: ID="+formformOrderEntityNew.getFormOrderId();
@@ -139,24 +139,35 @@ public class OrderServicesImp implements IOrderServices {
 	}
 
 	@Override
-	public String updateOrderTour(FormOrderDto formOrderDto) {
-		if (formOrderDto !=null){
-			FormOrderEntity formOrderEntity = formOrderRepo.findOne(formOrderDto.getFormOrderIdDto());
+	public String updateOrderTour(FormOrderDto formOrderDtoUpdate) {
+		if (formOrderDtoUpdate !=null){
+			FormOrderEntity formOrderEntity = formOrderRepo.findOne(formOrderDtoUpdate.getFormOrderIdDto());
+			FormOrderDto formOrderDto = mapper.map(formOrderEntity, FormOrderDto.class);
 			if (formOrderEntity !=null){
-				mapper.map(formOrderDto, formOrderEntity);
+				formOrderDto.setData(formOrderDtoUpdate);
+				formOrderEntity = mapper.map(formOrderDto, FormOrderEntity.class);
 				formOrderRepo.saveAndFlush(formOrderEntity);
 				/*
 				 * Save history
 				 */
 				HistoryDto historyDto = new HistoryDto();
-				historyDto.setUser(formOrderDto.getIdUserAdd());
+				historyDto.setUser(formOrderDtoUpdate.getIdUserAdd());
 				historyDto.setAction("Update_Order");
-				historyDto.setContent(formOrderDto.getFormOrderIdDto().toString());
+				historyDto.setContent(formOrderDtoUpdate.getFormOrderIdDto().toString());
 				historyInterface.add(historyDto);
 				return "Update thanh cong";
 			}
 			return "Khong tim thay don dat tour";
 		}
 		return "Gia tri update khong hop le";
+	}
+
+	@Override
+	public String delete(Integer id) {
+		if (formOrderRepo.exists(id)){
+			formOrderRepo.delete(id);
+			return "Xoa thanh cong";
+		}
+		return "Khong tim thay tour ";
 	}
 }
