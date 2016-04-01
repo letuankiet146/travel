@@ -5,6 +5,8 @@ package com.travel.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import lombok.Data;
 
 import org.dozer.Mapping;
@@ -29,7 +31,7 @@ public class CustomerDto {
 	private String customerBirthDto;
 	
 	@Mapping("customerSex")
-	private Integer customerSexDto;
+	private String customerSexDto;
 	
 	@Mapping("customerPhone")
 	private String customerPhoneDto;
@@ -69,6 +71,18 @@ public class CustomerDto {
 	
 	@Mapping("customerDeleteDate")
 	private Date customerDeleteDateDto;
+	
+	@Mapping("customerGroup")
+	private Integer customerGroupDto;
+	
+	@Mapping("customerCity")
+	private Integer customerCityDto;
+	
+	@Mapping("customerCountry")
+	private Integer customerCountryDto;
+	
+	@Mapping("customerNote")
+	private String customerNoteDto;
 	
 	private Integer idUserAdd;
 }

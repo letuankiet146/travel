@@ -163,9 +163,17 @@ public class OrderServicesImp implements IOrderServices {
 	}
 
 	@Override
-	public String delete(Integer id) {
+	public String delete(Integer id, Integer userId) {
 		if (formOrderRepo.exists(id)){
 			formOrderRepo.delete(id);
+			/*
+			 * Save history
+			 */
+			HistoryDto historyDto = new HistoryDto();
+			historyDto.setUser(userId);
+			historyDto.setAction("Delete_Tour");
+			historyDto.setContent("Xoa tour co id ="+id);
+			historyInterface.add(historyDto);
 			return "Xoa thanh cong";
 		}
 		return "Khong tim thay tour ";

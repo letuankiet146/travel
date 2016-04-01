@@ -22,51 +22,55 @@ public class ConfigBean  {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				super.addCorsMappings(registry);
-				/*
-				 * Customer
-				 */
-				registry.addMapping("/customer/delete/{userId}").allowedOrigins("*");
-				registry.addMapping("/customer/delete/{id}/{userId}").allowedOrigins("*");
-				registry.addMapping("/customer/add").allowedOrigins("*");
-				registry.addMapping("/customer/list").allowedOrigins("*");
-				registry.addMapping("/customer/update/").allowedOrigins("*");
-				registry.addMapping("/customer/delete/{id}/{userId}").allowedOrigins("*");
 				
-				/*
-				 * History
-				 */
-				registry.addMapping("/history/delete/{id}").allowedOrigins("*");
-				registry.addMapping("/history/add").allowedOrigins("*");
-				registry.addMapping("/history/list").allowedOrigins("*");
-				registry.addMapping("/history/update/").allowedOrigins("*");
+				registry.addMapping("/**");
 				
-				/*
-				 * Notification
-				 */
-				registry.addMapping("/notification/delete/{id}").allowedOrigins("*");
-				registry.addMapping("/notification/add").allowedOrigins("*");
-				registry.addMapping("/notification/update").allowedOrigins("*");
-				registry.addMapping("/notification/list").allowedOrigins("*");
-				
-				/*
-				 * Oder Tour
-				 */
-				
-				registry.addMapping("/orderTour").allowedOrigins("*");
-				registry.addMapping("/listOrderTourId").allowedOrigins("*");
-				registry.addMapping("/deleteOrderTour/{idUser}").allowedOrigins("*");
-				registry.addMapping("/updateOrderTour").allowedOrigins("*");
-				
-				/*
-				 * Tour
-				 */
-				registry.addMapping("/tour/listTour").allowedOrigins("*");
-				registry.addMapping("/tour/updateTour").allowedOrigins("*");
-				registry.addMapping("/tour/addTour").allowedOrigins("*");
-				registry.addMapping("/tour/deleteTour/{id}/{idUser}").allowedOrigins("*");
-				registry.addMapping("/tour/deleteTour/{idUser}").allowedOrigins("*");
-				registry.addMapping("/tour/listOrderTourId").allowedOrigins("*");
-				registry.addMapping("/tour/orderTour").allowedOrigins("*");
+//				/*
+//				 * Customer
+//				 */
+//				registry.addMapping("/customer/delete/{userId}").allowedOrigins("*");
+//				registry.addMapping("/customer/delete/{id}/{userId}").allowedOrigins("*");
+//				registry.addMapping("/customer/add").allowedOrigins("*");
+//				registry.addMapping("/customer/list").allowedOrigins("*");
+//				registry.addMapping("/customer/update/").allowedOrigins("*");
+//				registry.addMapping("/customer/delete/{id}/{userId}").allowedOrigins("*");
+//				
+//				/*
+//				 * History
+//				 */
+//				registry.addMapping("/history/delete/{id}").allowedOrigins("*");
+//				registry.addMapping("/history/add").allowedOrigins("*");
+//				registry.addMapping("/history/list").allowedOrigins("*");
+//				registry.addMapping("/history/update/").allowedOrigins("*");
+//				
+//				/*
+//				 * Notification
+//				 */
+//				registry.addMapping("/notification/delete/{id}").allowedOrigins("*");
+//				registry.addMapping("/notification/add").allowedOrigins("*");
+//				registry.addMapping("/notification/update").allowedOrigins("*");
+//				registry.addMapping("/notification/list").allowedOrigins("*");
+//				
+//				/*
+//				 * Oder Tour
+//				 */
+//				
+//				registry.addMapping("/orderTour").allowedOrigins("*");
+//				registry.addMapping("/listOrderTourId").allowedOrigins("*");
+//				registry.addMapping("/deleteOrderTour/{idUser}").allowedOrigins("*");
+//				registry.addMapping("/delete/{id}/{userId}").allowedOrigins("*");
+//				registry.addMapping("/updateOrderTour").allowedOrigins("*");
+//				
+//				/*
+//				 * Tour
+//				 */
+//				registry.addMapping("/tour/listTour").allowedOrigins("*");
+//				registry.addMapping("/tour/updateTour").allowedOrigins("*");
+//				registry.addMapping("/tour/addTour").allowedOrigins("*");
+//				registry.addMapping("/tour/deleteTour/{id}/{idUser}").allowedOrigins("*");
+//				registry.addMapping("/tour/deleteTour/{idUser}").allowedOrigins("*");
+//				registry.addMapping("/tour/listOrderTourId").allowedOrigins("*");
+//				registry.addMapping("/tour/orderTour").allowedOrigins("*");
 				
 			}
 		};

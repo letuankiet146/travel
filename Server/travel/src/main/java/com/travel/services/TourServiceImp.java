@@ -78,13 +78,14 @@ public class TourServiceImp implements ITourService {
 		 
 		try { 
 		    byte[] imageByte = new Base64().decode(tourDto.getImageByte());
-		    File imageFile = new File(".\\WEB-INF\\classes\\static\\images\\"+tourDto.getImageDto()+".jpg");
+		    File imageFile = new File("WEB-INF\\classes\\static\\images"+tourDto.getImageDto());
 		    FileOutputStream fos = new FileOutputStream(imageFile);
 		    fos.write(imageByte);
 		    fos.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			return -2;
 		}
 		finally { 
 		    if (out != null)

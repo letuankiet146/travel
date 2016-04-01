@@ -42,9 +42,9 @@ public class OderTourController {
 		return orderService.updateOrderTour(formOrderDto);
 	}
 	
-	@RequestMapping (value = "/delete/{id}")
-	public String deleteId (@PathVariable Integer id){
-		return orderService.delete(id);
+	@RequestMapping (value = "/delete/{id}/{userId}")
+	public String deleteId (@PathVariable Integer id, @PathVariable Integer userId){
+		return orderService.delete(id,userId);
 	}
 
 }

@@ -37,7 +37,7 @@ public class CustomerEntity {
 	private Date customerBirth;
 	
 	@Column(name="customer_sex")
-	private Integer customerSex;
+	private String customerSex;
 	
 	@Column(name="customer_phone")
 	private String customerPhone;
@@ -77,6 +77,19 @@ public class CustomerEntity {
 
 	@Column(name = "customer_lock")
 	private Integer customerLock;
+	
+	@Column(name="customer_group")
+	private Integer customerGroup;
+	
+	@Column(name="customer_city")
+	private Integer customerCity;
+	
+	@Column(name="customer_country")
+	private Integer customerCountry;
+	
+	@Column(name="customer_note")
+	private String customerNote;
+	
 	
 //	public void setData (CustomerDto customerDto){
 //		this.customerId = customerDto.getCustomerIdDto();
