@@ -123,13 +123,16 @@ function add_customer(){
     var customerAddressCompanyDto =$("#customerAddressCompanyDto").val();
     var customerPhoneCompanyDto =$("#customerPhoneCompanyDto").val();
     var customerPasswordDto =$("#customerPasswordDto").val();
+    var customerBirthDto =$("#customerBirthDto").val();
+    var customerSexDto =$("#customerSexDto").val();
+    var customerUserDto =$("#customerUserDto").val();
     var idUserAdd =$("#idUserAdd").val();
 
 	var mydata = {
 	    "customerCode": customerCode,
 	    "customerNameDto": customerNameDto,
-	    "customerBirthDto": "26/02/2016",
-	    "customerSexDto": null,
+	    "customerBirthDto": customerBirthDto,
+	    "customerSexDto": customerSexDto,
 	    "customerPhoneDto": customerPhoneDto,
 	    "customerEmailDto": customerEmailDto,
 	    "customerAddressDto": customerAddressDto,

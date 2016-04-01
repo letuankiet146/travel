@@ -161,15 +161,16 @@
 										'<td class="text-center">' + form_order_date + '</td>'+
 										'<td class="text-center">' + val.form_order_money + '</td>'+
 										'<td class="text-center">'+
-											'<select>'+
-												'<option value="' + val.form_order_isPay + '">' + val.status_name + '</option>'+
+											'<select class="status" id="formOrderIsPayDto">'+
+												'<option value="' + val.form_order_is_pay + '">' + val.status_name + '</option>'+
+												'<option value="0">---------------</option>'+
 												'<option value="5">Đã thanh toán</option>'+
 												'<option value="6">Chưa thanh toán</option>'+
 											'</select>'+
 										'</td>'+
 										'<td class="text-center"><a class="btn-view" href="#" title="Xem chi tiết"><i class="fa fa-info-circle"></i></a></td>'+
-										'<td class="text-center"><a href="" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-										'<td><input type="checkbox" name="" value=""></td>'+
+										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+										'<td><input class="chk" type="checkbox" name="chk[]" value="' + val.form_order_id + '"></td>'+
 									'</tr>';
 						rows.append(str);
 					});
@@ -215,18 +216,54 @@
 			
 			//  ẩn item được xóa
 			$(parent).fadeOut({
-				durartion: 3000,
+				durartion: 300,
 				done: function(){
 					$.ajax({
-						url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/' + itemID + '/' + idUserAdd,
+						url: 'http://localhost:8080/spr-data/delete/' + itemID + '/' + idUserAdd,
 						type: 'GET',
 						dataType: 'json'
 					});
 					if(itemID == lastID && $(rows).children().length == 1){
 						options.currentPage = options.currentPage - 1;
 					}
-					init();
 					$(this).remove();
+				}
+			});
+
+			$.ajax({
+				url: 'controller/order-tour.php?type=one&id=' + lastID,
+				type: 'GET',
+				dataType: 'json'
+			})
+			.done(function(data) {
+				if(data != false){
+					var dayOrder= data.form_order_date; 
+					var form_order_date = $.datepicker.formatDate( "dd-mm-yy", new Date(dayOrder) );
+					var str = 	'<tr item-id="' + data.form_order_id + '">'+
+										'<td>' + data.form_order_code + '</td>'+
+										'<td>'+
+											'<div>Họ tên: <strong>' + data.customer_name + '</strong><span class="red"> (' + data.group_users_name + ')</span></div>'+
+											'<div>Email : ' + data.customer_email + '</div>'+
+											'<div>Điện thoại : ' + data.customer_phone + '</div>'+
+											'<div>Địa chỉ : ' + data.form_order_id + '</div>'+
+										'</td>'+
+										'<td class="text-center">' + form_order_date + '</td>'+
+										'<td class="text-center">' + data.form_order_money + '</td>'+
+										'<td class="text-center">'+
+											'<select class="status" id="formOrderIsPayDto">'+
+												'<option value="' + data.form_order_is_pay + '">' + data.status_name + '</option>'+
+												'<option value="0">---------------</option>'+
+												'<option value="5">Đã thanh toán</option>'+
+												'<option value="6">Chưa thanh toán</option>'+
+											'</select>'+
+										'</td>'+
+										'<td class="text-center"><a class="btn-view" href="#" title="Xem chi tiết"><i class="fa fa-info-circle"></i></a></td>'+
+										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+										'<td><input class="chk" type="checkbox" name="chk[]" value="' + data.form_order_id + '"></td>'+
+									'</tr>';
+					str = $(str).hide().appendTo(rows);
+					$(str).fadeIn(150);
+					init();
 				}
 			});
 		}
@@ -237,13 +274,16 @@
 		function update_status(obj){
 			var status =$(obj).closest('tr').find('.status').val();
 			var itemID = $(obj).closest('tr').attr("item-id");
+			var idUserAdd =$("#idUserAdd").val();
+			var formOrderIsPayDto =$("#formOrderIsPayDto").val();
 			var mystatus = {
-				idDto: itemID,
-			   	activeDto: status
+				"formOrderIdDto": itemID,
+				"formOrderIsPayDto": formOrderIsPayDto,
+				"idUserAdd": idUserAdd
 			};
 			console.log(mystatus);
 			$.ajax({
-				url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour',
+				url: 'http://localhost:8080/spr-data/updateOrderTour',
 				type: "POST",
 				dataType: "json",
 				contentType: "application/json", 
@@ -262,34 +302,10 @@
 						setTimeout(function(){
 							$(obj).closest('tr').find('#load_status').css("display","none");
 						}, 2000);
+						init();
 					}
 				}
 			});
-		//});
-		}
-
-		//=================================================
-		//Hàm load don hang chi tiet
-		//=================================================
-		function update_order(obj){
-			var itemID = $(obj).closest('tr').attr('item-id');
-			console.log(itemID);
-			$.ajax({
-				url: 'controller/order-tour/order-tour.php?type=updateOrder',
-				type: 'POST',
-				dataType: 'json',
-				data: {itemID: itemID},
-			})
-			.done(function(data) {
-
-			})
-			.fail(function() {
-				console.log("error");
-			})
-			.always(function() {
-				console.log("complete");
-			});
-			
 		}
 	}
 })(jQuery);

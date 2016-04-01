@@ -240,10 +240,26 @@
 	padding: 4px 0px;
 	text-indent: 5px;
 }
-.row .ui-datepicker-trigger{
+.row .row_left{
+	float: left;
+	position:relative;
+}
+.row_left .ui-datepicker-trigger{
 	position:absolute;
 	right: 8px;
     top: 5px;
+}
+.row .row_left #customerBirthDto{
+	width:120px;
+}
+.row .row_right{
+	float:right;
+}
+.row .row_right label{
+	width:90px;
+}
+.row .row_right #customerSexDto{
+	width:100px;
 }
 .red{
 	color:#f00;

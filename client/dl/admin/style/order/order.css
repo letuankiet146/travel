@@ -259,6 +259,7 @@
 	cursor:pointer;
 	font-family: "OpenSansBold";
 	height:22px;
+	margin-left:160px;
 }
 .btn-reset{
 	background:#d0d1d4 url(../../images/btn_submit.png);

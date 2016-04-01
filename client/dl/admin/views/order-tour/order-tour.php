@@ -33,7 +33,7 @@
 				<h3 class="title-inner-l">Danh sách đơn đặt tour</h3>
 				<div class="title-inner-r">
 					<ul>
-						<li id="del-tour">Xóa đớn hàng</li>
+						<li id="del-tour" onclick="del_array()">Xóa đớn hàng</li>
 					</ul>
 				</div>
 				<div class="search-group">

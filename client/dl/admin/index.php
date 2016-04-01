@@ -36,6 +36,7 @@ if(isset($_SESSION['username']))
 	<!-- ORDER_TOUR -->
 	<link rel="stylesheet" type="text/css" href="style/order/order.css" />
 	<script type="text/javascript" src="js/order-tour/paging.js"></script>
+	<script type="text/javascript" src="js/order-tour/edit-order.js"></script>
 <?php } ?>
 <?php if($paged == "list-tour"){ ?>
 	<!-- LIST_TOUR -->

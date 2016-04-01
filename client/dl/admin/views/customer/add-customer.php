@@ -1,3 +1,13 @@
+	<script type="text/javascript">
+        $(function() {
+            $( "#customerBirthDto" ).datepicker({
+              showOn: "button",
+              buttonImage: "js/datepicker/images/icon-picker.png",
+              buttonImageOnly: true,
+              buttonText: "Select date"
+            });
+        });
+    </script>
 	<?php
     	include ('../../connectDB.php');
     ?>
@@ -12,10 +22,16 @@
 								$query=mysql_query($sql);
 								$row=mysql_fetch_array($query);
 								$id=$row['customer_id']+1;
+								// Random mật khẩu
+								$keys = array_merge(range(0,9), range('a', 'z'));
+						    	for($i=0; $i < 8; $i++) {
+						        	$key .= $keys[mt_rand(0, count($keys) - 1)];
+						   		}
 							?>
 							<label for="">Mã khách hàng<span class="red"> ( * )</span></label>
 							<label><input id="customerCode" type="text" name="customerCode" value="MAKH<?php echo $id; ?>" disabled /></label>
 						</div>
+						<input id="customerPasswordDto" type="hidden" name="customerPasswordDto" value="<?php echo $key; ?>" />
 						<div class="row">
 							<label for="">Tên khách hàng <span class="red"> ( * )</span></label>
 							<label><input id="customerNameDto" type="text" name="customerNameDto" value="" placeholder="Nhập tên khách hàng" /></label>
@@ -33,17 +49,36 @@
 							<label><input id="customerAddressDto" type="text" name="customerAddressDto" value="" placeholder="Nhập địa chỉ" /></label>
 						</div>
 						<div class="row">
-						<?php
-							$keys = array_merge(range(0,9), range('a', 'z'));
-						    for($i=0; $i < 8; $i++) {
-						        $key .= $keys[mt_rand(0, count($keys) - 1)];
-						    }
-						?>
-							<label for="">Mật khẩu <span class="red"> ( * )</span></label>
-							<label><input id="customerPasswordDto" type="text" name="customerPasswordDto" value="<?php echo $key; ?>" disabled /></label>
+							<div class="row_left">
+								<label for="">Ngày sinh <span class="red"> ( * )</span></label>
+								<label><input id="customerBirthDto" type="text" name="customerBirthDto" value="" placeholder="dd/mm/yyyy" /></label>
+								<div class="error"></div>
+							</div>
+							<div class="row_right">
+								<label for="">Giới tính <span class="red"> ( * )</span></label>
+								<select id="customerSexDto" name="customerSexDto">
+									<option value="">Giới tính</option>
+									<option value="Nam">Nam</option>
+									<option value="Nu">Nữ</option>
+								</select>
+								<div class="error"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="row">
+							<label for="">Nhóm KM: <span class="red"> ( * )</span></label>
+							<select name="">
+								<option value="7">Khách vãng lai</option>
+								<option value="8">Khách hàng tiềm năng</option>
+								<option value="9">Khách hàng thân thiết</option>
+								<option value="10">Khách VIP</option>
+							</select>
 						</div>
 					</div>
 					<div class="info-r">
+						<div class="row">
+							<label for="">Thông tin liên quan</label>
+						</div>
 						<div class="row">
 							<label for="">Công ty</label>
 							<label><input id="customerCompanyNameDto" type="text" name="customerCompanyNameDto" value="" placeholder="Nhập tên công ty" /></label>
@@ -64,15 +99,7 @@
 							<label for="">Mã Quốc gia</label>
 							<label><input id="giaTourDto" type="text" name="" value="" placeholder="Nhập mã quốc gia" /></label>
 						</div>
-						<div class="row">
-							<label for="">Nhóm khách hàng: </label>
-							<select name="">
-								<option value="7">Khách vãng lai</option>
-								<option value="8">Khách hàng tiềm năng</option>
-								<option value="9">Khách hàng thân thiết</option>
-								<option value="10">Khách VIP</option>
-							</select>
-						</div>
+						
 					</div>
 					<div class="clear"></div>
 				</div>

@@ -9,13 +9,8 @@
 	$fdayStart = date("d/m/Y", strtotime($dayStart));
 	$dayEnd = $row_order['tour_day_end'];
 	$fdayEnd = date("d/m/Y", strtotime($dayEnd));
-	// tính tổng tiền hóa đớn 
-	$nguoiLon = $row_order['form_order_quantity_adults'];
-	$D12t = $row_order['form_order_quantity_juvenile'];
-	$D2t = $row_order['form_order_quantity_child'];
-	$money = $row_order['form_order_money'];
-	$total = $nguoiLon*$money + $D12t*($money/2) + $D2t*($money/4);
 ?>
+<input type="hidden" id="formOrderIdDto" name="formOrderIdDto" value="<?php echo $row_order['form_order_id']; ?>" />
 <div class="info">
 	<div class="info-customer">
 		<div class="title-info">Thông tin người dùng:</div>
@@ -64,7 +59,7 @@
 					<td class="text-center"><?php echo $row_order['form_order_quantity_adults'] ?></td>
 					<td class="text-center"><?php echo $row_order['form_order_quantity_juvenile'] ?></td>
 					<td class="text-center"><?php echo $row_order['form_order_quantity_child'] ?></td>
-					<td><?php echo number_format($total,0,"","."); ?></td>
+					<td><?php echo number_format($row_order['form_order_money'],0,"","."); ?></td>
 				</tr>
 			</tbody>
 		</table>
@@ -76,18 +71,19 @@
 		<ul>
 		    <li>
 		    	<label>Cập nhật trạng thái</label>
-		    	<select name="" >
-		    		<option value="<?php echo $row_order['form_order_isPay']; ?>"><?php echo $row_order['status_name']; ?></option>
+		    	<select id="formOrderIsPayDto" name="formOrderIsPayDto" >
+		    		<option value="<?php echo $row_order['form_order_is_pay']; ?>"><?php echo $row_order['status_name']; ?></option>
+		    		<option value="0">---------------</option>
 		    		<option value="2">Đã thanh toán</option>
 		    		<option value="3">Chưa thanh toán</option>
 		    	</select>
 		    </li>
 		    <li>
 		    	<label>Ghi chú</label>
-		    	<textarea name="" rows="7"><?php echo $row_order['form_order_otherRequire']; ?></textarea>
+		    	<textarea id="formOrderQuantityOtherRequireDto" name="formOrderQuantityOtherRequireDto" rows="7"><?php echo $row_order['form_order_other_require']; ?></textarea>
 		    </li>
 		    <li>
-		    	<input class="btn-update" type="submit" name="" value="Cập nhật" />
+		    	<a class="btn-add" href="#" onclick="click_edit()" >Cập nhật</a>
 		    </li>
 		</ul>
 	</form>

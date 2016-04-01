@@ -42,46 +42,26 @@
 	//=================================================
 	if($type == "one"){
 		$lastID = (int)$_GET["id"];
-		$sql = "SELECT * FROM tour where tour_id < " . $lastID . " AND tour_delete_date is null ORDER BY tour_id DESC LIMIT 1";
+		$sql = "SELECT * FROM form_order f join customer c on f.form_order_customer_id=c.customer_id join tour t on f.form_order_tour_id=t.tour_id join status st on f.form_order_is_pay=st.status_id join group_users g on c.customer_group=g.group_users_id where f.form_order_id < " . $lastID . " ORDER BY form_order_id DESC LIMIT 1";
 		$result = mysql_query($sql,$con);
-		$tour = array();
-		$tour = mysql_fetch_assoc($result);
-		echo json_encode($tour);
-	}
-
-	//=================================================
-	// Xóa dữ liệu
-	//=================================================
-	if($type == "delete"){
-		$tour_id = (int)$_GET["id"];
-		$sql = "DELETE FROM tour where tour_id = " . $tour_id;
-		$result = mysql_query($sql,$con);
+		$order = array();
+		$order = mysql_fetch_assoc($result);
+		echo json_encode($order);
 	}
 
 	//=================================================
 	// Xóa dữ liệu theo mảng (ARRAY)
 	//=================================================
 	if($type == "chk"){
-		$chk=$_POST['chk'];//dem so phan tu
+		$chk=$_POST['chk'];
 		$array = explode(",", $chk);
 		$count = count($array);
+		$today = Date("Y-m-d");
 	    foreach($array as $vl)
 	    {
-	        $sql="DELETE FROM tour where tour_id=$vl";
-	        mysql_query($sql);
+	        $sql = "UPDATE form_order SET form_order_delete_date = '$today' where form_order_id=$vl";
+	        mysql_query($sql,$con);
 	    }
-	}
-
-	//=================================================
-	// lấy 1 phần tử theo form_order_id
-	//=================================================
-	if($type == "updateOrder"){
-		$itemID = (int)$_POST["itemID"];
-		$sql = "SELECT * FROM form_order f join customer c on f.form_order_customer_id=c.customer_id join tour t on f.form_order_tour_id=t.tour_id join status st on f.form_order_isPay=st.status_id WHERE f.form_order_id = " . $itemID;
-		$result = mysql_query($sql,$con);
-		$orders = array();
-		$orders = mysql_fetch_assoc($result);
-		echo json_encode($orders);
 	}
 
 ?>

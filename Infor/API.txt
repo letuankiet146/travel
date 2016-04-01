@@ -8,14 +8,14 @@ LINK: [GET]  http://project-iuhhappytravel.rhcloud.com/spr-data/listOrderTourId
 #########################################################################################################################
 
 ######## PHƯƠNG THỨC XÓA NHIỀU TOUR ##########
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/deleteOrderTour
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/deleteOrderTour (Thảo làm)
 BODY [24,25,26]
 #########################################################################################################################
 
 
 
 ####################### Phương thức UPDATE ORDER TOUR:###################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/updateOrderTour(Lỗi giá trị NULL)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/updateOrderTour(XONG)
 BODY:
   {
     "formOrderIdDto": 72,
@@ -31,12 +31,6 @@ BODY:
     "formOrderMoneyDto": 10000000,
     "idUserAdd": 2
   }
-
-
-
-
-
-
 
 
 
@@ -140,16 +134,10 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/741/1 (
 ##################################################################################################################
 
 ####################PHƯƠNG THỨC XÓA NHIỀU TOUR DÀNH CHO TRANG ADMIN##################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/1 (KHông cung host)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/1 (THẢO LÀM)
 1 laf id cuả user đang thực hiện xóa.
 Body là mảng gồm nhiều số, các số là id của tour.
 BODY: [9,746,747] 
-
-
-
-
-
-
 
 
 
@@ -175,7 +163,7 @@ số 2 là id của history
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/2 (XONG)
 
 ###################XÓA NHIỀU HISTORY #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/ (không cùng host)
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/history/delete/ (THẢO LÀM)
 BODY: [85,86,87]
 
 
@@ -207,7 +195,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/delete/2
 
 
 ###################LIST ALL CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/list 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/list (XONG)
 
 ###################ADD CUSTOMER #############################################################################
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/ 
@@ -282,7 +270,7 @@ BODY Ngoại trừ id thì tất cả có thể null nếu như không muốn đ
 
 
  ###################DELETE MẢNG CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/2 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/2 (THẢO LÀM)
 Khi xóa thì cột delete date sẽ điền vào ngày hiện tại. Chứ record trong bảng không có mất nha m.
 BODY [34,37]
 

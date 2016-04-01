@@ -209,7 +209,6 @@
 				}
 			})
 			.done(function(data) {
-				// console.log(data);
 				if(data.length>0){
 					rowsContact.empty();
 					$.each(data, function(i, val) {
