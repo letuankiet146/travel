@@ -18,7 +18,7 @@
 			<h3 class="title-inner-l">Thông tin chi tiết</h3>
 			<div class="title-inner-r">
 				<ul>
-					<li class="btn-exit"><a href="index.php?page=customer">Thoát</a></li>
+					<li class="btn-exit"><a href="index.php?page=list-customer">Thoát</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>

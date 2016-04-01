@@ -123,29 +123,31 @@ function add_customer(){
     var customerAddressCompanyDto =$("#customerAddressCompanyDto").val();
     var customerPhoneCompanyDto =$("#customerPhoneCompanyDto").val();
     var customerPasswordDto =$("#customerPasswordDto").val();
-    var activeDto =$("#activeDto").val();
+    var idUserAdd =$("#idUserAdd").val();
+
 	var mydata = {
-		customerCode: customerCode,
-	    customerNameDto: customerNameDto,
-	    customerBirthDto: "26/02/2016",
-	    customerSexDto: null,
-	    customerPhoneDto: customerPhoneDto,
-	    customerEmailDto: customerEmailDto,
-	    customerAddressDto: customerAddressDto,
-	    customerVietNamIdDto: null,
-	    customerCompanyNameDto: customerCompanyNameDto,
-	    customerAddressCompanyDto: customerAddressCompanyDto,
-	    customerPhoneCompanyDto: customerPhoneCompanyDto,
-	    customerImageDto: null,
-	    customerUserDto: null,
-	    customerPasswordDto: customerPasswordDto,
-	    customerTypeDto: null,
-	    customerLockDto: null,
-	    customerDeleteDateDto: null
+	    "customerCode": customerCode,
+	    "customerNameDto": customerNameDto,
+	    "customerBirthDto": "26/02/2016",
+	    "customerSexDto": null,
+	    "customerPhoneDto": customerPhoneDto,
+	    "customerEmailDto": customerEmailDto,
+	    "customerAddressDto": customerAddressDto,
+	    "customerVietNamIdDto": null,
+	    "customerCompanyNameDto": customerCompanyNameDto,
+	    "customerAddressCompanyDto": customerAddressCompanyDto,
+	    "customerPhoneCompanyDto": customerPhoneCompanyDto,
+	    "customerImageDto": null,
+	    "customerUserDto": null,
+	    "customerPasswordDto": customerPasswordDto,
+	    "customerTypeDto": null,
+	    "customerLockDto": null,
+	    "customerDeleteDateDto": null,
+	    "idUserAdd": idUserAdd
 	};
 	console.log(mydata);
 	$.ajax({
-		url : "http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/",
+		url : "http://localhost:8080/spr-data/customer/add/",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 

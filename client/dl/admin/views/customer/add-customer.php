@@ -1,5 +1,5 @@
 	<?php
-    	include ('../../config.php');
+    	include ('../../connectDB.php');
     ?>
 		<form action="#" method="post" accept-charset="utf-8" id="formAddEdit">
 			<div class="info-title"><span>Những mục có dấu (*) là bắt buộc phải nhập</span></div>
