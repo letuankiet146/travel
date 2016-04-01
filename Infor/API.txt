@@ -15,7 +15,7 @@ BODY [24,25,26]
 
 
 ####################### Phương thức UPDATE ORDER TOUR:###################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/updateOrderTour
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/updateOrderTour(Lỗi giá trị NULL)
 BODY:
   {
     "formOrderIdDto": 72,
@@ -234,6 +234,26 @@ tin không có.
     "idUserAdd": 2
   }
 
+    {
+    "customerCode": "Random",
+    "customerNameDto": "Phạm Thành Thảo",
+    "customerBirthDto": "26/02/2016",
+    "customerSexDto": "nam",
+    "customerPhoneDto": "0975293398",
+    "customerEmailDto": "letuankiet146@gmail.com",
+    "customerAddressDto": "Binh Duong",
+    "customerVietNamIdDto": null,
+    "customerCompanyNameDto": "",
+    "customerAddressCompanyDto": "",
+    "customerPhoneCompanyDto": "",
+    "customerImageDto": null,
+    "customerUserDto": null,
+    "customerPasswordDto": "111111",
+    "customerTypeDto": null,
+    "customerLockDto": null,
+    "customerDeleteDateDto": null,
+    "idUserAdd": 2
+  }
 
   ###################UPDATE CUSTOMER #############################################################################
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/update/ 
@@ -276,4 +296,5 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34/2
 
 1. sửa hình ảnh.
 2. email random password cho khách hàng
+3. làm thêm delete từng OrderTour 
 
