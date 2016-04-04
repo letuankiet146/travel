@@ -6,6 +6,8 @@ import javax.persistence.Column;
 
 import org.dozer.Mapping;
 
+import com.travel.model.GroupUserEntity;
+
 import lombok.Data;
 
 @Data
@@ -22,6 +24,9 @@ public class StaffDto {
 	
 	@Mapping("staffLevel")
 	private Integer staffLevel;
+	
+	@Mapping ("staffGroupUser")
+	private GroupUserEntity groupUserEntity;
 	
 	@Mapping("staffUser")
 	private String staffUser;
