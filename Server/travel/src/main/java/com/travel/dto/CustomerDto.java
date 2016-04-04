@@ -85,4 +85,83 @@ public class CustomerDto {
 	private String customerNoteDto;
 	
 	private Integer idUserAdd;
+	
+	public void setUpdateData (CustomerDto customerDto){
+		if (customerDto.getCustomerNameDto() !=null){
+			this.customerNameDto = customerDto.getCustomerNameDto();
+		}
+		
+		if (customerDto.getCustomerBirthDto() !=null){
+			this.customerBirthDto = customerDto.getCustomerBirthDto();
+		}
+		
+		if (customerDto.getCustomerSexDto() !=null){
+			this.customerSexDto = customerDto.getCustomerSexDto();
+		}
+		
+		if (customerDto.getCustomerPhoneDto() !=null){
+			this.customerPhoneDto = customerDto.getCustomerPhoneDto();
+		}
+		
+		if (customerDto.getCustomerEmailDto() !=null){
+			this.customerEmailDto = customerDto.getCustomerEmailDto();
+		}
+		
+		if (customerDto.getCustomerAddressDto() !=null){
+			this.customerAddressDto = customerDto.getCustomerAddressDto();
+		}
+		
+		if (customerDto.getCustomerVietNamIdDto() !=null){
+			this.customerVietNamIdDto = customerDto.getCustomerVietNamIdDto();
+		}
+		
+		if (customerDto.getCustomerCompanyNameDto() !=null){
+			this.customerCompanyNameDto = customerDto.getCustomerCompanyNameDto();
+		}
+		
+		if (customerDto.getCustomerAddressCompanyDto() !=null){
+			this.customerAddressCompanyDto = customerDto.getCustomerAddressCompanyDto();
+		}
+		
+		if (customerDto.getCustomerPhoneCompanyDto() !=null){
+			this.customerPhoneCompanyDto = customerDto.getCustomerPhoneCompanyDto();
+		}
+		
+		if (customerDto.getCustomerImageDto() !=null){
+			this.customerImageDto = customerDto.getCustomerImageDto();
+		}
+		
+		if (customerDto.getCustomerUserDto() !=null){
+			this.customerUserDto = customerDto.getCustomerUserDto();
+		}
+		
+		if (customerDto.getCustomerPasswordDto() !=null){
+			this.customerPasswordDto = customerDto.getCustomerPasswordDto();
+		}
+		
+		if (customerDto.getCustomerTypeDto() !=null){
+			this.customerTypeDto = customerDto.getCustomerTypeDto();
+		}
+		
+		if (customerDto.getCustomerLockDto() !=null){
+			this.customerLockDto = customerDto.getCustomerLockDto();
+		}
+		
+		if (customerDto.getCustomerGroupDto() !=null){
+			this.customerGroupDto = customerDto.getCustomerGroupDto();
+		}
+		
+		if (customerDto.getCustomerCityDto() !=null){
+			this.customerCityDto = customerDto.getCustomerCityDto();
+		}
+		
+		if (customerDto.getCustomerNoteDto() !=null){
+			this.customerNoteDto = customerDto.getCustomerNoteDto();
+		}
+		
+		if (customerDto.getIdUserAdd() !=null){
+			this.idUserAdd = customerDto.getIdUserAdd();
+		}
+		
+	}
 }
