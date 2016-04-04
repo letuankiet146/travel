@@ -99,6 +99,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/addTour (XONG)
     "tourGuiderIdDto": 1,
     "tourFromPlaceIdDto": 1,
     "tourDeleteDateDto": null,
+    "tourImageDataDto": null,
     "idUserAdd": 2
 }
 ##################################################################################################################
@@ -123,6 +124,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour (XONG)
     "tourFromPlaceIdDto": 1,
     "tourGuiderIdDto": 1,
     "tourDeleteDateDto": null,
+    "tourImageDataDto": null,
     "idUserAdd": 2
 }
 ##################################################################################################################

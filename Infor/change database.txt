@@ -3,3 +3,7 @@ CHANGE COLUMN `customer_code` `customer_code` VARCHAR(45) CHARACTER SET 'utf8' N
 CHANGE COLUMN `customer_sex` `customer_sex` VARCHAR(45) NULL DEFAULT NULL ,
 CHANGE COLUMN `customer_company_name` `customer_company_name` VARCHAR(200) CHARACTER SET 'utf8' NULL DEFAULT NULL ,
 CHANGE COLUMN `customer_note` `customer_note` VARCHAR(500) CHARACTER SET 'utf8' NULL DEFAULT NULL ;
+
+_______________________________ngay 4/4/2016 7:21 PM__________________________-
+ALTER TABLE `sql61036294`.`tour` 
+ADD COLUMN `tour_image_data` LONGTEXT NULL AFTER `tour_delete_date`;
