@@ -67,7 +67,7 @@
 						</div>
 						<div class="row">
 							<label for="">Nhóm KM: <span class="red"> ( * )</span></label>
-							<select name="">
+							<select id="customerGroupDto" name="customerGroupDto">
 								<option value="7">Khách vãng lai</option>
 								<option value="8">Khách hàng tiềm năng</option>
 								<option value="9">Khách hàng thân thiết</option>
@@ -93,11 +93,11 @@
 						</div>
 						<div class="row">
 							<label for="">Thành phố</label>
-							<label><input id="ngayKTDto" type="text" name="" value="" placeholder="Nhập Tỉnh / Thành phố" /></label>
+							<label><input id="customerCityDto" type="text" name="customerCityDto" value="" placeholder="Nhập Tỉnh / Thành phố" /></label>
 						</div>
 						<div class="row">
 							<label for="">Mã Quốc gia</label>
-							<label><input id="giaTourDto" type="text" name="" value="" placeholder="Nhập mã quốc gia" /></label>
+							<label><input id="customerCountryDto" type="text" name="customerCountryDto" value="" placeholder="Nhập mã quốc gia" /></label>
 						</div>
 						
 					</div>
@@ -105,7 +105,7 @@
 				</div>
 				<div class="details">
 					<label>Ghi chú</label>
-					<textarea name="infoDto" id="infoDto" rows="4" style="width:100%" placeholder="Nhập Ghi chú về khách hàng" ></textarea>
+					<textarea name="customerNoteDto" id="customerNoteDto" rows="4" style="width:100%" placeholder="Nhập Ghi chú về khách hàng" ></textarea>
 		            <div class="clear"></div>
 				</div>
 			</div>

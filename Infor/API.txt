@@ -230,14 +230,14 @@ tin không có.
   },
 
   ###################UPDATE CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/update/ 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/update/  (XONG)
 BODY Ngoại trừ id thì tất cả có thể null nếu như không muốn đưa vào.
 {
-    "customerIdDto": 21,
-    "customerCode": "Random",
-    "customerNameDto": "Phạm Thành Thảo",
+    "customerIdDto": 66,
+    "customerCode": "MAKH21",
+    "customerNameDto": "Ph?m Thành Th?o",
     "customerBirthDto": "26/02/2016",
-    "customerSexDto": 0,
+    "customerSexDto": "0",
     "customerPhoneDto": "0975293398",
     "customerEmailDto": "letuankiet146@gmail.com",
     "customerAddressDto": "Binh Duong",
@@ -251,7 +251,11 @@ BODY Ngoại trừ id thì tất cả có thể null nếu như không muốn đ
     "customerTypeDto": null,
     "customerLockDto": null,
     "customerDeleteDateDto": null,
-    "idUserAdd": 2
+    "customerGroupDto": 9,
+    "customerCityDto": null,
+    "customerCountryDto": null,
+    "customerNoteDto": "khách hàng khó",
+    "idUserAdd": null
   }
 
 
@@ -262,7 +266,7 @@ BODY [34,37]
 
 
  ###################DELETE MẢNG CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34/2
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34/2 (XONG)
 34 là id của customer 
 
 

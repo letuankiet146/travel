@@ -6,7 +6,7 @@
 	</div>
 	<div class="add-edit" id="creatTour">
 		<div class="title-inner">
-			<h3 class="title-inner-l">Thêm khách hàng</h3>
+			<h3 class="title-inner-l" id="title">Thêm khách hàng</h3>
 			<div class="title-inner-r">
 				<ul>
 					<li class="btn-exit">Thoát</li>
@@ -39,7 +39,7 @@
 				<div class="title-inner-r">
 					<ul>
 						<li id="btn-add">Thêm khách hàng</li>
-						<li id="del-tour">Xóa khách hàng</li>
+						<li id="del-tour" onclick="del_array()">Xóa khách hàng</li>
 					</ul>
 				</div>
 				<div class="clear"></div>

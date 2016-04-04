@@ -46,7 +46,7 @@
 		function init(){
 			// lay tong so trang
 			$.ajax({
-				url: 'controller/customer.php?type=count&items=' + options.items,
+				url: 'controller/list-customer.php?type=count&items=' + options.items,
 				type: 'GET',
 				dataType: 'json'
 			})
@@ -141,7 +141,7 @@
 		//=================================================
 		function loadData(page){
 			$.ajax({
-				url: 'controller/customer.php?type=list',
+				url: 'controller/list-customer.php?type=list',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -172,9 +172,9 @@
 										'</select>'+
 										'<div id="load_status"></div>'+
 									'</td>'+
-									'<td class="text-center"><a id="update" href="index.php?page=edit-customer&Id=' + val.customer_id + '" title="Xem &#38; Sửa"><i class="fa fa-info-circle"></i></a></td>'+
+									'<td class="text-center"><a id="update" href="#" title="Xem &#38; Sửa"><i class="fa fa-info-circle"></i></a></td>'+
 									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-									'<td><input type="checkbox" name="" value=""></td>'+
+									'<td><input type="checkbox" name="chk[]" class="chk" value="' + val.customer_id + '"></td>'+
 								'</tr>';
 					rows.append(str);
 					});
@@ -190,6 +190,21 @@
 					$(aStatus).on("change", function(e){
 						update_status(this);
 					});
+
+					aRows = options.rows + " tr td a#update";
+					$(aRows).on("click", function(e){
+						$(this).closest('.right').find('.add-edit').fadeIn("700");
+						var itemID = $(this).closest('tr').attr("item-id");
+						$.ajax({
+							url: 'views/customer/edit-customer.php?customer_id=' + itemID,
+							type: 'POST',
+							dataType: 'text',
+						})
+						.done(function(data) {
+							$("#title").html("Thông tin chi tiết");
+							$("#loadingAjax").html(data);
+						});
+					});
 				}
 			});	
 		}
@@ -199,7 +214,7 @@
 		//=================================================
 		function loadDataContact(page){
 			$.ajax({
-				url: 'controller/customer.php?type=list1',
+				url: 'controller/list-customer.php?type=list1',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -257,55 +272,65 @@
 		function deleteItem(obj){
 			var parent = $(obj).closest('tr');
 			var itemID = $(parent).attr("item-id");
-			var lastID = $(rows).children(':last').attr("item-id");;
+			var lastID = $(rows).children(':last').attr("item-id");
+			var idUserAdd =$("#idUserAdd").val();
 			
 			//  ẩn item được xóa
 			$(parent).fadeOut({
 				durartion: 300,
 				done: function(){
 					$.ajax({
-						url: 'controller/customer.php?type=delete&id=' + itemID,
+						url: 'http://localhost:8080/spr-data/customer/delete/' + itemID + '/' + idUserAdd,
 						type: 'GET',
-						dataType: 'json'
+						dataType: 'json',
+						statusCode: {
+							404:function(){
+								alert("khong tim thay trang.");
+							},
+							200:function(){
+								$.ajax({
+									url: 'controller/list-customer.php?type=one&id=' + lastID,
+									type: 'GET',
+									dataType: 'json'
+								})
+								.done(function(data) {
+									if(data != false){
+										var str = 	'<tr item-id="' + data.customer_id + '">'+
+														'<td>' + data.customer_code + '</td>'+
+														'<td>' + data.customer_name + '</td>'+
+														'<td>' + data.customer_email + '</td>'+
+														'<td class="text-center" id="from">' + data.customer_phone + '</td>'+
+														'<td class="text-center" id="to">3</td>'+
+														'<td class="text-center">'+
+															'<select class="status">'+
+																'<option value="' + data.customer_group +'">' + data.group_users_name +'</option>'+
+																'<option value="0">-----------------</option>'+
+																'<option value="7">Khách vãng lai</option>'+
+																'<option value="8">Khách hàng tiềm năng</option>'+
+																'<option value="9">Khách hàng thân thiết</option>'+
+																'<option value="10">Khách VIP</option>'+
+															'</select>'+
+															'<div id="load_status"></div>'+
+														'</td>'+
+														'<td class="text-center"><a id="update" href="index.php?page=edit-customer&Id=' + data.customer_id + '" title="Xem &#38; Sửa"><i class="fa fa-info-circle"></i></a></td>'+
+														'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+														'<td><input type="checkbox" class="chk" name="chk[]" value="' + data.customer_id + '" /></td>'+
+													'</tr>';
+										str = $(str).hide().appendTo(rows);
+										$(str).fadeIn(150);
+										init();
+									}
+								});
+							}
+						}
 					});
 					if(itemID == lastID && $(rows).children().length == 1){
 						options.currentPage = options.currentPage - 1;
 					}
-					init();
 					$(this).remove();
 				}
 			});
-
-			$.ajax({
-				url: 'controller/customer.php?type=one&id=' + lastID,
-				type: 'GET',
-				dataType: 'json'
-			})
-			.done(function(data) {
-				//console.log(data);
-				if(data != false){
-					var str = 	'<tr item-id="' + data.tour_id + '">'+
-									'<td><input type="checkbox" name="" value=""></td>'+
-									'<td>' + data.tour_code + '</td>'+
-									'<td>' + data.tour_name + '</td>'+
-									'<td class="text-center">' + data.tour_day_start + '</td>'+
-									'<td class="text-center">' + data.tour_day_end +'</td>'+
-									'<td class="text-center">' + data.tour_seat_number +'</td>'+
-									'<td>'+
-										'<select class="status" onchange="update_status(' + val.tour_id + ')">'+
-											'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
-											'<option value="1">Đang thực hiện</option>'+
-											'<option value="2">Chưa thực hiện</option>'+
-											'<option value="3">Đã thực hiện</option>'+
-										'</select>'+
-									'</td>'+
-									'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + val.tour_id + '" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
-									'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-								'</tr>';
-					str = $(str).hide().appendTo(rows);
-					$(str).fadeIn(300);
-				}
-			});
+			
 		}
 
 		//=================================================
@@ -314,17 +339,19 @@
 		function update_status(obj){
 			var status =$(obj).closest('tr').find('.status').val();
 			var itemID = $(obj).closest('tr').attr("item-id");
+			var idUserAdd =$("#idUserAdd").val();
+    		var customerGroupDto =$("#customerGroupDto").val();
 			var mystatus = {
-				idDto: itemID,
-			   	activeDto: status
+				"customerIdDto": itemID,
+			    "customerGroupDto": customerGroupDto,
+			    "idUserAdd": idUserAdd
 			};
 			console.log(mystatus);
 			$.ajax({
-				// url: 'controller/customer.php?type=updateStatus',
-				url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour',
+				url: 'http://localhost:8080/spr-data/customer/update/',
 				type: 'POST',
-				dataType: 'json',
-				data:mystatus,
+				contentType: 'application/json',
+				data:JSON.stringify(mystatus),
 				beforeSend: function(){
 					$(obj).closest('tr').find('#load_status').append('<img src="images/loader.gif" />');
 				},

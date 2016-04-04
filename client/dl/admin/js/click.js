@@ -88,14 +88,13 @@ function del_array(){
 				},
 			})
 			.done(function(data) {
-				console.log(data);
+				alert("Xóa thành công");
+				location.reload();
 			})
 			.fail(function(error) {
 				console.log(error);
 			})
 			.always(function() {
-				alert("Xóa thành công");
-				location.reload();
 			});
 		}
 	}

@@ -1,7 +1,7 @@
 //======================================
 //==========kiểm tra form===============
 //======================================
-function click_load(){
+function click_edit(){
 
 	// var giaTourKMDto=document.getElementById("giaTourKMDto");
 	// var soChoDto=document.getElementById("soChoDto");
@@ -106,14 +106,14 @@ function click_load(){
 	// 	return false;
 	// }
  //    else{
-		add_customer();
+		edit_customer();
 	// }	
 }
 
 //======================================
 //===========tạo tour===================
 //======================================
-function add_customer(){
+function edit_customer(){
 	var customerCode =$("#customerCode").val();
     var customerNameDto =$("#customerNameDto").val();
     var customerPhoneDto =$("#customerPhoneDto").val();
@@ -126,9 +126,15 @@ function add_customer(){
     var customerBirthDto =$("#customerBirthDto").val();
     var customerSexDto =$("#customerSexDto").val();
     var customerUserDto =$("#customerUserDto").val();
+    var customerCityDto =$("#customerCityDto").val();
+    var customerCountryDto =$("#customerCountryDto").val();
+    var customerNoteDto =$("#customerNoteDto").val();
     var idUserAdd =$("#idUserAdd").val();
-
+    var customerGroupDto =$("#customerGroupDto").val();
+    var customerIdDto =$("#customerIdDto").val();
+    
 	var mydata = {
+		"customerIdDto": customerIdDto,
 	    "customerCode": customerCode,
 	    "customerNameDto": customerNameDto,
 	    "customerBirthDto": customerBirthDto,
@@ -146,31 +152,15 @@ function add_customer(){
 	    "customerTypeDto": null,
 	    "customerLockDto": null,
 	    "customerDeleteDateDto": null,
+	    "customerGroupDto": customerGroupDto,
+    	"customerCityDto": customerCityDto,
+    	"customerCountryDto": customerCountryDto,
+    	"customerNoteDto": customerNoteDto,
 	    "idUserAdd": idUserAdd
 	};
 	console.log(mydata);
-	$.ajax({
-		url : "http://localhost:8080/spr-data/customer/add/",
-		type: "POST",
-		dataType: "json",
-		contentType: "application/json", 
-		data :JSON.stringify(mydata),
-		beforeSend: function () {
-            $('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
-        },
-	})
-	.done(function() {
-		console.log("success");
-	})
-	.fail(function(error) {
-		console.log(error);
-	})
-	.always(function() {
-		console.log("complete");
-	});
-	
 	// $.ajax({
-	// 	url : "http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/",
+	// 	url : "http://localhost:8080/spr-data/customer/add/",
 	// 	type: "POST",
 	// 	dataType: "json",
 	// 	contentType: "application/json", 
@@ -178,20 +168,37 @@ function add_customer(){
 	// 	beforeSend: function () {
  //            $('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
  //        },
-	// 	success: function(data){ 
-	// 		//location.reload();
-	// 	},
-	// 	statusCode: {
-	// 		404:function(){
-	// 			alert("khong tim thay trang.");
-	// 		},
-	// 		200:function(){
-	// 			alert("Tạo tour thành công.");
-	// 			location.reload();
-	// 		},
-	// 		500:function(){
-	// 			alert("Lỗi tạo tour!!! Vui lòng kiểm tra dữ liệu nhập vào.");
-	// 		}
-	// 	}
+	// })
+	// .done(function() {
+	// 	console.log("success");
+	// })
+	// .fail(function(error) {
+	// 	console.log(error);
+	// })
+	// .always(function() {
+	// 	console.log("complete");
 	// });
+	
+	$.ajax({
+		url : "http://localhost:8080/spr-data/customer/update/",
+		type: "POST",
+		dataType: "json",
+		contentType: "application/json", 
+		data :JSON.stringify(mydata),
+		beforeSend: function () {
+            $('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
+        },
+		success: function(data){ 
+			//location.reload();
+		},
+		statusCode: {
+			404:function(){
+				alert("khong tim thay trang.");
+			},
+			200:function(){
+				alert("Cập nhật khách hàng thành công");
+				location.reload();
+			}
+		}
+	});
 }

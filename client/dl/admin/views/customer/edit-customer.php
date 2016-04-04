@@ -1,29 +1,11 @@
-	<!-- MODULE MAIN -->
-	<link rel="stylesheet" type="text/css" href="style/customer/customer.css" />
-	<script type="text/javascript" src="js/customer/edit-customer.js"></script>	
     <?php 
-    	$id=$_GET["Id"]; 
+    	include ('../../connectDB.php');
+    	$id=$_GET["customer_id"]; 
     	$sql = "SELECT * FROM customer c join group_users g on c.customer_group=g.group_users_id WHERE c.customer_id = " . $id;
     	$query=mysql_query($sql);
     	$row=mysql_fetch_array($query);
     ?>
-	<div class="breadcrumb">
-		<ul>
-			<li><a href="#">Trang chủ</a></li>
-			<li><a href="#">Quản lý tour</a></li>
-		</ul>
-	</div>
-	<div class="add-edit" id="editTour" >
-		<div class="title-inner">
-			<h3 class="title-inner-l">Thông tin chi tiết</h3>
-			<div class="title-inner-r">
-				<ul>
-					<li class="btn-exit"><a href="index.php?page=list-customer">Thoát</a></li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div class="content">
+    	<input type="hidden" id="customerIdDto" name="customerIdDto" value="<?php echo $id; ?>" />
 			<form action="" method="post" accept-charset="utf-8">
 				<div class="info-title"><span>Những mục có dấu (*) là bắt buộc phải nhập</span></div>
 				<div class="warpper">
@@ -33,53 +15,53 @@
 							<div class="info-l">
 								<div class="row">
 									<label for="">Mã khách hàng<span class="red"> ( * )</span></label>
-									<label><input id="idTourDto" type="text" name="idTourDto" value="<?php echo $row['customer_code'] ?>" disabled /></label>
+									<label><input id="customerCode" type="text" name="customerCode" value="<?php echo $row['customer_code'] ?>" disabled /></label>
 								</div>
 								<div class="row">
 									<label for="">Tên khách hàng <span class="red"> ( * )</span></label>
-									<label><input id="idTourDto" type="text" name="idTourDto" value="<?php echo $row['customer_name'] ?>" /></label>
+									<label><input id="customerNameDto" type="text" name="customerNameDto" value="<?php echo $row['customer_name'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Email <span class="red"> ( * )</span></label>
-									<label><input id="ngayKHDto" type="text" name="" value="<?php echo $row['customer_email'] ?>" /></label>
+									<label><input id="customerEmailDto" type="text" name="customerEmailDto" value="<?php echo $row['customer_email'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Số điện thoai <span class="red"> ( * )</span></label>
-									<label><input id="giaTourKMDto" type="text" name="" value="<?php echo $row['customer_phone'] ?>" /></label>
+									<label><input id="customerPhoneDto" type="text" name="customerPhoneDto" value="<?php echo $row['customer_phone'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Địa chỉ <span class="red"> ( * )</span></label>
-									<label><input id="giaTourKMDto" type="text" name="" value="<?php echo $row['customer_address'] ?>" /></label>
+									<label><input id="customerAddressDto" type="text" name="customerAddressDto" value="<?php echo $row['customer_address'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Mật khẩu <span class="red"> ( * )</span></label>
-									<label><input id="giaTourKMDto" type="text" name="" value="<?php echo $row['customer_password'] ?>" disabled /></label>
+									<label><input id="customerPasswordDto" type="text" name="customerPasswordDto" value="<?php echo $row['customer_password'] ?>" disabled /></label>
 								</div>
 							</div>
 							<div class="info-r">
 								<div class="row">
 									<label for="">Công ty</label>
-									<label><input id="tenTourDto" type="text" name="" value="<?php echo $row['customer_company_name'] ?>" /></label>
+									<label><input id="customerCompanyNameDto" type="text" name="customerCompanyNameDto" value="<?php echo $row['customer_company_name'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Địa chỉ</label>
-									<label><input id="tenTourDto" type="text" name="" value="<?php echo $row['customer_address_company'] ?>" /></label>
+									<label><input id="customerAddressCompanyDto" type="text" name="customerAddressCompanyDto" value="<?php echo $row['customer_address_company'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Điện thoại</label>
-									<label><input id="tenTourDto" type="text" name="" value="<?php echo $row['customer_phone_company'] ?>" /></label>
+									<label><input id="customerPhoneCompanyDto" type="text" name="customerPhoneCompanyDto" value="<?php echo $row['customer_phone_company'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Thành phố</label>
-									<label><input id="ngayKTDto" type="text" name="" value="<?php echo $row['customer_phone_company'] ?>" /></label>
+									<label><input id="customerCityDto" type="text" name="customerCityDto" value="<?php echo $row['customer_phone_company'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Mã Quốc gia</label>
-									<label><input id="giaTourDto" type="text" name="" value="<?php echo $row['customer_phone_company'] ?>" /></label>
+									<label><input id="customerCountryDto" type="text" name="customerCountryDto" value="<?php echo $row['customer_phone_company'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Nhóm khách hàng: </label>
-									<select name="">
+									<select name="customerGroupDto" id="customerGroupDto">
 										<option value="<?php echo $row['customer_group'] ?>"><?php echo $row['group_users_name'] ?></option>
 										<option value="0">-----------------</option>
 										<option value="7">Khách vãng lai</option>
@@ -93,7 +75,7 @@
 						</div>
 						<div class="details">
 							<label>Ghi chú</label>
-							<textarea name="infoDto" id="infoDto" rows="4" placeholder="Nhập Ghi chú về khách hàng" ><?php echo $row['customer_note'] ?></textarea>
+							<textarea name="customerNoteDto" id="customerNoteDto" rows="4" placeholder="Nhập Ghi chú về khách hàng" ><?php echo $row['customer_note'] ?></textarea>
 				            <div class="clear"></div>
 						</div>
 					</div>
@@ -139,10 +121,8 @@
 				</div>
 				<div class="btn">
 					<input class="btn-reset" type="reset" name="" value="Nhập lại" />
-					<a class="btn-add" href="#" onclick="click_load()" >Cập nhật</a>
+					<a class="btn-add" href="#" onclick="click_edit()" >Cập nhật</a>
 					<div class="clear"></div>
 				</div>
 			</form>
 			<div class="clear"></div>
-		</div>
-	</div>

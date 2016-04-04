@@ -36,4 +36,31 @@
 		}
 		echo json_encode($customers);
 	}
+
+	//=================================================
+	// lấy 1 phan tu id cuối cùng
+	//=================================================
+	if($type == "one"){
+		$lastID = (int)$_GET["id"];
+		$sql = "SELECT * FROM customer c join group_users g on c.customer_group=g.group_users_id where customer_id < " . $lastID . " AND customer_delete_date is null ORDER BY customer_id DESC LIMIT 1";
+		$result = mysql_query($sql,$con);
+		$customer = array();
+		$customer = mysql_fetch_assoc($result);
+		echo json_encode($customer);
+	}
+
+	//=================================================
+	// Xóa dữ liệu theo mảng (ARRAY)
+	//=================================================
+	if($type == "chk"){
+		$chk=$_POST['chk'];
+		$array = explode(",", $chk);
+		$count = count($array);
+		$today = Date("Y-m-d");
+	    foreach($array as $vl)
+	    {
+	        $sql = "UPDATE customer SET customer_delete_date = '$today' where customer_id=$vl";
+	        mysql_query($sql,$con);
+	    }
+	}
 ?>
