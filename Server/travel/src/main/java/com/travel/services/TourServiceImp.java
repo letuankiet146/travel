@@ -71,32 +71,6 @@ public class TourServiceImp implements ITourService {
 		tourEntity.setNgayKT(MyFormatDate.stringToDate(tourDto.getNgayKTDto()));
 		
 		tourRepo.saveAndFlush(tourEntity);
-		/*
-		 * Save image into  directory web
-		 */
-		OutputStream out = null;
-		 
-		try { 
-		    byte[] imageByte = new Base64().decode(tourDto.getImageByte());
-		    File imageFile = new File("WEB-INF\\classes\\static\\images"+tourDto.getImageDto());
-		    FileOutputStream fos = new FileOutputStream(imageFile);
-		    fos.write(imageByte);
-		    fos.close();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return -2;
-		}
-		finally { 
-		    if (out != null)
-				try {
-					out.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-		}
-		
-		
 		
 		/*
 		 * Save history

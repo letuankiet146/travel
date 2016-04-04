@@ -85,6 +85,8 @@ public class TourEntity {
 	@Column (name="tour_delete_date")
 	private Date tourDeleteDate;
 	
+	@Column (name= "tour_image_data")
+	private String tourImageData;
 	
 	
 }

@@ -78,7 +78,8 @@ public class TourDto {
 	@Mapping("tourDeleteDate")
 	private Date tourDeleteDateDto;
 	
-	private String imageByte;
+	@Mapping("tourImageData")
+	private String tourImageDataDto;
 	
 	private Integer idUserAdd;
 	
@@ -132,6 +133,9 @@ public class TourDto {
 		
 		if (tourDto.getIdUserAdd() != null) {
 			this.idUserAdd = tourDto.getIdUserAdd();
+		}
+		if (tourDto.getTourImageDataDto() !=null){
+			this.tourImageDataDto = tourDto.getTourImageDataDto();
 		}
 
 	}
