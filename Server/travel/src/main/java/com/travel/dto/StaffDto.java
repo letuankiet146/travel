@@ -2,6 +2,8 @@ package com.travel.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import org.dozer.Mapping;
 
 import lombok.Data;
@@ -11,6 +13,9 @@ public class StaffDto {
 	
 	@Mapping("staffId")
 	private Integer staffId;
+	
+	@Mapping("staffCode")
+	private String staffCode;
 	
 	@Mapping("staffName")
 	private String staffName;
@@ -32,4 +37,24 @@ public class StaffDto {
 	
 	@Mapping("staffDeleteDate")
 	private Date staffDeleteDate;
+	
+	private String staffEmail;
+	
+	private String staffPhone;
+	
+	private Date staffDateStart;
+	
+	private String staffAddress;
+	
+	private String staffNote;
+	
+	private Date staffBirthday;
+	
+	private String staffSex;
+	
+	private String staffVietNameId;
+	
+	private String staffImage;
+	
+	private Integer idUserAdd;
 }

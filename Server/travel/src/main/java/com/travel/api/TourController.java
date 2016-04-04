@@ -37,9 +37,6 @@ public class TourController {
 	@RequestMapping (value = "/addTour", method = RequestMethod.POST )
 	public String addTour ( @RequestBody TourDto tourDto){
 		int kq = iTourService.add(tourDto);
-		if (kq==-2){
-			return "Kich thuoc hinh anh qua lon";
-		}
 		return "Them thanh cong";
 	}
 	
