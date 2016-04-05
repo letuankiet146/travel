@@ -297,6 +297,57 @@ http://localhost:8080/staff/add
     "idUserAdd": null
 }
 
+http://localhost:8080/staff/update
+    "staffId": 5,
+    "staffCode": "MANV3",
+    "staffName": "Phạm Thành Thảo",
+    "staffLevel": 2,
+    "staffUser": "nhanvien",
+    "staffPassword": "nhanvien",
+    "staffType": null,
+    "staffLock": null,
+    "staffDeleteDate": null,
+    "staffEmail": "ptthao13@gmail.com",
+    "staffPhone": "0975293398",
+    "staffDateStart": 1459270800000,
+    "staffAddress": "Nguyen thai son",
+    "staffNote": "Nhân viên chăm chỉ",
+    "staffBirthday": 781981200000,
+    "staffSex": "Nam",
+    "staffVietNameId": "665656",
+    "staffImage": null,
+    "idUserAdd": null
+
+http://localhost:8080/staff/delete/2/4
+
+
+
+
+#####################################CẨM NANG#########################33
+http://localhost:8080/handbook/add
+{
+  "codeDto": "handbook1",
+  "nameDto": "Cẩm nang du lịch Bình Dương",
+  "dateCreateDto": "05/04/2016",
+  "areaDto": 1,
+  "statuDto": 1,
+  "infoDto": "a",
+  "idUserAdd": 2
+}
+
+http://localhost:8080/handbook/update
+{
+  "codeDto": "handbook1",
+  "codeDto": "handbook1",
+  "nameDto": "Cẩm nang du lịch Bình Dương",
+  "dateCreateDto": "05/04/2016",
+  "areaDto": 1,
+  "statuDto": 1,
+  "infoDto": "a",
+  "idUserAdd": 2
+}
+
+http://localhost:8080/handbook/delete/1/2
 
 ////////////yeu cau KIET lam /////////////
 

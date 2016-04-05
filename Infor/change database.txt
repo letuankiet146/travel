@@ -7,3 +7,17 @@ CHANGE COLUMN `customer_note` `customer_note` VARCHAR(500) CHARACTER SET 'utf8' 
 _______________________________ngay 4/4/2016 7:21 PM__________________________-
 ALTER TABLE `sql61036294`.`tour` 
 ADD COLUMN `tour_image_data` LONGTEXT NULL AFTER `tour_delete_date`;
+
+_______________________________ngay 5/4/2016__________________________________
+CREATE TABLE `sql61036294`.`hand_book` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `code` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `date_create` DATE NULL,
+  `area` INT NULL,
+  `status` VARCHAR(45) NULL,
+  `info` TEXT NULL,
+  `image` TEXT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
