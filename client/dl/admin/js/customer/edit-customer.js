@@ -1,7 +1,7 @@
 //======================================
 //==========kiểm tra form===============
 //======================================
-function click_load(){
+function click_edit(){
 
 	var customerPhoneDto=document.getElementById("customerPhoneDto");
 	var phone = document.getElementById("customerPhoneDto").value;
@@ -56,9 +56,9 @@ function click_load(){
 		this.customerPhoneDto.focus();
 		return false;
 	}
-	else if(count > 11){
+	else if(count > 11 || count <10){
 		$("#customerPhoneDto").closest(".row").find(".error").empty();
-	  	$("#customerPhoneDto").closest(".row").find(".error").append("SDT không quá 11 số");
+	  	$("#customerPhoneDto").closest(".row").find(".error").append("SDT không đúng");
 		this.customerPhoneDto.focus();
 		return false;
 	}
@@ -72,21 +72,32 @@ function click_load(){
       this.customerBirthDto.focus();
       return false;
     }
-    else if(phoneCompany != "" && phoneCompany.length > 11){
-		$("#customerPhoneCompanyDto").closest(".row").find(".error").empty();
-	  	$("#customerPhoneCompanyDto").closest(".row").find(".error").append("SDT không quá 11 số");
-		this.customerPhoneCompanyDto.focus();
-		return false;
+    else if(this.customerPhoneCompanyDto.value != ""){
+    	if(!number.test(customerPhoneCompanyDto.value)){
+    		$("#customerPhoneCompanyDto").closest(".row").find(".error").empty();
+		  	$("#customerPhoneCompanyDto").closest(".row").find(".error").append("Giá trị phải là số");
+			this.customerPhoneCompanyDto.focus();
+			return false;
+    	}
+	    else if(phoneCompany.length > 11 || phoneCompany.length < 10){
+			$("#customerPhoneCompanyDto").closest(".row").find(".error").empty();
+		  	$("#customerPhoneCompanyDto").closest(".row").find(".error").append("SDT không đúng");
+			this.customerPhoneCompanyDto.focus();
+			return false;
+		}
+		else{
+			edit_customer();
+		}
 	}
     else{
-		add_customer();
+		edit_customer();
 	}	
 }
 
 //======================================
 //===========tạo tour===================
 //======================================
-function add_customer(){
+function edit_customer(){
 	var customerCode =$("#customerCode").val();
     var customerNameDto =$("#customerNameDto").val();
     var customerPhoneDto =$("#customerPhoneDto").val();
@@ -104,8 +115,10 @@ function add_customer(){
     var customerNoteDto =$("#customerNoteDto").val();
     var idUserAdd =$("#idUserAdd").val();
     var customerGroupDto =$("#customerGroupDto").val();
+    var customerIdDto =$("#customerIdDto").val();
     
 	var mydata = {
+		"customerIdDto": customerIdDto,
 	    "customerCode": customerCode,
 	    "customerNameDto": customerNameDto,
 	    "customerBirthDto": customerBirthDto,
@@ -130,9 +143,8 @@ function add_customer(){
 	    "idUserAdd": idUserAdd
 	};
 	console.log(mydata);
-	
 	$.ajax({
-		url : "http://localhost:8080/spr-data/customer/add/",
+		url : "http://localhost:8080/spr-data/customer/update/",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 
@@ -141,14 +153,14 @@ function add_customer(){
             $('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
         },
 		success: function(data){ 
-			//location.reload();
+
 		},
 		statusCode: {
 			404:function(){
 				alert("khong tim thay trang.");
 			},
 			200:function(){
-				alert("Thêm khách hàng thành công");
+				alert("Cập nhật khách hàng thành công");
 				location.reload();
 			}
 		}

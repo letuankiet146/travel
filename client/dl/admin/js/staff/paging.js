@@ -181,6 +181,7 @@
 							dataType: 'text',
 						})
 						.done(function(data) {
+							$("#title").html("Thông tin chi tiết");
 							$("#loadingAjax").html(data);
 						});
 					});

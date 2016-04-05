@@ -51,6 +51,7 @@ if(isset($_SESSION['username']))
 	<script type="text/javascript" src="js/customer/paging.js"></script>
 	<link rel="stylesheet" type="text/css" href="style/customer/customer.css" />
 	<script type="text/javascript" src="js/customer/add-customer.js"></script>
+	<script type="text/javascript" src="js/customer/edit-customer.js"></script>
 <?php } ?>
 <?php if($paged == "list-handbook"){ ?>
 	<!-- LIST_TOUR -->
@@ -60,9 +61,11 @@ if(isset($_SESSION['username']))
 <?php } ?>
 <?php if($paged == "list-staff"){ ?>
 	<!-- LIST_TOUR -->
-	<script type="text/javascript" src="js/staff/paging.js"></script>
 	<link rel="stylesheet" type="text/css" href="style/staff/staff.css" />
-	<script type="text/javascript" src="js/staff/add-staff.js"></script>
+	<script type="text/javascript" src="js/staff/paging.js"></script>
+	<!-- <script type="text/javascript" src="js/validate/jquery.validate.js"></script> -->
+	<!-- <script type="text/javascript" src="js/staff/add-staff.js"></script> -->
+	
 <?php } ?>
 </head>
 <body>

@@ -334,3 +334,10 @@
 #editTour{
 	display:block;
 }
+.row .error:last-child{
+	display:block;
+	margin-left:150px;
+	font-size:12px;
+	font-family: 'OpenSansItalic';
+	color: #f00;
+}

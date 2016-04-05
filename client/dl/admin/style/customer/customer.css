@@ -367,3 +367,15 @@
 #editTour{
 	display:block;
 }
+.error{
+	margin-left:150px;
+	font-size:12px;
+	font-family: 'OpenSansItalic';
+	color: #f00;
+}
+.row .row_right .error{
+	margin-left:90px;
+	font-size:12px;
+	font-family: 'OpenSansItalic';
+	color: #f00;
+}

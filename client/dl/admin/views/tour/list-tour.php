@@ -14,9 +14,7 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		<div class="content" id="loadingAjax">
-			
-		</div>
+		<div class="content" id="loadingAjax"></div>
 	</div>
 	<div class="news">
 		<div class="diary">

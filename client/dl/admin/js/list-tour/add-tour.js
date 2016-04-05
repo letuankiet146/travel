@@ -111,11 +111,13 @@ function add_tour(){
     var tenTourDto =$("#tenTourDto").val();
     var tourArrivePlaceIdDto =$("#tourArrivePlaceIdDto").val();
     var idDichVuDto =$("#idDichVuDto").val();
-    var imageDto=document.getElementsByName("imageDto").value;
+    // var imageDto=document.getElementsByName("imageDto").value;
     var activeDto =$("#activeDto").val();
     var idUserAdd =$("#idUserAdd").val();
     var infoDto =CKEDITOR.instances['infoDto'].getData();
     var imageDto =$("#imageDto").val();
+    // var tourImageDataDto =$("#tourImageDataDto").val();
+    var tourImageDataDto=document.getElementById("tourImageDataDto").value;
     var x = Math.floor((Math.random() * 1000000000) + 1);
 
 	var mydata = {
@@ -134,6 +136,7 @@ function add_tour(){
 	   	tourGuiderIdDto: tourGuiderIdDto,
 	   	tourFromPlaceIdDto: tourFromPlaceIdDto,
 	   	tourDeleteDateDto: null,
+	   	tourImageDataDto: tourImageDataDto,
 	   	idUserAdd: idUserAdd
 	};
 	console.log(mydata);

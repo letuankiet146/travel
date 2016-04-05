@@ -31,7 +31,8 @@
 		    var FR= new FileReader();
 		    FR.onload = function(e) {
 		      var str = e.target.result;
-		      console.log(str);
+		      console.log();
+		      $("#tourImageDataDto").val(str);
 		    };       
 		    FR.readAsDataURL( this.files[0] );
 		  }
@@ -44,7 +45,7 @@
     	include ("../../ckeditor/ckeditor.php"); 
     ?>
     <input id="today" type="hidden" name="today" value="<?php echo date("d/m/Y") ?>" />
-		<form action="#" method="post" accept-charset="utf-8" id="formAddEdit">
+		<form action="#" method="post" id="formAddEdit">
 			<div class="info-title"><span>Những mục có dấu (*) là bắt buộc phải nhập</span></div>
 			<div class="warpper">
 				<div class="info">
@@ -157,6 +158,7 @@
 				<div class="thumb">
 					<label>Ảnh minh họa Ảnh minh họa <span>(chỉ cho phép .JPG, .PNG, .GIF và dung lượng tối đa là 500Kb)</span></label>
 					<input id="imageDto" type="file" name="imageDto" value="" />
+					<input id="tourImageDataDto" type="hidden" name="tourImageDataDto" value="" />
 					<div class="error"></div>
 				</div>
 				<div class="details">

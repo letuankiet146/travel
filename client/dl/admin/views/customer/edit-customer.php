@@ -1,3 +1,21 @@
+    <script type="text/javascript">
+        $(function() {
+            $("#customerBirthDto").datepicker({
+              showOn: "button",
+              buttonImage: "js/datepicker/images/icon-picker.png",
+              buttonImageOnly: true,
+              buttonText: "Select date"
+            });
+        });
+
+        var fields = $(".row").closest(".info").find( ":input" );
+		jQuery.each( fields, function( i, field ) {
+			var b = "#" + field.name;
+			$(b).change(function(event) {
+				$(b).closest(".row").find(".error").empty();
+			});
+		});
+    </script>
     <?php 
     	include ('../../connectDB.php');
     	$id=$_GET["customer_id"]; 
@@ -6,6 +24,7 @@
     	$row=mysql_fetch_array($query);
     ?>
     	<input type="hidden" id="customerIdDto" name="customerIdDto" value="<?php echo $id; ?>" />
+    	<input id="customerPasswordDto" type="hidden" name="customerPasswordDto" value="<?php echo $row['customer_password'] ?>" />
 			<form action="" method="post" accept-charset="utf-8">
 				<div class="info-title"><span>Những mục có dấu (*) là bắt buộc phải nhập</span></div>
 				<div class="warpper">
@@ -20,25 +39,59 @@
 								<div class="row">
 									<label for="">Tên khách hàng <span class="red"> ( * )</span></label>
 									<label><input id="customerNameDto" type="text" name="customerNameDto" value="<?php echo $row['customer_name'] ?>" /></label>
+									<div class="error"></div>
 								</div>
 								<div class="row">
 									<label for="">Email <span class="red"> ( * )</span></label>
 									<label><input id="customerEmailDto" type="text" name="customerEmailDto" value="<?php echo $row['customer_email'] ?>" /></label>
+									<div class="error"></div>
 								</div>
 								<div class="row">
 									<label for="">Số điện thoai <span class="red"> ( * )</span></label>
 									<label><input id="customerPhoneDto" type="text" name="customerPhoneDto" value="<?php echo $row['customer_phone'] ?>" /></label>
+									<div class="error"></div>
 								</div>
 								<div class="row">
 									<label for="">Địa chỉ <span class="red"> ( * )</span></label>
 									<label><input id="customerAddressDto" type="text" name="customerAddressDto" value="<?php echo $row['customer_address'] ?>" /></label>
+									<div class="error"></div>
 								</div>
 								<div class="row">
-									<label for="">Mật khẩu <span class="red"> ( * )</span></label>
-									<label><input id="customerPasswordDto" type="text" name="customerPasswordDto" value="<?php echo $row['customer_password'] ?>" disabled /></label>
+									<div class="row_left">
+										<label for="">Ngày sinh <span class="red"> ( * )</span></label>
+										<label><input id="customerBirthDto" type="text" name="customerBirthDto" value="<?php echo date("d/m/Y", strtotime($row['customer_birth'])); ?>" placeholder="dd/mm/yyyy" /></label>
+										<input id="today" type="hidden" name="today" value="<?php echo date("d/m/Y") ?>" />
+										<div class="error"></div>
+									</div>
+									<div class="row_right">
+										<label for="">Giới tính <span class="red"> ( * )</span></label>
+										<select id="customerSexDto" name="customerSexDto">
+											<option value="<?php echo $row['customer_sex']; ?>"><?php echo $row['customer_sex']; ?></option>
+											<option value="">-----------</option>
+											<option value="Nam">Nam</option>
+											<option value="Nữ">Nữ</option>
+										</select>
+										<div class="error"></div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="row">
+									<label for="">Nhóm KM: <span class="red"> ( * )</span></label>
+									<select id="customerGroupDto" name="customerGroupDto">
+										<option value="<?php echo $row['customer_group']; ?>"><?php echo $row['group_users_name']; ?></option>
+										<option value="">-----------------</option>
+										<option value="7">Khách vãng lai</option>
+										<option value="8">Khách hàng tiềm năng</option>
+										<option value="9">Khách hàng thân thiết</option>
+										<option value="10">Khách VIP</option>
+									</select>
+									<div class="error"></div>
 								</div>
 							</div>
 							<div class="info-r">
+								<div class="row">
+									<label for="">Thông tin liên quan</label>
+								</div>
 								<div class="row">
 									<label for="">Công ty</label>
 									<label><input id="customerCompanyNameDto" type="text" name="customerCompanyNameDto" value="<?php echo $row['customer_company_name'] ?>" /></label>
@@ -50,25 +103,15 @@
 								<div class="row">
 									<label for="">Điện thoại</label>
 									<label><input id="customerPhoneCompanyDto" type="text" name="customerPhoneCompanyDto" value="<?php echo $row['customer_phone_company'] ?>" /></label>
+									<div class="error"></div>
 								</div>
 								<div class="row">
 									<label for="">Thành phố</label>
-									<label><input id="customerCityDto" type="text" name="customerCityDto" value="<?php echo $row['customer_phone_company'] ?>" /></label>
+									<label><input id="customerCityDto" type="text" name="customerCityDto" value="<?php echo $row['customer_city'] ?>" /></label>
 								</div>
 								<div class="row">
 									<label for="">Mã Quốc gia</label>
-									<label><input id="customerCountryDto" type="text" name="customerCountryDto" value="<?php echo $row['customer_phone_company'] ?>" /></label>
-								</div>
-								<div class="row">
-									<label for="">Nhóm khách hàng: </label>
-									<select name="customerGroupDto" id="customerGroupDto">
-										<option value="<?php echo $row['customer_group'] ?>"><?php echo $row['group_users_name'] ?></option>
-										<option value="0">-----------------</option>
-										<option value="7">Khách vãng lai</option>
-										<option value="8">Khách hàng tiềm năng</option>
-										<option value="9">Khách hàng thân thiết</option>
-										<option value="10">Khách VIP</option>
-									</select>
+									<label><input id="customerCountryDto" type="text" name="customerCountryDto" value="<?php echo $row['customer_country'] ?>" /></label>
 								</div>
 							</div>
 							<div class="clear"></div>

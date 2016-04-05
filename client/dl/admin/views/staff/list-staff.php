@@ -1,12 +1,12 @@
 	<div class="breadcrumb">
 		<ul>
 			<li><a href="#">Trang chủ</a></li>
-			<li><a href="#">Quản lý tour</a></li>
+			<li><a href="#">Quản lý nhân viên</a></li>
 		</ul>
 	</div>
 	<div class="add-edit" id="creatTour">
 		<div class="title-inner">
-			<h3 class="title-inner-l">Tạo nhân viên</h3>
+			<h3 class="title-inner-l" id="title">Tạo nhân viên</h3>
 			<div class="title-inner-r">
 				<ul>
 					<li class="btn-exit">Thoát</li>

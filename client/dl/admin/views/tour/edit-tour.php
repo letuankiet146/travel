@@ -49,9 +49,10 @@
 		$fdayEnd = date("d/m/Y", strtotime($dayEnd));
 		$area_id = $row['arrive_place_area_id'];
 		$today = date("d/m/Y");
+		// echo $row['tour_image_data'];
     ?>
     <input type="hidden" id="touridDto" name="touridDto" value="<?php echo $id; ?>" />
-			<form action="" method="post" accept-charset="utf-8">
+			<form action="" method="post">
 				<div class="info-title"><span>Những mục có dấu (*) là bắt buộc phải nhập</span></div>
 				<div class="warpper">
 					<div class="info">
@@ -168,6 +169,7 @@
 						<label>Ảnh minh họa Ảnh minh họa <span>(chỉ cho phép .JPG, .PNG, .GIF và dung lượng tối đa là 500Kb)</span></label>
 						<input id="imageDto" type="file" name="imageDto" value="<?php echo $row['tour_image']; ?>" />
 						<p style="margin-left: 75px"><?php echo $row['tour_image']; ?></p>
+						<input id="tourImageDataDto" type="hidden" name="tourImageDataDto" value="<?php echo $row['tour_image_data'] ?>" />
 						<div class="error"></div>
 					</div>
 					<div class="details">

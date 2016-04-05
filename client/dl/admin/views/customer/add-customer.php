@@ -1,12 +1,20 @@
 	<script type="text/javascript">
         $(function() {
-            $( "#customerBirthDto" ).datepicker({
+            $("#customerBirthDto").datepicker({
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
               buttonText: "Select date"
             });
         });
+
+        var fields = $(".row").closest(".info").find( ":input" );
+		jQuery.each( fields, function( i, field ) {
+			var b = "#" + field.name;
+			$(b).change(function(event) {
+				$(b).closest(".row").find(".error").empty();
+			});
+		});
     </script>
 	<?php
     	include ('../../connectDB.php');
@@ -30,28 +38,34 @@
 							?>
 							<label for="">Mã khách hàng<span class="red"> ( * )</span></label>
 							<label><input id="customerCode" type="text" name="customerCode" value="MAKH<?php echo $id; ?>" disabled /></label>
+							<div class="error"></div>
 						</div>
 						<input id="customerPasswordDto" type="hidden" name="customerPasswordDto" value="<?php echo $key; ?>" />
 						<div class="row">
 							<label for="">Tên khách hàng <span class="red"> ( * )</span></label>
 							<label><input id="customerNameDto" type="text" name="customerNameDto" value="" placeholder="Nhập tên khách hàng" /></label>
+							<div class="error"></div>
 						</div>
 						<div class="row">
 							<label for="">Email <span class="red"> ( * )</span></label>
 							<label><input id="customerEmailDto" type="text" name="customerEmailDto" value="" placeholder="Nhập email" /></label>
+							<div class="error"></div>
 						</div>
 						<div class="row">
 							<label for="">Số điện thoai <span class="red"> ( * )</span></label>
 							<label><input id="customerPhoneDto" type="text" name="customerPhoneDto" value="" placeholder="Nhập số điện thoai" /></label>
+							<div class="error"></div>
 						</div>
 						<div class="row">
 							<label for="">Địa chỉ <span class="red"> ( * )</span></label>
 							<label><input id="customerAddressDto" type="text" name="customerAddressDto" value="" placeholder="Nhập địa chỉ" /></label>
+							<div class="error"></div>
 						</div>
 						<div class="row">
 							<div class="row_left">
 								<label for="">Ngày sinh <span class="red"> ( * )</span></label>
 								<label><input id="customerBirthDto" type="text" name="customerBirthDto" value="" placeholder="dd/mm/yyyy" /></label>
+								<input id="today" type="hidden" name="today" value="<?php echo date("d/m/Y") ?>" />
 								<div class="error"></div>
 							</div>
 							<div class="row_right">
@@ -68,11 +82,13 @@
 						<div class="row">
 							<label for="">Nhóm KM: <span class="red"> ( * )</span></label>
 							<select id="customerGroupDto" name="customerGroupDto">
+								<option value="">Chọn nhóm khách hàng</option>
 								<option value="7">Khách vãng lai</option>
 								<option value="8">Khách hàng tiềm năng</option>
 								<option value="9">Khách hàng thân thiết</option>
 								<option value="10">Khách VIP</option>
 							</select>
+							<div class="error"></div>
 						</div>
 					</div>
 					<div class="info-r">
@@ -90,6 +106,7 @@
 						<div class="row">
 							<label for="">Điện thoại</label>
 							<label><input id="customerPhoneCompanyDto" type="text" name="customerPhoneCompanyDto" value="" placeholder="Nhập số điện thoại công ty" /></label>
+							<div class="error"></div>
 						</div>
 						<div class="row">
 							<label for="">Thành phố</label>
