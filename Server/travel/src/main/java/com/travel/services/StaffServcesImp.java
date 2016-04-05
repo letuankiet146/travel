@@ -1,6 +1,7 @@
 package com.travel.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -41,14 +42,42 @@ public class StaffServcesImp implements IStaffService {
 
 	@Override
 	public String delete(Integer id, Integer idUserAdd) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (staffRepository.exists(id)){
+			/*
+			 * Save history
+			 */
+			StaffEntity staffEntity = staffRepository.findOne(id);
+			staffEntity.setStaffDeleteDate(new Date());
+			staffRepository.saveAndFlush(staffEntity);
+			
+			HistoryDto historyDto = new HistoryDto();
+			historyDto.setUser(idUserAdd);
+			historyDto.setAction("Delete_Staff");
+			historyDto.setContent("ID="+id);
+			historyInterface.add(historyDto);
+			return "Xoa thanh cong";
+		}
+		return "Xoa khong thanh cong";
+		
 	}
 
 	@Override
 	public String update(StaffDto staffDto) {
-		// TODO Auto-generated method stub
-		return null;
+		StaffEntity staffEntity = staffRepository.findOne(staffDto.getStaffId());
+		StaffDto staffDto2 = mapper.map(staffEntity, StaffDto.class);
+		staffDto2.setDataUpdate(staffDto);
+		staffEntity = mapper.map(staffDto2, StaffEntity.class);
+		staffRepository.saveAndFlush(staffEntity);
+		/*
+		 * Save history
+		 */
+		HistoryDto historyDto = new HistoryDto();
+		historyDto.setUser(staffDto.getIdUserAdd());
+		historyDto.setAction("Update_Staff");
+		historyDto.setContent("ID="+staffDto.getStaffId());
+		historyInterface.add(historyDto);
+		return "Update thanh cong";
 	}
 
 	@Override

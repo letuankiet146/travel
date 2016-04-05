@@ -62,4 +62,68 @@ public class StaffDto {
 	private String staffImage;
 	
 	private Integer idUserAdd;
+	
+	public void setDataUpdate (StaffDto staffDto){
+		if (staffDto.getStaffName() != null){
+			this.staffName = staffDto.getStaffName();
+		}
+		
+		if (staffDto.getStaffLevel() != null){
+			this.staffLevel = staffDto.getStaffLevel();
+		}
+		
+		if (staffDto.getStaffUser() != null){
+			this.staffUser = staffDto.getStaffUser();
+		}
+		
+		if (staffDto.getStaffPassword()!= null){
+			this.staffPassword = staffDto.getStaffPassword();
+		}
+		
+		if (staffDto.getStaffType() != null){
+			this.staffType = staffDto.getStaffType();
+		}
+		
+		if (staffDto.getStaffLock()!= null){
+			this.staffLock = staffDto.getStaffLock();
+		}
+		
+		if (staffDto.getStaffEmail() != null){
+			this.staffEmail = staffDto.getStaffEmail();
+		}
+		
+		if (staffDto.getStaffPhone() != null){
+			this.staffPhone = staffDto.getStaffPhone();
+		}
+		
+		if (staffDto.getStaffDateStart() != null){
+			this.staffDateStart = staffDto.getStaffDateStart();
+		}
+		
+		if (staffDto.getStaffAddress() != null){
+			this.staffAddress = staffDto.getStaffAddress();
+		}
+		
+		if (staffDto.getStaffNote() != null){
+			this.staffNote = staffDto.getStaffNote();
+		}
+		
+		if (staffDto.getStaffBirthday() != null){
+			this.staffBirthday = staffDto.getStaffBirthday();
+		}
+		
+		if (staffDto.getStaffSex() != null){
+			this.staffSex = staffDto.getStaffSex();
+		}
+		
+		if (staffDto.getStaffVietNameId() != null){
+			this.staffVietNameId = staffDto.getStaffVietNameId();
+		}
+		
+		if (staffDto.getStaffImage() != null){
+			this.staffImage = staffDto.getStaffImage();
+		}
+		
+	}
+	
 }
