@@ -277,47 +277,49 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34/2 (X
   ###################LIST Staff #############################################################################
 http://localhost:8080/staff/add
 {
-    "staffCode": "MANV3",
-    "staffName": "Phạm Thành Thảo",
-    "staffLevel": 2,
-    "staffUser": "nhanvien",
-    "staffPassword": "nhanvien",
-    "staffType": null,
-    "staffLock": null,
-    "staffDeleteDate": null,
-    "staffEmail": "ptthao13@gmail.com",
-    "staffPhone": "0975293398",
-    "staffDateStart": 1459270800000,
-    "staffAddress": "Nguyen thai son",
-    "staffNote": "Nhân viên chăm chỉ",
-    "staffBirthday": 781981200000,
-    "staffSex": "Nam",
-    "staffVietNameId": "665656",
-    "staffImage": null,
-    "idUserAdd": null
+    "staffCodeDto": "MANV6",
+    "staffNameDto": "Lê Văn 1",
+    "staffLevelDto": 2,
+    "staffUserDto": "nhanvien",
+    "staffPasswordDto": "nhanvien",
+    "staffTypeDto": null,
+    "staffLockDto": null,
+    "staffDeleteDateDto": null,
+    "staffEmailDto": "ptthao13@gmail.com",
+    "staffPhoneDto": "0975293398",
+    "staffDateStartDto": "14/02/2013",
+    "staffAddressDto": "Nguyen thai son",
+    "staffNoteDto": "Nhân viên chăm chỉ",
+    "staffBirthdayDto": "08/03/1994",
+    "staffSexDto": "Nam",
+    "staffVietNameIdDto": "665656",
+    "staffImageDto": null,
+    "idUserAdd": 2
 }
 
 http://localhost:8080/staff/update
-    "staffId": 5,
-    "staffCode": "MANV3",
-    "staffName": "Phạm Thành Thảo",
-    "staffLevel": 2,
-    "staffUser": "nhanvien",
-    "staffPassword": "nhanvien",
-    "staffType": null,
-    "staffLock": null,
-    "staffDeleteDate": null,
-    "staffEmail": "ptthao13@gmail.com",
-    "staffPhone": "0975293398",
-    "staffDateStart": 1459270800000,
-    "staffAddress": "Nguyen thai son",
-    "staffNote": "Nhân viên chăm chỉ",
-    "staffBirthday": 781981200000,
-    "staffSex": "Nam",
-    "staffVietNameId": "665656",
-    "staffImage": null,
-    "idUserAdd": null
-
+   
+{
+     "staffId": 5,
+    "staffCodeDto": "MANV6",
+    "staffNameDto": "Lê Văn 1",
+    "staffLevelDto": 2,
+    "staffUserDto": "nhanvien",
+    "staffPasswordDto": "nhanvien",
+    "staffTypeDto": null,
+    "staffLockDto": null,
+    "staffDeleteDateDto": null,
+    "staffEmailDto": "ptthao13@gmail.com",
+    "staffPhoneDto": "0975293398",
+    "staffDateStartDto": "14/02/2013",
+    "staffAddressDto": "Nguyen thai son",
+    "staffNoteDto": "Nhân viên chăm chỉ",
+    "staffBirthdayDto": "08/03/1994",
+    "staffSexDto": "Nam",
+    "staffVietNameIdDto": "665656",
+    "staffImageDto": null,
+    "idUserAdd": 2
+}
 http://localhost:8080/staff/delete/2/4
 
 
@@ -325,28 +327,29 @@ http://localhost:8080/staff/delete/2/4
 
 #####################################CẨM NANG#########################33
 http://localhost:8080/handbook/add
-{
+{ 
   "codeDto": "handbook1",
-  "nameDto": "Cẩm nang du lịch Bình Dương",
-  "dateCreateDto": "05/04/2016",
+  "nameDto": "Cẩm nang du lịch Bình Dương chỉnh sửa",
+  "dateCreateDto": null,
   "areaDto": 1,
   "statuDto": 1,
   "infoDto": "a",
-  "idUserAdd": 2
+  "imageDto": null,
+  "idUserAdd": 0
 }
 
 http://localhost:8080/handbook/update
 {
+  "id": 2,
   "codeDto": "handbook1",
-  "codeDto": "handbook1",
-  "nameDto": "Cẩm nang du lịch Bình Dương",
-  "dateCreateDto": "05/04/2016",
+  "nameDto": "Cẩm nang du lịch Bình Dương chỉnh sửa",
+  "dateCreateDto": null,
   "areaDto": 1,
   "statuDto": 1,
   "infoDto": "a",
-  "idUserAdd": 2
+  "imageDto": null,
+  "idUserAdd": 0
 }
-
 http://localhost:8080/handbook/delete/1/2
 
 ////////////yeu cau KIET lam /////////////
