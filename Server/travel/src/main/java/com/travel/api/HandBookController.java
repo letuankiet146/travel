@@ -29,6 +29,10 @@ public class HandBookController {
 	public String update (@RequestBody HandBookDto handBookDto){
 		return service.update(handBookDto);
 	}
+	@RequestMapping(value="/mail/send/{email}")
+	public String sendEmail (@PathVariable String email){
+		return service.sendMail(email);
+	}
 	
 	@RequestMapping(value="/delete/{id}/{idUserAdd}")
 	public String delete (@PathVariable int id, @PathVariable int idUserAdd){

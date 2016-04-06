@@ -14,114 +14,123 @@ import lombok.Data;
 public class StaffDto {
 	
 	@Mapping("staffId")
-	private Integer staffId;
+	private Integer staffIdDto;
 	
 	@Mapping("staffCode")
-	private String staffCode;
+	private String staffCodeDto;
 	
 	@Mapping("staffName")
-	private String staffName;
+	private String staffNameDto;
 	
 	@Mapping("staffLevel")
-	private Integer staffLevel;
+	private Integer staffLevelDto;
 	
 	@Mapping ("staffGroupUser")
-	private GroupUserEntity groupUserEntity;
+	private GroupUserEntity groupUserEntityDto;
 	
 	@Mapping("staffUser")
-	private String staffUser;
+	private String staffUserDto;
 
 	@Mapping("staffPassword")
-	private String staffPassword;
+	private String staffPasswordDto;
 
 	@Mapping("staffType")
-	private Integer staffType;
+	private Integer staffTypeDto;
 
 	@Mapping("staffLock")
-	private Integer staffLock;
+	private Integer staffLockDto;
 	
 	@Mapping("staffDeleteDate")
-	private Date staffDeleteDate;
+	private Date staffDeleteDateDto;
 	
-	private String staffEmail;
+	@Mapping("staffEmail")
+	private String staffEmailDto;
 	
-	private String staffPhone;
+	@Mapping("staffPhone")
+	private String staffPhoneDto;
 	
-	private Date staffDateStart;
+//	@Mapping("staffDateStart")
+	private String staffDateStartDto;
 	
-	private String staffAddress;
+	@Mapping("staffAddress")
+	private String staffAddressDto;
 	
-	private String staffNote;
+	@Mapping("staffNote")
+	private String staffNoteDto;
 	
-	private Date staffBirthday;
+//	@Mapping("staffBirthdayDto")
+	private String staffBirthdayDto;
 	
-	private String staffSex;
+	@Mapping("staffSex")
+	private String staffSexDto;
 	
-	private String staffVietNameId;
+	@Mapping("staffVietNameId")
+	private String staffVietNameIdDto;
 	
-	private String staffImage;
+	@Mapping("staffImage")
+	private String staffImageDto;
 	
 	private Integer idUserAdd;
 	
 	public void setDataUpdate (StaffDto staffDto){
-		if (staffDto.getStaffName() != null){
-			this.staffName = staffDto.getStaffName();
+		if (staffDto.getStaffNameDto() != null){
+			this.staffNameDto = staffDto.getStaffNameDto();
 		}
 		
-		if (staffDto.getStaffLevel() != null){
-			this.staffLevel = staffDto.getStaffLevel();
+		if (staffDto.getStaffLevelDto() != null){
+			this.staffLevelDto = staffDto.getStaffLevelDto();
 		}
 		
-		if (staffDto.getStaffUser() != null){
-			this.staffUser = staffDto.getStaffUser();
+		if (staffDto.getStaffUserDto() != null){
+			this.staffUserDto = staffDto.getStaffUserDto();
 		}
 		
-		if (staffDto.getStaffPassword()!= null){
-			this.staffPassword = staffDto.getStaffPassword();
+		if (staffDto.getStaffPasswordDto()!= null){
+			this.staffPasswordDto = staffDto.getStaffPasswordDto();
 		}
 		
-		if (staffDto.getStaffType() != null){
-			this.staffType = staffDto.getStaffType();
+		if (staffDto.getStaffTypeDto() != null){
+			this.staffTypeDto = staffDto.getStaffTypeDto();
 		}
 		
-		if (staffDto.getStaffLock()!= null){
-			this.staffLock = staffDto.getStaffLock();
+		if (staffDto.getStaffLockDto()!= null){
+			this.staffLockDto = staffDto.getStaffLockDto();
 		}
 		
-		if (staffDto.getStaffEmail() != null){
-			this.staffEmail = staffDto.getStaffEmail();
+		if (staffDto.getStaffEmailDto() != null){
+			this.staffEmailDto = staffDto.getStaffEmailDto();
 		}
 		
-		if (staffDto.getStaffPhone() != null){
-			this.staffPhone = staffDto.getStaffPhone();
+		if (staffDto.getStaffPhoneDto() != null){
+			this.staffPhoneDto = staffDto.getStaffPhoneDto();
 		}
 		
-		if (staffDto.getStaffDateStart() != null){
-			this.staffDateStart = staffDto.getStaffDateStart();
+		if (staffDto.getStaffDateStartDto() != null){
+			this.staffDateStartDto = staffDto.getStaffDateStartDto();
 		}
 		
-		if (staffDto.getStaffAddress() != null){
-			this.staffAddress = staffDto.getStaffAddress();
+		if (staffDto.getStaffAddressDto() != null){
+			this.staffAddressDto = staffDto.getStaffAddressDto();
 		}
 		
-		if (staffDto.getStaffNote() != null){
-			this.staffNote = staffDto.getStaffNote();
+		if (staffDto.getStaffNoteDto() != null){
+			this.staffNoteDto = staffDto.getStaffNoteDto();
 		}
 		
-		if (staffDto.getStaffBirthday() != null){
-			this.staffBirthday = staffDto.getStaffBirthday();
+		if (staffDto.getStaffBirthdayDto() != null){
+			this.staffBirthdayDto = staffDto.getStaffBirthdayDto();
 		}
 		
-		if (staffDto.getStaffSex() != null){
-			this.staffSex = staffDto.getStaffSex();
+		if (staffDto.getStaffSexDto() != null){
+			this.staffSexDto = staffDto.getStaffSexDto();
 		}
 		
-		if (staffDto.getStaffVietNameId() != null){
-			this.staffVietNameId = staffDto.getStaffVietNameId();
+		if (staffDto.getStaffVietNameIdDto() != null){
+			this.staffVietNameIdDto = staffDto.getStaffVietNameIdDto();
 		}
 		
-		if (staffDto.getStaffImage() != null){
-			this.staffImage = staffDto.getStaffImage();
+		if (staffDto.getStaffImageDto() != null){
+			this.staffImageDto = staffDto.getStaffImageDto();
 		}
 		
 	}

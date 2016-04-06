@@ -12,6 +12,7 @@ import com.travel.dto.HistoryDto;
 import com.travel.dto.StaffDto;
 import com.travel.model.StaffEntity;
 import com.travel.repository.StaffRepository;
+import com.travel.util.MyFormatDate;
 
 @Service
 public class StaffServcesImp implements IStaffService {
@@ -28,6 +29,12 @@ public class StaffServcesImp implements IStaffService {
 	@Override
 	public String add(StaffDto staffDto) {
 		StaffEntity staffEntity = mapper.map(staffDto, StaffEntity.class);
+		if (staffDto.getStaffDateStartDto()!=null){
+			staffEntity.setStaffDateStart(MyFormatDate.stringToDate(staffDto.getStaffDateStartDto()));
+		}
+		if (staffDto.getStaffBirthdayDto()!=null){
+			staffEntity.setStaffBirthday(MyFormatDate.stringToDate(staffDto.getStaffBirthdayDto()));
+		}
 		staffRepository.saveAndFlush(staffEntity);
 		/*
 		 * Save history
@@ -64,10 +71,16 @@ public class StaffServcesImp implements IStaffService {
 
 	@Override
 	public String update(StaffDto staffDto) {
-		StaffEntity staffEntity = staffRepository.findOne(staffDto.getStaffId());
+		StaffEntity staffEntity = staffRepository.findOne(staffDto.getStaffIdDto());
 		StaffDto staffDto2 = mapper.map(staffEntity, StaffDto.class);
 		staffDto2.setDataUpdate(staffDto);
 		staffEntity = mapper.map(staffDto2, StaffEntity.class);
+		if (staffDto.getStaffDateStartDto()!=null){
+			staffEntity.setStaffDateStart(MyFormatDate.stringToDate(staffDto.getStaffDateStartDto()));
+		}
+		if (staffDto.getStaffBirthdayDto()!=null){
+			staffEntity.setStaffBirthday(MyFormatDate.stringToDate(staffDto.getStaffBirthdayDto()));
+		}
 		staffRepository.saveAndFlush(staffEntity);
 		/*
 		 * Save history
@@ -75,7 +88,7 @@ public class StaffServcesImp implements IStaffService {
 		HistoryDto historyDto = new HistoryDto();
 		historyDto.setUser(staffDto.getIdUserAdd());
 		historyDto.setAction("Update_Staff");
-		historyDto.setContent("ID="+staffDto.getStaffId());
+		historyDto.setContent("ID="+staffDto.getStaffIdDto());
 		historyInterface.add(historyDto);
 		return "Update thanh cong";
 	}

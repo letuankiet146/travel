@@ -30,6 +30,9 @@ private Integer id;
 	@Mapping("info")
 	private String infoDto;
 	
+	@Mapping("image")
+	private String imageDto;
+	
 	private int idUserAdd;
 	
 	public void setDataUpdate (HandBookDto handBookDto){
@@ -47,6 +50,9 @@ private Integer id;
 		}
 		if (handBookDto.getInfoDto() != null){
 			this.infoDto = handBookDto.getInfoDto();
+		}
+		if (handBookDto.getImageDto() != null){
+			this.imageDto = handBookDto.getImageDto();
 		}
 	}
 }
