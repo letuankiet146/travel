@@ -99,7 +99,7 @@ function del_array(){
 		}
 	}
 	else{
-		alert("Chưa chọn tour để xóa.")
+		alert("Chưa chọn "+ paged +"	 để xóa.")
 	}
 }
 

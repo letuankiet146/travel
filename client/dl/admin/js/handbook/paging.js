@@ -44,7 +44,7 @@
 		function init(){
 			// lay tong so trang
 			$.ajax({
-				url: 'controller/list-tour.php?type=count&items=' + options.items,
+				url: 'controller/list-handbook.php?type=count&items=' + options.items,
 				type: 'GET',
 				dataType: 'json'
 			})
@@ -134,7 +134,7 @@
 		//=================================================
 		function loadData(page){
 			$.ajax({
-				url: 'controller/list-tour.php?type=list',
+				url: 'controller/list-handbook.php?type=list',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -148,25 +148,23 @@
 				if(data.length>0){
 					rows.empty();
 					$.each(data, function(i, val) {
-						var dayStart= val.tour_day_start; 
+						var dayStart= val.date_create; 
 						var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
-						var dayEnd = val.tour_day_end; 
-						var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
-						var str = 	'<tr item-id="' + val.tour_id + '">'+
-										'<td>' + val.tour_code + '</td>'+
-										'<td>' + val.tour_name + '</td>'+
+						var str = 	'<tr item-id="' + val.id + '">'+
+										'<td>' + val.code + '</td>'+
+										'<td>' + val.name + '</td>'+
 										'<td class="text-center" id="from">' + fdayStart + '</td>'+
-										'<td class="text-center" id="to">' + fdayEnd +'</td>'+
+										'<td class="text-center" id="to">' + val.area +'</td>'+
 										'<td class="text-center">'+
 											'<select class="status">'+
-												'<option value="' + val.tour_active +'">' + val.status_name +'</option>'+
+												'<option value="' + val.status +'">' + val.status_name +'</option>'+
 												'<option value="0">-----------------</option>'+
-												'<option value="1">Hiển thị</option>'+
-												'<option value="2">Không hiển thị</option>'+
+												'<option value="7">Hiển thị</option>'+
+												'<option value="8">Không hiển thị</option>'+
 											'</select>'+
 											'<div id="load_status"></div>'+
 										'</td>'+
-										'<td class="text-center"><a id="update" href="index.php?page=edit-handbook&Id=' + val.tour_id + '" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
+										'<td class="text-center"><a id="update" href="#" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
 										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
 										'<td><input  type="checkbox" name="chk[]" class="chk" value="' + val.tour_id + '"></td>'+
 									'</tr>';
@@ -183,6 +181,20 @@
 					aStatus = options.rows + " tr td select.status";
 					$(aStatus).on("change", function(e){
 						update_status(this);
+					});
+					aRows = options.rows + " tr td a#update";
+					$(aRows).on("click", function(e){
+						$(this).closest('.right').find('.add-edit').fadeIn("700");
+						var itemID = $(this).closest('tr').attr("item-id");
+						$.ajax({
+							url: 'views/handbook/edit-handbook.php?handbook_id=' + itemID,
+							type: 'POST',
+							dataType: 'text',
+						})
+						.done(function(data) {
+							$("#title").html("Thông tin chi tiết");
+							$("#loadingAjax").html(data);
+						});
 					});
 				}
 			});	
@@ -202,7 +214,7 @@
 				durartion: 3000,
 				done: function(){
 					$.ajax({
-						// url: 'controller/list-tour.php?type=delete&id=' + itemID,
+						// url: 'controller/list-handbook.php?type=delete&id=' + itemID,
 						url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/' + itemID + '/' + idUserAdd,
 						type: 'GET',
 						dataType: 'json'
@@ -216,7 +228,7 @@
 			});
 
 			// $.ajax({
-			// 	url: 'controller/list-tour.php?type=one&id=' + lastID,
+			// 	url: 'controller/list-handbook.php?type=one&id=' + lastID,
 			// 	type: 'GET',
 			// 	dataType: 'json'
 			// })
@@ -260,7 +272,6 @@
 			};
 			console.log(mystatus);
 			$.ajax({
-				// url: 'controller/list-tour.php?type=updateStatus',
 				url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour',
 				type: "POST",
 				dataType: "json",

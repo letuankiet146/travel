@@ -84,10 +84,12 @@
 			<div class="message_list" id="message_list"></div>
 			<div class="search-notifi">
 				<form action="" method="get" accept-charset="utf-8">
-					<input type="text" name="" value="" placeholder="Tin nhắn" />
-					<input type="button" name="" value="" />
+					<textarea id="content" name="content" row="3" placeholder="Tin nhắn"></textarea>
+					<input type="button" name="" value="" onclick="add_notify()" />
+					<div class="clear"></div>
 				</form>
 			</div>
+			<div class="clear"></div>
 		</div>
 	</div>
 </div>

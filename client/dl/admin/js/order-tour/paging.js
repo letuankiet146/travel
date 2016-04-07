@@ -128,7 +128,7 @@
 		//=================================================
 		function setRowsHeight(){
 			var trHeight = (options.items * options.height + 34) + "px";
-			paging.css("height",trHeight);
+			paging.css("min-height",trHeight);
 		}
 		//=================================================
 		//Hàm load các thông tin database đưa vào #rows
@@ -167,6 +167,7 @@
 												'<option value="5">Đã thanh toán</option>'+
 												'<option value="6">Chưa thanh toán</option>'+
 											'</select>'+
+											'<div id="load_status"></div>'+
 										'</td>'+
 										'<td class="text-center"><a class="btn-view" href="#" title="Xem chi tiết"><i class="fa fa-info-circle"></i></a></td>'+
 										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+

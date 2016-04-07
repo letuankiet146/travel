@@ -75,19 +75,19 @@ function click_load(){
 	}
     else if(this.giaTourDto.value != "" && !number.test(giaTourDto.value)){
 			$("#giaTourDto").closest(".row").find(".error").empty();
-	  		$("#giaTourDto").closest(".row").find(".error").append("Giá tour phải là số")
+	  		$("#giaTourDto").closest(".row").find(".error").append("Giá tour phải là số");
 			this.giaTourDto.focus();
 			return false;
 	}
 	else if(this.imageDto.value == "") {
 		$("#imageDto").closest(".thumb").find(".error").empty();
-	  	$("#imageDto").closest(".thumb").find(".error").append("Yêu cầu chọn ảnh đại diện")
+	  	$("#imageDto").closest(".thumb").find(".error").append("Yêu cầu chọn ảnh đại diện");
 		this.imageDto.focus();
 		return false;
 	}
 	else if(infoDto == "") {
 		$("#infoDto").closest(".details").find(".error").empty();
-	  	$("#infoDto").closest(".details").find(".error").append("Thông tin bắt buộc")
+	  	$("#infoDto").closest(".details").find(".error").append("Thông tin bắt buộc");
 		this.CKEDITOR.instances['infoDto'].focus();
 		return false;
 	}
@@ -111,12 +111,10 @@ function add_tour(){
     var tenTourDto =$("#tenTourDto").val();
     var tourArrivePlaceIdDto =$("#tourArrivePlaceIdDto").val();
     var idDichVuDto =$("#idDichVuDto").val();
-    // var imageDto=document.getElementsByName("imageDto").value;
     var activeDto =$("#activeDto").val();
     var idUserAdd =$("#idUserAdd").val();
     var infoDto =CKEDITOR.instances['infoDto'].getData();
     var imageDto =$("#imageDto").val();
-    // var tourImageDataDto =$("#tourImageDataDto").val();
     var tourImageDataDto=document.getElementById("tourImageDataDto").value;
     var x = Math.floor((Math.random() * 1000000000) + 1);
 

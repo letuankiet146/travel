@@ -6,7 +6,7 @@
 	//=================================================
 	if($type == "count"){
 		$items = (int)$_GET["items"];
-		$sql= "SELECT COUNT(id) FROM history WHERE delete_date is null";
+		$sql= "SELECT COUNT(id) FROM hand_book";
 		$result = mysql_query($sql,$con);
 		$totalItem = mysql_result($result, 0);
 		$total = array("total" => 0);
@@ -28,13 +28,25 @@
 		$items = (int)$_POST["items"];
 		$currentPage = (int)$_POST["currentPage"];
 		$offset = ($currentPage - 1) * $items;
-		$sql = "SELECT * FROM history h join staff s on h.user=s.staff_id WHERE h.delete_date is null ORDER BY id DESC LIMIT " . $offset . "," . $items ."";
+		$sql = "SELECT * FROM hand_book h join status s on h.status=s.status_id ORDER BY id DESC LIMIT " . $offset . "," . $items ."";
 		$result = mysql_query($sql,$con);
-		$historys = array();
+		$handbooks = array();
 		while($row = mysql_fetch_assoc($result)){
-			$historys[] = $row;
+			$handbooks[] = $row;
 		}
-		echo json_encode($historys);
+		echo json_encode($handbooks);
+	}
+
+	//=================================================
+	// lấy 1 phan tu id cuối cùng
+	//=================================================
+	if($type == "one"){
+		$lastID = (int)$_GET["id"];
+		$sql = "SELECT * FROM hand_book h join status s on h.status=s.status_id WHERE id < " . $lastID . " ORDER BY id DESC LIMIT 1";
+		$result = mysql_query($sql,$con);
+		$handbook = array();
+		$handbook = mysql_fetch_assoc($result);
+		echo json_encode($handbook);
 	}
 
 	//=================================================
@@ -47,9 +59,7 @@
 		$today = Date("Y-m-d");
 	    foreach($array as $vl)
 	    {
-	        $sql = "UPDATE history SET delete_date = '$today' where id=$vl";
+	        $sql = "DELETE * FROM hand_book where id=$vl";
 	        mysql_query($sql,$con);
 	    }
 	}
-
-?>

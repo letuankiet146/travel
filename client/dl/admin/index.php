@@ -29,6 +29,8 @@ if(isset($_SESSION['username']))
 	<!-- DATEPICKER -->
 	<link rel="stylesheet" type="text/css" href="js/datepicker/datepicker.css" />
 	<script type="text/javascript" src="js/datepicker/datepicker.js"></script>
+	<!-- validate -->
+	<script type="text/javascript" src="js/validate/jquery.validate.js"></script>
 	<!-- MODULE MAIN -->
 <?php 
 	$paged = $_GET['page'];
@@ -63,8 +65,6 @@ if(isset($_SESSION['username']))
 	<!-- LIST_TOUR -->
 	<link rel="stylesheet" type="text/css" href="style/staff/staff.css" />
 	<script type="text/javascript" src="js/staff/paging.js"></script>
-	<!-- <script type="text/javascript" src="js/validate/jquery.validate.js"></script> -->
-	<!-- <script type="text/javascript" src="js/staff/add-staff.js"></script> -->
 	
 <?php } ?>
 </head>
@@ -144,18 +144,18 @@ if(isset($_SESSION['username']))
 							<li><a href="index.php?page=contact"><i class="fa fa-info-circle"></i>Ý kiến khách hàng</a></li>
 						</ul>
 					</li>
-					<li class="menu">
+					<!-- <li class="menu">
 						<div class="title-order">Hệ thống<i class="fa fa-caret-square-o-down"></i></div>
 						<ul class="menu-child">
 							<li><a href=""><i class="fa fa-sliders"></i>Quản lý sideshow ảnh</a></li>
 							<li><a href=""><i class="fa fa-link"></i>Link liên kết</a></li>
 							<li><a href=""><i class="fa fa-support"></i>Hỗ trợ trực tuyến</a></li>
 						</ul>
-					</li>
+					</li> -->
 					<li class="menu">
 						<div class="title-order">Tin tức<i class="fa fa-caret-square-o-down"></i></div>
 						<ul class="menu-child">
-							<li><a href=""><i class="fa fa-credit-card"></i> Tin tức - sự kiện</a></li>
+							<!-- <li><a href=""><i class="fa fa-credit-card"></i> Tin tức - sự kiện</a></li> -->
 							<li><a href="index.php?page=list-handbook"><i class="fa fa-external-link"></i></i>Câm nang du lịch</a></li>
 						</ul>
 					</li>
@@ -170,6 +170,7 @@ if(isset($_SESSION['username']))
 		<!-- MAIN-RIGHT -->
 		<div class="main-right">
 			<div class="right">
+			<input id="today" type="hidden" name="today" value="<?php echo date("d/m/Y") ?>" />
 				<?php 
 					$page="";
 					if(isset($_GET['page'])){

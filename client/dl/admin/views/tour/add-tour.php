@@ -31,8 +31,12 @@
 		    var FR= new FileReader();
 		    FR.onload = function(e) {
 		      var str = e.target.result;
-		      console.log();
 		      $("#tourImageDataDto").val(str);
+		      var image = new Image();
+				image.src = str;
+				var list = document.getElementById("img");
+				list.removeChild(list.childNodes[0]);
+		      	list.appendChild(image);
 		    };       
 		    FR.readAsDataURL( this.files[0] );
 		  }
@@ -106,7 +110,7 @@
 							<select id="tourGuiderIdDto" name="tourGuiderIdDto">
 								<option value="0">Chọn hướng dẫn viên</option>
 							<?php 
-								$sql = "SELECT * FROM guider";
+								$sql = "SELECT * FROM guider where guider_delete_date is null";
 								$query = mysql_query($sql);
 								while($rows = mysql_fetch_array($query)){
 							?>
@@ -137,8 +141,13 @@
 							<label for="">Dịch vụ <span class="red"> ( * )</span></label>
 							<select id="idDichVuDto" name="idDichVuDto">
 								<option value="0">Chọn loại dịch vụ</option>
-								<option value="1">Dịch vụ 1</option>
-								<option value="2">Dịch vụ 2</option>
+								<?php 
+									$sql = "SELECT * FROM services where services_delete_date is null";
+									$query = mysql_query($sql);
+									while($row_service = mysql_fetch_array($query)){
+								?>
+								<option value="<?php echo $row_service['services_id']; ?>"><?php echo $row_service['services_name']; ?></option>
+								<?php } ?>
 							</select>
 							<div class="error"></div>
 						</div>
@@ -156,9 +165,10 @@
 					<div class="clear"></div>
 				</div>
 				<div class="thumb">
-					<label>Ảnh minh họa Ảnh minh họa <span>(chỉ cho phép .JPG, .PNG, .GIF và dung lượng tối đa là 500Kb)</span></label>
+					<label>Ảnh minh họa Ảnh minh họa </label>
 					<input id="imageDto" type="file" name="imageDto" value="" />
 					<input id="tourImageDataDto" type="hidden" name="tourImageDataDto" value="" />
+					<div id="img">Chưa có hành ảnh</div>
 					<div class="error"></div>
 				</div>
 				<div class="details">

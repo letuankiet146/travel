@@ -1,156 +1,131 @@
 //======================================
 //==========kiểm tra form===============
 //======================================
-function click_load(){
-	
-alert("abc");
-// 	$(".btn-add").on("click", function(e){
-// 	// // $().ready(function() {
-// 	//     $("#formAddEdit").validate({
-// 	//             rules: {
-// 	//                 staffName: {
-// 	//                     required: true
-// 	//                 }
-// 	//             },
-// 	//             messages: {
-// 	//                staffName: {
-// 	//                     required: "Thông tin bắt buộc"
-// 	//                 }
-// 	//             }
-// 	//     });
-// 	alert("abc");
-// 	 });
-
-// 	// var customerPhoneDto=document.getElementById("customerPhoneDto");
-// 	// var phone = document.getElementById("customerPhoneDto").value;
-// 	// var phoneCompany = document.getElementById("customerPhoneCompanyDto").value;
-// 	// var customerBirthDto =$("#customerBirthDto").val();
-// 	// var today =$("#today").val();
-// 	// var ngaysinh = $.datepicker.parseDate('dd/mm/yy', customerBirthDto);
-// 	// var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
-// 	// var date = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((1[6-9]|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/;
-// 	// var number=/^[0-9.]+$/;
-// 	// var customerEmailDto =$("#customerEmailDto").val();
-// 	// var mail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
-// 	// var count = phone.length;
-
-// 	// var fields = $(".row").closest(".info-l").find( ":input" );
-// 	// jQuery.each( fields, function( i, field ) {
-// 	//  	var b = "#" + field.name;
-// 	//  	if(field.value == "" || field.value <= 0){
-// 	//  		if((b != "#customerBirthDto") && (b != "#customerSexDto")){
-// 	// 		 	$(b).closest(".row").find(".error").empty();
-// 	// 	      	$(b).closest(".row").find(".error").append("Thông tin bắt buộc");
-// 	// 	      	field.value.focus();
-// 	// 	      	return false;
-// 	// 	    }
-// 	//     }
-// 	//     else{
-// 	//     	$(b).closest(".row").find(".error").empty();	
-// 	//     }
-//  //    });
-
-// 	// if(this.customerBirthDto.value == "") {
-// 	// 	$("#customerBirthDto").closest(".row_left").find(".error").empty();
-// 	//   	$("#customerBirthDto").closest(".row_left").find(".error").append("Thông tin bắt buộc");
-// 	// 	this.customerBirthDto.focus();
-// 	// 	return false;
-// 	// }
-// 	// else if(this.customerSexDto.value == "") {
-// 	// 	$("#customerSexDto").closest(".row_right").find(".error").empty();
-// 	//   	$("#customerSexDto").closest(".row_right").find(".error").append("Thông tin bắt buộc");
-// 	// 	this.customerSexDto.focus();
-// 	// 	return false;
-// 	// }
-// 	// else if(!mail.test(customerEmailDto)){
-// 	// 	$("#customerEmailDto").closest(".row").find(".error").empty();
-// 	//   	$("#customerEmailDto").closest(".row").find(".error").append("Chưa đúng format");
-// 	// 	this.customerEmailDto.focus();
-// 	// 	return false;
-// 	// }
-// 	// else if(!number.test(customerPhoneDto.value)){
-// 	// 	$("#customerPhoneDto").closest(".row").find(".error").empty();
-// 	//   	$("#customerPhoneDto").closest(".row").find(".error").append("Giá trị phải là số");
-// 	// 	this.customerPhoneDto.focus();
-// 	// 	return false;
-// 	// }
-// 	// else if(count > 11){
-// 	// 	$("#customerPhoneDto").closest(".row").find(".error").empty();
-// 	//   	$("#customerPhoneDto").closest(".row").find(".error").append("SDT không quá 11 số");
-// 	// 	this.customerPhoneDto.focus();
-// 	// 	return false;
-// 	// }
-//  //    else if (ngaysinh > ngayht) {
-// 	//   	alert("Ngày sinh phải nhỏ hơn ngày hiện tại");
-//  //      	this.customerBirthDto.focus();
-//  //      	return false;
-// 	// }
-// 	// else if(!(date.test(customerBirthDto))){
-// 	//   alert("Chưa đúng format");
-//  //      this.customerBirthDto.focus();
-//  //      return false;
-//  //    }
-//  //    else if(phoneCompany != "" && phoneCompany.length > 11){
-// 	// 	$("#customerPhoneCompanyDto").closest(".row").find(".error").empty();
-// 	//   	$("#customerPhoneCompanyDto").closest(".row").find(".error").append("SDT không quá 11 số");
-// 	// 	this.customerPhoneCompanyDto.focus();
-// 	// 	return false;
-// 	// }
-//  //    else{
-// 		// add_customer();
-// 	// }	
+function check_neutral(check){
+	$.ajax({
+		url: 'controller/staff.php?type=check',
+		type: 'POST',
+		dataType: 'json',
+		cache: false,
+	})
+	.done(function(data) {
+		var staffEmail = $("#staffEmail").val();
+		var staffUser = $("#staffUser").val();
+		$.each(data, function(i, val) {
+			if(staffEmail == val.staff_email){
+				alert("Email trùng. Nhân viên đã tồn tại");
+				$("staffEmail").focus();
+				return false;
+			}
+			else if(staffUser == val.staff_user){
+				alert("Tên đăng nhập đã tồn tại");
+				$("staffUser").focus();
+				return false;
+			}
+		});
+	});
+	return false;
 }
+$(document).ready(function () {
+    $("#formAddEdit").validate({
+        rules: {
+            staffName: {required: true},
+            staffSex: {required: true},
+            staffEmail: {required: true,email: true},
+            staffPhone: {required: true,number: true,minlength: 10,maxlength:11},
+            staffAddress: {required: true},
+            staffBirthday: {required: true,dateISO:true},
+            staffVietNameId: {required: true,number: true},
+            staffLevel: {required: true},
+            staffUser: {required: true},
+            staffDateStart: {required: true,dateISO:true}
+        },
+        messages: {
+            staffName: {required: "Thông tin bắt buộc"},
+            staffSex: {required: "Thông tin bắt buộc"},
+            staffEmail: {required: "Thông tin bắt buộc",email: "Email chưa đúng định dạng"},
+            staffPhone: {required: "Thông tin bắt buộc",number: "SDT phải là số",
+        				minlength: "SDT không hợp lệ",maxlength: "SDT không hợp lệ"},
+            staffAddress: {required: "Thông tin bắt buộc"},
+            staffBirthday: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"},
+            staffVietNameId: {required: "Thông tin bắt buộc",number: "CMND phải là số"},
+            staffLevel: {required: "Thông tin bắt buộc"},
+            staffUser: {required: "Thông tin bắt buộc"},
+            staffDateStart: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"}
+        },
+        // thực hiện sau khi kiểm tra đúng
+        submitHandler: function() {
+
+        	var staffBirthday =$("#staffBirthday").val()
+        	var staffDateStart =$("#staffDateStart").val();
+			var today =$("#today").val();
+			var ngayvl = $.datepicker.parseDate('dd/mm/yy', staffDateStart);
+			var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
+
+			function getAge(dateString) {
+			    var today = new Date();
+			    var birthDate = new Date(dateString);
+			    var age = today.getFullYear() - birthDate.getFullYear();
+			    return age;
+			}
+
+			if(getAge(staffBirthday) < 17){
+				alert("Tuổi phải lớn hơn 17 tuổi");
+        	}
+        	else if(ngayvl > ngayht){
+        		alert("Ngày vào làm không hợp lệ");
+        	}
+        	else{
+        		add_staff();
+        	}
+        }
+    });
+});
+
 
 //======================================
-//===========tạo tour===================
+//===========Thêm nhân viên===================
 //======================================
-function add_customer(){
-	var customerCode =$("#customerCode").val();
-    var customerNameDto =$("#customerNameDto").val();
-    var customerPhoneDto =$("#customerPhoneDto").val();
-    var customerEmailDto =$("#customerEmailDto").val();
-    var customerAddressDto =$("#customerAddressDto").val();
-    var customerCompanyNameDto =$("#customerCompanyNameDto").val();
-    var customerAddressCompanyDto =$("#customerAddressCompanyDto").val();
-    var customerPhoneCompanyDto =$("#customerPhoneCompanyDto").val();
-    var customerPasswordDto =$("#customerPasswordDto").val();
-    var customerBirthDto =$("#customerBirthDto").val();
-    var customerSexDto =$("#customerSexDto").val();
-    var customerUserDto =$("#customerUserDto").val();
-    var customerCityDto =$("#customerCityDto").val();
-    var customerCountryDto =$("#customerCountryDto").val();
-    var customerNoteDto =$("#customerNoteDto").val();
+function add_staff(){
+	var staffCode =$("#staffCode").val();
+    var staffName =$("#staffName").val();
+    var staffLevel =$("#staffLevel").val();
+    var staffUser =$("#staffUser").val();
+    var staffPassword =$("#staffPassword").val();
+    var staffEmail =$("#staffEmail").val();
+    var staffPhone =$("#staffPhone").val();
+    var staffDateStart =$("#staffDateStart").val();
+    var staffAddress =$("#staffAddress").val();
+    var staffNote =$("#staffNote").val();
+    var staffBirthday =$("#staffBirthday").val();
+    var staffSex =$("#staffSex").val();
+    var staffVietNameId =$("#staffVietNameId").val();
     var idUserAdd =$("#idUserAdd").val();
-    var customerGroupDto =$("#customerGroupDto").val();
-    
+
 	var mydata = {
-	    "customerCode": customerCode,
-	    "customerNameDto": customerNameDto,
-	    "customerBirthDto": customerBirthDto,
-	    "customerSexDto": customerSexDto,
-	    "customerPhoneDto": customerPhoneDto,
-	    "customerEmailDto": customerEmailDto,
-	    "customerAddressDto": customerAddressDto,
-	    "customerVietNamIdDto": null,
-	    "customerCompanyNameDto": customerCompanyNameDto,
-	    "customerAddressCompanyDto": customerAddressCompanyDto,
-	    "customerPhoneCompanyDto": customerPhoneCompanyDto,
-	    "customerImageDto": null,
-	    "customerUserDto": null,
-	    "customerPasswordDto": customerPasswordDto,
-	    "customerTypeDto": null,
-	    "customerLockDto": null,
-	    "customerDeleteDateDto": null,
-	    "customerGroupDto": customerGroupDto,
-    	"customerCityDto": customerCityDto,
-    	"customerCountryDto": customerCountryDto,
-    	"customerNoteDto": customerNoteDto,
+	    "staffCodeDto": staffCode,
+	    "staffNameDto": staffName,
+	    "staffLevelDto": staffLevel,
+	    "staffUserDto": staffUser,
+	    "staffPasswordDto": staffPassword,
+	    "staffTypeDto": null,
+	    "staffLockDto": null,
+	    "staffDeleteDateDto": null,
+	    "staffEmailDto": staffEmail,
+	    "staffPhoneDto": staffPhone,
+	    "staffDateStartDto": staffDateStart,
+	    "staffAddressDto": staffAddress,
+	    "staffNoteDto": staffNote,
+	    "staffBirthdayDto": staffBirthday,
+	    "staffSexDto": staffSex,
+	    "staffVietNameIdDto": staffVietNameId,
+	    "staffImageDto": null,
 	    "idUserAdd": idUserAdd
 	};
 	console.log(mydata);
 	
 	$.ajax({
-		url : "http://localhost:8080/spr-data/customer/add/",
+		url : "http://localhost:8080/spr-data/staff/add",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 
@@ -163,10 +138,14 @@ function add_customer(){
 		},
 		statusCode: {
 			404:function(){
-				alert("khong tim thay trang.");
+				alert("Không tìm thấy URL.");
 			},
 			200:function(){
-				alert("Thêm khách hàng thành công");
+				alert("Thêm nhân viên thành công");
+				location.reload();
+			},
+			500:function(){
+				alert("Lỗi server!!!");
 				location.reload();
 			}
 		}

@@ -44,7 +44,7 @@
 		function init(){
 			// lay tong so trang
 			$.ajax({
-				url: 'controller/staff.php?type=count&items=' + options.items,
+				url: 'controller/list-staff.php?type=count&items=' + options.items,
 				type: 'GET',
 				dataType: 'json'
 			})
@@ -134,7 +134,7 @@
 		//=================================================
 		function loadData(page){
 			$.ajax({
-				url: 'controller/staff.php?type=list',
+				url: 'controller/list-staff.php?type=list',
 				type: 'POST',
 				dataType: 'json',
 				cache: false,
@@ -200,36 +200,51 @@
 			
 			//  ẩn item được xóa
 			$(parent).fadeOut({
-				durartion: 3000,
+				durartion: 300,
 				done: function(){
 					$.ajax({
-						url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/' + itemID + '/' + idUserAdd,
+						url: 'http://localhost:8080/spr-data/staff/delete/' + itemID + '/' + idUserAdd,
 						type: 'GET',
-						dataType: 'json'
+						dataType: 'json',
+						statusCode: {
+							404:function(){
+								alert("khong tim thay trang.");
+							},
+							200:function(){
+								$.ajax({
+									url: 'controller/list-staff.php?type=one&id=' + lastID,
+									type: 'GET',
+									dataType: 'json'
+								})
+								.done(function(data) {
+									if(data != false){
+										var dayStart= data.staff_date_start; 
+										var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
+										var str = 	'<tr item-id="' + data.staff_id + '">'+
+														'<td>' + data.staff_code + '</td>'+
+														'<td>' + data.staff_name + '</td>'+
+														'<td class="text-center" id="from">' + data.staff_phone + '</td>'+
+														'<td class="text-center" id="to">' + data.staff_email +'</td>'+
+														'<td class="text-center">' + fdayStart +'</td>'+
+														'<td class="text-center">'+ data.group_users_name + '</td>'+
+														'<td class="text-center"><a id="update" href="#" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
+														'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+														'<td><input  type="checkbox" name="chk[]" class="chk" value="' + data.staff_id + '"></td>'+
+													'</tr>';
+										str = $(str).hide().appendTo(rows);
+										$(str).fadeIn(150);
+										init();
+									}
+								});
+							}
+						}
 					});
 					if(itemID == lastID && $(rows).children().length == 1){
 						options.currentPage = options.currentPage - 1;
 					}
-					init();
 					$(this).remove();
 				}
-			});
-		}
-
-		//=================================================
-		//Hàm update status
-		//=================================================
-		function update_staff(obj){
-			$(obj).closest('.right').find('.add-edit').fadeIn("700");
-			var itemID = $(obj).closest('tr').attr("item-id");
-			$.ajax({
-				url: 'views/staff/edit-staff.php?staff_id=' + itemID,
-				type: 'POST',
-				dataType: 'text',
-			})
-			.done(function(data) {
-				$("#loadingAjax").html(data);
-			});
+			});	
 		}
 	}
 })(jQuery);

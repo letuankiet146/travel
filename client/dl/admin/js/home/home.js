@@ -2,8 +2,12 @@
 //=======load data notification======
 //===================================
 $(document).ready(function() {
+	load_notify();
+});
+
+function load_notify(){
 	$.ajax({
-		url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/notification/list',
+		url: 'http://localhost:8080/spr-data/notification/list',
 		type: 'GET',
 		dataType: 'json',
 	})
@@ -31,26 +35,37 @@ $(document).ready(function() {
 	.always(function() {
 		console.log("complete");
 	});
-});
-// //===================================
-// //============load data history======
-// //===================================
-// $(document).ready(function() {
-// 	$.ajax({
-// 		url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/history/list',
-// 		type: 'GET',
-// 		dataType: 'json',
-// 		cache: false,
-// 	})
-// 	.done(function(data) {
-// 		var str ="";
-// 		for (var i = data.length-1; i >=0; i--) {
-// 			str += 	'<tr>'+
-// 							'<td>' + data[i]['staffEntity']['staffName'] +  '</td>'+
-// 							'<td>' + data[i]['action'] + '</td>'+
-// 							'<td>' + data[i]['createDate'] + '</td>'+
-// 						'</tr>';
-// 			$('#contents').html(str);
-// 		}
-// 	});	
-// });
+}
+//===================================
+//=======add notification======
+//===================================
+function add_notify(){
+	var content=document.getElementById("content").value;
+	if(content == "") {
+		alert("Bạn chưa nhập nội dung thông báo");
+		this.content.focus();
+		return false;
+	}
+	else{
+		var content = $("#content").val();
+		var idUserAdd = $("#idUserAdd").val();
+		var mydata = {
+			"user": idUserAdd,
+	    	"content": content	
+	    };
+	    console.log(mydata);
+		$.ajax({
+			url: 'http://localhost:8080/spr-data/notification/add',
+			type: 'POST',
+			dataType:'json',
+			contentType: 'application/json',
+			data: JSON.stringify(mydata)
+		})
+		.done(function(data) {
+			console.log(a);
+		})
+		.always(function() {
+			load_notify();
+		});
+	}
+}

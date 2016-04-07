@@ -1,150 +1,109 @@
 //======================================
 //==========kiểm tra form===============
 //======================================
-function click_load(){
+$(document).ready(function () {
+    $("#formAddEdit").validate({
+        rules: {
+            staffName: {required: true},
+            staffSex: {required: true},
+            staffEmail: {required: true,email: true},
+            staffPhone: {required: true,number: true,minlength: 10,maxlength:11},
+            staffAddress: {required: true},
+            staffBirthday: {required: true,dateISO:true},
+            staffVietNameId: {required: true,number: true},
+            staffLevel: {required: true},
+            staffUser: {required: true},
+            staffDateStart: {required: true,dateISO:true}
+        },
+        messages: {
+            staffName: {required: "Thông tin bắt buộc"},
+            staffSex: {required: "Thông tin bắt buộc"},
+            staffEmail: {required: "Thông tin bắt buộc",email: "Email chưa đúng định dạng"},
+            staffPhone: {required: "Thông tin bắt buộc",number: "SDT phải là số",
+        				minlength: "SDT không hợp lệ",maxlength: "SDT không hợp lệ"},
+            staffAddress: {required: "Thông tin bắt buộc"},
+            staffBirthday: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"},
+            staffVietNameId: {required: "Thông tin bắt buộc",number: "CMND phải là số"},
+            staffLevel: {required: "Thông tin bắt buộc"},
+            staffUser: {required: "Thông tin bắt buộc"},
+            staffDateStart: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"}
+        },
+        // thực hiện sau khi kiểm tra đúng
+        submitHandler: function() {
 
-	var giaTourKMDto=document.getElementById("giaTourKMDto");
-	var soChoDto=document.getElementById("soChoDto");
-	var giaTourDto=document.getElementById("giaTourDto");
-	var ngayKHDto =$("#ngayKHDto").val();
-	var ngayKTDto =$("#ngayKTDto").val();
-	var today =$("#today").val();
-	var ngaykh = $.datepicker.parseDate('dd/mm/yy', ngayKHDto);
-	var ngaykt = $.datepicker.parseDate('dd/mm/yy', ngayKTDto);
-	var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
-	var date = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((1[6-9]|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/;
-	var number=/^[0-9.]+$/;
+        	var staffBirthday =$("#staffBirthday").val()
+        	var staffDateStart =$("#staffDateStart").val();
+			var today =$("#today").val();
+			var ngayvl = $.datepicker.parseDate('dd/mm/yy', staffDateStart);
+			var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
 
-	if(this.areaIdDto.value < 1) {
-      alert("Chọn loại tour");
-      this.areaIdDto.focus();
-      return false;
-    }
-    else if(this.tenTourDto.value == "") {
-      alert("Yêu cầu nhập tên tour");
-      this.tenTourDto.focus();
-      return false;
-    }
-    else if(this.tourFromPlaceIdDto.value < 1) {
-      alert("Chọn nơi khỏi hành");
-      this.tourFromPlaceIdDto.focus();
-      return false;
-    }
-    else if(this.tourArrivePlaceIdDto.value < 1) {
-      alert("Chọn địa điểm đến");
-      this.tourArrivePlaceIdDto.focus();
-      return false;
-    }
-    else if(this.tourGuiderIdDto.value < 1) {
-      alert("Chọn hướng dẫn viên");
-      this.tourGuiderIdDto.focus();
-      return false;
-    }
-    else if(this.soChoDto.value == "") {
-      alert("Yêu cầu nhập số lượng");
-      this.soChoDto.focus();
-      return false;
-    }
-    else if(!number.test(soChoDto.value)){
-		alert("Số lượng phải là số");
-		soChoDto.focus();
-		return(false);
-	}
-	else if(this.ngayKHDto.value == "") {
-      alert("Yêu cầu nhập ngày khởi hành");
-      this.ngayKHDto.focus();
-      return false;
-    }
-	else if(!(date.test(ngayKHDto))){
-      alert("Chưa đúng format");
-      this.ngayKHDto.focus();
-      return false;
-    }
-    else if(this.ngayKTDto.value == "") {
-      alert("Yêu cầu nhập ngày kết thúc");
-      this.ngayKTDto.focus();
-      return false;
-    }
-	else if(!(date.test(ngayKTDto))){
-      alert("Chưa đúng format");
-      this.ngayKTDto.focus();
-      return false;
-    }
-	else if (ngaykt <= ngaykh) {
-      	alert("Ngay Kt phải lớn ngày kh");
-      	this.ngayKTDto.focus();
-      	return false;
-	}
-    else if(this.idDichVuDto.value < 1) {
-      alert("Chọn loại dịch vụ");
-      this.idDichVuDto.focus();
-      return false;
-    }
-    else if(this.giaTourKMDto.value == "") {
-      alert("Yêu cầu nhập giá tour KM");
-      this.giaTourKMDto.focus();
-      return false;
-    }
-    else if(!number.test(giaTourKMDto.value)){
-		alert("Giá tour KM phải là số");
-		giaTourKMDto.focus();
-		return(false);
-	}
-    else if(!number.test(giaTourDto.value)){
-		alert("Giá tour phải là số");
-		giaTourDto.focus();
-		return(false);
-	}
-    else{
-			Update_Tour();	
-	}
-}
+			function getAge(dateString) {
+			    var today = new Date();
+			    var birthDate = new Date(dateString);
+			    var age = today.getFullYear() - birthDate.getFullYear();
+			    return age;
+			}
+
+			if(getAge(staffBirthday) < 17){
+				alert("Tuổi phải lớn hơn 17 tuổi");
+        	}
+        	else if(ngayvl > ngayht){
+        		alert("Ngày vào làm không hợp lệ");
+        	}
+        	else{
+        		edit_staff()
+        	}
+        	
+        }
+    });
+});
+
 
 //======================================
-//=========Cập nhật tour================
+//===========câp nhât nhân viên===================
 //======================================
-function Update_Tour(){
-
-	var touridDto =$("#touridDto").val();
-	var giaTourDto =$("#giaTourDto").val();
-	var soChoDto =$("#soChoDto").val();
-	var giaTourKMDto =$("#giaTourKMDto").val();
-	var ngayKHDto =$("#ngayKHDto").val();
-	var ngayKTDto =$("#ngayKTDto").val();
-	var idTourDto =$("#idTourDto").val();
-    var tourFromPlaceIdDto =$("#tourFromPlaceIdDto").val();
-    var tourGuiderIdDto =$("#tourGuiderIdDto").val();
-    var tenTourDto =$("#tenTourDto").val();
-    var tourArrivePlaceIdDto =$("#tourArrivePlaceIdDto").val();
-    var idDichVuDto =$("#idDichVuDto").val();
-    var imageDto=document.getElementsByName("imageDto").value;
-    var activeDto =$("#activeDto").val();
+function edit_staff(){
+	var staffCode =$("#staffCode").val();
+    var staffName =$("#staffName").val();
+    var staffLevel =$("#staffLevel").val();
+    var staffUser =$("#staffUser").val();
+    var staffPassword =$("#staffPassword").val();
+    var staffEmail =$("#staffEmail").val();
+    var staffPhone =$("#staffPhone").val();
+    var staffDateStart =$("#staffDateStart").val();
+    var staffAddress =$("#staffAddress").val();
+    var staffNote =$("#staffNote").val();
+    var staffBirthday =$("#staffBirthday").val();
+    var staffSex =$("#staffSex").val();
+    var staffVietNameId =$("#staffVietNameId").val();
     var idUserAdd =$("#idUserAdd").val();
-    var infoDto =CKEDITOR.instances['infoDto'].getData();
-	
+    var staffId =$("#staffId").val();
+
 	var mydata = {
-		idDto: touridDto,
-		idTourDto: idTourDto,
-	   	tenTourDto: tenTourDto,
-	   	infoDto: infoDto,
-	   	imageDto: imageDto,
-	   	soChoDto: soChoDto,
-	   	giaTourDto: giaTourDto,
-	   	giaTourKMDto: giaTourKMDto,
-	   	ngayKHDto: ngayKHDto,
-	   	ngayKTDto:ngayKTDto,
-	   	idDichVuDto: idDichVuDto,
-	   	viewDto: null,
-	   	activeDto: activeDto,
-	   	tourArrivePlaceIdDto: tourArrivePlaceIdDto,
-	   	tourGuiderIdDto: tourGuiderIdDto,
-	   	tourFromPlaceIdDto: tourFromPlaceIdDto,
-	   	tourDeleteDateDto: null,
-	   	idUserAdd: idUserAdd
+		"staffIdDto": staffId,
+	    "staffCodeDto": staffCode,
+	    "staffNameDto": staffName,
+	    "staffLevelDto": staffLevel,
+	    "staffUserDto": staffUser,
+	    "staffPasswordDto": staffPassword,
+	    "staffTypeDto": null,
+	    "staffLockDto": null,
+	    "staffDeleteDateDto": null,
+	    "staffEmailDto": staffEmail,
+	    "staffPhoneDto": staffPhone,
+	    "staffDateStartDto": staffDateStart,
+	    "staffAddressDto": staffAddress,
+	    "staffNoteDto": staffNote,
+	    "staffBirthdayDto": staffBirthday,
+	    "staffSexDto": staffSex,
+	    "staffVietNameIdDto": staffVietNameId,
+	    "staffImageDto": null,
+	    "idUserAdd": idUserAdd
 	};
 	console.log(mydata);
+	
 	$.ajax({
-		url : "http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour",
+		url : "http://localhost:8080/spr-data/staff/update",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 
@@ -153,26 +112,20 @@ function Update_Tour(){
             $('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
         },
 		success: function(data){ 
-
+			//location.reload();
 		},
 		statusCode: {
 			404:function(){
-				alert("khong tim thay trang");
-				document.location.href='index.php';
+				alert("Không tìm thấy URL.");
 			},
 			200:function(){
-				alert("Cập nhật thành công");
-				document.location.href='index.php?page=list-tour';
+				alert("Cập nhật nhân viên thành công");
+				location.reload();
 			},
 			500:function(){
-				alert("Lỗi cập nhật!!! Vui lòng kiểm tra dữ liệu nhập vào");
-				document.location.href='index.php?page=edit-tour&Id=' + id;
+				alert("Lỗi server!!!");
+				location.reload();
 			}
 		}
 	});
 }
-
-
-
-
-

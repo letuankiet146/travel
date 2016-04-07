@@ -6,7 +6,7 @@
 	</div>
 	<div class="add-edit" id="creatTour">
 		<div class="title-inner">
-			<h3 class="title-inner-l">Tạo Tour</h3>
+			<h3 class="title-inner-l">Tạo cẩm nang</h3>
 			<div class="title-inner-r">
 				<ul>
 					<li class="btn-exit">Thoát</li>
@@ -21,13 +21,12 @@
 	<div class="news">
 		<div class="diary">
 			<div class="title-inner">
-				<h3 class="title-inner-l">Danh sách tour</h3>
+				<h3 class="title-inner-l">Danh sách cẩm nang</h3>
 				<div class="search-group">
 					<div class="select-box">
 						<select name="">
-							<option value="1"> Tour đang thực hiện </option>
-							<option value=""> Tour chưa thực hiện </option>
-							<option value=""> Tour đã thực hiện </option>
+							<option value="1"> Cẩm nang đang hiển thị </option>
+							<option value="2"> Cẩm nang đang ẩn </option>
 						</select>
 					</div>
 					<div class="search-box">
@@ -39,8 +38,8 @@
 				</div>
 				<div class="title-inner-r">
 					<ul>
-						<li id="btn-add">Tạo tour</li>
-						<li id="del-tour" onclick="del_array()">Xóa tour</li>
+						<li id="btn-add">Tạo cẩm nang</li>
+						<li id="del-tour" onclick="del_array()">Xóa cẩm nang</li>
 					</ul>
 				</div>
 				<div class="clear"></div>

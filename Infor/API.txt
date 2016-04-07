@@ -201,7 +201,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/notification/delete/2
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/list (XONG)
 
 ###################ADD CUSTOMER #############################################################################
-LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/ 
+LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/add/ ( XONG)
 BODY: customerCode mày random trên client rồi gán vào nha. Trừ customerCode thì các cột khác có thể null nếu như thông
 tin không có.
      {
@@ -275,7 +275,7 @@ LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/customer/delete/34/2 (X
  http://localhost:8080/staff/list
 
   ###################LIST Staff #############################################################################
-http://localhost:8080/staff/add
+http://localhost:8080/staff/add (XONG)
 {
     "staffCodeDto": "MANV6",
     "staffNameDto": "Lê Văn 1",
@@ -300,7 +300,7 @@ http://localhost:8080/staff/add
 http://localhost:8080/staff/update
    
 {
-     "staffId": 5,
+    "staffId": 5,
     "staffCodeDto": "MANV6",
     "staffNameDto": "Lê Văn 1",
     "staffLevelDto": 2,
@@ -320,13 +320,13 @@ http://localhost:8080/staff/update
     "staffImageDto": null,
     "idUserAdd": 2
 }
-http://localhost:8080/staff/delete/2/4
+http://localhost:8080/staff/delete/2/4(XONG)
 
 
 
 
 #####################################CẨM NANG#########################33
-http://localhost:8080/handbook/add
+http://localhost:8080/handbook/add (Không insert ngày xuống csdl)
 { 
   "codeDto": "handbook1",
   "nameDto": "Cẩm nang du lịch Bình Dương chỉnh sửa",
@@ -338,7 +338,7 @@ http://localhost:8080/handbook/add
   "idUserAdd": 0
 }
 
-http://localhost:8080/handbook/update
+http://localhost:8080/handbook/update (Lỗi server 500)
 {
   "id": 2,
   "codeDto": "handbook1",

@@ -139,7 +139,7 @@
 							</thead>
 							<tbody>
 							<?php 
-								$sqlOrder = "SELECT * FROM form_order f join tour t on f.form_order_tour_id=t.tour_id join status s on f.form_order_isPay=s.status_id WHERE f.form_order_customer_id = " . $id . " ORDER BY f.form_order_id DESC";
+								$sqlOrder = "SELECT * FROM form_order f join tour t on f.form_order_tour_id=t.tour_id join status s on f.form_order_is_pay=s.status_id WHERE f.form_order_customer_id = " . $id . " ORDER BY f.form_order_id DESC";
     							$queryOrder=mysql_query($sqlOrder);
     							while($rowOrder=mysql_fetch_array($queryOrder)){
     								$dayOrder = $rowOrder['form_order_date'];

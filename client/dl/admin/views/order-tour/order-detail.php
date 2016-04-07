@@ -74,8 +74,8 @@
 		    	<select id="formOrderIsPayDto" name="formOrderIsPayDto" >
 		    		<option value="<?php echo $row_order['form_order_is_pay']; ?>"><?php echo $row_order['status_name']; ?></option>
 		    		<option value="0">---------------</option>
-		    		<option value="2">Đã thanh toán</option>
-		    		<option value="3">Chưa thanh toán</option>
+		    		<option value="5">Đã thanh toán</option>
+		    		<option value="6">Chưa thanh toán</option>
 		    	</select>
 		    </li>
 		    <li>

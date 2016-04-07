@@ -112,6 +112,7 @@ function Update_Tour(){
     var activeDto =$("#activeDto").val();
     var idUserAdd =$("#idUserAdd").val();
     var infoDto =CKEDITOR.instances['infoDto'].getData();
+    var tourImageDataDto=document.getElementById("tourImageDataDto").value;
 	
 	var mydata = {
 		idDto: touridDto,
@@ -131,6 +132,7 @@ function Update_Tour(){
 	   	tourGuiderIdDto: tourGuiderIdDto,
 	   	tourFromPlaceIdDto: tourFromPlaceIdDto,
 	   	tourDeleteDateDto: null,
+	   	tourImageDataDto: tourImageDataDto,
 	   	idUserAdd: idUserAdd
 	};
 	console.log(mydata);
