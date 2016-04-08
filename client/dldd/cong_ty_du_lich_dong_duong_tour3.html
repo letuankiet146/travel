@@ -1,0 +1,65 @@
+<script type="text/javascript">
+/*======================================
+*================LOAD DATA===============
+*========================================*/
+$(document).ready(function() {
+    $.ajax({
+      url: 'http://localhost:8080/spr-data/tour/listTour',
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function(data) {
+        console.log(data);
+        var html = '';
+        var str1 ='';
+        var str2 ='';
+        var dem = 0;
+        for (var i = data.length - 1; i >= 0; i--) {
+            if(dem<6){
+                Number.prototype.format = function(n, x) {
+                  var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+                  return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
+                }
+                var giaTour = data[i]['giaTourKMDto'],
+                nn = 'abc',
+                xx = 3;
+                html = '<div class="item">'+
+                            '<div class="i-images">'+
+                                '<a href="chi-tiet-tour.php?tour_id=' + data[i]['idDto'] + '">'+
+                                    '<img src="' + data[i]['tourImageDataDto'] + '" alt="' + data[i]['tenTourDto'] + '" />'+
+                                '</a>'+
+                            '</div>'+
+                            '<div class="i-description">'+
+                                '<div class="i-title">'+
+                                    '<a href="chi-tiet-tour.php?tour_id=' + data[i]['idDto'] + '">'+ data[i]['tenTourDto'] + '</a>'+
+                                '</div>'+
+                                '<div class="fl">'+
+                                    '<div class="i-content">'+
+                                        'Giá 1 khách: <span>' + giaTour.format(nn, xx) + ' VNĐ</span>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="fr">'+
+                                    '<a class="viewdetail" href="chi-tiet-tour.php?tour_id=' + data[i]['idDto'] + '">Xem chi tiết</a>'+
+                                '</div>'+
+                                '<div class="clear"></div>'+
+                            '</div>'+
+                        '</div>';
+                if(dem<3){
+                    str1 += html;
+                    $('#loadData1').html(str1);
+                }
+                else if(dem >= 3){
+                    str2 += html;
+                    $('#loadData2').html(str2);
+                }
+            }
+            dem++;
+        }
+    });
+});
+</script>
+<div class="grid-tour">
+    <div class="row-tour" id="loadData1"></div>
+    <div class="row-tour" id="loadData2"></div>
+    <div class="clear"></div>
+</div>

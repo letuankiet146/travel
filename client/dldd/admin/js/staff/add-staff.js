@@ -1,0 +1,153 @@
+//======================================
+//==========kiểm tra form===============
+//======================================
+function check_neutral(check){
+	$.ajax({
+		url: 'controller/staff.php?type=check',
+		type: 'POST',
+		dataType: 'json',
+		cache: false,
+	})
+	.done(function(data) {
+		var staffEmail = $("#staffEmail").val();
+		var staffUser = $("#staffUser").val();
+		$.each(data, function(i, val) {
+			if(staffEmail == val.staff_email){
+				alert("Email trùng. Nhân viên đã tồn tại");
+				$("staffEmail").focus();
+				return false;
+			}
+			else if(staffUser == val.staff_user){
+				alert("Tên đăng nhập đã tồn tại");
+				$("staffUser").focus();
+				return false;
+			}
+		});
+	});
+	return false;
+}
+$(document).ready(function () {
+    $("#formAddEdit").validate({
+        rules: {
+            staffName: {required: true},
+            staffSex: {required: true},
+            staffEmail: {required: true,email: true},
+            staffPhone: {required: true,number: true,minlength: 10,maxlength:11},
+            staffAddress: {required: true},
+            staffBirthday: {required: true,dateISO:true},
+            staffVietNameId: {required: true,number: true},
+            staffLevel: {required: true},
+            staffUser: {required: true},
+            staffDateStart: {required: true,dateISO:true}
+        },
+        messages: {
+            staffName: {required: "Thông tin bắt buộc"},
+            staffSex: {required: "Thông tin bắt buộc"},
+            staffEmail: {required: "Thông tin bắt buộc",email: "Email chưa đúng định dạng"},
+            staffPhone: {required: "Thông tin bắt buộc",number: "SDT phải là số",
+        				minlength: "SDT không hợp lệ",maxlength: "SDT không hợp lệ"},
+            staffAddress: {required: "Thông tin bắt buộc"},
+            staffBirthday: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"},
+            staffVietNameId: {required: "Thông tin bắt buộc",number: "CMND phải là số"},
+            staffLevel: {required: "Thông tin bắt buộc"},
+            staffUser: {required: "Thông tin bắt buộc"},
+            staffDateStart: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"}
+        },
+        // thực hiện sau khi kiểm tra đúng
+        submitHandler: function() {
+
+        	var staffBirthday =$("#staffBirthday").val()
+        	var staffDateStart =$("#staffDateStart").val();
+			var today =$("#today").val();
+			var ngayvl = $.datepicker.parseDate('dd/mm/yy', staffDateStart);
+			var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
+
+			function getAge(dateString) {
+			    var today = new Date();
+			    var birthDate = new Date(dateString);
+			    var age = today.getFullYear() - birthDate.getFullYear();
+			    return age;
+			}
+
+			if(getAge(staffBirthday) < 17){
+				alert("Tuổi phải lớn hơn 17 tuổi");
+        	}
+        	else if(ngayvl > ngayht){
+        		alert("Ngày vào làm không hợp lệ");
+        	}
+        	else{
+        		add_staff();
+        	}
+        }
+    });
+});
+
+
+//======================================
+//===========Thêm nhân viên===================
+//======================================
+function add_staff(){
+	var staffCode =$("#staffCode").val();
+    var staffName =$("#staffName").val();
+    var staffLevel =$("#staffLevel").val();
+    var staffUser =$("#staffUser").val();
+    var staffPassword =$("#staffPassword").val();
+    var staffEmail =$("#staffEmail").val();
+    var staffPhone =$("#staffPhone").val();
+    var staffDateStart =$("#staffDateStart").val();
+    var staffAddress =$("#staffAddress").val();
+    var staffNote =$("#staffNote").val();
+    var staffBirthday =$("#staffBirthday").val();
+    var staffSex =$("#staffSex").val();
+    var staffVietNameId =$("#staffVietNameId").val();
+    var idUserAdd =$("#idUserAdd").val();
+
+	var mydata = {
+	    "staffCodeDto": staffCode,
+	    "staffNameDto": staffName,
+	    "staffLevelDto": staffLevel,
+	    "staffUserDto": staffUser,
+	    "staffPasswordDto": staffPassword,
+	    "staffTypeDto": null,
+	    "staffLockDto": null,
+	    "staffDeleteDateDto": null,
+	    "staffEmailDto": staffEmail,
+	    "staffPhoneDto": staffPhone,
+	    "staffDateStartDto": staffDateStart,
+	    "staffAddressDto": staffAddress,
+	    "staffNoteDto": staffNote,
+	    "staffBirthdayDto": staffBirthday,
+	    "staffSexDto": staffSex,
+	    "staffVietNameIdDto": staffVietNameId,
+	    "staffImageDto": null,
+	    "idUserAdd": idUserAdd
+	};
+	console.log(mydata);
+	
+	$.ajax({
+		url : "http://localhost:8080/spr-data/staff/add",
+		type: "POST",
+		dataType: "json",
+		contentType: "application/json", 
+		data :JSON.stringify(mydata),
+		beforeSend: function () {
+            $('.add-edit').append('<div class="gif"><img src="images/preloader.GIF" /></div><div class="f_overlay"></div>');
+        },
+		success: function(data){ 
+			//location.reload();
+		},
+		statusCode: {
+			404:function(){
+				alert("Không tìm thấy URL.");
+			},
+			200:function(){
+				alert("Thêm nhân viên thành công");
+				location.reload();
+			},
+			500:function(){
+				alert("Lỗi server!!!");
+				location.reload();
+			}
+		}
+	});
+}

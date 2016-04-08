@@ -21,3 +21,10 @@ CREATE TABLE `sql61036294`.`hand_book` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+_______________________________ngay 07/04/2016__________________________________
+ALTER TABLE `sql61036294`.`tour` 
+CHANGE COLUMN `tour_infor` `tour_infor` TEXT NULL DEFAULT NULL ;
+
+ALTER TABLE `sql61036294`.`tour` 
+CHANGE COLUMN `tour_infor` `tour_infor` TEXT CHARACTER SET 'utf8mb4' NULL DEFAULT NULL ;
