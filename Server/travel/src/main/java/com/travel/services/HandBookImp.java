@@ -2,14 +2,13 @@ package com.travel.services;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import com.travel.dto.HandBookDto;
 import com.travel.dto.HistoryDto;
 import com.travel.model.HandBookEntity;
 import com.travel.repository.HandBookRepository;
+import com.travel.util.IUtilMethod;
 import com.travel.util.MyFormatDate;
 
 @Service
@@ -25,8 +24,8 @@ public class HandBookImp implements IHandBook {
 	private IHistoryServices historyInterface;
 	
 	@Autowired
-	private MailSender mailSender;
-
+	private IUtilMethod utilMethod;
+	
 	@Override
 	public String add(HandBookDto handBookDto) {
 		HandBookEntity handBookEntity = mapper.map(handBookDto, HandBookEntity.class);
@@ -86,15 +85,5 @@ public class HandBookImp implements IHandBook {
 		HandBookEntity handBookEntity = handBookRepo.findOne(id);
 		return mapper.map(handBookEntity, HandBookDto.class);
 	}
-
-	@Override
-	public String sendMail(String email) {
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo(email);
-		message.setSubject("Demo spring send mail");
-		message.setText("Hello Spring boot");
-		mailSender.send(message);
-		return "Send email success";
-}
 
 }
