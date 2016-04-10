@@ -15,16 +15,22 @@
     <script type="text/javascript" src="js/mmenu/js/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="js/core.js"></script>
     <script type="text/javascript" src="js/style.js"></script>
+    <link rel="stylesheet" href="js/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="js/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="js/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="js/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/nivo-slider/jquery.nivo.slider.js"></script>
     <!--===MODULE MAIN==-->
     <!--===DatePicker==-->
     <link rel="stylesheet" href="js/datepicker/datepicker.css"/>
     <script src="js/datepicker/datepicker.js"></script>
     <!--===DatePicker==-->
-    <link href="js/slideSlick/css/slick.css" type="text/css" rel="stylesheet" />
-    <link href="js/slideSlick/css/slick-theme.css" type="text/css" rel="stylesheet" />
+
     <link href="style/product.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/slideSlick/js/slick.js"></script>
-    <script type="text/javascript" src="js/product/product.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/product/loadData.js"></script>
+    <script type="text/javascript" src="js/product/booking.js"></script>
     <script type="text/javascript">
         $(function() {
             $( "#dateFrom" ).datepicker({
@@ -41,11 +47,15 @@
             });
         });
     </script>
+
     <!--===MODULE MAIN==-->
 </head>
 
 <body>
-
+<?php
+    include('admin/connectDB.php');
+    include('include/tour/function.php');
+?>
 <div id="vnt-wrapper">
 	<div id="vnt-container">
         <!--=== BEGIN: HEADER ===-->
@@ -90,7 +100,7 @@
                                 <a class="hover_effect_menu" href="index.php"><span class="hover_text">Trang chủ</span></a>
                             </li><li>
                                 <a class="hover_effect_menu" href="cong_ty_du_lich_dong_duong_gioi_thieu_1170_02.html"><span class="hover_text">Giới thiệu</span></a>
-                            </li><li class="current">
+                            </li><li>
                                 <a class="hover_effect_menu" href="tour-noi-dia.php"><span class="hover_text">Tour nội địa</span></a>
                             </li><li>
                                 <a class="hover_effect_menu" href="tour-quoc-te.php"><span class="hover_text">Tour quốc tế</span></a>
@@ -133,7 +143,11 @@
       	<div id="vnt-content">
             <!--=== BEGIN: BANNER ===-->
             <div class="vnt-banner">
-                <img src="images/news/banner.jpg" alt="#" />
+                <div id="vnt-banner">
+                    <img src="images/news/banner.jpg" alt="#" />
+                    <img src="images/news/banner.jpg" alt="#" />
+                    <img src="images/news/banner.jpg" alt="#" />
+                </div>
             </div>
             <!--=== END: BANNER ===-->
             <div class="wrapper">
@@ -142,7 +156,8 @@
                     <div class="navation">
                         <ul>
                             <li class="home"><a href="index.php">Trang chủ</a></li>
-                            <li>Tour nội địa</li>
+                            <li><a href="tour-noi-dia.php">Tour nội địa</a></li>
+                            <li>Đặt tour</li>
                         </ul>
                     </div>
                 </div>
@@ -158,117 +173,101 @@
                     <div class="mid-content">
                         <div class="vnt-order">
                             <form id="vnt-order" action="#" method="POST">
-                                <div class="oder-left">
-                                    <div class="title">Thông tin khách hàng</div>
-                                    <div class="row-input">
-                                        <label for="name">Họ và tên <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <input type="text" name="name" id="name" class="form-control" />
+                                <div class="wrapper">
+                                    <input type="hidden" name="code" id="code" value="MADDT<?php madonhang(); ?>" placeholder="">
+                                    <div class="oder-left" id="oder_left"></div>
+                                    <div class="oder-left">
+                                        <div class="title">Thông tin liên hệ</div>
+                                        <div class="row-input">
+                                            <label for="name">Họ và tên <span>(*)</span></label>
+                                            <div class="div-input">
+                                                <input type="text" name="name" id="name" class="form-control" />
+                                            </div>
+                                            <div class="clear"></div>
                                         </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label for="email">Email <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <input type="text" name="email" id="email" class="form-control" />
+                                        <div class="row-input">
+                                            <label for="email">Email <span>(*)</span></label>
+                                            <div class="div-input">
+                                                <input type="text" name="email" id="email" class="form-control" />
+                                            </div>
+                                            <div class="clear"></div>
                                         </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label for="phone">Điện thoại <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <input type="text" name="phone" id="phone" class="form-control" />
+                                        <div class="row-input">
+                                            <label for="phone">Điện thoại <span>(*)</span></label>
+                                            <div class="div-input">
+                                                <input type="text" name="phone" id="phone" class="form-control" />
+                                            </div>
+                                            <div class="clear"></div>
                                         </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label for="address">Địa chỉ <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <input type="text" name="address" id="address" class="form-control" />
+                                        <div class="row-input">
+                                            <label for="address">Địa chỉ <span>(*)</span></label>
+                                            <div class="div-input">
+                                                <input type="text" name="address" id="address" class="form-control" />
+                                            </div>
+                                            <div class="clear"></div>
                                         </div>
-                                        <div class="clear"></div>
+                                        <div class="row-input">
+                                            <label>Số lượng người</label>
+                                            <div class="div-input">
+                                                <table>
+                                                    <tr>
+                                                        <td><label for="total">Tổng số khách</label>
+                                                        <input type="text" name="total" id="total" class="form-control" value="1" disabled  /></td>
+                                                        <td><label for="nguoilon">Người lớn <span>(*)</span></label>
+                                                        <input type="text" name="nguoilon" id="nguoilon" class="form-control" value="1" onchange="count_number();" /></td>
+                                                        <td><label for="duoi12">Dưới 12 tuổi</label>
+                                                        <input type="text" name="duoi12" id="duoi12" class="form-control" value="0" onchange="count_number();" /></td>
+                                                        <td><label for="duoi2">Dưới 2 tuổi</label>
+                                                        <input type="text" name="duoi2" id="duoi2" class="form-control" value="0" onchange="count_number();" /></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="row-input">
+                                            <label for="t-content">Yêu cầu thêm</label>
+                                            <div class="div-input">
+                                                <textarea id="t-content" name="content" class="form-control" rows="2">
+                                                </textarea>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
                                     </div>
+                                    <div class="oder-left" id="thanhtoan">
+                                        <div class="title">Hình thức thanh toán</div>
+                                        <div class="row-input">
+                                            <label style="cursor: pointer;"><input type="radio" name="thanhtoan" id="tructiep" onclick="" value="1" /> Thanh toán trực tiếp</label>
+                                            <ul>
+                                                <li>Vui lòng đến chi nhánh gần nhất và thanh toán trong vòng 3 ngày từ ngày đặt tour</li>
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="row-input">
+                                            <label style="cursor: pointer;"><input type="radio" name="thanhtoan" id="tructuyen" onclick="" /> Thanh toán trực tuyến</label>
+                                            <ul>
+                                                <li><label style="cursor: pointer;"><input type="radio" name="thanhtoan" id="nganluong" value="2" /> Bằng tài khoản Ngân Lượng</label></li>
+                                                <li><label style="cursor: pointer;"><input type="radio" name="thanhtoan" id="baokim" value="3" /> Bằng tài khoản Bảo Kim</label></li>
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="row-input">
+                                            <label style="cursor: pointer;"><input type="radio" name="thanhtoan" id="chuyenkhoan" onclick="" value="4" /> Thanh toán chuyển khoản</label>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="row-input">
+                                            <div class="div-input">
+                                                <button type="submit" name="do_submit" id="do_submit" class="btn submit" value=""><span>Đặt tour</span></button>
+                                                <button type="reset" name="reset" id="reset" class="btn reset" value=""><span>Nhập lại</span></button>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
-                                <div class="oder-right">
-                                    <div class="title">Thông tin tour</div>
-                                    <div class="row-input">
-                                        <label for="n_tour">Tên tour <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <input type="text" name="n_tour" id="n_tour" class="form-control" />
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label for="dateFrom">Ngày khởi hành <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <input type="text" name="dateFrom" id="dateFrom" class="form-control" />
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label for="dateTo">Ngày kết thúc <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <input type="text" name="dateTo" id="dateTo" class="form-control" />
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label>Số lượng người</label>
-                                        <div class="div-input">
-                                            <table>
-                                                <tr>
-                                                    <td><label for="nguoilon">Người lớn <span>(*)</span></label></td>
-                                                    <td><input type="text" name="nguoilon" id="nguoilon" class="form-control" /></td>
-                                                    <td><label for="duoi12">Dưới 12 tuổi</label></td>
-                                                    <td><input type="text" name="duoi12" id="duoi12" class="form-control" /></td>
-                                                    <td><label for="duoi2">Dưới 2 tuổi</label></td>
-                                                    <td><input type="text" name="duoi2" id="duoi2" class="form-control" /></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label>Chọn khách sạn <span>(*)</span></label>
-                                        <div class="div-input">
-                                            <select name="check-hotel" class="form-control">
-                                                <option value="1">Chọn khách sạn</option>
-                                            </select>
-                                            <select name="check-deparment" class="form-control">
-                                                <option value="1">Chọn loại phòng</option>
-                                            </select>
-                                            <table>
-                                                <tr>
-                                                    <td><label for="phongdon">Phòng đơn</label></td>
-                                                    <td><input type="text" name="phongdon" id="phongdon" class="form-control" /></td>
-                                                    <td><label for="phongdoi">Phòng đôi</label></td>
-                                                    <td><input type="text" name="phongdoi" id="phongdoi" class="form-control" /></td>
-                                                    <td><label for="phongba">Phòng ba</label></td>
-                                                    <td><input type="text" name="phongba" id="phongba" class="form-control" /></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label for="t-content">Yêu cầu thêm</label>
-                                        <div class="div-input">
-                                            <textarea id="t-content" name="content" class="form-control" rows="5">
-                                            </textarea>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="row-input">
-                                        <label></label>
-                                        <div class="div-input">
-                                            <button type="submit" name="do_submit" id="do_submit" class="btn submit" value=""><span>Gửi</span></button>
-                                            <button type="reset" name="reset" id="reset" class="btn reset" value=""><span>Nhập lại</span></button>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
                             </form>
+                            <div id="check">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

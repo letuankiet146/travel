@@ -93,7 +93,6 @@ $(document).ready(function() {
       dataType: 'json',
     })
     .done(function(data) {
-        console.log(data);
         var html = '';
         var str1 ='';
         var str2 ='';

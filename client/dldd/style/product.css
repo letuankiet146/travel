@@ -473,6 +473,7 @@
     -moz-transition:all 0.5s ease;
     -o-transition:all 0.5s ease;
     transition:all 0.5s ease;
+    height:180px;
 }
 .sliderProduct .item .i-images:hover img{
     -webkit-transform:scale(1.2);
@@ -535,6 +536,22 @@
 .sliderProduct .item .i-description .viewdetail:hover{
     background-color: #c7a566;
 }
+.gif{
+    position: absolute;
+    right: 50%;
+    top: 50%;
+}
+.f_overlay {
+    background: rgba(0, 0, 0, 0.35) none repeat scroll 0 0;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: all 1s ease 0s;
+    width: 100%;
+    z-index: 1;
+}
 /*==============END: SLIDER PRODUCT===================*/
 /*==============BEGIN: TAB===================*/
 .vnt-tab{
@@ -588,6 +605,17 @@
 .vnt-tab ul li .col_td{
     float:left;
     width: calc(35% - 15px);
+}
+.vnt-tab ul li .col_tr{
+    padding:5px;
+}
+.vnt-tab ul li .col_tr strong{
+    float:right;
+    color:#F00;
+}
+.vnt-tab ul li .col_tr strong:first-child{
+    float:left;
+    color:#333;
 }
 .vnt-tab ul li .title:hover{
     color: #333333;
@@ -660,22 +688,46 @@
 .vnt-order .row-input{
     width: 100%;
     margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #666666;
+}
+.vnt-order .note{
+    height:330px;
+    overflow-y:scroll;
+    background:#fff;
+    padding: 20px;
+    font-size: 12px;
+    width:95%;
+}
+.vnt-order #check{
+    display:none;
 }
 .vnt-order .row-input label{
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
     color: #666666;
-    width: 160px;
-    float: left;
     padding-right: 15px;
+    text-align:left;
+}
+.vnt-order .row-input label.error{
+    color:#f00;
+    font-style: italic;
+    font-size:12px;
+}
+.vnt-order .row-input span{
+    font-weight:bold;
 }
 .vnt-order .row-input label span{
     color: #e15a2d;
 }
 .vnt-order .row-input .div-input{
-    margin-left: 160px;
-    position: relative;
+    text-align:center;
+}
+.vnt-order .row-input .div-input td{
+    text-align:left;
 }
 .vnt-order .row-input .div-input .ui-datepicker-trigger{
     position: absolute;
@@ -729,15 +781,38 @@
     padding: 0px 5px;
     font-size: 12px;
     min-width:50px;
+    line-height:18px;
 }
 .vnt-order .row-input .div-input table tr td:first-child label{
     padding: 0px 5px 0px 0px;
 }
 .vnt-order .row-input .div-input table tr td .form-control{
     max-width:70px;
+    padding: 6px 0px;
+    text-align: center;
+}
+.vnt-order .row-input ul{
+    margin-left:30px;
+    display:none;
+}
+.vnt-order table{
+    width:100%;
+}
+.vnt-order thead tr{
+    width:auto;
+}
+.vnt-order .td_six{
+    width:80px;
+    text-align: center;
 }
 /*==============END: Ð?T TOUR===================*/
 @media screen and (max-width : 768px){
+    .sliderProduct .item .i-images img{
+        height:auto;
+    }
+    .vnt-order .note{
+        width:100%;
+    }
     #vnt-sidebar{
         width:100%;
         margin-bottom: 20px;
@@ -800,7 +875,7 @@
         float: none;
     }
     .vnt-order .row-input .div-input{
-        margin-left: 0px;
+        /* margin-left: 0px; */
     }
     .vnt-order .row-input .div-input table label{
         min-width:80px;
@@ -879,7 +954,7 @@
         border: 0px;
     }
     .vnt-order .row-input .div-input table label{
-        min-width:80px;
+        min-width:62px;
     }
     .vnt-tab ul li .col_td{
         float:left;

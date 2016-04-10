@@ -1,3 +1,4 @@
+
 /*==========INPUT RADIO=========*/
  $(document).ready(function(){
     $(".input-radio ul li label").click(function(){
@@ -5,7 +6,6 @@
         $(this).parents("li").addClass("active");    
     });
  });
-
  /*==========SLIDER BAR=========*/
  $(document).ready(function(){
     $(".box.showinfo .box-title .fTitle").click(function(){
@@ -156,4 +156,3 @@ $(document).ready(function(){
         $(this).parents(".w_content").find(".content-info").stop().slideDown(700); 
     });  
 });
-

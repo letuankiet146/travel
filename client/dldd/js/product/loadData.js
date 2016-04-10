@@ -1,7 +1,17 @@
+ /*==========SLIDER PRODUCT BOTTOM=========*/
 $(document).ready(function() {
     var full_url = document.URL;
     var array_url = full_url.split('?tour_id=');
     var id = array_url[array_url.length -1];
+    var count = id.split("#").length;
+    if(count == 1){
+        id = id;
+    }
+    else{
+        var num = id.lastIndexOf("#");
+        id = id.slice(0, num);
+    }
+
     $.ajax({
         url: 'http://localhost:8080/spr-data/tour/listTour',
         type: 'GET',
@@ -11,10 +21,14 @@ $(document).ready(function() {
         $.each(data, function(i, val) {
             var info ='';
             var title = '';
+            var schedule = '';
+            var arrivePlaceId = '';
+            var info_booking = '';
+            var check = '';
             if(val.idDto == id){
                 // =====load tên tour
                 title = '<h1>' + val.tenTourDto + '</h1>';
-                $('.titleL').html(title);
+                $('.n-transform').html(title);
 
                 // =====TINH SỐ NGÀY THỰC HIỆN TOUR
                 var dateKH = val.ngayKHDto;
@@ -25,9 +39,9 @@ $(document).ready(function() {
                 dateKT = new Date(dateKT[2], dateKT[1], dateKT[0]);
                 dateKH_unixtime = parseInt(dateKH.getTime());
                 dateKT_unixtime = parseInt(dateKT.getTime());
-                var timeDifference = dateKT_unixtime - dateKH_unixtime;
+                var miliSecond = dateKT_unixtime - dateKH_unixtime;
                 var ONE_DAY = 1000 * 60 * 60 * 24;
-                var timeDifferenceInDays = timeDifference / ONE_DAY;
+                var Days = miliSecond / ONE_DAY;
 
                 //======== FORMAT MONEY
                 Number.prototype.format = function(n, x) {
@@ -65,7 +79,7 @@ $(document).ready(function() {
                         '</div>'+
                         '<div class="detail_row">'+
                             '<div class="label1">Thời gian</div>'+
-                            '<div class="grid_info">' + timeDifferenceInDays + ' ngày/' + (timeDifferenceInDays-1) + ' đêm</div>'+
+                            '<div class="grid_info">' + Days + ' ngày/' + (Days-1) + ' đêm</div>'+
                             '<div class="clear"></div>'+
                         '</div>'+
                         '<div class="detail_row">'+
@@ -89,12 +103,125 @@ $(document).ready(function() {
                             '<div class="clear"></div>'+
                         '</div>'+
                         '<div class="button-cart">'+
-                            '<a href="cong_ty_du_lich_dong_duong_dat_tour_1170_02.html">Đặt tour ngay</a>'+
+                            '<a href="dat-tour.php?tour_id=' + val.idDto + '">Đặt tour ngay</a>'+
                         '</div>';
                 $('.detail_grid').html(info);
 
-                // =====load thông tin chi tiết tour
+                // =====load thông tin chuong trinh tour
                 $('#infoDto').html(val.infoDto);
+
+                // =====load thông tin lịch trính
+                schedule = '<div class="row_tr">'+
+                                '<strong>Thông tin vận chuyển</strong>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<div class="col_td">'+
+                                    '<strong>Loại phương tiện</strong>'+
+                                    '<p>Máy bay</p>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<strong>Số xe (mã chuyến bay)</strong>'+
+                                    '<p>VJ122</p>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<strong>Người vận chuyển</strong>'+
+                                    '<p>VietJec</p>'+
+                                '</div>'+
+                                '<div class="clear"></div>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<strong>Thông tin lịch trình</strong>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<div class="col_td">'+
+                                    '<span><strong>Ngày đi:</strong> &nbsp;16/04/2016 06:30</span>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<span>đến 16/04/2016 08:30</span>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<span>Chuyến bay: VJ122</span>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<span><strong>Ngày về:</strong> 19/04/2016 19:30</span>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<span>đến 19/04/2016 21:30</span>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<span>Chuyến bay: VJ122</span>'+
+                                '</div>'+
+                                '<div class="clear"></div>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<strong>Thông tin khách sạn</strong>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<p>Đang cập nhật</p>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<strong>Thông tin hướng dẫn viên</strong>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<div class="col_td">'+
+                                    '<p><strong>Họ tên</strong></p>'+
+                                    '<p>CHỜ BÁO SAU</p>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<p><strong>Địa chỉ</strong></p>'+
+                                    '<p> 107 Nguyễn Thái Sơn,Q.Gò Vấp</p>'+
+                                '</div>'+
+                                '<div class="col_td">'+
+                                    '<strong>Điện thoại</strong>'+
+                                '</div>'+
+                                '<div class="clear"></div>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<strong>Bảng giá tour theo độ tuổi</strong>'+
+                            '</div>'+
+                            '<div class="row_tr">'+
+                                '<div class="col_tr">'+
+                                    '<strong>Người lớn (Từ 12 tuổi trở lên)</strong>'+
+                                    '<strong>6,900,000<sup>đ</sup></strong>'+
+                                    '<div class="clear"></div>'+
+                                '</div>'+
+                                '<div class="col_tr">'+
+                                    '<strong>Trẻ nhỏ (Từ 2 tuổi đến 11 tuổi)</strong>'+
+                                    '<strong>6,900,000<sup>đ</sup></strong>'+
+                                    '<div class="clear"></div>'+
+                                '</div>'+
+                                '<div class="col_tr">'+
+                                    '<strong>Em bé (Dưới 2 tuổi)</strong>'+
+                                    '<strong>6,900,000<sup>đ</sup></strong>'+
+                                    '<div class="clear"></div>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="clear"></div>';
+                $("#schedule").html(schedule);
+
+                // =====load title lien quan 
+                arrivePlaceId = val.arrivePlaceDto.arrivePlaceId;
+                $('#tl_orther').html('Các tour du lịch ' + val.arrivePlaceDto.arrivePlaceName +' khác');
+
+                info_booking =  '<div class="title">Thông tin tour</div>'+
+                                '<div class="row-input">'+
+                                    '<span style=" color:#F00;">' + val.tenTourDto + '</span>'+
+                                '</div>'+
+                                '<div class="row-input">Mã tour : <span>' + val.idTourDto + '</span></div>'+
+                                '<div class="row-input">Giá tour : <span>' + val.giaTourKMDto.format(nn, xx) + '<sup>đ</sup></span></div>'+
+                                '<div class="row-input">Nơi khỏi hành : <span>' + val.fromPlaceDto.fromPlaceName + '</span></div>'+
+                                '<div class="row-input">Ngày khỏi hành : <span>' + val.ngayKHDto + '</span></div>'+
+                                '<div class="row-input">Thời gian : <span>' + Days + ' ngày</span></div>'+
+                                '<div class="row-input">Số chỗ còn nhận : <span>6</span></div>'+
+                                '<div class="title">Điều kiện bắt buộc khi đăng ký online</div>'+
+                                        '<div class="row-input">'+
+                                            '<div class="note">'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="row-input">'+
+                                            '<input type="checkbox" name="checkbox" id="checkbox" value="" /> Tôi đồng ý với các điều kiện trên'+
+                                        '</div>';
+                $("#oder_left").html(info_booking);
             }
         });
     })
@@ -104,5 +231,4 @@ $(document).ready(function() {
     .always(function() {
         console.log("complete");
     });
-    
 });
