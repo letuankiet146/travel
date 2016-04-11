@@ -13,6 +13,7 @@ import org.dozer.Mapping;
 
 import com.travel.model.ArrivePlaceEntity;
 import com.travel.model.FromPlaceEntity;
+import com.travel.model.ServicesEntity;
 
 
 
@@ -55,7 +56,9 @@ public class TourDto {
 
 	@Mapping("idDichVu")
 	private Integer idDichVuDto;
-
+	
+	@Mapping("servicesEntity")
+	private ServicesEntity servicesDto;
 
 	@Mapping("active")
 	private Integer activeDto;

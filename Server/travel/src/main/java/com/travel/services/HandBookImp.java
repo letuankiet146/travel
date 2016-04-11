@@ -29,6 +29,7 @@ public class HandBookImp implements IHandBook {
 	@Override
 	public String add(HandBookDto handBookDto) {
 		HandBookEntity handBookEntity = mapper.map(handBookDto, HandBookEntity.class);
+		handBookEntity.setDateCreate(MyFormatDate.stringToDate(handBookDto.getDateCreateDto()));
 		handBookRepo.saveAndFlush(handBookEntity);
 		/*
 		 * Save history

@@ -12,16 +12,16 @@ public class ImageViewController {
 	public String home(){
 		return "index";
 	}
-	
-	@RequestMapping(value="/login")
-	public String login(){
-		return "login";
-	}
-	
-
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String loged(){
-		return "index";
-	}
+//	
+//	@RequestMapping(value="/login")
+//	public String login(){
+//		return "login";
+//	}
+//	
+//
+//	@RequestMapping(value="/login", method=RequestMethod.POST)
+//	public String loged(){
+//		return "index";
+//	}
 
 }

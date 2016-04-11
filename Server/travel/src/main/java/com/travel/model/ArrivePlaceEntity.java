@@ -31,6 +31,10 @@ public class ArrivePlaceEntity {
 	
 	@Column (name = "arrive_place_area_id")
 	private Integer arrivePlaceAreaId;
+	
+	@ManyToOne
+	@JoinColumn(name="arrive_place_area_id",updatable=false, insertable=false)
+	private AreaEntity areaEntity;
 
 	@Column(name="arrive_place_delete_date")
 	private Date arrivePlaceDeleteDate;

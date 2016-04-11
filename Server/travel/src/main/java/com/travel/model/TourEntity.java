@@ -61,6 +61,10 @@ public class TourEntity {
 	@Column(name = "tour_service_id")
 	private Integer idDichVu;
 	
+	@ManyToOne
+	@JoinColumn(name="tour_service_id", insertable=false, updatable=false)
+	private ServicesEntity servicesEntity;
+	
 	
 	@Column(name = "tour_active")
 	private Integer active;
