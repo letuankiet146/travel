@@ -13,13 +13,13 @@
 		while($rows = mysql_fetch_array($query)){ ?>
 			<div class="item" id="item0">
 				<div class="i-images">
-                    <a href="chi-tiet-tour.php?tour_id=<?php echo $rows['tour_id']; ?>">
+                    <a href="index.php?page=chi-tiet-tour&tour_id=<?php echo $rows['tour_id']; ?>">
                     	<img src="<?php echo $rows['tour_image_data']; ?>" alt="<?php echo $rows['tour_name']; ?>" />
                     </a>
                 </div>
                 <div class="i-description">
                     <div class="i-title">
-                       <a href="chi-tiet-tour.php?tour_id=<?php echo $rows['tour_id']; ?>"><?php echo $rows['tour_name']; ?></a>
+                       <a href="index.php?page=chi-tiet-tour&tour_id=<?php echo $rows['tour_id']; ?>"><?php echo $rows['tour_name']; ?></a>
                     </div>
                     <div class="fl">
                         <div class="i-content">
@@ -53,9 +53,18 @@
         echo $maDH;
     }
 
+    // ========== lấy ma khách hang random
+    function makhachhang(){
+        $sql="SELECT customer_id FROM customer ORDER BY customer_id DESC";
+        $query = mysql_query($sql);
+        $rows = mysql_fetch_array($query);
+        $maKH = $rows['customer_id']+1;
+        echo $maKH;
+    }
+
     // ========== lấy danh sách tour liên quan
-    function dsTourGiamGia(){
-        $sql = "SELECT * FROM tour WHERE tour_delete_date is null AND tour_active=1 AND tour_charge > 0 ORDER BY tour_id DESC LIMIT 2";
+    function dsTour($dieukien,$str){
+        $sql = "SELECT * FROM tour t join arrive_place a on t.tour_arrive_place_id=a.arrive_place_id WHERE tour_delete_date is null AND tour_active=1 $dieukien ORDER BY tour_id DESC LIMIT 2";
         $query = mysql_query($sql);
         $tour_id = '';
         ?>
@@ -63,28 +72,31 @@
             <?php while($rows = mysql_fetch_array($query)){ 
                 $day_start = $rows['tour_day_start'];
                 $fday_start = date("d/m/Y", strtotime($day_start));
+                $day_end = strtotime($rows['tour_day_end']);
+                $day_start = strtotime($rows['tour_day_start']);
+                $diff=($day_end - $day_start)/(60*60*24);
             ?>
             <div class="item">
                 <div class="i_item">
                     <div class="i-images">
-                        <a href="chi-tiet-tour.php?tour_id=<?php echo $rows['tour_id']; ?>">
+                        <a href="index.php?page=chi-tiet-tour&tour_id=<?php echo $rows['tour_id']; ?>">
                             <img src="<?php echo $rows['tour_image_data'] ?>" alt="#" />
                             <div class="see_details">Xem chi tiết</div>
                         </a>
                     </div>
                     <div class="i-description">
                         <div class="i-title">
-                            <a href="chi-tiet-tour.php?tour_id=<?php echo $rows['tour_id']; ?>"><?php echo $rows['tour_name'] ?></a>
+                            <a href="index.php?page=chi-tiet-tour&tour_id=<?php echo $rows['tour_id']; ?>"><?php echo $rows['tour_name'] ?></a>
                         </div>
                         <div class="fl">
                             <div class="i-content">
-                                <div><i class="fa fa-clock-o" aria-hidden="true"></i> 5 ngày </div>
+                                <div><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $diff ?> ngày </div>
                                 <div><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo $fday_start ?></div>
                             </div>
                         </div>
                         <div class="fr">
                             <div class="i-content"> 
-                                <span><?php echo number_format ($rows['tour_charge'],0,'',','); ?> VNĐ</span>
+                                <span><?php if($rows['tour_charge'] > 0){ echo number_format ($rows['tour_charge'],0,'',',');echo ' VNĐ';} ?></span>
                                 <span><?php  echo number_format ($rows['tour_sale_off'],0,'',','); ?> VNĐ</span>
                             </div>
                         </div>
@@ -95,10 +107,9 @@
             <?php
                 $tour_id = $rows['tour_id'];
             } ?>
-            <div class="pagination" onclick="abc(<?php echo $tour_id; ?>)"><span class="viewdetail">Xem thêm</span></div>
+            <!--=======NAV-PAG======-->
+            <div class="pagination" onclick="load_paging(<?php echo $tour_id; ?>,<?php echo $str; ?>)"><span class="viewdetail">Xem thêm</span></div>
+            <!--=======NAV-PAG======-->
         </div>
-        <!--=======NAV-PAG======-->
-        
-        <!--=======NAV-PAG======-->
     <?php }
 ?>

@@ -14,7 +14,7 @@ $(document).ready(function() {
         var str2 ='';
         var dem = 0;
         for (var i = data.length - 1; i >= 0; i--) {
-            if(dem<6 && data[i]['giaTourDto'] == 0){
+            if(dem<6){
 
               // =====TINH SỐ NGÀY THỰC HIỆN TOUR
                 var dateKH = data[i]['ngayKHDto'];

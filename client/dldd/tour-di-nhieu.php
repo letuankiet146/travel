@@ -1,128 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Trang chủ</title>
-    <!-- DÙNG CHUNG CHO TÒAN SITE -->    
-    <link href="style/font/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />  
-    <link href="js/mmenu/css/jquery.mmenu.all.css" rel="stylesheet" type="text/css" />     
-    <link href="style/screen.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-migrate.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/mmenu/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="js/core.js"></script>
-    <script type="text/javascript" src="js/style.js"></script>
-    <!--===MODULE MAIN==-->
-    <link href="js/slideSlick/css/slick.css" type="text/css" rel="stylesheet" />
-    <link href="js/slideSlick/css/slick-theme.css" type="text/css" rel="stylesheet" />
-    <link href="style/product.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/slideSlick/js/slick.js"></script>
-    <script type="text/javascript" src="js/product/product.js"></script>
-    <!--===MODULE MAIN==-->
-</head>
 
-<body>
-
-<div id="vnt-wrapper">
-	<div id="vnt-container">
-        <!--=== BEGIN: HEADER ===-->
-    	<div id="vnt-header">
-            <div class="header-top">
-                <div class="wrapper">
-                    <div class="logo">
-                        <h1>
-                            <a href="index.php">
-                                <img src="images/logo.png" alt="Du lịch giải trí Đông Dương" />
-                            </a>
-                        </h1>
-                    </div>
-                    <div class="banner">
-                        <div class="sologan">
-                            <img src="images/slogan.png" alt="Du lịch giải trí Đông Dương" />
-                        </div>
-                    </div>    
-                    <div class="header-tool">
-                        <div class="social">
-                            <ul>
-                                <li><a href="#"><img src="images/weblink/facebook.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/google.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/twitter.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/youtube.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/instargam.png" /></a></li>
-                            </ul>
-                        </div>
-                        <div class="hotline">
-                            <span>(08) 6291 2468</span>
-                        </div>
-                    </div>   
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <!--=== BEGIN: MENUTOP ===-->
-            <div id="vnt-menutop">
-                <div class="wrapper">
-                    <div class="menutop">
-                      	<ul>
-                            <li>
-                                <a class="hover_effect_menu" href="index.php"><span class="hover_text">Trang chủ</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="cong_ty_du_lich_dong_duong_gioi_thieu_1170_02.html"><span class="hover_text">Giới thiệu</span></a>
-                            </li><li class="current">
-                                <a class="hover_effect_menu" href="tour-noi-dia.php"><span class="hover_text">Tour nội địa</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="tour-quoc-te.php"><span class="hover_text">Tour quốc tế</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="cong_ty_du_lich_dong_duong_cam_nang_du_lich_1170_02.html"><span class="hover_text">Cẩm nang du lịch</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="cong_ty_du_lich_dong_duong_lien_he_1170_02.html"><span class="hover_text">Liên hệ</span></a>
-                            </li>   
-                        </ul>
-                    </div>
-                    <div class="menu-tool">
-                        <!--===FORMSEARCH==-->
-                        <div class="formSearch">
-                            <form id="formSearch" name="formSearch" method="POST" action="#" class="box_search">
-                                <div class="input-group">
-                                    <input name="keyword" id="keyword" type="text" class="text_search form-control" placeholder="Tìm kiếm" value="" />
-                                    <span class="input-group-btn">
-                                        <button id="btn-search" name="btn-search" type="submit" class="btn" value="" ><span >Search</span></button>
-                                    </span>
-                                <input name="do_search" value="1" type="hidden"/>
-                                </div>
-                            </form>
-                        </div>
-                        <!--===FORMSEARCH==-->
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <!--=== END: MENUTOP ===-->
-            <!--=== BEGIN: MMENU ===-->
-            <div class="vnt-mmenu">
-                <div class="wrapper">
-                    <div class="mmenu"><a href="#menu">Tour nội địa</a></div>
-                </div>
-            </div>
-            <!--=== END: MMENU ===-->
-        </div>
-        <!--=== END: HEADER ===-->
-        <!--=== BEGIN: CONTENT ===-->
-      	<div id="vnt-content">
-            <!--=== BEGIN: BANNER ===-->
-            <div class="vnt-banner">
-                <img src="images/news/banner.jpg" alt="#" />
-            </div>
-            <!--=== END: BANNER ===-->
             <div class="wrapper">
                 <!--=== BEGIN: BREADCRUMB ===-->
                 <div id="vnt-navation" class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <div class="navation">
                         <ul>
                             <li class="home"><a href="index.php">Trang chủ</a></li>
-                            <li>Tour nội địa</li>
+                            <li>Tour đi nhiều</li>
                         </ul>
                     </div>
                 </div>
@@ -130,7 +13,7 @@
                 <div class="box_mid">
                     <div class="mid-title">
                         <div class="titleL">
-                            <h1>Tour nội địa</h1>
+                            <h1>Tour tour đi nhiều</h1>
                         </div>
                         <div class="titleR"></div>
                         <div class="clear"></div>
@@ -139,12 +22,12 @@
                         <div id="vnt-sidebar">
                             <!--===BEGIN: BOX===-->
                             <div class="box search-tour showinfo">
-                            	<div class="box-title">
-                            		<div class="fTitle">
+                                <div class="box-title">
+                                    <div class="fTitle">
                                         Tìm tour du lịch
-                            		</div>
-                            	</div>
-                            	<div class="box-content">
+                                    </div>
+                                </div>
+                                <div class="box-content">
                                     <div class="w-searchTour">
                                         <form id="searchTour" method="POST" action="#">
                                             <div class="input-radio">
@@ -183,359 +66,33 @@
                                             </div>
                                         </form>
                                     </div>
-                            	</div>
+                                </div>
                             </div>
                             <!--===END: BOX===-->
                             <!--===BEGIN: BOX===-->
                             <div class="box diadiem showinfo">
-                            	<div class="box-title">
-                            		<div class="fTitle">
-                                        Điểm du lịch nội địa
-                            		</div>
-                            	</div>
-                            	<div class="box-content">
+                                <div class="box-title">
+                                    <div class="fTitle">Điểm du lịch nội địa</div>
+                                </div>
+                                <div class="box-content">
                                     <div class="list-diadiem">
-                                        <ul>
-                                            <li><a href="#">Tour du lịch Côn Đảo</a></li>
-                                            <li><a href="#">Tour du lịch Hạ Long</a></li>
-                                            <li><a href="#">Tour du lịch Hà Nội</a></li>
-                                            <li><a href="#">Tour du lịch Hội An</a></li>
-                                            <li><a href="#">Tour du lịch Huế</a></li>
-                                            <li><a href="#">Tour du lịch Nha Trang</a></li>
-                                            <li><a href="#">Tour du lịch Phan Thiết</a></li>
-                                            <li><a href="#">Tour du lịch Phú Quốc</a></li>
-                                            <li><a href="#">Tour du lịch Sài Gòn</a></li>
-                                            <li><a href="#">Tour du lịch Sapa</a></li>
-                                            <li><a href="#">Tour du lịch Đà Lạt</a></li>
-                                            <li><a href="#">Tour du lịch Đà Nẵng</a></li>
-                                            <li><a href="#">Tour du lịch Cà Mau</a></li>
-                                            <li><a href="#">Tour Nam Trung Bộ</a></li>
-                                            <li><a href="#">Tour du lịch Cát Bà</a></li>
-                                            <li><a href="#">Du lịch Tây Nguyên</a></li>
-                                            <li><a href="#">Tour du lịch Đồng Tháp</a></li>
-                                            <li><a href="#">Tour du lịch MêKông</a></li>
-                                        </ul>
+                                        <ul><?php dsDiaDiem(1); ?></ul>
                                     </div>
-                            	</div>
+                                </div>
                             </div>
                             <!--===END: BOX===-->
                             <!--===BEGIN: BOX===-->
                             <div class="box global showinfo">
-                            	<div class="box-title">
-                            		<div class="fTitle">
-                                        Điểm du lịch quốc tế
-                            		</div>
-                            	</div>
-                            	<div class="box-content">
-                                    <div class="list-diadiem">
-                                        <ul>
-                                            <li><a href="#">Tour Campuchia</a></li>
-                                            <li><a href="#">Tour Hàn Quốc</a></li>
-                                            <li><a href="#">Tour Hồng Kông</a></li>
-                                            <li><a href="#">Tour Malaysia</a></li>
-                                            <li><a href="#">Tour USA</a></li>
-                                            <li><a href="#">Tour Myanmar</a></li>
-                                            <li><a href="#">Tour Nhật Bản</a></li>
-                                            <li><a href="#">Tour Singapore</a></li>
-                                            <li><a href="#">Tour Thái Lan</a></li>
-                                            <li><a href="#">Tour Úc (Australia)</a></li>
-                                            <li><a href="#">Tour hành hương Ấn Độ</a></li>
-                                            <li><a href="#">Tour Indonesia</a></li>
-                                            <li><a href="#">Tour Đài Loan</a></li>
-                                            <li><a href="#">Tour vương quốc Anh</a></li>
-                                            <li><a href="#">Tour du lịch Châu Âu</a></li>
-                                            <li><a href="#">Tour Pháp</a></li>
-                                            <li><a href="#">Tour Châu Á</a></li>
-                                        </ul>
-                                    </div>
-                            	</div>
+                                <div class="box-title"><div class="fTitle">Điểm du lịch quốc tế</div></div>
+                                <div class="box-content">
+                                    <div class="list-diadiem"><ul><?php dsDiaDiem(2); ?></ul></div>
+                                </div>
                             </div>
                             <!--===END: BOX===-->
                         </div>
-                        <div id="vnt-main" >
-                            <div class="grid-tour">
-                                <div class="row-tour">
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour1.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour2.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row-tour">
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour3.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour4.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row-tour">
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour5.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour6.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row-tour">
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour7.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="i-images">
-                                            <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                <img src="images/product/tour8.jpg" alt="#" />
-                                            </a>
-                                        </div>
-                                        <div class="i-description">
-                                            <div class="i-title">
-                                                <a href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">Du lịch Phú Quốc – Đảo Ngọc – 3N3Đ – Giảm 25%</a>
-                                            </div>
-                                            <div class="fl">
-                                                <div class="i-content">
-                                                    Giá 1 khách: <span>1.090.000 VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="fr">
-                                                <a class="viewdetail" href="cong_ty_du_lich_dong_duong_tour_chi_tiet_1170_02.html">
-                                                    Xem chi tiết
-                                                </a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--=======NAV-PAG======-->
-                            <div class="pagination">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                    <li><span>1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                                </ul>
-                            </div>
-                            <!--=======NAV-PAG======-->
-                        </div>
+                        <div id="vnt-main" > <?php dsTour("",3); ?> </div>
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--=== END: CONTENT ===-->
-        <!--=== BEGIN: FOOTER ===-->
-        <div id="vnt-footer">
-        	<div class="top-footer">
-                <div class="wrapper">
-                    <div class="vnt-wrapper">
-                        <div class="fl sendMail">
-                            <div class="title">Đăng ký nhận tin</div>
-                            <form id="sendMail" method="POST" action="#">
-                                <div class="input-group">
-                                    <input type="text" id="i_sendmail" name="i_sendmail" class="form-control" placeholder="Email của bạn" />
-                                    <span class="input-group-btn">
-                                        <button type="submit" name="do_submit" id="do_submit" class="btn" value=""><span>Đăng ký</span></button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="fr">
-                            <div class="social">
-                                <ul>
-                                    <li><a href="#"><img src="images/weblink/icon_share.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/icon-like.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/icon-gplug.png" /></a></li>
-                                </ul>
-                            </div>
-                            <div class="social rotate">
-                                <ul>
-                                    <li><a href="#"><img src="images/weblink/f_facebook.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_google.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_twitter.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_youtube.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_instargam.png" /></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <div class="wrapper">
-                    <div class="fl">
-                        <p class="DongDuong">Copyright © 2015 <span>CÔNG TY TNHH DỊCH VỤ DU LỊCH GIẢI TRÍ ĐÔNG DƯƠNG</span></p>
-                        <p>
-                           <a href="http://www.thietkeweb.com" target="_blank" title="thiet ke web" rel="dofollow" class="thietkeweb">Thiết kế web :</a> 
-                           <a href="http://www.trust.vn" target="_blank" rel="dofollow"><span>TRUST.vn</span></a>
-                        </p>
-                    </div>
-                    <div class="fr algin-right">
-                        <p>Đang online :   80</p>
-                        <p>Lượt truy cập : 563.214</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-        <!--=== END: FOOTER ===-->
-    </div> 
-</div>
-<!--===MENU MOBILE==-->
-   <nav id="menu">
-        <ul>
-            <li><a href="index.php">Trang chủ</a></li>
-            <li><a href="cong_ty_du_lich_dong_duong_gioi_thieu_1170_02.html">Giới thiệu</a></li>
-            <li><a href="tour-noi-dia.php">Tour nội địa</a></li>
-            <li><a href="tour-quoc-te.php">Tour quốc tế</a></li>
-            <li><a href="cong_ty_du_lich_dong_duong_cam_nang_du_lich_1170_02.html">Cẩm nang du lịch</a></li>
-            <li><a href="cong_ty_du_lich_dong_duong_lien_he_1170_02.html">Liên hệ</a></li>
-        </ul>
-   </nav> 
-<!--===MENU MOBILE==-->
-</body>
-</html>
+       

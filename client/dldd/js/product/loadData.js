@@ -1,7 +1,7 @@
  /*==========SLIDER PRODUCT BOTTOM=========*/
 $(document).ready(function() {
     var full_url = document.URL;
-    var array_url = full_url.split('?tour_id=');
+    var array_url = full_url.split('&tour_id=');
     var id = array_url[array_url.length -1];
     var count = id.split("#").length;
     if(count == 1){
@@ -52,22 +52,7 @@ $(document).ready(function() {
                 xx = 3;
 
                 // =====load info tour
-                info = '<div class="detail_row">'+
-                            '<div class="label1">Đánh giá</div>'+
-                                '<div class="grid_info">'+
-                                '<div class="star">'+
-                                    '<ul>'+
-                                        '<li class="active"></li>'+
-                                        '<li class="active"></li>'+
-                                        '<li class="active"></li>'+
-                                        '<li class="active"></li>'+
-                                        '<li></li>'+
-                                    '</ul>'+
-                                '</div>'+
-                            '</div>'+
-                            '<div class="clear"></div>'+
-                        '</div>'+
-                        '<div class="detail_row">'+
+                info =  '<div class="detail_row">'+
                             '<div class="label1">Mã tour</div>'+
                             '<div class="grid_info">' + val.idTourDto + '</div>'+
                             '<div class="clear"></div>'+
@@ -79,7 +64,7 @@ $(document).ready(function() {
                         '</div>'+
                         '<div class="detail_row">'+
                             '<div class="label1">Thời gian</div>'+
-                            '<div class="grid_info">' + Days + ' ngày/' + (Days-1) + ' đêm</div>'+
+                            '<div class="grid_info">' + Days + ' ngày</div>'+
                             '<div class="clear"></div>'+
                         '</div>'+
                         '<div class="detail_row">'+
@@ -103,7 +88,7 @@ $(document).ready(function() {
                             '<div class="clear"></div>'+
                         '</div>'+
                         '<div class="button-cart">'+
-                            '<a href="dat-tour.php?tour_id=' + val.idDto + '">Đặt tour ngay</a>'+
+                            '<a href="index.php?page=dat-tour&tour_id=' + val.idDto + '">Đặt tour ngay</a>'+
                         '</div>';
                 $('.detail_grid').html(info);
 

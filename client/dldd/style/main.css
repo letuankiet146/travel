@@ -216,11 +216,12 @@
 }
 .grid-tour .row-tour .item{
     width: 32%;
-    margin-left: 2%;
+    margin: 0px 0px 10px 2%;
     float: left;
 }
 .grid-tour .row-tour .item:hover{
     box-shadow: 1px 1px 10px #888888;
+    cursor:pointer;
 }
 .grid-tour .row-tour .item:first-child{
     margin-left: 0%;
@@ -252,10 +253,10 @@
     height:250px;
 }
 .grid-tour .row-tour .item .i-description{
-    padding: 15px 0px;
+    padding: 15px 5px;
 }
 .grid-tour .row-tour .item .i-description .i-title{
-    height: 75px;
+    height: 50px;
     overflow: hidden;
     border-bottom: 1px dashed #b2ac9f;
     margin-bottom:15px;
@@ -274,7 +275,6 @@
     font-size: 14px;
     line-height: 25px;
     color:#666666;
-    margin-bottom: 10px;
     margin-right: 10px;
 }
 .grid-tour .row-tour .item .i-description .i-content span{

@@ -166,9 +166,10 @@ $(document).ready(function(){
     });
     
 });
-function abc(last_tour_id){
+function load_paging(last_tour_id,str){
+        $(".viewdetail").html("Loading..."); 
         $.ajax({
-            url: 'include/tour/paging.php?type=list',
+            url: 'include/tour/paging.php?type=list' + str,
             type: 'POST',
             dataType: 'text',
             data: {last_tour_id: last_tour_id},

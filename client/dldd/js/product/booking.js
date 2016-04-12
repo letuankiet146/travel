@@ -41,6 +41,7 @@ $(document).ready(function () {
 
 function load_check(){
     var code = $("#code").val();
+    var codekh = $("#codekh").val();
     var name = $("#name").val();
     var email = $("#email").val();
     var phone = $("#phone").val();
@@ -52,7 +53,7 @@ function load_check(){
     var content = $("#t-content").val();
 
     var full_url = document.URL;
-    var array_url = full_url.split('?tour_id=');
+    var array_url = full_url.split('&tour_id=');
     var id = array_url[array_url.length -1];
     var count = id.split("#").length;
     if(count == 1){
@@ -159,13 +160,53 @@ function load_check(){
                         '<div class="row-input">'+
                             '<div class="div-input">'+
                                 '<a href="https://www.nganluong.vn/button_payment.php?receiver=ptthao13@gmail.com&product_name=' + code + '&price=2000&return_url=index.php&comments=' + content + '">'+
-                                    '<button type="submit" name="" id="" class="btn reset" value=""><span>Thanh toán</span></button>'+
+                                    '<button type="submit" name="" id="btn_thanhtoan" class="btn reset" value=""><span>Thanh toán</span></button>'+
                                 '</a>'+
                                 '<button type="submit" name="do_edit" id="do_edit" onclick="do_edit()" class="btn submit" value=""><span>Chỉnh sửa</span></button>'+
                             '</div>'+
                             '<div class="clear"></div>'+
                         '</div>';
                  $("#check").html(check);
+                 $(document).ready(function() {
+                     $("#btn_thanhtoan").click(function(event) {
+                        var mydata = {
+                            "formOrderTourCodeDto": code,
+                            "formOrderTourIdDto": val.idDto,
+                            "formOrderCustomerDto": {
+                              "customerCode": codekh,
+                              "customerNameDto": name,
+                              "customerPhoneDto": phone,
+                              "customerEmailDto": email,
+                              "customerAddressDto": address,
+                              "customerDeleteDateDto": null,
+                              "customerGroupDto": 7
+                            },
+                            "formOrderQuantityAdultsDto": nguoilon,
+                            "formOrderQuantityJuvenileDto": duoi12,
+                            "formOrderQuantityChildDto": duoi2,
+                            "formOrderIsPayDto": 4,
+                            "formOrderQuantityOtherRequireDto": content 
+                        };
+                        console.log(mydata);
+                          $.ajax({
+                                url: 'http://localhost:8080/spr-data/orderTour',
+                                type: 'POST',
+                                dataType: 'json',
+                                contentType: 'application/json',
+                                data: JSON.stringify(mydata),
+                            })
+                            .done(function() {
+                               
+                            })
+                            .fail(function() {
+                                console.log("error");
+                            })
+                            .always(function() {
+                                console.log("complete");
+                            });
+                              
+                     });
+                 });
             }
         });
     });

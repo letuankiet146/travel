@@ -59,7 +59,7 @@ $(document).ready(function() {
               beforeSend : function(){
                 $("#loadAjaxTour").append("<div class='loadding'><img src='images/main/loading.gif'/></div>")
               }, 
-              url: 'cong_ty_du_lich_dong_duong_tour' + num + '.html',
+              url: 'tour' + num + '.php',
               dataType: 'text',
               context: document.body
             }).done(function(value) {
@@ -69,15 +69,15 @@ $(document).ready(function() {
             }); 
             if(num == 1){
               $(".viewall").empty();
-              $(".viewall").append('<a href="tour-sap-khoi-hanh.php">Xem tất cả các tour</a>');
+              $(".viewall").append('<a href="index.php?page=tour-giam-gia">Xem tất cả các tour</a>');
             } 
             else if(num == 2){
               $(".viewall").empty();
-              $(".viewall").append('<a href="tour-di-nhieu.php">Xem tất cả các tour</a>');
+              $(".viewall").append('<a href="index.php?page=tour-sap-khoi-hanh">Xem tất cả các tour</a>');
             }
             else if(num == 3){
               $(".viewall").empty();
-              $(".viewall").append('<a href="tour-giam-gia.php">Xem tất cả các tour</a>');
+              $(".viewall").append('<a href="index.php?page=tour-di-nhieu">Xem tất cả các tour</a>');
             }
         return false;
     });
@@ -122,14 +122,14 @@ $(document).ready(function() {
 
                 html = '<div class="item">'+
                             '<div class="i-images">'+
-                                '<a href="chi-tiet-tour.php?tour_id=' + data[i]['idDto'] + '">'+
+                                '<a href="index.php?page=chi-tiet-tour&tour_id=' + data[i]['idDto'] + '">'+
                                     '<img  src="' + data[i]['tourImageDataDto'] + '" alt="' + data[i]['tenTourDto'] + '" />'+
                                     '<div class="see_details">Xem chi tiết</div>'+
                                 '</a>'+
                             '</div>'+
                             '<div class="i-description">'+
                                 '<div class="i-title">'+
-                                    '<a href="chi-tiet-tour.php?tour_id=' + data[i]['idDto'] + '">'+ data[i]['tenTourDto'] + '</a>'+
+                                    '<a href="index.php?page=chi-tiet-tour&tour_id=' + data[i]['idDto'] + '">'+ data[i]['tenTourDto'] + '</a>'+
                                 '</div>'+
                                 '<div class="fl">'+
                                     '<div class="i-content">'+
