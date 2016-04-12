@@ -29,7 +29,9 @@ public class CustomerServicesImp implements ICustomerServices {
 	public String add(CustomerDto customerDto) {
 		if (customerDto!=null){
 			CustomerEntity customerEntity = mapper.map(customerDto, CustomerEntity.class);
-			customerEntity.setCustomerBirth(MyFormatDate.stringToDate(customerDto.getCustomerBirthDto()));
+			if (customerDto.getCustomerBirthDto()!=null){
+				customerEntity.setCustomerBirth(MyFormatDate.stringToDate(customerDto.getCustomerBirthDto()));
+			}
 			customerRepository.saveAndFlush(customerEntity);
 			
 			/*
