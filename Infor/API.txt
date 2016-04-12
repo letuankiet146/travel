@@ -17,19 +17,39 @@ BODY [24,25,26]
 ####################### Phương thức UPDATE ORDER TOUR:###################################################
 LINK: http://project-iuhhappytravel.rhcloud.com/spr-data/updateOrderTour(XONG)
 BODY:
-  {
-    "formOrderIdDto": 72,
-    "formOrderTourCodeDto": "order1edit",
-    "formOrderCustomerIdDto": 21,
-    "formOrderTourIdDto": 9,
-    "formOrderDateDto": "30/03/2016",
-    "formOrderQuantityAdultsDto": 12,
-    "formOrderQuantityJuvenileDto": 2,
-    "formOrderQuantityChildDto": 3,
-    "formOrderIsPayDto": 5,
-    "formOrderQuantityOtherRequireDto": null,
-    "formOrderMoneyDto": 10000000,
-    "idUserAdd": 2
+    {
+    "formOrderIdDto": 1,
+    "formOrderTourCodeDto": "DDH2",
+    "formOrderCustomerIdDto": 80,
+    "formOrderTourIdDto": 891,
+    "formOrderCustomerDto": {
+      "customerIdDto": 80,
+      "customerCode": "Bình Dương 2",
+      "customerNameDto": "Lê Tuấn Kiêt",
+      "customerBirthDto": "26/02/2016",
+      "customerSexDto": "Nam",
+      "customerPhoneDto": "0975293398",
+      "customerEmailDto": "letuankiet146@gmail.com",
+      "customerAddressDto": "Bình Dương",
+      "customerVietNamIdDto": "28881048",
+      "customerCompanyNameDto": null,
+      "customerAddressCompanyDto": null,
+      "customerPhoneCompanyDto": null,
+      "customerImageDto": null,
+      "customerUserDto": null,
+      "customerTypeDto": null,
+      "customerLockDto": null,
+      "customerDeleteDateDto": null,
+      "customerGroupDto": 9,
+      "customerCityDto": null,
+      "customerCountryDto": null,
+      "customerNoteDto": "khách hàng khó"
+    },
+    "formOrderQuantityAdultsDto": 2,
+    "formOrderQuantityJuvenileDto": 1,
+    "formOrderQuantityChildDto": 1,
+    "formOrderIsPayDto": 4,
+    "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
   }
 
 
@@ -44,35 +64,42 @@ formOrderIsPayDto: 0 là chưa thanh toán, 1 là đã thanh toán
 
 
 LINK [POST]: http://project-iuhhappytravel.rhcloud.com/spr-data/orderTour (XONG)
+chú ý:  formOrderIdDto, customerIdDto. Nếu thiếu nó thì là API thêm đơn đặt hàng
 BODY: 
-{
-  "formOrderTourIdDto": 9,
-  "formOrderCustomerDto": {
-    "customerNameDto": "Khach hang 5",
-    "customerCode": "Random",
-    "customerBirthDto": "26/02/2016",
-    "customerSexDto": 0,
-    "customerPhoneDto": "09991123",
-    "customerEmailDto": "letuankiet146@gmail.com",
-    "customerAddressDto": "Binh Duong",
-    "customerVietNamIdDto": "28881048",
-    "customerCompanyNameDto": null,
-    "customerAddressCompanyDto": null,
-    "customerPhoneCompanyDto": null,
-    "customerImageDto": null,
-    "customerUserDto" : null,
-    "customerPasswordDto" : null,
-    "customerTypeDto" : null,
-    "customerLockDto" : null
-    
-  },
-  "formOrderQuantityAdultsDto": 12,
-  "formOrderQuantityJuvenileDto": 2,
-  "formOrderQuantityChildDto": 6,
-  "formOrderIsPayDto": 5,
-  "formOrderQuantityOtherRequireDto": "day la yeu cau khac",
-  "idUserAdd" :2
-}
+  {
+    "formOrderIdDto": 1,
+    "formOrderTourCodeDto": "DDH2",
+    "formOrderCustomerIdDto": 80,
+    "formOrderTourIdDto": 891,
+    "formOrderCustomerDto": {
+      "customerIdDto": 80,
+      "customerCode": "Bình Dương 2",
+      "customerNameDto": "Lê Tuấn Kiêt",
+      "customerBirthDto": "26/02/2016",
+      "customerSexDto": "Nam",
+      "customerPhoneDto": "0975293398",
+      "customerEmailDto": "letuankiet146@gmail.com",
+      "customerAddressDto": "Bình Dương",
+      "customerVietNamIdDto": "28881048",
+      "customerCompanyNameDto": null,
+      "customerAddressCompanyDto": null,
+      "customerPhoneCompanyDto": null,
+      "customerImageDto": null,
+      "customerUserDto": null,
+      "customerTypeDto": null,
+      "customerLockDto": null,
+      "customerDeleteDateDto": null,
+      "customerGroupDto": 9,
+      "customerCityDto": null,
+      "customerCountryDto": null,
+      "customerNoteDto": "khách hàng khó"
+    },
+    "formOrderQuantityAdultsDto": 2,
+    "formOrderQuantityJuvenileDto": 1,
+    "formOrderQuantityChildDto": 1,
+    "formOrderIsPayDto": 4,
+    "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
+  }
 ##################################################################################################################
 
 
@@ -326,7 +353,7 @@ http://localhost:8080/staff/delete/2/4(XONG)
 
 
 #####################################CẨM NANG#########################33
-http://localhost:8080/handbook/add (Không insert ngày xuống csdl)
+http://localhost:8080/handbook/add (Không insert ngày xuống csdl - Da sua)
 { 
   "codeDto": "handbook1",
   "nameDto": "Cẩm nang du lịch Bình Dương chỉnh sửa",
@@ -354,8 +381,5 @@ http://localhost:8080/handbook/delete/1/2
 
 ////////////yeu cau KIET lam /////////////
 
-1. sửa hình ảnh.
-2. email random password cho khách hàng
-3. làm thêm delete từng OrderTour 
 
 
