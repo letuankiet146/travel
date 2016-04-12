@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.travel.dto.ContentEmail;
 import com.travel.dto.CustomerDto;
 import com.travel.dto.FormOrderDto;
 import com.travel.dto.HistoryDto;
@@ -20,6 +21,7 @@ import com.travel.repository.CustomerRepository;
 import com.travel.repository.FormOrderRepository;
 import com.travel.repository.TourRepository;
 import com.travel.util.CalcMoney;
+import com.travel.util.IUtilMethod;
 import com.travel.util.MyFormatDate;
 
 
@@ -41,6 +43,9 @@ public class OrderServicesImp implements IOrderServices {
 
 	@Autowired
 	private DozerBeanMapper mapper;
+	
+	@Autowired
+	private IUtilMethod utilMethod;
 
 	@Transactional
 	public String addOrderTour(FormOrderDto formOrderDto) {
@@ -50,6 +55,12 @@ public class OrderServicesImp implements IOrderServices {
 				CustomerEntity.class);
 		customerEntity.setCustomerBirth(MyFormatDate.stringToDate(formOrderDto
 				.getFormOrderCustomerDto().getCustomerBirthDto()));
+		/*
+		 * generate random password 
+		 */
+		String userPassword = utilMethod.createPassword();
+		String userPasswordMd5 = utilMethod.encodePassword(userPassword);
+		customerEntity.setCustomerPassword(userPasswordMd5);
 
 		// First: save into customer then save into formOrder
 		customerRepo.saveAndFlush(customerEntity);
@@ -83,6 +94,19 @@ public class OrderServicesImp implements IOrderServices {
 		historyDto.setContent("ID="+formOrderEntity.getFormOrderId().toString());
 		historyInterface.add(historyDto);
 		
+		/*
+		 * Send email to customer
+		 */
+		if (customerEntity.getCustomerEmail() !=null ){
+			String to = customerEntity.getCustomerEmail();
+			String subject = "Tài khoản khách hàng - Công ty du lịch IuhTravel";
+			StringBuilder contentSend = new  StringBuilder();
+			contentSend.append("Xin chào quý khách, đây tài khoản của quý khách");
+			contentSend.append("\n email login: "+ to);
+			contentSend.append("\n pasword: "+ userPassword);
+			ContentEmail content = new ContentEmail(null,to,subject, contentSend);
+			utilMethod.sendEmail(content);
+		}
 		return "Dat tour thanh cong: ID="+formformOrderEntityNew.getFormOrderId();
 	}
 

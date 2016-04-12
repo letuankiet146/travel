@@ -23,8 +23,6 @@ public class HandBookImp implements IHandBook {
 	@Autowired
 	private IHistoryServices historyInterface;
 	
-	@Autowired
-	private IUtilMethod utilMethod;
 	
 	@Override
 	public String add(HandBookDto handBookDto) {
