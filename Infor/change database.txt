@@ -28,3 +28,10 @@ CHANGE COLUMN `tour_infor` `tour_infor` TEXT NULL DEFAULT NULL ;
 
 ALTER TABLE `sql61036294`.`tour` 
 CHANGE COLUMN `tour_infor` `tour_infor` TEXT CHARACTER SET 'utf8mb4' NULL DEFAULT NULL ;
+
+ALTER TABLE `sql61036294`.`tour` 
+ADD COLUMN `tour_booked` INT(11) NULL DEFAULT 0 AFTER `tour_image_data`;
+
+ALTER TABLE `sql61036294`.`tour` 
+CHANGE COLUMN `tour_booked` `tour_booked` INT(11) NULL DEFAULT '0' AFTER `tour_seat_number`;
+

@@ -114,7 +114,7 @@
                     <div class="menu-tool">
                         <!--===FORMSEARCH==-->
                         <div class="formSearch">
-                            <form id="formSearch" name="formSearch" method="POST" action="#" class="box_search">
+                            <form id="formSearch" name="formSearch" method="POST" action="#" class="box_search" >
                                 <div class="input-group">
                                     <input name="keyword" id="keyword" type="text" class="text_search form-control" placeholder="Tìm kiếm" value="" />
                                     <span class="input-group-btn">
@@ -165,7 +165,7 @@
                 <div class="box_mid">
                     <div class="mid-title">
                         <div class="titleL">
-                            <h1>Tour nội địa</h1>
+                            <h1 id="h1">Nhập thông tin</h1>
                         </div>
                         <div class="titleR"></div>
                         <div class="clear"></div>
@@ -254,20 +254,19 @@
                                             <label style="cursor: pointer;"><input type="radio" name="thanhtoan" id="chuyenkhoan" onclick="" value="4" /> Thanh toán chuyển khoản</label>
                                             <div class="clear"></div>
                                         </div>
-                                        <div class="row-input">
-                                            <div class="div-input">
-                                                <button type="submit" name="do_submit" id="do_submit" class="btn submit" value=""><span>Đặt tour</span></button>
-                                                <button type="reset" name="reset" id="reset" class="btn reset" value=""><span>Nhập lại</span></button>
-                                            </div>
-                                            <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="row-input">
+                                        <div class="div-input">
+                                            <button type="submit" name="do_submit" id="do_submit" class="btn submit" value=""><span>Đặt tour</span></button>
+                                            <button type="reset" name="reset" id="reset" class="btn reset" value=""><span>Nhập lại</span></button>
                                         </div>
+                                        <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
                             </form>
-                            <div id="check">
-                                
-                            </div>
+                            <div id="check"></div>
                         </div>
                     </div>
                 </div>

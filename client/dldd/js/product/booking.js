@@ -21,6 +21,7 @@ $(document).ready(function () {
                     $("#vnt-order").append('<div class="gif"><img src="admin/images/preloader.GIF" /></div><div class="f_overlay"></div>');
                     setTimeout(function() {
                         $("#vnt-order").fadeOut('slow');
+                        $("#h1").html("Xác nhận đơn đặt tour");
                         $("#check").fadeIn('slow');
                         $("div").remove('.gif, .f_overlay');
                     }, 2000);
@@ -70,8 +71,9 @@ function load_check(){
     .done(function(data) {
         $.each(data, function(i, val) {
             var check = '';
+            var h1 = '';
             if(val.idDto == id){
-
+                // Tính ngày thực hiện tour
                 var dateKH = val.ngayKHDto;
                 var dateKT = val.ngayKTDto;
                 dateKH = dateKH.split('/');
@@ -84,36 +86,75 @@ function load_check(){
                 var ONE_DAY = 1000 * 60 * 60 * 24;
                 var Days = miliSecond / ONE_DAY;
 
+                // Tong giá trị đơn hàng
                 var total_money = val.giaTourKMDto;
                 total_money = (total_money + total_money*0.5);
 
+                // var _dt = new Date();
+                // today = [_dt.getDate(), _dt.getMonth(), _dt.getFullYear()].join('/')+' '+[_dt.getHours(),_dt.getMinutes(),_dt.getSeconds()].join(':');
+                // Dinh dạnh datetime và tính dateline
+                var t = new Date();
+                var d = (t.getDate() < 10) ?  '0'+t.getDate() : t.getDate();
+                var m = ((t.getMonth() + 1) < 10 ) ? '0'+(t.getMonth()+1) : (t.getMonth()+1);
+                var y = t.getFullYear();
+                var h = (t.getHours() < 10) ? '0'+t.getHours() : t.getHours();
+                var p = (t.getMinutes() < 10) ? '0'+t.getMinutes() : t.getMinutes();
+                var s = (t.getSeconds() < 10) ? '0'+t.getSeconds() : t.getSeconds();
+                today = d +'/'+m+'/'+y+' '+h+':'+p+':'+s;
+
+                var dd = d+1;
+                var mm = m+1;
+                var dateline = '';
+                if(dd > 30){
+                    if(mm > 12){
+                        d=01; m=01; y=y+1;
+                        dateline = d +'/'+m+'/'+y+' '+h+':'+p+':'+s;
+                    }
+                    else{
+                        d=01; m=m+1;
+                        dateline = d +'/'+m+'/'+y+' '+h+':'+p+':'+s;
+                    }
+                }
+                else{
+                    d=d+1;
+                    dateline = d +'/'+m+'/'+y+' '+h+':'+p+':'+s; 
+                }
+                
+
                 //======== FORMAT MONEY
                 Number.prototype.format = function(n, x) {
-                  var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
-                  return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
+                    var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+                    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
                 }
                 nn = 'abc';
                 xx = 3;
-
+                
                 check = '<div class="oder-left">'+
-                            '<div class="title">Thông tin đơn đặt tour</div>'+
-                            '<div class="row-input"> Mã đơn hàng : <span>' + code + '</span></div>'+
-                            '<div class="row-input">Tên tour : <span>' + val.tenTourDto + '</span></div>'+
-                            '<div class="row-input">Mã tour : <span>' + val.idTourDto + '</span></div>'+
-                            '<div class="row-input">Số chỗ đặt : <span>' + total + ' ( Ngươi lớn: ' + nguoilon + ',  Trẻ nhỏ: ' + duoi12 + ',  Em bé: ' + duoi2 + ')</span></div>'+
-                            '<div class="row-input">Nơi khỏi hành : <span>' + val.fromPlaceDto.fromPlaceName + '</span></div>'+
-                            '<div class="row-input">Ngày khỏi hành : <span>' + val.ngayKHDto + '</span></div>'+
-                            '<div class="row-input">Thời gian : <span>' + Days + ' ngày</span></div>'+
-                            '<div class="row-input">Tổng giá trị : <span>' + total_money.format(nn, xx) + '<sup>đ</sup></span></div>'+
+                            '<div class="title">Phiếu xác nhân đơn đặt tour</div>'+
+                            '<div class="row-input"><strong style=" color:#F00;">' + val.tenTourDto + '</strong></div>'+
+                            '<div class="row-input"><span>Mã tour</span><strong>' + val.idTourDto + '</strong></div>'+
+                            '<div class="row-input"><span>Nơi khỏi hành </span><strong>' + val.fromPlaceDto.fromPlaceName + '</strong></div>'+
+                            '<div class="row-input"><span>Ngày đi </span><strong>' + val.ngayKHDto + '</strong></div>'+
+                            '<div class="row-input"><span>Ngày về </span><strong>' + val.ngayKTDto + '</strong></div>'+
                         '</div>'+
                         '<div class="oder-left">'+
                             '<div class="title">Thông tin liên lạc</div>'+
-                            '<div class="row-input">Họ và tên : <span>' + name + '</span></div>'+
-                            '<div class="row-input">Email : <span>' + email + '</span></div>'+
-                            '<div class="row-input">Điện thoại : <span>' + phone + '</span></div>'+
-                            '<div class="row-input">Địa chỉ : <span>' + address + '</span></div>'+
-                            '<div class="row-input">Yêu cầu thêm : <span>' + content + '</span></div>'+
+                            '<div class="row-input"><span>Họ và tên </span><strong>' + name + '</strong></div>'+
+                            '<div class="row-input"><span>Email </span><strong>' + email + '</strong></div>'+
+                            '<div class="row-input"><span>Điện thoại </span><strong>' + phone + '</strong></div>'+
+                            '<div class="row-input"><span>Địa chỉ </span><strong>' + address + '</strong></div>'+
+                            '<div class="row-input"><span>Ghi chú </span><strong>' + content + '</strong></div>'+
+                            '<div class="row-input"><span>Tổng số khách </span><strong>' + total + ' (Người lớn: ' + nguoilon + ', Trẻ em: ' + duoi12 + ', Trẻ nhỏ: ' + duoi2 + ')</strong></div>'+
                         '</div>'+
+                        '<div class="clear"></div>'+
+                        '<div class="title">Chi tiết đơn đặt tour</div>'+
+                        '<div class="row-input"><span>Mã đơn đặt tour </span><strong>' + code + '</strong></div>'+
+                        '<div class="row-input"><em style="margin-left: 165px">Quý khách vui lòng nhớ mã đơn hàng để thuận tiện cho giao dịch sau này</em></div>'+
+                        '<div class="row-input"><span>Trị giá đơn đặt tour </span><strong>' + total_money.format(nn,xx) + '<sup>đ</sup></strong></div>'+
+                        '<div class="row-input"><span>Ngày đăng ký </span><strong>' + today + ' (Theo giờ Việt Nam)</strong></div>'+
+                        '<div class="row-input"><span>Hình thức thanh toán </span><strong>Thanh toán online-Thanh toán đảm bảo qua Ngân Lượng</strong></div>'+
+                        '<div class="row-input"><span>Thời hạn thanh toán </span><strong>' + dateline + ' (Theo giờ Việt Nam)</strong></div>'+
+                        '<div class="row-input"><em style="margin-left: 165px">Nếu quá thời gian trên mà quý khách chưa thanh toán, DLDD sẽ hủy đơn đặt tour này</em></div>'+
                         '<div class="clear"></div>'+
                         '<div class="row-input">'+
                             '<div class="div-input">'+
@@ -123,8 +164,8 @@ function load_check(){
                                 '<button type="submit" name="do_edit" id="do_edit" onclick="do_edit()" class="btn submit" value=""><span>Chỉnh sửa</span></button>'+
                             '</div>'+
                             '<div class="clear"></div>'+
-                       '</div>';
-                $("#check").html(check);
+                        '</div>';
+                 $("#check").html(check);
             }
         });
     });
@@ -176,6 +217,7 @@ function do_edit(){
     $("#check").append('<div class="gif"><img src="admin/images/preloader.GIF" /></div><div class="f_overlay"></div>');
     setTimeout(function() {
         $("#vnt-order").fadeIn('slow');
+        $("#h1").html("Nhập thông tin");
         $("#check").fadeOut('slow');
     }, 2000);
 }

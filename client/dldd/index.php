@@ -178,9 +178,9 @@
                         <div class="title">Tour sắp khởi hành</div>
                         <div class="menu">
                             <ul>
-                                <li class="active"><a href="#" data-ajax="1"><span>Tour sắp khởi hành</span></a></li>
-                                <li><a href="#" data-ajax="2"><span>Tour đi nhiều</span></a></li>
-                                <li><a href="#" data-ajax="3"><span>Tour giảm giá</span></a></li>
+                                <li class="active"><a href="#" data-ajax="1"><span>Tour giảm giá</span></a></li>
+                                <li><a href="#" data-ajax="2"><span>Tour sắp khởi hành</span></a></li>
+                                <li><a href="#" data-ajax="3"><span>Tour đi nhiều</span></a></li>
                             </ul>
                         </div>
                     </div>

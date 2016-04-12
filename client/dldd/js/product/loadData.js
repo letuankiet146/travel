@@ -205,14 +205,14 @@ $(document).ready(function() {
 
                 info_booking =  '<div class="title">Thông tin tour</div>'+
                                 '<div class="row-input">'+
-                                    '<span style=" color:#F00;">' + val.tenTourDto + '</span>'+
+                                    '<strong style=" color:#F00;">' + val.tenTourDto + '</strong>'+
                                 '</div>'+
-                                '<div class="row-input">Mã tour : <span>' + val.idTourDto + '</span></div>'+
-                                '<div class="row-input">Giá tour : <span>' + val.giaTourKMDto.format(nn, xx) + '<sup>đ</sup></span></div>'+
-                                '<div class="row-input">Nơi khỏi hành : <span>' + val.fromPlaceDto.fromPlaceName + '</span></div>'+
-                                '<div class="row-input">Ngày khỏi hành : <span>' + val.ngayKHDto + '</span></div>'+
-                                '<div class="row-input">Thời gian : <span>' + Days + ' ngày</span></div>'+
-                                '<div class="row-input">Số chỗ còn nhận : <span>6</span></div>'+
+                                '<div class="row-input"><span>Mã tour</span><strong>' + val.idTourDto + '</strong></div>'+
+                                '<div class="row-input"><span>Giá tour</span><strong>' + val.giaTourKMDto.format(nn, xx) + '<sup>đ</sup></strong></div>'+
+                                '<div class="row-input"><span>Nơi khỏi hành</span><strong>' + val.fromPlaceDto.fromPlaceName + '</strong></div>'+
+                                '<div class="row-input"><span>Ngày khỏi hành</span><strong>' + val.ngayKHDto + '</strong></div>'+
+                                '<div class="row-input"><span>Thời gian</span><strong>' + Days + ' ngày</strong></div>'+
+                                '<div class="row-input"><span>Số chỗ nhận</span><strong>6</strong></div>'+
                                 '<div class="title">Điều kiện bắt buộc khi đăng ký online</div>'+
                                         '<div class="row-input">'+
                                             '<div class="note">'+

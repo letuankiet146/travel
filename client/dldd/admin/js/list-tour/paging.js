@@ -174,7 +174,7 @@
 									'</tr>';
 						rows.append(str);
 					});
-					aRows = options.rows + " tr td a#remove";
+					aRows = options.rows + "tr td a#remove";
 					$(aRows).on("click", function(e){
 						var x = confirm("Bạn có chắc chắn xóa không?");
 						if(x){

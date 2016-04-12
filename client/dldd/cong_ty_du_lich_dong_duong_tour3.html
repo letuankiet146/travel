@@ -9,24 +9,38 @@ $(document).ready(function() {
       dataType: 'json',
     })
     .done(function(data) {
-        console.log(data);
         var html = '';
         var str1 ='';
         var str2 ='';
         var dem = 0;
         for (var i = data.length - 1; i >= 0; i--) {
-            if(dem<6){
+            if(dem<6 && data[i]['giaTourDto'] == 0){
+
+              // =====TINH SỐ NGÀY THỰC HIỆN TOUR
+                var dateKH = data[i]['ngayKHDto'];
+                var dateKT = data[i]['ngayKTDto'];
+                dateKH = dateKH.split('/');
+                dateKT = dateKT.split('/');
+                dateKH = new Date(dateKH[2], dateKH[1], dateKH[0]);
+                dateKT = new Date(dateKT[2], dateKT[1], dateKT[0]);
+                dateKH_unixtime = parseInt(dateKH.getTime());
+                dateKT_unixtime = parseInt(dateKT.getTime());
+                var miliSecond = dateKT_unixtime - dateKH_unixtime;
+                var ONE_DAY = 1000 * 60 * 60 * 24;
+                var Days = miliSecond / ONE_DAY;
+
                 Number.prototype.format = function(n, x) {
                   var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
                   return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
                 }
-                var giaTour = data[i]['giaTourKMDto'],
                 nn = 'abc',
                 xx = 3;
+
                 html = '<div class="item">'+
                             '<div class="i-images">'+
                                 '<a href="chi-tiet-tour.php?tour_id=' + data[i]['idDto'] + '">'+
-                                    '<img src="' + data[i]['tourImageDataDto'] + '" alt="' + data[i]['tenTourDto'] + '" />'+
+                                    '<img  src="' + data[i]['tourImageDataDto'] + '" alt="' + data[i]['tenTourDto'] + '" />'+
+                                    '<div class="see_details">Xem chi tiết</div>'+
                                 '</a>'+
                             '</div>'+
                             '<div class="i-description">'+
@@ -35,11 +49,15 @@ $(document).ready(function() {
                                 '</div>'+
                                 '<div class="fl">'+
                                     '<div class="i-content">'+
-                                        'Giá 1 khách: <span>' + giaTour.format(nn, xx) + ' VNĐ</span>'+
+                                        '<div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + Days + ' ngày </div>'+
+                                        '<div><i class="fa fa-calendar" aria-hidden="true"></i> ' + data[i]['ngayKHDto'] + ' </div>'+
                                     '</div>'+
                                 '</div>'+
                                 '<div class="fr">'+
-                                    '<a class="viewdetail" href="chi-tiet-tour.php?tour_id=' + data[i]['idDto'] + '">Xem chi tiết</a>'+
+                                    '<div class="i-content">'+
+                                        '<span></span>'+
+                                        '<span>' + data[i]['giaTourKMDto'].format(nn, xx) + ' VNĐ</span>'+
+                                    '</div>'+
                                 '</div>'+
                                 '<div class="clear"></div>'+
                             '</div>'+
@@ -52,9 +70,15 @@ $(document).ready(function() {
                     str2 += html;
                     $('#loadData2').html(str2);
                 }
+                dem++;
             }
-            dem++;
+            
         }
+        $(".item").hover(function() {
+            $(this).find(".see_details").css('opacity', '1');
+        }, function() {
+            $(this).find(".see_details").css('opacity', '0');
+        });
     });
 });
 </script>

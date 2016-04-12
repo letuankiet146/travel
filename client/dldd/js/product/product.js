@@ -156,3 +156,31 @@ $(document).ready(function(){
         $(this).parents(".w_content").find(".content-info").stop().slideDown(700); 
     });  
 });
+
+// ======paging read more======
+$(document).ready(function(){
+    $(".item").hover(function() {
+        $(this).find(".see_details").css('opacity', '1');
+    }, function() {
+        $(this).find(".see_details").css('opacity', '0');
+    });
+    
+});
+function abc(last_tour_id){
+        $.ajax({
+            url: 'include/tour/paging.php?type=list',
+            type: 'POST',
+            dataType: 'text',
+            data: {last_tour_id: last_tour_id},
+        })
+        .done(function(data) {
+            console.log(data);
+            if(data != ''){
+                $(".pagination").remove();  
+                $('.grid-tour').append(data);  
+            }  
+            else{  
+                $(".viewdetail").html("Hết");  
+            }  
+        });
+}
