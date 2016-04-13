@@ -35,8 +35,8 @@ public class ConfigBean  {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
-		mailSender.setUsername("letuankiet146@gmail.com");
-		mailSender.setPassword("conyeume69");
+		mailSender.setUsername("phamthanhthao131094@gmail.com");
+		mailSender.setPassword("Tha0kute");
 		Properties prop = mailSender.getJavaMailProperties();
 		prop.put("mail.transport.protocol", "smtp");
 		prop.put("mail.smtp.auth", "true");

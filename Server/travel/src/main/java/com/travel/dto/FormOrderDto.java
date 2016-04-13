@@ -88,6 +88,9 @@ public class FormOrderDto {
 		if (formOrderDto.getFormOrderQuantityOtherRequireDto()!=null){
 			this.formOrderQuantityOtherRequireDto = formOrderDto.getFormOrderQuantityOtherRequireDto();
 		}
+		if (formOrderDto.getFormOrderDateDto()!=null){
+			this.formOrderDateDto = formOrderDto.getFormOrderDateDto();
+		}
 	}
 
 }

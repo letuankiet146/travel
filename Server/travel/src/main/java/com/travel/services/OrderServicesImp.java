@@ -53,8 +53,10 @@ public class OrderServicesImp implements IOrderServices {
 
 		customerEntity = mapper.map(formOrderDto.getFormOrderCustomerDto(),
 				CustomerEntity.class);
-		customerEntity.setCustomerBirth(MyFormatDate.stringToDate(formOrderDto
-				.getFormOrderCustomerDto().getCustomerBirthDto()));
+		if (formOrderDto.getFormOrderCustomerDto().getCustomerBirthDto()!=null){
+			customerEntity.setCustomerBirth(MyFormatDate.stringToDate(formOrderDto
+					.getFormOrderCustomerDto().getCustomerBirthDto()));
+		}
 		/*
 		 * generate random password 
 		 */
