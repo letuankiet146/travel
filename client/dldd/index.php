@@ -18,7 +18,9 @@
             case 'tour-giam-gia':include("tour-giam-gia.php");break;
             case 'tour-sap-khoi-hanh':include("tour-sap-khoi-hanh.php");break;
             case 'tour-di-nhieu':include("tour-di-nhieu.php");break;
-            default:include("trang-chu.php");break;
+            case 'thanh-toan':include("thanh-toan.php");break;
+            case 'ket-qua-tim-kiem':include("ket-qua-tim-kiem.php");break;
+            default:include("404.php");break;
         }
     }
     else{

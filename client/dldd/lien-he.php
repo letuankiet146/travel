@@ -86,7 +86,7 @@
                           <div class="clear"></div>
                           
                           <div id="tab_1" class="tab_content">
-                             <img src="images/contact/map_contact.jpg" />
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.715172937498!2d106.68629722916245!3d10.821971216772049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528e548200413%3A0xdbf245c4ae10416d!2zTmd1eeG7hW4gVsSDbiBC4bqjbywgcGjGsOG7nW5nIDQsIEfDsiBW4bqlcCwgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1460529074535" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
                           </div>
                         </div>
                         <!--===TAB==-->

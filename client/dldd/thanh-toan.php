@@ -5,7 +5,8 @@
                     <div class="navation">
                         <ul>
                             <li class="home"><a href="index.php">Trang chủ</a></li>
-                            <li>Tour quốc tế</li>
+                            <li><a href="tour-noi-dia.php">Tour nội địa</a></li>
+                            <li>Đặt tour</li>
                         </ul>
                     </div>
                 </div>
@@ -13,16 +14,20 @@
                 <div class="box_mid">
                     <div class="mid-title">
                         <div class="titleL">
-                            <h1>Tour quốc tế</h1>
+                            <h1 id="h1">Xác nhận đơn đặt tour</h1>
                         </div>
                         <div class="titleR"></div>
                         <div class="clear"></div>
                     </div>
                     <div class="mid-content">
-                        <?php include('sidebar.php'); ?>
-                        <div id="vnt-main" > <?php dsTour("AND a.arrive_place_area_id = 2",4); ?> </div>
-                        <div class="clear"></div>
+                        <div class="vnt-order">
+                            <div id="thanhtoanok">
+                                <input type="hidden" name="order_id" id="order_id" value="<?php madonhang(); ?>" />
+                                <div> Thanh toán thành công. Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <script type="text/javascript" src="js/product/thanhtoan.js"></script>
         

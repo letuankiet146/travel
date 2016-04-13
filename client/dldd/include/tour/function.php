@@ -1,5 +1,6 @@
 
 <?php
+    include('../../admin/connectDB.php');
     // ========== lấy danh sách tour liên quan
 	function dsTour_involve(){
 		$id = $_GET['tour_id'];
@@ -112,4 +113,53 @@
             <!--=======NAV-PAG======-->
         </div>
     <?php }
+
+    // ========== lấy danh sách đia điểm xuất phát
+    function listFromPlace(){
+        $sql = "SELECT * FROM from_place WHERE from_place_delete_date is null";
+        $query = mysql_query($sql);
+        $output ='';
+        while($rows=mysql_fetch_array($query)){
+            $output .= '<option value="'.$rows['from_place_id'].'">'.$rows['from_place_name'].'</option>';
+        }
+        return $output;
+    }
+
+    // ========== lấy danh sách đia điểm đến
+    function listArrivePlace($area_id){
+        $sql = "SELECT * FROM arrive_place WHERE arrive_place_delete_date is null AND arrive_place_area_id = ".$area_id."";
+        $query = mysql_query($sql);
+        $output ='';
+        $output .= '<option value="">Nơi đến</option>';
+        while($rows=mysql_fetch_array($query)){
+            $output .= '<option value="'.$rows['arrive_place_id'].'">'.$rows['arrive_place_name'].'</option>';
+        }
+        return $output;
+    }
+
+    // ========tìm kiếm theo chọn lọc
+    function selectSearch($area, $from, $to){
+        $sql = "SELECT * FROM tour t join arrive_place a on t.tour_arrive_place_id=a.arrive_place_id WHERE t.tour_delete_date is null AND a.arrive_place_area_id = '$area' AND t.tour_from_place_id ='$from'";
+        if(!empty($to)){
+            $sql .= "AND t.tour_arrive_place_id = '$to'";
+        }
+        $query = mysql_query($sql);
+        $count = mysql_num_rows($query);
+        if($count > 0){
+            $tours = array();
+            while ($rows = mysql_fetch_array($query)) {
+                $tours[] = $rows;
+            }
+            return $tours;
+        }else{
+           return ""; 
+        }
+    }
+
+
+    $type = (string)$_GET['type'];
+    if($type == 'listPlace'){
+        $id = (int)$_GET["area_id"];
+        echo listArrivePlace($id);
+    }
 ?>

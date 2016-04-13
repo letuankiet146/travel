@@ -63,9 +63,38 @@
     <script type="text/javascript" src="js/product/loadData.js"></script>
     <script type="text/javascript" src="js/product/booking.js"></script>
 <?php } ?>
+<?php if($paged == "thanh-toan"){ ?>
+    <link href="style/product.css" rel="stylesheet" type="text/css" />
+<?php } ?>
+<?php if($paged == "ket-qua-tim-kiem"){ ?>
+    <link href="style/search.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="js/datepicker/datepicker.css"/>
+    <script src="js/datepicker/datepicker.js"></script>
+    <script type="text/javascript" src="js/lazingloading/jquery.lazyscrollloading.js"></script>
+    <script type="text/javascript" src="js/main/main.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $( "#time" ).datepicker({
+                showOn: "focus",
+                numberOfMonths: 2,
+                minDate: 0
+            })
+        });
+    </script>
+<?php } ?>
     <!--===MODULE MAIN==-->
 </head>
 <body>
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
+          fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <div id="vnt-wrapper">
 	<div id="vnt-container">
         <!--=== BEGIN: HEADER ===-->
@@ -175,21 +204,74 @@
       	<div id="vnt-content">
             <!--=== BEGIN: BANNER ===-->
             <?php if($paged == "trang-chu" || $paged ==''){ ?>
-            <div class="vnt-banner">
-                <div id="vnt-banner">
-                    <a href="#"><img src="images/main/slider1.jpg" /></a>
-                    <a href="#"><img src="images/main/slider2.jpg" /></a>
-                    <a href="#"><img src="images/main/slider3.jpg" /></a>
+                <div class="vnt-banner">
+                    <div id="vnt-banner">
+                        <a href="#"><img src="images/main/slider1.jpg" /></a>
+                        <a href="#"><img src="images/main/slider2.jpg" /></a>
+                        <a href="#"><img src="images/main/slider3.jpg" /></a>
+                    </div>
                 </div>
-            </div>
             <?php }
             else{ ?>
                 <div class="vnt-banner">
-                <div id="vnt-banner">
-                    <img src="images/news/banner.jpg" alt="#" />
-                    <img src="images/news/banner.jpg" alt="#" />
-                    <img src="images/news/banner.jpg" alt="#" />
+                    <div id="vnt-banner">
+                        <img src="images/news/banner.jpg" alt="#" />
+                        <img src="images/news/banner.jpg" alt="#" />
+                        <img src="images/news/banner.jpg" alt="#" />
+                    </div>
                 </div>
-            </div>
             <?php } ?>
             <!--=== END: BANNER ===-->
+            <?php if($paged == "trang-chu" || $paged == "ket-qua-tim-kiem"){ ?>
+                <!--=== BEGIN: SEARCH TOUR ===-->
+                <div class="vnt-searchTour">
+                    <div class="wrapper">
+                        <div class="w-searchTour">
+                            <form id="searchTour" method="POST" action="index.php?page=ket-qua-tim-kiem">
+                                <div class="title">Tìm tour du lịch</div>
+                                <div class="input-radio">
+                                    <ul>
+                                        <li class="active">
+                                            <label>
+                                                <input type="radio" name="area" value="1" checked="checked" />
+                                                <span>Trong nước</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="area" value="2" />
+                                                <span>Nước ngoài</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="input-wrapper">
+                                    <div class="input-wrapper-content">
+                                        <select name="from" id="from" class="form-control">
+                                            <?php echo listFromPlace(); ?>
+                                        </select>
+                                        <select name="to" id="to" class="form-control">
+                                            <?php echo listArrivePlace(1); ?>
+                                        </select>
+                                        <input name="time" id="time" class="form-control" placeholder="Ngày khỏi hành" />
+                                        <select name="price" class="form-control">
+                                            <option value="">Giá (VNĐ)</option>
+                                            <option value="1">Dưới 1 triệu</option>
+                                            <option value="2">1 - 2 triệu</option>
+                                            <option value="3">2 - 4 triệu</option>
+                                            <option value="4">4 - 6 triệu</option>
+                                            <option value="5">6 - 10 triệu</option>
+                                            <option value="6">Trên 10 triệu</option>
+                                        </select>
+                                        <input name="keyword" id="t-keyword" class="form-control full768" placeholder="từ khóa..." />
+                                    </div>
+                                    <span class="input-wrapper-btn">
+                                        <button type="submit" id="do_submit" name="do_submit" class="btn" value=""><span>Tìm tour</span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--=== END: SEARCH TOUR ===-->
+            <?php } ?>

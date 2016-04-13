@@ -1,55 +1,9 @@
-<!--=== BEGIN: SEARCH TOUR ===-->
-<div class="vnt-searchTour">
-    <div class="wrapper">
-        <div class="w-searchTour">
-            <form id="searchTour" method="POST" action="#">
-                <div class="title">Tìm tour du lịch</div>
-                <div class="input-radio">
-                    <ul>
-                        <li class="active">
-                            <label>
-                                <input type="radio" name="checkTour" value="1" checked="checked" />
-                                <span>Trong nước</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="checkTour" value="2"/>
-                                <span>Nước ngoài</span>
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="input-wrapper">
-                    <div class="input-wrapper-content">
-                        <select name="form" class="form-control">
-                            <option value="1">Khởi hành</option>
-                        </select>
-                        <select name="to" class="form-control">
-                            <option value="1">Nơi đến</option>
-                        </select>
-                        <select name="time" class="form-control">
-                            <option value="1">Thời gian</option>
-                        </select>
-                        <select name="price" class="form-control">
-                            <option value="1">Giá (VNĐ)</option>
-                        </select>
-                        <input name="keyword" id="t-keyword" class="form-control full768" placeholder="từ khóa..." />
-                    </div>
-                    <span class="input-wrapper-btn">
-                        <button type="submit" id="do_submit" name="do_submit" class="btn" value=""><span>Tìm tour</span></button>
-                    </span>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!--=== END: SEARCH TOUR ===-->
+
 <!--=== BEGIN: GIỚI THIỆU TOUR ===-->
 <div class="vnt-tour">
     <div class="wrapper">
         <div class="title-menu">
-            <div class="title">Tour sắp khởi hành</div>
+            <div class="title">Tour giảm giá</div>
             <div class="menu">
                 <ul>
                     <li class="active"><a href="#" data-ajax="1"><span>Tour giảm giá</span></a></li>

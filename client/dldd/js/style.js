@@ -86,3 +86,21 @@ $(document).ready(function(){
         });
      });
  });
+
+//================RADIO BUTTON===============
+ $(document).ready(function(){
+    $(".input-radio ul li label").click(function(){
+        $(".input-radio ul li").removeClass("active");
+        $(this).parents("li").addClass("active"); 
+        var id = $(this).find('input').val();
+        $.ajax({
+            url: 'include/tour/function.php?type=listPlace&area_id=' +id,
+            type: 'POST',
+            dataType: 'text',
+        })
+        .done(function(data) {
+            $("#to").empty();
+            $("#to").html(data);
+        });
+    });
+ });

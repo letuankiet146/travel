@@ -173,7 +173,7 @@
                     <!--===END: SOCIAL==-->
                         <!--===BEGIN: COMMENT==-->
                         <div class="comment">
-                            <div class="title">Ý kiến của bạn</div>
+                            <div class="title">Ý kiến khách hàng (0)</div>
                             <div class="formComment">
                                 <form id="formCommnet" action="" method="POST">
                                     <div class="input-group">
@@ -235,7 +235,7 @@
                     </div>
                     <!--=======NAV-PAG======-->
                     <div class="comment-facebook">
-                        <img src="images/news/img-facebook.jpg" />
+                        <div class="fb-comments" data-href="http://localhost/dldd/index.php?page=chi-tiet-tour&tour_id=<?php echo $_GET['tour_id']; ?>" data-width="100%" data-numposts="5"></div>
                     </div>
                     <!--===BEGIN: CÁC TOUR DU LỊCH KHÁC==-->
                     <div class="related-product">

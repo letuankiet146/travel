@@ -23,8 +23,8 @@
                         <div class="vnt-order">
                             <form id="vnt-order" action="#" method="POST">
                                 <div class="wrapper">
-                                    <input type="hidden" name="code" id="code" value="MADDT<?php madonhang(); ?>" placeholder="">
-                                    <input type="hidden" name="codekh" id="codekh" value="MAKH<?php makhachhang(); ?>" placeholder="">
+                                    <input type="hidden" name="code" id="code" value="MADDT<?php madonhang(); ?>" placeholder="" />
+                                    <input type="hidden" name="codekh" id="codekh" value="MAKH<?php makhachhang(); ?>" placeholder="" />
                                     <div class="oder-left" id="oder_left"></div>
                                     <div class="oder-left">
                                         <div class="title">Thông tin liên hệ</div>

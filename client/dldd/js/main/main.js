@@ -12,15 +12,7 @@ $(document).ready(function() {
      });
  });
 
-/*======================================
-*================RADIO BUTTON===============
-*========================================*/
- $(document).ready(function(){
-    $(".input-radio ul li label").click(function(){
-        $(".input-radio ul li").removeClass("active");
-        $(this).parents("li").addClass("active");    
-    });
- });
+
 
 /*======================================
 *================LOAD AJAX TOUR AND REPONSIVE===============
@@ -93,13 +85,14 @@ $(document).ready(function() {
       dataType: 'json',
     })
     .done(function(data) {
+        console.log(data);
         var html = '';
         var str1 ='';
         var str2 ='';
         var dem = 0;
         for (var i = data.length - 1; i >= 0; i--) {
-            if(dem<6 && data[i]['giaTourDto'] > 0){
-
+            if(dem<6){
+                // data[i]['giaTourDto'] > 0
               // =====TINH SỐ NGÀY THỰC HIỆN TOUR
                 var dateKH = data[i]['ngayKHDto'];
                 var dateKT = data[i]['ngayKTDto'];
@@ -146,11 +139,11 @@ $(document).ready(function() {
                                 '<div class="clear"></div>'+
                             '</div>'+
                         '</div>';
-                if(dem<3){
+                if(dem<6){
                     str1 += html;
                     $('#loadData1').html(str1);
                 }
-                else if(dem >= 3){
+                else if(dem >= 6){
                     str2 += html;
                     $('#loadData2').html(str2);
                 }

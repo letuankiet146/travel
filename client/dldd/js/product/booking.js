@@ -91,8 +91,6 @@ function load_check(){
                 var total_money = val.giaTourKMDto;
                 total_money = (total_money + total_money*0.5);
 
-                // var _dt = new Date();
-                // today = [_dt.getDate(), _dt.getMonth(), _dt.getFullYear()].join('/')+' '+[_dt.getHours(),_dt.getMinutes(),_dt.getSeconds()].join(':');
                 // Dinh dạnh datetime và tính dateline
                 var t = new Date();
                 var d = (t.getDate() < 10) ?  '0'+t.getDate() : t.getDate();
@@ -159,9 +157,7 @@ function load_check(){
                         '<div class="clear"></div>'+
                         '<div class="row-input">'+
                             '<div class="div-input">'+
-                                '<a href="https://www.nganluong.vn/button_payment.php?receiver=ptthao13@gmail.com&product_name=' + code + '&price=2000&return_url=index.php&comments=' + content + '">'+
-                                    '<button type="submit" name="" id="btn_thanhtoan" class="btn reset" value=""><span>Thanh toán</span></button>'+
-                                '</a>'+
+                                '<button type="submit" name="" id="btn_thanhtoan" class="btn reset" value=""><span>Thanh toán</span></button>'+
                                 '<button type="submit" name="do_edit" id="do_edit" onclick="do_edit()" class="btn submit" value=""><span>Chỉnh sửa</span></button>'+
                             '</div>'+
                             '<div class="clear"></div>'+
@@ -169,6 +165,7 @@ function load_check(){
                  $("#check").html(check);
                  $(document).ready(function() {
                      $("#btn_thanhtoan").click(function(event) {
+                        $(".vnt-order").append('<div class="gif"><img src="admin/images/preloader.GIF" /></div><div class="f_overlay"></div>');
                         var mydata = {
                             "formOrderTourCodeDto": code,
                             "formOrderTourIdDto": val.idDto,
@@ -195,14 +192,14 @@ function load_check(){
                                 contentType: 'application/json',
                                 data: JSON.stringify(mydata),
                             })
-                            .done(function() {
-                               
+                            .done(function(data) {
+                               console.log("dddd");
                             })
                             .fail(function() {
-                                console.log("error");
+                                
                             })
                             .always(function() {
-                                console.log("complete");
+                                window.location.href = "https://www.nganluong.vn/button_payment.php?receiver=ptthao13@gmail.com&product_name=" + code + "&price=2000&return_url=http://localhost/dldd/index.php?page=thanh-toan&comments=" + content + "";
                             });
                               
                      });
