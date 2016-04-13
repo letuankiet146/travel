@@ -177,9 +177,11 @@ public class OrderServicesImp implements IOrderServices {
 		if (formOrderDtoUpdate !=null){
 			FormOrderEntity formOrderEntity = formOrderRepo.findOne(formOrderDtoUpdate.getFormOrderIdDto());
 			FormOrderDto formOrderDto = mapper.map(formOrderEntity, FormOrderDto.class);
+			formOrderDto.setFormOrderDateDto(MyFormatDate.dateToString(formOrderEntity.getFormOrderDate()));
 			if (formOrderEntity !=null){
 				formOrderDto.setData(formOrderDtoUpdate);
 				formOrderEntity = mapper.map(formOrderDto, FormOrderEntity.class);
+				formOrderEntity.setFormOrderDate(MyFormatDate.stringToDate(formOrderDto.getFormOrderDateDto()));
 				formOrderRepo.saveAndFlush(formOrderEntity);
 				/*
 				 * Save history
