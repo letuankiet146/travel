@@ -21,3 +21,4 @@ VPS-Koding
 IP: 	54.254.231.30
 HOST:	ulkk3b871a69.letuankiet146.koding.io
 PASS: ssh-phrase: letuankiet146
+database name: sql61036294
