@@ -43,6 +43,9 @@ public class TourEntity {
 	@Column(name = "tour_image")
 	private String image;
 	
+	@Column (name="tour_booked")
+	private int tourBooked;
+	
 	@Column(name = "tour_seat_number")
 	private Integer soCho;
 	

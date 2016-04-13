@@ -3,8 +3,6 @@
  */
 package com.travel.dto;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.Date;
 
 import lombok.Data;
@@ -38,7 +36,10 @@ public class TourDto {
 
 	@Mapping("image")
 	private String imageDto;
-
+	
+	@Mapping ("tourBooked")
+	private int tourBookedDto;
+	
 	@Mapping("soCho")
 	private Integer soChoDto;
 

@@ -109,6 +109,14 @@ public class OrderServicesImp implements IOrderServices {
 			ContentEmail content = new ContentEmail(null,to,subject, contentSend);
 			utilMethod.sendEmail(content);
 		}
+		/*
+		 * Count down sit
+		 */
+		tourEntity.setTourBooked(tourEntity.getTourBooked()+formOrderDto.getFormOrderQuantityAdultsDto()
+				+ formOrderDto.getFormOrderQuantityChildDto()
+				+ formOrderDto.getFormOrderQuantityJuvenileDto());
+		tourRepo.saveAndFlush(tourEntity);
+		
 		return "Dat tour thanh cong: ID="+formformOrderEntityNew.getFormOrderId();
 	}
 
