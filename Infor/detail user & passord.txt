@@ -17,3 +17,7 @@ Your SkaliCloud+ hosting trial account is now ready and waiting for you to deplo
 Login: letuankiet146@gmail.com
 Password: ypG8NOuNgb
 **********************************************
+VPS-Koding
+IP: 	54.254.231.30
+HOST:	ulkk3b871a69.letuankiet146.koding.io
+PASS: ssh-phrase: letuankiet146
