@@ -1,0 +1,9 @@
+************************************TomCat******************************
+http://phongbv.ddns.net:8080/manager
+user: phongbv
+pass: 123789
+************************************MySQL******************************
+phongbv.ddns.net
+port 3306
+user : root
+pass: 123789
