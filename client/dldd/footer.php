@@ -63,5 +63,33 @@
         </ul>
    </nav> 
 <!--===MENU MOBILE==-->
+<!--  <div class="cart_fixed">
+        <div class="iconmember">
+            <a href=""><i class="fa fa-user"></i></a>
+        </div>
+        <div class="iconcart">
+            <a href=""><i class="fa fa-shopping-cart"></i></a>
+        </div>
+        <div class="iconsearch">
+            <a href="#"><i class="fa fa-search"></i></a>
+            <div class="boxSearch">
+                <div class="boxSearch-title">
+                    <div>
+                        Tìm kiếm
+                    </div>
+                    <form id="boxSearch">
+                        <input type="text" name="" value="" placeholder="Tìm kiếm" />
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="f_overlay"></div>
+        </div>
+        <div class="iconsocial">
+            <a href="" class="facebook"><i class="fa fa-facebook"></i></i></a>
+            <a href="" class="youtube"><i class="fa fa-youtube"></i></a>
+            <a href="" class="googleplus"><i class="fa fa-google-plus"></i></a>
+        </div>
+    </div> -->
 </body>
 </html>

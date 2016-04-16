@@ -304,15 +304,15 @@ b{font-weight:bold}
     color: #666666;
 }
 .breadcrumb ul li:first-child{
-    padding: 0px 12px 0px 0px;
+    padding: 0px 5px 0px 0px;
 }
 .breadcrumb ul li ~ li:before{
-    position: absolute;
     content:"/";
-    width: 20px;
+    position: absolute;
+    width: 5px;
     height: 20px;
     top: 0px;
-    left: -20px;
+    left: 0px;
     color: #666666;
     font-size:14px;
 }

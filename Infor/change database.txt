@@ -35,3 +35,9 @@ ADD COLUMN `tour_booked` INT(11) NULL DEFAULT 0 AFTER `tour_image_data`;
 ALTER TABLE `sql61036294`.`tour` 
 CHANGE COLUMN `tour_booked` `tour_booked` INT(11) NULL DEFAULT '0' AFTER `tour_seat_number`;
 
+
+_______________________________ngay 15/04/2016__________________________________
+alter TABLE sql61036294.tour ADD fulltext(tour_name);
+alter TABLE sql61036294.tour ADD fulltext(tour_infor);
+alter TABLE sql61036294.arrive_place ADD fulltext(arrive_place_name);
+alter TABLE sql61036294.vehicle ADD fulltext(vehicle_name);

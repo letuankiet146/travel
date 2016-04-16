@@ -70,7 +70,6 @@
     margin-bottom: 10px;
     height: 40px;
     display: inline-block;
-    border: 0px;
 }
 .input-wrapper .input-wrapper-btn{
     width: 1%;
@@ -272,21 +271,28 @@
     color: #9c1320;
 }
 .grid-tour .row-tour .item .i-description .i-content{
-    font-size: 14px;
+    font-size:14px;
     line-height: 25px;
     color:#666666;
-    margin-right: 10px;
+    position:relative;
 }
 .grid-tour .row-tour .item .i-description .i-content span{
-    font-size: 18px;
-    line-height: 24px;
-    color: #9c1320;
-    display: block;
+    display: inline-block;
 }
-.grid-tour .row-tour .item .i-description .i-content span:first-child{
+.grid-tour .row-tour .item .i-description .i-content span:last-child{
     font-size: 16px;
     color: #f9a614;
     text-decoration: line-through;
+    position: absolute;
+    right: 0px;
+}
+.grid-tour .row-tour .item .i-description .i-content div{
+    display: inline-block;
+}
+.grid-tour .row-tour .item .i-description .i-content div:last-child{
+    font-size: 18px;;
+    position: absolute;
+    right: 0px;
 }
 
 .grid-tour .row-tour .item .i-description .viewdetail{

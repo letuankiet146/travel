@@ -15,12 +15,25 @@
     <script type="text/javascript" src="js/mmenu/js/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="js/core.js"></script>
     <script type="text/javascript" src="js/style.js"></script>
+
     <link rel="stylesheet" href="js/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="js/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="js/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="js/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
     <script type="text/javascript" src="js/nivo-slider/jquery.nivo.slider.js"></script>
+
+    <link rel="stylesheet" href="js/datepicker/datepicker.css"/>
+    <script src="js/datepicker/datepicker.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $( "#time" ).datepicker({
+                showOn: "focus",
+                numberOfMonths: 2,
+                minDate: 0
+            })
+        });
+    </script>
     <!--===MODULE MAIN==-->
 <?php $paged = $_GET['page']; ?>
 <?php if($paged == "trang-chu" || $paged ==''){ ?>
@@ -68,19 +81,12 @@
 <?php } ?>
 <?php if($paged == "ket-qua-tim-kiem"){ ?>
     <link href="style/search.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="js/datepicker/datepicker.css"/>
-    <script src="js/datepicker/datepicker.js"></script>
     <script type="text/javascript" src="js/lazingloading/jquery.lazyscrollloading.js"></script>
-    <script type="text/javascript" src="js/main/main.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $( "#time" ).datepicker({
-                showOn: "focus",
-                numberOfMonths: 2,
-                minDate: 0
-            })
-        });
-    </script>
+    <script type="text/javascript" src="js/search/search.js"></script>
+<?php } ?>
+<?php if($paged == "khach-hang" || $paged == "cap-nhat-thong-tin" || $paged == "thay-doi-mat-khau" || $paged == "thay-doi-mat-khau/xac-thuc" || $paged == "thay-doi-mat-khau/thanh-cong"){ ?>
+    <link href="style/customer.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/product/product.js"></script>
 <?php } ?>
     <!--===MODULE MAIN==-->
 </head>
@@ -160,12 +166,18 @@
                             ?>
                                 <a class="hover_effect_menu" href="index.php?page=lien-he"><span class="hover_text">Liên hệ</span></a>
                             </li>
+                            </li>
+                            <?php if($paged == "khach-hang"){ echo '<li class="current">';} 
+                                  else{echo '<li>';}
+                            ?>
+                                <a class="hover_effect_menu" href="index.php?page=khach-hang"><span class="hover_text">Khách hàng</span></a>
+                            </li>
                         </ul>
                     </div>
                     <div class="menu-tool">
                         <!--===FORMSEARCH==-->
-                        <div class="formSearch">
-                            <form id="formSearch" name="formSearch" method="POST" action="#" class="box_search">
+                        <!-- <div class="formSearch">
+                            <form id="formSearch" name="formSearch" method="POST" action="index.php?page=ket-qua-tim-kiem" class="box_search">
                                 <div class="input-group">
                                     <input name="keyword" id="keyword" type="text" class="text_search form-control" placeholder="Tìm kiếm" value="" />
                                     <span class="input-group-btn">
@@ -174,9 +186,9 @@
                                 <input name="do_search" value="1" type="hidden"/>
                                 </div>
                             </form>
-                        </div>
+                        </div> -->
                         <!--===FORMSEARCH==-->
-                    </div>
+                    </div> 
                     <div class="clear"></div>
                 </div>
             </div>
@@ -186,12 +198,14 @@
                 <div class="wrapper">
                     <div class="mmenu"><a href="#menu">
                         <?php 
-                            if($paged == "trang-chu"){echo "Trang chủ";}
+                            if($paged == "trang-chu" || $paged == ''){echo "Trang chủ";}
                             else if($paged == "gioi-thieu"){echo "Giới thiệu";}
                             else if($paged == "tour-noi-dia"){echo "Tour nội địa";}
                             else if($paged == "tour-quoc-te"){echo "Tour quốc tế";}
                             else if($paged == "cam-nang-du-lich"){echo "Cẩm nang du lịch";}
                             else if($paged == "lien-he"){echo "Liên hệ";}
+                            else if($paged == "khach-hang"){echo "Khách hàng";}
+                            else if($paged == "dat-tour"){echo "Đặt tour";}
                         ?>
                         
                     </a></div>
@@ -222,14 +236,14 @@
                 </div>
             <?php } ?>
             <!--=== END: BANNER ===-->
-            <?php if($paged == "trang-chu" || $paged == "ket-qua-tim-kiem"){ ?>
+            <?php if($paged == "trang-chu" || $paged == "ket-qua-tim-kiem" || $paged == ""){ ?>
                 <!--=== BEGIN: SEARCH TOUR ===-->
                 <div class="vnt-searchTour">
                     <div class="wrapper">
                         <div class="w-searchTour">
                             <form id="searchTour" method="POST" action="index.php?page=ket-qua-tim-kiem">
                                 <div class="title">Tìm tour du lịch</div>
-                                <div class="input-radio">
+                                <div class="input-radio" id="area_id">
                                     <ul>
                                         <li class="active">
                                             <label>
@@ -248,13 +262,17 @@
                                 <div class="input-wrapper">
                                     <div class="input-wrapper-content">
                                         <select name="from" id="from" class="form-control">
-                                            <?php echo listFromPlace(); ?>
+                                            <?php 
+                                                $listFrom = listFromPlace();
+                                                foreach ($listFrom as $rows){
+                                                    echo '<option value="'.$rows['from_place_id'].'">'.$rows['from_place_name'].'</option>';
+                                                } 
+                                            ?>
                                         </select>
                                         <select name="to" id="to" class="form-control">
                                             <?php echo listArrivePlace(1); ?>
                                         </select>
-                                        <input name="time" id="time" class="form-control" placeholder="Ngày khỏi hành" />
-                                        <select name="price" class="form-control">
+                                        <select name="price" id="price" class="form-control">
                                             <option value="">Giá (VNĐ)</option>
                                             <option value="1">Dưới 1 triệu</option>
                                             <option value="2">1 - 2 triệu</option>
@@ -263,7 +281,8 @@
                                             <option value="5">6 - 10 triệu</option>
                                             <option value="6">Trên 10 triệu</option>
                                         </select>
-                                        <input name="keyword" id="t-keyword" class="form-control full768" placeholder="từ khóa..." />
+                                        <input type="text" name="time" id="time" class="form-control" placeholder="Ngày khỏi hành" />
+                                        <input type="text" name="keyword" id="t-keyword" class="form-control full768" placeholder="từ khóa..." />
                                     </div>
                                     <span class="input-wrapper-btn">
                                         <button type="submit" id="do_submit" name="do_submit" class="btn" value=""><span>Tìm tour</span></button>

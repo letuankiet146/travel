@@ -182,27 +182,6 @@
     background: #262522;
     color: #ffffff;
 }
-.vnt-tour .viewall{
-    text-align: center;
-    width: 100%;
-}
-.vnt-tour .viewall a{
-    display: inline-block;
-    font-size: 18px;
-    line-height: 26px;
-    font-family: 'OpenSansBold';
-    color: #ffffff;
-    text-transform: uppercase;
-    padding: 12px 50px;
-    background-color: #3b3b3b;
-    -webkit-transition:all 0.5s ease;
-    -moz-transition:all 0.5s ease;
-    -o-transition:all 0.5s ease;
-    transition:all 0.5s ease;
-}
-.vnt-tour .viewall a:hover{
-    background-color: #191919;
-}
 .grid-tour{
     width: 100%;
     margin-bottom: 20px;
@@ -292,29 +271,40 @@
     position: absolute;
     right: 0px;
 }
-
-#loadAjaxTour{
-    position: relative;
+.viewdetail{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ffffff;
+    font-family: 'OpenSansBold';
+    padding: 9px 50px;
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    -o-border-radius:8px;
+    -ms-border-radius:8px;
+    border-radius:8px;
+    background-color: #9c1320;
+    text-transform: uppercase;
+    -webkit-transition:all 0.5s ease;
+    -moz-transition:all 0.5s ease;
+    -o-transition:all 0.5s ease;
+    transition:all 0.5s ease;
+    cursor:pointer;
 }
-#loadAjaxTour .loadding{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    background: rgba(0,0,0,0.5);
-    z-index: 5;
+.viewdetail:hover{
+    background-color: #c7a566;
 }
-#loadAjaxTour .loadding img{
-    width: 50px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform:translate(-50%, -50%);
-    -moz-transform:translate(-50%, -50%);
-    -o-transform:translate(-50%, -50%);
-    -ms-transform:translate(-50%, -50%);
-    transform:translate(-50%, -50%);
+.pagination{
+    border-top: 1px solid #d9d1c2;
+}
+.pagination a{
+    width:auto;
+    height:auto;
+    color: #ffffff;
+    font-family: 'OpenSansBold';
+    padding: 9px 0px;
+    font-size: 14px;
+    line-height: 22px;
 }
 /*===============END: GI?I THI?U TOUR===============*/
 

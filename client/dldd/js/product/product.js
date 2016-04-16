@@ -166,22 +166,26 @@ $(document).ready(function(){
     });
     
 });
-function load_paging(last_tour_id,str){
-        $(".viewdetail").html("Loading..."); 
-        $.ajax({
-            url: 'include/tour/paging.php?type=list' + str,
-            type: 'POST',
-            dataType: 'text',
-            data: {last_tour_id: last_tour_id},
-        })
-        .done(function(data) {
-            console.log(data);
-            if(data != ''){
-                $(".pagination").remove();  
-                $('.grid-tour').append(data);  
-            }  
-            else{  
-                $(".viewdetail").html("Hết");  
-            }  
-        });
+function load_paging(num){
+    $(".viewdetail").html("Loading...");
+    var lastID = $(".viewdetail").closest('#vnt-main').find('.grid-tour').children(':last').attr("item-id");
+    $.ajax({
+        url: 'include/tour/paging.php?type=list',
+        type: 'POST',
+        dataType: 'text',
+        data: {
+            lastID: lastID,
+            num: num
+        },
+    })
+    .done(function(data) {
+        console.log(data);
+        if(data == 0){
+            $(".pagination").remove();
+        }  
+        else{  
+            $(".viewdetail").html("Xem thêm");  
+            $('.grid-tour').append(data); 
+        }  
+    });
 }

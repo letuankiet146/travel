@@ -12,8 +12,6 @@ $(document).ready(function() {
      });
  });
 
-
-
 /*======================================
 *================LOAD AJAX TOUR AND REPONSIVE===============
 *========================================*/
@@ -86,13 +84,11 @@ $(document).ready(function() {
     })
     .done(function(data) {
         console.log(data);
-        var html = '';
         var str1 ='';
         var str2 ='';
         var dem = 0;
         for (var i = data.length - 1; i >= 0; i--) {
-            if(dem<6){
-                // data[i]['giaTourDto'] > 0
+            if(dem<6 && data[i]['giaTourDto'] > 0){
               // =====TINH SỐ NGÀY THỰC HIỆN TOUR
                 var dateKH = data[i]['ngayKHDto'];
                 var dateKT = data[i]['ngayKTDto'];
@@ -112,8 +108,8 @@ $(document).ready(function() {
                 }
                 nn = 'abc',
                 xx = 3;
-
-                html = '<div class="item">'+
+                var html = '';
+                html += '<div class="item">'+
                             '<div class="i-images">'+
                                 '<a href="index.php?page=chi-tiet-tour&tour_id=' + data[i]['idDto'] + '">'+
                                     '<img  src="' + data[i]['tourImageDataDto'] + '" alt="' + data[i]['tenTourDto'] + '" />'+
@@ -122,28 +118,29 @@ $(document).ready(function() {
                             '</div>'+
                             '<div class="i-description">'+
                                 '<div class="i-title">'+
-                                    '<a href="index.php?page=chi-tiet-tour&tour_id=' + data[i]['idDto'] + '">'+ data[i]['tenTourDto'] + '</a>'+
+                                    '<a href="index.php?page=chi-tiet-tour&tour_id=' + data[i]['idDto'] + '" title="' + data[i]['tenTourDto'] + '">' + data[i]['tenTourDto'] + '</a>'+
                                 '</div>'+
-                                '<div class="fl">'+
-                                    '<div class="i-content">'+
-                                        '<div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + Days + ' ngày </div>'+
-                                        '<div><i class="fa fa-calendar" aria-hidden="true"></i> ' + data[i]['ngayKHDto'] + ' </div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="fr">'+
-                                    '<div class="i-content">'+
-                                        '<span>' + data[i]['giaTourDto'].format(nn, xx) + ' VNĐ</span>'+
-                                        '<span>' + data[i]['giaTourKMDto'].format(nn, xx) + ' VNĐ</span>'+
-                                    '</div>'+
+                                '<div class="i-content">'+
+                                    '<span><i class="fa fa-calendar" aria-hidden="true"></i> ' + data[i]['ngayKHDto'] + ' </span>';
+                                    if(data[i]['giaTourDto'] == 0){
+                                        html += '<span></span>';
+                                    }
+                                    else{
+                                        html += '<span>' + data[i]['giaTourDto'].format(nn, xx) + ' VNĐ</span>';
+                                    }
+                                html +='</div>'+
+                                '<div class="i-content">'+
+                                    '<div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + Days + ' ngày </div>'+
+                                    '<div>' + data[i]['giaTourKMDto'].format(nn, xx) + ' VNĐ</div>'+
                                 '</div>'+
                                 '<div class="clear"></div>'+
                             '</div>'+
                         '</div>';
-                if(dem<6){
+                if(dem<3){
                     str1 += html;
                     $('#loadData1').html(str1);
                 }
-                else if(dem >= 6){
+                else if(dem >= 3){
                     str2 += html;
                     $('#loadData2').html(str2);
                 }
@@ -158,3 +155,5 @@ $(document).ready(function() {
         });
     });
 });
+
+// load

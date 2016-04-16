@@ -1,11 +1,25 @@
+<?php
+    $id = $_GET['tour_id'];
+    $arrive = getOneTour($id);
+?>
     <div class="wrapper">
         <!--=== BEGIN: BREADCRUMB ===-->
-        <div id="vnt-navation" class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <div id="vnt-navation" class="breadcrumb">
             <div class="navation">
                 <ul>
-                    <li class="home"><a href="index.php">Trang chủ</a></li>
-                    <li><a href="tour-noi-dia.php">Tour nội địa</a></li>
-                    <li>Tour du lịch Đồng Sen Tháp Mười</li>
+                    <li class="home"><a href="index.php?page=trang-chu">Trang chủ</a></li>
+                    <li>
+                    <?php
+                        if($arrive['arrive_place_area_id']==1){
+                            echo '<a href="index.php?page=tour-noi-dia">Tour nội địa</a>';
+                        }
+                        else{
+                            echo '<a href="index.php?page=tour-quoc-te">Tour quốc tế</a>';
+                        }
+                    ?>
+                        
+                    </li>
+                    <li><?php echo $arrive['tour_name']; ?></li>
                 </ul>
             </div>
         </div>
@@ -17,81 +31,7 @@
                 <div class="clear"></div>
             </div>
             <div class="mid-content">
-                <div id="vnt-sidebar">
-                    <!--===BEGIN: BOX===-->
-                    <div class="box search-tour showinfo">
-                        <div class="box-title">
-                            <div class="fTitle">
-                                Tìm tour du lịch
-                            </div>
-                        </div>
-                        <div class="box-content">
-                            <div class="w-searchTour">
-                                <form id="searchTour" method="POST" action="#">
-                                    <div class="input-radio">
-                                        <ul>
-                                            <li class="active">
-                                                <label>
-                                                    <input type="radio" name="checkTour" value="1" checked="checked" />
-                                                    <span>Trong nước</span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label>
-                                                    <input type="radio" name="checkTour" value="2"/>
-                                                    <span>Nước ngoài</span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="input-wrapper">
-                                        <select name="form" class="form-control">
-                                            <option value="1">Khởi hành</option>
-                                        </select>
-                                        <select name="to" class="form-control">
-                                            <option value="1">Nơi đến</option>
-                                        </select>
-                                        <select name="time" class="form-control">
-                                            <option value="1">Thời gian</option>
-                                        </select>
-                                        <select name="price" class="form-control">
-                                            <option value="1">Giá (VNĐ)</option>
-                                        </select>
-                                        <input name="keyword" id="t-keyword" class="form-control full768" placeholder="từ khóa..." />
-                                    
-                                        <button type="submit" id="do_submit" name="do_submit" class="btn" value=""><span>Tìm tour</span></button>
-                                        
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!--===END: BOX===-->
-                    <!--===BEGIN: BOX===-->
-                    <div class="box diadiem showinfo">
-                        <div class="box-title">
-                            <div class="fTitle">Điểm du lịch nội địa</div>
-                        </div>
-                        <div class="box-content">
-                            <div class="list-diadiem">
-                                <ul> <?php dsDiaDiem(1); ?> </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--===END: BOX===-->
-                    <!--===BEGIN: BOX===-->
-                    <div class="box global showinfo">
-                        <div class="box-title">
-                            <div class="fTitle"> Điểm du lịch quốc tế </div>
-                        </div>
-                        <div class="box-content">
-                            <div class="list-diadiem">
-                                <ul><?php dsDiaDiem(2); ?></ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--===END: BOX===-->
-                </div>
+                <?php include('sidebar.php') ?>
                 <div id="vnt-main" >
                     <!--===BEGIN: THÔNG TIN TOUR==-->
                     <div class="info-tour">
@@ -149,12 +89,6 @@
                         </ul>
                     </div>
                     <!--===END: TAB==-->
-                    <!--===BEGIN: TAG==-->
-                    <div class="tag1">
-                        <p><span class="title">TAG: </span><a href="#" title="chất lượng cao">chất lượng cao</a>
-                        <a href="#" title="hàng việt nam"> hàng Việt Nam</a></p>
-                    </div>
-                    <!--===END: TAG==-->
                     <!--===BEGIN: SOCIAL==-->
                     <div class="like_share">
                         <div class="like_facebook">
@@ -171,56 +105,56 @@
                         <div class="clear"></div>
                     </div>
                     <!--===END: SOCIAL==-->
-                        <!--===BEGIN: COMMENT==-->
-                        <div class="comment">
-                            <div class="title">Ý kiến khách hàng (0)</div>
-                            <div class="formComment">
-                                <form id="formCommnet" action="" method="POST">
-                                    <div class="input-group">
-                                        <div class="w_content">
-                                            <textarea id="contentComment" name="contentComment" class="form-control" placeholder="Mời nhập thắc mắc hoặc ý kiến của bạn"></textarea>
-                                            <div class="content-info">
-                                                <div class="info-title">Nhập thông tin của bạn</div>
-                                                <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
-                                                <input type="text" name="name" id="name" class="form-control" placeholder="Nhập tên của bạn" />
-                                            </div>
+                    <!--===BEGIN: COMMENT==-->
+                    <div class="comment">
+                        <div class="title">Ý kiến khách hàng (0)</div>
+                        <div class="formComment">
+                            <form id="formCommnet" action="" method="POST">
+                                <div class="input-group">
+                                    <div class="w_content">
+                                        <textarea id="contentComment" name="contentComment" class="form-control" placeholder="Mời nhập thắc mắc hoặc ý kiến của bạn"></textarea>
+                                        <div class="content-info">
+                                            <div class="info-title">Nhập thông tin của bạn</div>
+                                            <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
+                                            <input type="text" name="name" id="name" class="form-control" placeholder="Nhập tên của bạn" />
                                         </div>
-                                        <span class="input-group-btn"><button id="btn-search" name="btn-search" class="btn" type="submit">Gửi</button></span>
                                     </div>
-                                </form>
+                                    <span class="input-group-btn"><button id="btn-search" name="btn-search" class="btn" type="submit">Gửi</button></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="grid-comment">
+                            <div class="node-commnet">
+                                <div class="avatar">
+                                    <img src="images/news/avatar.jpg" />
+                                </div>
+                                <div class="info-comment">
+                                    <div class="info-preson">
+                                        <span class="name">Trần Anh tuấn </span><span class="email">(tuananh2101@yahoo.com)</span>  -  <span class="time">Gửi vào:15/03/2011 10:55:08</span>
+                                    </div>
+                                    <div class="ccomment">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
                             </div>
-                            <div class="grid-comment">
-                                <div class="node-commnet">
-                                    <div class="avatar">
-                                        <img src="images/news/avatar.jpg" />
-                                    </div>
-                                    <div class="info-comment">
-                                        <div class="info-preson">
-                                            <span class="name">Trần Anh tuấn </span><span class="email">(tuananh2101@yahoo.com)</span>  -  <span class="time">Gửi vào:15/03/2011 10:55:08</span>
-                                        </div>
-                                        <div class="ccomment">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
+                            <div class="node-commnet">
+                                <div class="avatar">
+                                    <img src="images/news/avatar.jpg" />
                                 </div>
-                                <div class="node-commnet">
-                                    <div class="avatar">
-                                        <img src="images/news/avatar.jpg" />
+                                <div class="info-comment">
+                                    <div class="info-preson">
+                                        <span class="name">Trần Anh tuấn </span><span class="email">(tuananh2101@yahoo.com)</span>  -  <span class="time">Gửi vào:15/03/2011 10:55:08</span>
                                     </div>
-                                    <div class="info-comment">
-                                        <div class="info-preson">
-                                            <span class="name">Trần Anh tuấn </span><span class="email">(tuananh2101@yahoo.com)</span>  -  <span class="time">Gửi vào:15/03/2011 10:55:08</span>
-                                        </div>
-                                        <div class="ccomment">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-                                        </div>
+                                    <div class="ccomment">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
                                     </div>
-                                    <div class="clear"></div>
                                 </div>
+                                <div class="clear"></div>
                             </div>
                         </div>
-                        <!--===BEGIN: COMMENT==-->
+                    </div>
+                    <!--===BEGIN: COMMENT==-->
                     <!--=======NAV-PAG======-->
                     <div class="pagination">
                         <ul>
@@ -242,8 +176,51 @@
                         <div class="title" id=tl_orther>Các tour du lịch đồng tháp khác</div>
                         <div class="sliderProduct">
                             <div id="sliderProduct">
-                                <?php 
-                                    dsTour_involve();
+                                <?php
+                                    $listTour = dsTour($num, $lastID, $arrive['tour_arrive_place_id']);
+                                    if($listTour != ''){
+                                        foreach ($listTour as $rows) {
+                                            $fday_start = date("d/m/Y", strtotime($rows['tour_day_start']));
+                                            $day_end = strtotime($rows['tour_day_end']);
+                                            $day_start = strtotime($rows['tour_day_start']);
+                                            $Days =($day_end - $day_start)/(60*60*24);
+                                            $sale_off = number_format($rows['tour_sale_off'],0,"",",");
+                                            $tour_charge = number_format($rows['tour_charge'],0,"",",");
+                                            echo'<div class="item" item-id="' .$rows['tour_id']. '">
+                                                    <div class="i_item">
+                                                        <div class="i-images">
+                                                            <a href="index.php?page=chi-tiet-tour&tour_id=' .$rows['tour_id']. '">
+                                                                <img  src="' .$rows['tour_image_data']. '" alt="' .$rows['tour_name']. '" />
+                                                                <div class="see_details">Xem chi tiết</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="i-description">
+                                                            <div class="i-title">
+                                                                <a href="index.php?page=chi-tiet-tour&tour_id=' .$rows['tour_id']. '" title="' .$rows['tour_name']. '">' .$rows['tour_name']. '</a>
+                                                            </div>
+                                                            <div class="i-content">
+                                                                <span><i class="fa fa-calendar" aria-hidden="true"></i> ' .$fday_start. ' </span>';
+                                                                if($tour_charge == 0){
+                                                                    echo '<span></span>';
+                                                                }
+                                                                else{
+                                                                    echo '<span>' .$tour_charge. ' VNĐ</span>';
+                                                                }
+                                                            echo'   
+                                                            </div>
+                                                            <div class="i-content">
+                                                                <div><i class="fa fa-clock-o" aria-hidden="true"></i> ' .$Days. ' ngày </div>
+                                                                <div>' .$sale_off. ' VNĐ</div>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+                                        }
+                                    }
+                                    else{
+                                        echo '<div>Không có tour liên quan</div>';
+                                    }
                                 ?>
                             </div>
                         </div>
