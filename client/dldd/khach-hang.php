@@ -30,21 +30,7 @@
 						                	<li><a href="index.php?page=khach-hang">Thông tin khách hàng</a></li>
 						                	<li><a href="index.php?page=cap-nhat-thong-tin">Thay đổi thông tin cá nhân</a></li>
 						                	<li><a href="index.php?page=thay-doi-mat-khau">Đổi mật khẩu đăng nhập</a></li>
-						                </ul>
-						            </div>
-						        </div>
-						    </div>
-						    <!--===END: BOX===-->
-						    <!--===BEGIN: BOX===-->
-						    <div class="box global showinfo">
-						        <div class="box-title"><div class="fTitle">Quản lý đơn đặt tour</div></div>
-						        <div class="box-content">
-						            <div class="list-diadiem">
-						                <ul>
-						                	<li><a href="">Lịch sử đặt tour</a></li>
-						                	<li><a href="">Yêu cầu thay đổi thông tin đơn đặt tour</a></li>
-						                	<li><a href="">Yêu cầu hủy đơn đặt tour</a></li>
-
+						                	<li><a href="index.php?page=lich-su-dat-tour">Lịch sử đặt tour</a></li>
 						                </ul>
 						            </div>
 						        </div>
@@ -52,7 +38,6 @@
 						    <!--===END: BOX===-->
 						</div>
                         <div id="vnt-main">
-                        	
                         	<?php if($paged == 'khach-hang'){ ?>
                         		<!--===BEGIN: BOX USER===-->
 	                            <div class="grid-tour">
@@ -107,7 +92,7 @@
 							                            <div class="media">
 							                                <div class="media-body">
 							                                    <span>Mã tour: MADDT33</span>
-							                                    <!-- </br> -->
+							                                    </br>
 							                                    <span>Tên tour: đ df df df dfdf dfd fdf dfd fd fd fd fdfd fd f g kkhgh jgkh jgkjh kgj h kgjhjgkh jgkhj gkhjkg jhkj gkhjgk jh</span>
 							                            	</div>
 							                            </div>
@@ -132,6 +117,9 @@
 									        </tbody>
 									    </table>
 									</div>
+									<div align="center">
+								    	<a href="index.php?page=lich-su-dat-tour" class="btn btn-success">Xem thêm</a>
+								    </div>
 									<div class="clear"></div>
 								</div>
 								<!--===AND: BOX USER===-->
@@ -264,6 +252,7 @@
 								</div>
 								<!--===END: BOX PASSWORD===-->
 							<?php } ?>
+
 							<?php if($paged == 'thay-doi-mat-khau/xac-thuc'){ ?>
 								<!--===BEGIN: BOX PASSWORD===-->
 								<div class="grid-tour">
@@ -312,10 +301,10 @@
 								</div>
 								<!--===END: BOX PASSWORD===-->
 							<?php } ?>
+
 							<?php if($paged == 'thay-doi-mat-khau/thanh-cong'){ ?>
 								<!--===BEGIN: BOX PASSWORD===-->
 								<div class="grid-tour">
-									<div class="row">
 									<div class="i-title">Đổi mật khẩu đăng nhập</div>
 								        <div class="col-md-offset-1 col-md-8 pdtop2">
 								            <div class="media">
@@ -326,15 +315,495 @@
 								                </div>
 								            </div>
 								        </div>
-								    </div>
 									<div class="clear"></div>
 								</div>
 								<!--===END: BOX PASSWORD===-->
 							<?php } ?>
 
+							<?php if($paged == 'lich-su-dat-tour'){ ?>
+								<!--===BEGIN: BOX HISTORY===-->
+	                            <div class="grid-tour">
+								    <div class="i-title">Lịch sử đặt tour</div>
+								    <div class="table-responsive">
+									    <table class="table table-hover" border="0" cellpadding="0" cellspacing="0">
+									        <thead>
+									            <tr class="active">
+									                <th>Mã đơn đặt tour</th>
+									                <th>Thông tin chi tiết</th>
+									                <th>Số tiền</th>
+											        <th>Ngày đặt</th>
+											        <th>Thao tác</th>
+											    </tr>
+									        </thead>
+									        <tbody>
+									            <tr>
+									            	<td align="center">MADDT33</td>
+							                        <td>
+							                            <div class="media">
+							                                <div class="media-body">
+							                                    <span>Mã tour: MADDT33</span>
+							                                    </br>
+							                                    <span>Tên tour: đ df df df dfdf dfd fdf dfd fd fd fd fdfd fd f g kkhgh jgkh jgkjh kgj h kgjhjgkh jgkhj gkhjkg jhkj gkhjgk jh</span>
+							                            	</div>
+							                            </div>
+							                        </td>
+							                        <td align="center">
+							                            <p class="bold"> 100.020.000<sup>đ</sup></p>
+							                            <!-- <span class="label label-default"> -->
+		                                                <span class="label label-success">Đã thanh toán</span>
+		                                            </td>
+							                        <td><span class="small">13:15,<br>13/04/2016</span></td>
+							                        <td align="center">
+							                            <div class="dropdown">
+							                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Thao tác </br><span class="caret"></span></a>
+							                                <ul class="dropdown-menu">
+							                                    <li><a class="" target="_blank" href="">Xem chi tiết</a></li>
+							                                    <li><a class="" target="_blank" href="">Hủy đơn đặt tour</a></li>
+							                                    <li><a class="" target="_blank" href="">Thanh toán</a></li>
+							                                </ul>
+							                            </div>
+							                        </td>
+									            </tr>
+									            <tr>
+									            	<td align="center">MADDT33</td>
+							                        <td>
+							                            <div class="media">
+							                                <div class="media-body">
+							                                    <span>Mã tour: MADDT33</span>
+							                                    </br>
+							                                    <span>Tên tour: đ df df df dfdf dfd fdf dfd fd fd fd fdfd fd f g kkhgh jgkh jgkjh kgj h kgjhjgkh jgkhj gkhjkg jhkj gkhjgk jh</span>
+							                            	</div>
+							                            </div>
+							                        </td>
+							                        <td align="center">
+							                            <p class="bold"> 100.020.000<sup>đ</sup></p>
+							                            <!-- <span class="label label-default"> -->
+		                                                <span class="label label-success">Đã thanh toán</span>
+		                                            </td>
+							                        <td><span class="small">13:15,<br>13/04/2016</span></td>
+							                        <td align="center">
+							                            <div class="dropdown">
+							                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Thao tác </br><span class="caret"></span></a>
+							                                <ul class="dropdown-menu">
+							                                    <li><a class="" href="index.php?page=lich-su-dat-tour/chi-tiet">Xem chi tiết</a></li>
+							                                    <li><a class="" href="index.php?page=lich-su-dat-tour/yeu-cau-huy-don-dat-tour">Hủy đơn đặt tour</a></li>
+							                                    <li><a class="" href="">Thanh toán</a></li>
+							                                </ul>
+							                            </div>
+							                        </td>
+									            </tr>
+									        </tbody>
+									    </table>
+									</div>
+
+									<div class="clear"></div>
+								</div>
+								<!--===AND: BOX HISTORY==-->
+							<?php } ?>
+
+							<?php if($paged == 'lich-su-dat-tour/chi-tiet'){ ?>
+								<!--===BEGIN: BOX HISTORY===-->
+	                            <div class="grid-tour">
+								    <div class="i-title">Chi tiết đơn đặt tour</div>
+	                            	<div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã đơn hàng:</td>
+								                        <td style="border-top:none">DHDH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số tiền:	</td>
+								                        <td>
+								                            <div>30,000,000<sup>đ</sup></div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đặt:</td>
+								                        <td>17/04/2016 19:14:34</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Hình thức thanh toán:</td>
+							                            <td>Thanh toán online-qua Ngân Lượng</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row">Trạng thái:</td>
+								                        <td>Đã thanh toán</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+								    <div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã tour:</td>
+								                        <td style="border-top:none">JHJHJH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Tên tour:	</td>
+								                        <td>
+								                            <div style="height: 20px; overflow: hidden;"><a href="" title="" class="dropdown-toggle"> Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết </a> </div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đi:</td>
+								                        <td>13/10/2015</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Ngày về:</td>
+							                            <td>20/03/2016</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row" style="min-width: 110px;">Nơi khỏi hành:</td>
+								                        <td>Nguyễn Văn Bảo</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số lượng:</td>
+								                        <td>3 (Người lớn: 1, Trẻ em: 1, Em bé: 0)</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+								    <div align="center">
+								    	<a href="index.php?page=khach-hang" class="btn btn-success">Thanh toán</a>
+								    	<a href="index.php?page=lich-su-dat-tour" class="btn btn-skip">Quay lại</a>
+								    </div>
+									<div class="clear"></div>
+								</div>
+								<!--===AND: BOX HISTORY==-->
+							<?php } ?>
+
+							<?php if($paged == 'lich-su-dat-tour/yeu-cau-huy-don-dat-tour'){ ?>
+								<!--===BEGIN: BOX HISTORY===-->
+	                            <div class="grid-tour">
+								    <div class="i-title">Chi tiết đơn đặt tour</div>
+	                            	<div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã đơn hàng:</td>
+								                        <td style="border-top:none">DHDH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số tiền:	</td>
+								                        <td>
+								                            <div>30,000,000<sup>đ</sup></div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đặt:</td>
+								                        <td>17/04/2016 19:14:34</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Hình thức thanh toán:</td>
+							                            <td>Thanh toán online-qua Ngân Lượng</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row">Trạng thái:</td>
+								                        <td>Đã thanh toán</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+								    <div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã tour:</td>
+								                        <td style="border-top:none">JHJHJH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Tên tour:	</td>
+								                        <td>
+								                            <div style="height: 20px; overflow: hidden;"><a href="" title="" class="dropdown-toggle"> Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết </a> </div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đi:</td>
+								                        <td>13/10/2015</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Ngày về:</td>
+							                            <td>20/03/2016</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row" style="min-width: 110px;">Nơi khỏi hành:</td>
+								                        <td>Nguyễn Văn Bảo</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số lượng:</td>
+								                        <td>3 (Người lớn: 1, Trẻ em: 1, Em bé: 0)</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+									<div class="clear"></div>
+								</div>
+
+								<div class="grid-tour">
+									<div class="i-title">Hủy bỏ đơn đặt tour</div>
+									<div class="col-md-10">
+										<ul class="progress">
+							                <li class="active"><span class="number"><b>1</b></span><p>Nhập lý do</p></li>
+							                <li class=""><span class="number"><b>2</b></span><p>Xác thực hủy bỏ</p></li>
+							                <li><span class="number"><b>3</b></span><p>Hoàn tất</p></li>
+							            </ul>
+										<div class="RegisterBox">
+											<div class="form-horizontal mform2">
+												<form action="index.php?page=lich-su-dat-tour/xac-thuc" method="POST" accept-charset="utf-8">
+													<div class="form-group">
+														<label class="col-sm-4 control-label">Ngày hủy đơn:</label>
+														<div class="col-sm-6">
+															<input class="form-control" type="text" name="name" value="13/10/2016 13:30" disabled />
+														</div>
+														<div class="clear"></div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-4 control-label">Lý do:</label>
+														<div class="col-sm-6">
+															<textarea class="form-control" name="address"></textarea>
+														</div>
+														<div class="clear"></div>
+													</div>
+													<div class="form-group mform2btn noneMrbtm">
+														<div class="col-sm-offset-4 col-sm-4 pdr5">
+															<button type="submit" class="btn btn-block btn-success">Gửi yêu cầu</button>
+														</div>
+														<div class="col-sm-4 pdl5">
+															<a href="index.php?page=lich-su-dat-tour" class="btn btn-skip">Quay lại</a>
+														</div>
+														<div class="clear"></div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<!--===AND: BOX HISTORY==-->
+							<?php } ?>
+
+							<?php if($paged == 'lich-su-dat-tour/xac-thuc'){ ?>
+								<div class="grid-tour">
+								    <div class="i-title">Chi tiết đơn đặt tour</div>
+	                            	<div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã đơn hàng:</td>
+								                        <td style="border-top:none">DHDH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số tiền:	</td>
+								                        <td>
+								                            <div>30,000,000<sup>đ</sup></div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đặt:</td>
+								                        <td>17/04/2016 19:14:34</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Hình thức thanh toán:</td>
+							                            <td>Thanh toán online-qua Ngân Lượng</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row">Trạng thái:</td>
+								                        <td>Đã thanh toán</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+								    <div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã tour:</td>
+								                        <td style="border-top:none">JHJHJH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Tên tour:	</td>
+								                        <td>
+								                            <div style="height: 20px; overflow: hidden;"><a href="" title="" class="dropdown-toggle"> Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết </a> </div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đi:</td>
+								                        <td>13/10/2015</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Ngày về:</td>
+							                            <td>20/03/2016</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row" style="min-width: 110px;">Nơi khỏi hành:</td>
+								                        <td>Nguyễn Văn Bảo</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số lượng:</td>
+								                        <td>3 (Người lớn: 1, Trẻ em: 1, Em bé: 0)</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+									<div class="clear"></div>
+								</div>
+								<div class="grid-tour">
+									<div class="i-title">Hủy bỏ đơn đặt tour</div>
+									<div class="col-md-10">
+										<ul class="progress">
+							                <li class=""><span class="number"><b>1</b></span><p>Nhập lý do</p></li>
+							                <li class="active"><span class="number"><b>2</b></span><p>Xác thực hủy bỏ</p></li>
+							                <li><span class="number"><b>3</b></span><p>Hoàn tất</p></li>
+							            </ul>
+										<div class="PasswordBox">
+											<div class="form-horizontal mform2">
+												<form action="index.php?page=lich-su-dat-tour/thanh-cong" method="POST" accept-charset="utf-8">
+													<div class="form-group">
+														<div class="col-sm-offset-4 col-sm-7">
+															Để xác thực hủy đơn đặt tour, Travel đã gửi mã xác thực tới email <b>ptthao13@gmail.com</b>, nhập mã đó vào ô dưới đây để hoàn tất. Nếu bạn không nhận được mã xác thực <a href="">click vào đây</a> để nhận lại.
+														</div>
+														<div class="clear"></div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-4 control-label">Mã xác thực:</label>
+														<div class="col-sm-7">
+															<input class="form-control" type="text" name="name" value="" />
+														</div>
+														<div class="clear"></div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-4 control-label">Mã bảo mật:</label>
+														<div class="col-sm-3 pdr5">
+															<input class="form-control" type="text" name="email" value="" />
+														</div>
+														<div class="col-sm-3 pdl5">
+															kjhkjfd
+														</div>
+														<div class="clear"></div>
+													</div>
+													<div class="form-group mform2btn noneMrbtm">
+														<div class="col-sm-offset-4 col-sm-4 pdr5">
+															<button type="submit" class="btn btn-block btn-success">Xác thực</button>
+														</div>
+														<div class="col-sm-4 pdl5">
+															<a href="index.php?page=khach-hang" class="btn btn-skip">Bỏ qua</a>
+														</div>
+														<div class="clear"></div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+							<?php } ?>
+
+							<?php if($paged == 'lich-su-dat-tour/thanh-cong'){ ?>
+								<div class="grid-tour">
+								    <div class="i-title">Chi tiết đơn đặt tour</div>
+	                            	<div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã đơn hàng:</td>
+								                        <td style="border-top:none">DHDH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số tiền:	</td>
+								                        <td>
+								                            <div>30,000,000<sup>đ</sup></div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đặt:</td>
+								                        <td>17/04/2016 19:14:34</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Hình thức thanh toán:</td>
+							                            <td>Thanh toán online-qua Ngân Lượng</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row">Trạng thái:</td>
+								                        <td>Đã thanh toán</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+								    <div class="col-md-6">
+								        <div class="HistoryBox">
+								            <table class="table table-responsive">
+								             	<tbody>
+								                    <tr class="bold">
+								                        <td scope="row" style="border-top:none">Mã tour:</td>
+								                        <td style="border-top:none">JHJHJH</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Tên tour:	</td>
+								                        <td>
+								                            <div style="height: 20px; overflow: hidden;"><a href="" title="" class="dropdown-toggle"> Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết Khách hàng thân thiết </a> </div>
+								                        </td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Ngày đi:</td>
+								                        <td>13/10/2015</td>
+								                    </tr>
+							                        <tr>
+							                            <td scope="row">Ngày về:</td>
+							                            <td>20/03/2016</td>
+							                        </tr>
+								                    <tr>
+								                        <td scope="row" style="min-width: 110px;">Nơi khỏi hành:</td>
+								                        <td>Nguyễn Văn Bảo</td>
+								                    </tr>
+								                    <tr>
+								                        <td scope="row">Số lượng:</td>
+								                        <td>3 (Người lớn: 1, Trẻ em: 1, Em bé: 0)</td>
+								                    </tr>
+								                </tbody>
+								            </table>
+								        </div>
+								    </div>
+									<div class="clear"></div>
+								</div>
+								<div class="grid-tour">
+										<div class="i-title">Hủy bỏ đơn đặt tour</div>
+										<ul class="progress">
+							                <li><span class="number"><b>1</b></span><p>Nhập lý do</p></li>
+							                <li><span class="number"><b>2</b></span><p>Xác thực hủy bỏ</p></li>
+							                <li class="active"><span class="number"><b>3</b></span><p>Hoàn tất</p></li>
+							            </ul>
+								        <div class="col-md-offset-1 col-md-8 pdtop2">
+								            <div class="media">
+								                <div class="media-body">
+								                    <h4 style="color: #f00">Gửi yêu cầu hủy đơn đặt tour thành công</h4>
+								                    <p>Travel sẽ giải quyết yêu cầu của bạn trong vong 24h</p>
+								                    <p class="pdtop2"><a href="index.php?page=khach-hang" class="btn btn-primary">Xem thông tin tài khoản</a><a href="" class="btn btn-skip">Đăng xuất</a></p>
+								                </div>
+								            </div>
+								        </div>
+									<div class="clear"></div>
+								</div>
+								<!--===END: BOX PASSWORD===-->
+							<?php } ?>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
-        
+         

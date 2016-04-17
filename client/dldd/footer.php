@@ -60,6 +60,7 @@
             <li><a href="index.php?page=tour-quoc-te">Tour quốc tế</a></li>
             <li><a href="index.php?page=cam-nang-du-lich">Cẩm nang du lịch</a></li>
             <li><a href="index.php?page=lien-he">Liên hệ</a></li>
+            <li><a href="index.php?page=lien-he">Đăng nhập</a></li>
         </ul>
    </nav> 
 <!--===MENU MOBILE==-->

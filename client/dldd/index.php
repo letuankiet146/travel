@@ -1,6 +1,6 @@
 <?php 
     include('admin/connectDB.php');
-    include('include/tour/function.php');
+    include('include/function.php');
 
     include('header.php');
     $page="";
@@ -25,6 +25,12 @@
             case 'thay-doi-mat-khau':include("khach-hang.php");break;
             case 'thay-doi-mat-khau/xac-thuc':include("khach-hang.php");break;
             case 'thay-doi-mat-khau/thanh-cong':include("khach-hang.php");break;
+            case 'lich-su-dat-tour':include("khach-hang.php");break;
+            case 'lich-su-dat-tour/chi-tiet':include("khach-hang.php");break;
+            case 'lich-su-dat-tour/yeu-cau-huy-don-dat-tour':include("khach-hang.php");break;
+            case 'lich-su-dat-tour/xac-thuc':include("khach-hang.php");break;
+            case 'lich-su-dat-tour/thanh-cong':include("khach-hang.php");break;
+            case 'dang-nhap':include("dang-nhap.php");break;
             default:include("404.php");break;
         }
     }

@@ -84,7 +84,11 @@
     <script type="text/javascript" src="js/lazingloading/jquery.lazyscrollloading.js"></script>
     <script type="text/javascript" src="js/search/search.js"></script>
 <?php } ?>
-<?php if($paged == "khach-hang" || $paged == "cap-nhat-thong-tin" || $paged == "thay-doi-mat-khau" || $paged == "thay-doi-mat-khau/xac-thuc" || $paged == "thay-doi-mat-khau/thanh-cong"){ ?>
+<?php if($paged == "khach-hang" || $paged == "cap-nhat-thong-tin" || $paged == "thay-doi-mat-khau" || $paged == "thay-doi-mat-khau/xac-thuc" || $paged == "thay-doi-mat-khau/thanh-cong" || $paged == "lich-su-dat-tour" || $paged == "lich-su-dat-tour/chi-tiet" || $paged == "lich-su-dat-tour/yeu-cau-huy-don-dat-tour" || $paged == "lich-su-dat-tour/xac-thuc" || $paged == "lich-su-dat-tour/thanh-cong"){ ?>
+    <link href="style/customer.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/product/product.js"></script>
+<?php } ?>
+<?php if($paged == "dang-nhap"){ ?>
     <link href="style/customer.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/product/product.js"></script>
 <?php } ?>
@@ -170,7 +174,7 @@
                             <?php if($paged == "khach-hang"){ echo '<li class="current">';} 
                                   else{echo '<li>';}
                             ?>
-                                <a class="hover_effect_menu" href="index.php?page=khach-hang"><span class="hover_text">Khách hàng</span></a>
+                                <a class="hover_effect_menu" href="index.php?page=dang-nhap"><span class="hover_text">Đăng nhập</span></a>
                             </li>
                         </ul>
                     </div>

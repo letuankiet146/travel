@@ -8,7 +8,7 @@ function load_paging(){
     var time = $("#time").val();
     var lastID = $(".viewdetail").closest('.grid-tour').find('.row-tour').children(':last').attr("item-id");
     $.ajax({
-        url: 'include/tour/paging.php?type=list',
+        url: 'include/paging.php?type=list',
         type: 'POST',
         dataType: 'text',
         data: {
