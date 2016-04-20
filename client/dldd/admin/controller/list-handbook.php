@@ -37,17 +37,6 @@
 		echo json_encode($handbooks);
 	}
 
-	//=================================================
-	// lấy 1 phan tu id cuối cùng
-	//=================================================
-	if($type == "one"){
-		$lastID = (int)$_GET["id"];
-		$sql = "SELECT * FROM hand_book h join status s on h.status=s.status_id WHERE id < " . $lastID . " ORDER BY id DESC LIMIT 1";
-		$result = mysql_query($sql,$con);
-		$handbook = array();
-		$handbook = mysql_fetch_assoc($result);
-		echo json_encode($handbook);
-	}
 
 	//=================================================
 	// Xóa dữ liệu theo mảng (ARRAY)
@@ -56,10 +45,9 @@
 		$chk=$_POST['chk'];
 		$array = explode(",", $chk);
 		$count = count($array);
-		$today = Date("Y-m-d");
 	    foreach($array as $vl)
 	    {
-	        $sql = "DELETE * FROM hand_book where id=$vl";
+	        $sql = "DELETE FROM hand_book where id=$vl";
 	        mysql_query($sql,$con);
 	    }
 	}

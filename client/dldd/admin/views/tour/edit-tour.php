@@ -12,13 +12,15 @@
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date"
+              buttonText: "Select date",
+              minDate: 0
             });
             $( "#ngayKTDto" ).datepicker({
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date"
+              buttonText: "Select date",
+              minDate: 0
             });
         });
 

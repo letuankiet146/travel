@@ -4,13 +4,20 @@
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date"
+              buttonText: "Select date",
+              changeMonth: true,
+              changeYear: true,
+              minDate: "-1M",
+              maxDate: '+1W'
             });
             $( "#staffBirthday" ).datepicker({
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date"
+              buttonText: "Select date",
+              changeMonth: true,
+              changeYear: true,
+              maxDate: '-18Y'
             });
         });
     </script>
@@ -91,7 +98,7 @@
 						    }
 						?>
 							<label for="">Mật khẩu <span class="red"> ( * )</span></label>
-							<input id="staffPassword" type="text" name="staffPassword" value="<?php echo $key; ?>" disabled />
+							<input id="staffPassword" type="text" name="staffPassword" value="<?php echo md5($key); ?>" disabled />
 						</div>
 						<div class="row">
 							<label for="">Ngày vào làm <span class="red"> ( * )</span></label>
@@ -103,7 +110,7 @@
 				</div>
 				<div class="details">
 					<label>Ghi chú</label>
-					<textarea name="staffNote" id="staffNote" rows="4" style="width:100%" placeholder="Nhập Ghi chú về khách hàng" ></textarea>
+					<textarea name="staffNote" id="staffNote" rows="4" style="width:100%" placeholder="Nhập Ghi chú về nhân viên" ></textarea>
 		            <div class="clear"></div>
 				</div>
 			</div>

@@ -13,7 +13,7 @@
 <input type="hidden" id="formOrderIdDto" name="formOrderIdDto" value="<?php echo $row_order['form_order_id']; ?>" />
 <div class="info">
 	<div class="info-customer">
-		<div class="title-info">Thông tin người dùng:</div>
+		<div class="title-info">Thông tin liên hệ:</div>
 		<ul>
 		    <li>Họ tên : <strong><?php echo $row_order['customer_name'] ?></strong> <span class="red">( <?php echo $row_order['group_users_name'] ?> )</span></li>
 		    <li>Điện thoại : <strong><?php echo $row_order['customer_phone'] ?></strong></li>
@@ -25,10 +25,10 @@
 	<div class="info-address">
 		<div class="title-info">Địa chỉ thanh toán:</div>
 		<ul>
-			<li>Hình thức thanh toán : <strong><?php echo $row_order['customer_name'] ?></strong></li>
+			<li>Hình thức thanh toán : <strong>Thanh toán online</strong></li>
 		    <li>Họ tên : <strong><?php echo $row_order['customer_name'] ?></strong></li>
 		    <li>Địa chỉ : <strong><?php echo $row_order['customer_address'] ?></strong></li>
-		    <li>Yêu cầu thêm : <strong><?php echo $row_order['form_order_otherRequire'] ?></strong></li>
+		    <li>Yêu cầu thêm : <strong><?php echo $row_order['form_order_other_require'] ?></strong></li>
 		</ul>
 		<div class="clear"></div>
 	</div>
@@ -59,7 +59,7 @@
 					<td class="text-center"><?php echo $row_order['form_order_quantity_adults'] ?></td>
 					<td class="text-center"><?php echo $row_order['form_order_quantity_juvenile'] ?></td>
 					<td class="text-center"><?php echo $row_order['form_order_quantity_child'] ?></td>
-					<td><?php echo number_format($row_order['form_order_money'],0,"","."); ?></td>
+					<td><?php echo number_format($row_order['form_order_money'],0,"","."); ?><sup>đ</sup></td>
 				</tr>
 			</tbody>
 		</table>
@@ -80,7 +80,7 @@
 		    </li>
 		    <li>
 		    	<label>Ghi chú</label>
-		    	<textarea id="formOrderQuantityOtherRequireDto" name="formOrderQuantityOtherRequireDto" rows="7"><?php echo $row_order['form_order_other_require']; ?></textarea>
+		    	<textarea id="formOrderQuantityOtherRequireDto" name="formOrderQuantityOtherRequireDto" rows="7"><?php echo $row_order['form_order_note']; ?></textarea>
 		    </li>
 		    <li>
 		    	<a class="btn-add" href="#" onclick="click_edit()" >Cập nhật</a>

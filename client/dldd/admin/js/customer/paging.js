@@ -162,7 +162,7 @@
 									'<td class="text-center" id="from">' + val.customer_phone + '</td>'+
 									'<td class="text-center" id="to">3</td>'+
 									'<td class="text-center">'+
-										'<select class="status">'+
+										'<select class="status" id="customerGroupDto">'+
 											'<option value="' + val.customer_group +'">' + val.group_users_name +'</option>'+
 											'<option value="0">-----------------</option>'+
 											'<option value="7">Khách vãng lai</option>'+
@@ -302,7 +302,7 @@
 														'<td class="text-center" id="from">' + data.customer_phone + '</td>'+
 														'<td class="text-center" id="to">3</td>'+
 														'<td class="text-center">'+
-															'<select class="status">'+
+															'<select class="status" id="customerGroupDto">'+
 																'<option value="' + data.customer_group +'">' + data.group_users_name +'</option>'+
 																'<option value="0">-----------------</option>'+
 																'<option value="7">Khách vãng lai</option>'+

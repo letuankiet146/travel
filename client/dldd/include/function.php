@@ -1,6 +1,5 @@
-
 <?php
-    include('../../admin/connectDB.php');
+    include('../admin/connectDB.php');
     // ========== lấy danh sách tour liên quan
 	function getOneTour($id){
 		$sql = "SELECT * FROM tour t join arrive_place a on t.tour_arrive_place_id=a.arrive_place_id WHERE tour_id = " . $id;

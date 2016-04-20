@@ -181,7 +181,7 @@ function load_check(){
                             "formOrderQuantityAdultsDto": nguoilon,
                             "formOrderQuantityJuvenileDto": duoi12,
                             "formOrderQuantityChildDto": duoi2,
-                            "formOrderIsPayDto": 4,
+                            "formOrderIsPayDto": 6,
                             "formOrderQuantityOtherRequireDto": content 
                         };
                         console.log(mydata);

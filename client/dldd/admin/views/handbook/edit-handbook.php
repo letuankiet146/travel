@@ -89,8 +89,10 @@
 				<div class="row">
 					<label for="">Trạng thái</label>
 					<select id="statuDto" name="statuDto">
-						<option value="7">Chưa hiển thị</option>
-						<option value="8">hiển thị</option>
+						<option value="<?php echo $row_handbook['status']; ?>"><?php echo $row_handbook['status_name']; ?></option>
+						<option value="8">------------</option>
+						<option value="8">Chưa hiển thị</option>
+						<option value="7">Hiển thị</option>
 					</select>
 				</div>
 				<div class="clear"></div>

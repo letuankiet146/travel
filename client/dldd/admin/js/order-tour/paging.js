@@ -159,7 +159,7 @@
 											'<div>Địa chỉ : ' + val.form_order_id + '</div>'+
 										'</td>'+
 										'<td class="text-center">' + form_order_date + '</td>'+
-										'<td class="text-center">' + val.form_order_money + '</td>'+
+										'<td class="text-center">' + numeral(val.form_order_money).format('0,0') + '</td>'+
 										'<td class="text-center">'+
 											'<select class="status" id="formOrderIsPayDto">'+
 												'<option value="' + val.form_order_is_pay + '">' + val.status_name + '</option>'+
@@ -222,51 +222,57 @@
 					$.ajax({
 						url: 'http://localhost:8080/spr-data/delete/' + itemID + '/' + idUserAdd,
 						type: 'GET',
-						dataType: 'json'
+						dataType: 'json',
+						statusCode:{
+							404:function(){
+								alert("Không tìm thấy trang.");
+							},
+							200:function(){
+								$.ajax({
+									url: 'controller/order-tour.php?type=one&id=' + lastID,
+									type: 'GET',
+									dataType: 'json'
+								})
+								.done(function(data) {
+									if(data != false){
+										var dayOrder= data.form_order_date; 
+										var form_order_date = $.datepicker.formatDate( "dd-mm-yy", new Date(dayOrder) );
+										var str = 	'<tr item-id="' + data.form_order_id + '">'+
+															'<td>' + data.form_order_code + '</td>'+
+															'<td>'+
+																'<div>Họ tên: <strong>' + data.customer_name + '</strong><span class="red"> (' + data.group_users_name + ')</span></div>'+
+																'<div>Email : ' + data.customer_email + '</div>'+
+																'<div>Điện thoại : ' + data.customer_phone + '</div>'+
+																'<div>Địa chỉ : ' + data.form_order_id + '</div>'+
+															'</td>'+
+															'<td class="text-center">' + form_order_date + '</td>'+
+															'<td class="text-center">' + numeral(data.form_order_money).format('0,0') + '</td>'+
+															'<td class="text-center">'+
+																'<select class="status" id="formOrderIsPayDto">'+
+																	'<option value="' + data.form_order_is_pay + '">' + data.status_name + '</option>'+
+																	'<option value="0">---------------</option>'+
+																	'<option value="5">Đã thanh toán</option>'+
+																	'<option value="6">Chưa thanh toán</option>'+
+																'</select>'+
+															'</td>'+
+															'<td class="text-center"><a class="btn-view" href="#" title="Xem chi tiết"><i class="fa fa-info-circle"></i></a></td>'+
+															'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+															'<td><input class="chk" type="checkbox" name="chk[]" value="' + data.form_order_id + '"></td>'+
+														'</tr>';
+										str = $(str).hide().appendTo(rows);
+										$(str).fadeIn(150);
+										init();
+									}
+								});
+							}
+						}
 					});
 					if(itemID == lastID && $(rows).children().length == 1){
 						options.currentPage = options.currentPage - 1;
 					}
 					$(this).remove();
 				}
-			});
-
-			$.ajax({
-				url: 'controller/order-tour.php?type=one&id=' + lastID,
-				type: 'GET',
-				dataType: 'json'
-			})
-			.done(function(data) {
-				if(data != false){
-					var dayOrder= data.form_order_date; 
-					var form_order_date = $.datepicker.formatDate( "dd-mm-yy", new Date(dayOrder) );
-					var str = 	'<tr item-id="' + data.form_order_id + '">'+
-										'<td>' + data.form_order_code + '</td>'+
-										'<td>'+
-											'<div>Họ tên: <strong>' + data.customer_name + '</strong><span class="red"> (' + data.group_users_name + ')</span></div>'+
-											'<div>Email : ' + data.customer_email + '</div>'+
-											'<div>Điện thoại : ' + data.customer_phone + '</div>'+
-											'<div>Địa chỉ : ' + data.form_order_id + '</div>'+
-										'</td>'+
-										'<td class="text-center">' + form_order_date + '</td>'+
-										'<td class="text-center">' + data.form_order_money + '</td>'+
-										'<td class="text-center">'+
-											'<select class="status" id="formOrderIsPayDto">'+
-												'<option value="' + data.form_order_is_pay + '">' + data.status_name + '</option>'+
-												'<option value="0">---------------</option>'+
-												'<option value="5">Đã thanh toán</option>'+
-												'<option value="6">Chưa thanh toán</option>'+
-											'</select>'+
-										'</td>'+
-										'<td class="text-center"><a class="btn-view" href="#" title="Xem chi tiết"><i class="fa fa-info-circle"></i></a></td>'+
-										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-										'<td><input class="chk" type="checkbox" name="chk[]" value="' + data.form_order_id + '"></td>'+
-									'</tr>';
-					str = $(str).hide().appendTo(rows);
-					$(str).fadeIn(150);
-					init();
-				}
-			});
+			});	
 		}
 
 		//=================================================
@@ -312,6 +318,6 @@
 })(jQuery);
 $(document).ready(function(e) {
 	// var obj = {'items' : sodong};
-	var obj = {'items' : 3};
+	var obj = {'items' : 6};
 	$("#paging").zPaging(obj);
 });

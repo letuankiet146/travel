@@ -166,7 +166,7 @@
 										'</td>'+
 										'<td class="text-center"><a id="update" href="#" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
 										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-										'<td><input  type="checkbox" name="chk[]" class="chk" value="' + val.tour_id + '"></td>'+
+										'<td><input  type="checkbox" name="chk[]" class="chk" value="' + val.id + '"></td>'+
 									'</tr>';
 						rows.append(str);
 					});
@@ -215,49 +215,21 @@
 				done: function(){
 					$.ajax({
 						// url: 'controller/list-handbook.php?type=delete&id=' + itemID,
-						url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/deleteTour/' + itemID + '/' + idUserAdd,
+						url: 'http://localhost:8080/spr-data/handbook/delete/' + itemID + '/' + idUserAdd,
 						type: 'GET',
-						dataType: 'json'
+						dataType: 'json',
+						statusCode:{
+							200:function(){
+								init();
+							}
+						}
 					});
 					if(itemID == lastID && $(rows).children().length == 1){
 						options.currentPage = options.currentPage - 1;
 					}
-					init();
 					$(this).remove();
 				}
 			});
-
-			// $.ajax({
-			// 	url: 'controller/list-handbook.php?type=one&id=' + lastID,
-			// 	type: 'GET',
-			// 	dataType: 'json'
-			// })
-			// .done(function(data) {
-			// 	//console.log(data);
-			// 	if(data != false){
-
-			// 		var str = 	'<tr item-id="' + data.tour_id + '">'+
-			// 						'<td><input type="checkbox" name="" value=""></td>'+
-			// 						'<td>' + data.tour_code + '</td>'+
-			// 						'<td>' + data.tour_name + '</td>'+
-			// 						'<td class="text-center">' + data.tour_day_start + '</td>'+
-			// 						'<td class="text-center">' + data.tour_day_end +'</td>'+
-			// 						'<td class="text-center">' + data.tour_seat_number +'</td>'+
-			// 						'<td>'+
-			// 							'<select class="status" >'+
-			// 								'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
-			// 								'<option value="1">Đang thực hiện</option>'+
-			// 								'<option value="2">Chưa thực hiện</option>'+
-			// 								'<option value="3">Đã thực hiện</option>'+
-			// 							'</select>'+
-			// 						'</td>'+
-			// 						'<td class="text-center"><a id="update" href="index.php?page=edit-tour&Id=' + data.tour_id + '" title="Sửa"><i class="fa fa-pencil"></i></a></td>'+
-			// 						'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-			// 					'</tr>';
-			// 		str = $(str).hide().appendTo(rows);
-			// 		$(str).fadeIn(15000);
-			// 	}
-			// });
 		}
 
 		//=================================================
@@ -266,13 +238,15 @@
 		function update_status(obj){
 			var status =$(obj).closest('tr').find('.status').val();
 			var itemID = $(obj).closest('tr').attr("item-id");
+			var idUserAdd =$("#idUserAdd").val();
 			var mystatus = {
-				idDto: itemID,
-			   	activeDto: status
+				id: itemID,
+			   	statuDto: status,
+			   	idUserAdd:idUserAdd
 			};
 			console.log(mystatus);
 			$.ajax({
-				url: 'http://project-iuhhappytravel.rhcloud.com/spr-data/tour/updateTour',
+				url: 'http://localhost:8080/spr-data/handbook/update',
 				type: "POST",
 				dataType: "json",
 				contentType: "application/json", 
@@ -291,6 +265,9 @@
 						setTimeout(function(){
 							$(obj).closest('tr').find('#load_status').css("display","none");
 						}, 2000);
+					},
+					500:function(){
+						alert("Lỗi server!!!");
 					}
 				}
 			});

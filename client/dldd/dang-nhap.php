@@ -21,7 +21,7 @@
                     	<div class="LoginBox">
 						    <div class="well well-sm">
 						        <div class="panel-body">
-						            <form action="" method="post" name="" id="" onsubmit="">
+						            <form action="include/login.php" method="post" name="" id="" onsubmit="">
 						            <div class="form" role="form">
 						                <div class="form-group">
 						                    <label class="" for="email">Email</label>
@@ -32,7 +32,7 @@
 						                    <input class="form-control formH41" id="passwword" name="password" value="" type="password">
 						                </div>
 						                <div class="form-group">
-						                    <input class="btn btn-block btn-warning" value="Đăng nhập" type="submit">
+						                    <input class="btn btn-block btn-warning" name="login" value="Đăng nhập" type="submit">
 						                </div>
 						                <div class="">
 						                    <a href="/nganluong/userForgetPassword/index.html" class="linktxt">Quên mật khẩu đăng nhập</a>

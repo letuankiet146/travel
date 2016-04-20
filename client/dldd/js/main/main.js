@@ -106,7 +106,7 @@ $(document).ready(function() {
                   var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
                   return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
                 }
-                nn = 'abc',
+                nn = 'abc';
                 xx = 3;
                 var html = '';
                 html += '<div class="item">'+

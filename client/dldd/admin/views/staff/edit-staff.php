@@ -4,13 +4,18 @@
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date"
+              buttonText: "Select date",
+              changeMonth: true,
+              changeYear: true,
+              minDate: "-1M",
+              maxDate: '+1W'
             });
             $( "#staffDateStart" ).datepicker({
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date"
+              buttonText: "Select date",
+              maxDate: '-18Y'
             });
         });
     </script>
@@ -18,7 +23,7 @@
     <?php 
     	include ('../../connectDB.php');
     	$id=$_GET["staff_id"]; 
-    	$sql = "SELECT * FROM staff s join group_users g on s.staff_level=g.group_users_id where staff_id = " . $id;
+    	$sql = "SELECT * FROM staff s join group_users g on s.staff_level=g.group_users_id where s.staff_delete_date is null AND s.staff_id = " . $id;
     	$query=mysql_query($sql);
     	$row=mysql_fetch_array($query);
     	$dayStart = $row['staff_date_start'];
@@ -86,12 +91,6 @@
 						<input id="staffUser" type="text" name="staffUser" value="<?php echo $row['staff_user']; ?>" placeholder="Nhập username" />
 					</div>
 					<div class="row">
-					<?php
-						$keys = array_merge(range(0,9), range('a', 'z'));
-					    for($i=0; $i < 8; $i++) {
-					        $key .= $keys[mt_rand(0, count($keys) - 1)];
-					    }
-					?>
 						<label for="">Mật khẩu <span class="red"> ( * )</span></label>
 						<input id="staffPassword" type="text" name="staffPassword" value="<?php echo $row['staff_password']; ?>" disabled />
 					</div>
@@ -104,7 +103,7 @@
 			</div>
 			<div class="details">
 				<label>Ghi chú</label>
-				<textarea name="staffNote" id="staffNote" rows="4" style="width:100%" placeholder="Nhập Ghi chú về khách hàng" ><?php echo $row['staff_note']; ?></textarea>
+				<textarea name="staffNote" id="staffNote" rows="4" style="width:100%" placeholder="Nhập Ghi chú về nhân viên" ><?php echo $row['staff_note']; ?></textarea>
 	            <div class="clear"></div>
 			</div>
 		</div>

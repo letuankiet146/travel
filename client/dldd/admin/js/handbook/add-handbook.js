@@ -17,7 +17,15 @@ $(document).ready(function () {
         },
         // thực hiện sau khi kiểm tra đúng
         submitHandler: function() {
-        	add_handbook()
+        	var infoDto =CKEDITOR.instances['infoDto'].getData();
+        	if(infoDto == "") {
+				$("#infoDto").closest(".details").find(".error").empty();
+			  	$("#infoDto").closest(".details").find(".error").append("Thông tin bắt buộc");
+			  		
+			}
+			else{
+        		add_handbook();
+        	}
         }
     });
 });

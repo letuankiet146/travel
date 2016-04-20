@@ -4,7 +4,8 @@
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date"
+              buttonText: "Select date",
+              maxDate: "-16Y"
             });
         });
 
@@ -40,7 +41,7 @@
 							<label><input id="customerCode" type="text" name="customerCode" value="MAKH<?php echo $id; ?>" disabled /></label>
 							<div class="error"></div>
 						</div>
-						<input id="customerPasswordDto" type="hidden" name="customerPasswordDto" value="<?php echo $key; ?>" />
+						<input id="customerPasswordDto" type="hidden" name="customerPasswordDto" value="<?php echo md5($key); ?>" />
 						<div class="row">
 							<label for="">Tên khách hàng <span class="red"> ( * )</span></label>
 							<label><input id="customerNameDto" type="text" name="customerNameDto" value="" placeholder="Nhập tên khách hàng" /></label>
@@ -73,7 +74,7 @@
 								<select id="customerSexDto" name="customerSexDto">
 									<option value="">Giới tính</option>
 									<option value="Nam">Nam</option>
-									<option value="Nu">Nữ</option>
+									<option value="Nữ">Nữ</option>
 								</select>
 								<div class="error"></div>
 							</div>

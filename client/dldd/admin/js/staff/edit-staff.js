@@ -30,30 +30,7 @@ $(document).ready(function () {
         },
         // thực hiện sau khi kiểm tra đúng
         submitHandler: function() {
-
-        	var staffBirthday =$("#staffBirthday").val()
-        	var staffDateStart =$("#staffDateStart").val();
-			var today =$("#today").val();
-			var ngayvl = $.datepicker.parseDate('dd/mm/yy', staffDateStart);
-			var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
-
-			function getAge(dateString) {
-			    var today = new Date();
-			    var birthDate = new Date(dateString);
-			    var age = today.getFullYear() - birthDate.getFullYear();
-			    return age;
-			}
-
-			if(getAge(staffBirthday) < 17){
-				alert("Tuổi phải lớn hơn 17 tuổi");
-        	}
-        	else if(ngayvl > ngayht){
-        		alert("Ngày vào làm không hợp lệ");
-        	}
-        	else{
-        		edit_staff()
-        	}
-        	
+        	edit_staff()
         }
     });
 });

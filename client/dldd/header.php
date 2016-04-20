@@ -171,27 +171,28 @@
                                 <a class="hover_effect_menu" href="index.php?page=lien-he"><span class="hover_text">Liên hệ</span></a>
                             </li>
                             </li>
-                            <?php if($paged == "khach-hang"){ echo '<li class="current">';} 
-                                  else{echo '<li>';}
-                            ?>
+                            <?php 
+                                session_start();
+                                if(!isset($_SESSION['username'])){
+                                    if($paged == "dang-nhap"){ echo '<li class="current">';} 
+                                    else{echo '<li>';}
+                                ?>
                                 <a class="hover_effect_menu" href="index.php?page=dang-nhap"><span class="hover_text">Đăng nhập</span></a>
                             </li>
+                            <?php }
+                                else{
+                                    if($paged == "khach-hang"){ echo '<li class="current" id="customer_menu">';} 
+                                    else{echo '<li id="customer_menu">';}
+                                ?>
+                                <a class="hover_effect_menu" href="#"><span class="hover_text" style="text-transform: none;"><?php echo $_SESSION['username']; ?> <i class="fa fa-caret-down" aria-hidden="true"></i></span></a>
+                                <ul class="customer_menu">
+                                    <li><a class="hover_effect_menu" href="index.php?page=khach-hang"><span class="hover_text">Thông tin khách hàng</span></a></li>
+                                    <li><a class="hover_effect_menu" href="index.php?page=lich-su-dat-tour" ><span class="hover_text">Lịch sử đặt tour</span></a></li>
+                                    <li><a class="hover_effect_menu" href="include/login.php?thoat"><span class="hover_text">Đăng xuất</span></a></li>
+                                </ul>
+                            </li>
+                            <?php } ?>
                         </ul>
-                    </div>
-                    <div class="menu-tool">
-                        <!--===FORMSEARCH==-->
-                        <!-- <div class="formSearch">
-                            <form id="formSearch" name="formSearch" method="POST" action="index.php?page=ket-qua-tim-kiem" class="box_search">
-                                <div class="input-group">
-                                    <input name="keyword" id="keyword" type="text" class="text_search form-control" placeholder="Tìm kiếm" value="" />
-                                    <span class="input-group-btn">
-                                        <button id="btn-search" name="btn-search" type="submit" class="btn" value="" ><span >Search</span></button>
-                                    </span>
-                                <input name="do_search" value="1" type="hidden"/>
-                                </div>
-                            </form>
-                        </div> -->
-                        <!--===FORMSEARCH==-->
                     </div> 
                     <div class="clear"></div>
                 </div>

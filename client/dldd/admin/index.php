@@ -31,6 +31,7 @@ if(isset($_SESSION['username']))
 	<script type="text/javascript" src="js/datepicker/datepicker.js"></script>
 	<!-- validate -->
 	<script type="text/javascript" src="js/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/numeral/numeral.min.js"></script>
 	<!-- MODULE MAIN -->
 <?php 
 	$paged = $_GET['page'];

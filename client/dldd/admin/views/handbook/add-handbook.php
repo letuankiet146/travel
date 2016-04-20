@@ -81,6 +81,7 @@
 		                $CKEditor->basePath = 'ckeditor/';
 		               $CKEditor->replace("infoDto");
 		            ?>
+		            <div class="error"></div>
 		            <div class="clear"></div>
 				</div>
 			</div>
@@ -90,8 +91,8 @@
 				<div class="row">
 					<label for="">Trạng thái</label>
 					<select id="statuDto" name="statuDto">
-						<option value="7">Chưa hiển thị</option>
-						<option value="8">hiển thị</option>
+						<option value="8">Chưa hiển thị</option>
+						<option value="7">Hiển thị</option>
 					</select>
 				</div>
 				<div class="clear"></div>

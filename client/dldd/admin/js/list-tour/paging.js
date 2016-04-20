@@ -174,7 +174,7 @@
 									'</tr>';
 						rows.append(str);
 					});
-					aRows = options.rows + "tr td a#remove";
+					aRows = options.rows + " tr td a#remove";
 					$(aRows).on("click", function(e){
 						var x = confirm("Bạn có chắc chắn xóa không?");
 						if(x){
@@ -221,49 +221,55 @@
 					$.ajax({
 						url: 'http://localhost:8080/spr-data/tour/deleteTour/' + itemID + '/' + idUserAdd,
 						type: 'GET',
-						dataType: 'json'
+						dataType: 'json',
+						statusCode:{
+							404:function(){
+								alert("Không tìn thấy trang.");
+							},
+							200:function(){
+								$.ajax({
+									url: 'controller/list-tour.php?type=one&id=' + lastID,
+									type: 'GET',
+									dataType: 'json'
+								})
+								.done(function(data) {
+									if(data != false){
+										var dayStart= data.tour_day_start; 
+										var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
+										var dayEnd = data.tour_day_end; 
+										var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
+										var str = 	'<tr item-id="' + data.tour_id + '">'+
+															'<td>' + data.tour_code + '</td>'+
+															'<td>' + data.tour_name + '</td>'+
+															'<td class="text-center" id="from">' + fdayStart + '</td>'+
+															'<td class="text-center" id="to">' + fdayEnd +'</td>'+
+															'<td class="text-center">' + data.tour_seat_number +'</td>'+
+															'<td class="text-center">'+
+																'<select class="status">'+
+																	'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
+																	'<option value="1">-----------------</option>'+
+																	'<option value="1">Đang thực hiện</option>'+
+																	'<option value="2">Chưa thực hiện</option>'+
+																	'<option value="3">Đã thực hiện</option>'+
+																'</select>'+
+																'<div id="load_status"></div>'+
+															'</td>'+
+															'<td class="text-center"><a id="update" href="#" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
+															'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
+															'<td><input  type="checkbox" name="chk[]" class="chk" value="' + data.tour_id + '"></td>'+
+														'</tr>';
+										str = $(str).hide().appendTo(rows);
+										$(str).fadeIn(150);
+										init();
+									}
+								});
+							}
+						}
 					});
 					if(itemID == lastID && $(rows).children().length == 1){
 						options.currentPage = options.currentPage - 1;
 					}
 					$(this).remove();
-				}
-			});
-
-			$.ajax({
-				url: 'controller/list-tour.php?type=one&id=' + lastID,
-				type: 'GET',
-				dataType: 'json'
-			})
-			.done(function(data) {
-				if(data != false){
-					var dayStart= data.tour_day_start; 
-					var fdayStart = $.datepicker.formatDate( "dd-mm-yy", new Date(dayStart) );
-					var dayEnd = data.tour_day_end; 
-					var fdayEnd = $.datepicker.formatDate( "dd-mm-yy", new Date(dayEnd) );
-					var str = 	'<tr item-id="' + data.tour_id + '">'+
-										'<td>' + data.tour_code + '</td>'+
-										'<td>' + data.tour_name + '</td>'+
-										'<td class="text-center" id="from">' + fdayStart + '</td>'+
-										'<td class="text-center" id="to">' + fdayEnd +'</td>'+
-										'<td class="text-center">' + data.tour_seat_number +'</td>'+
-										'<td class="text-center">'+
-											'<select class="status">'+
-												'<option value="' + data.tour_active +'">' + data.status_name +'</option>'+
-												'<option value="1">-----------------</option>'+
-												'<option value="1">Đang thực hiện</option>'+
-												'<option value="2">Chưa thực hiện</option>'+
-												'<option value="3">Đã thực hiện</option>'+
-											'</select>'+
-											'<div id="load_status"></div>'+
-										'</td>'+
-										'<td class="text-center"><a id="update" href="#" title="Xem &#38; Sửa"><i class="fa fa-pencil"></i></a></td>'+
-										'<td class="text-center"><a id="remove" href="#" title="Xóa"><i class="fa fa-trash-o"></i></a></td>'+
-										'<td><input  type="checkbox" name="chk[]" class="chk" value="' + data.tour_id + '"></td>'+
-									'</tr>';
-					str = $(str).hide().appendTo(rows);
-					$(str).fadeIn(150);
-					init();
 				}
 			});
 		}

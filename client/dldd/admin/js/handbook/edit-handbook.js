@@ -65,7 +65,7 @@ function edit_handbook(){
 				alert("Không tìm thấy URL.");
 			},
 			200:function(){
-				alert("Tạo cẩm nang thành công");
+				alert("Cập nhật cẩm nang thành công");
 				location.reload();
 			},
 			500:function(){

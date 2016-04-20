@@ -86,6 +86,7 @@ body{
     text-transform: uppercase;
     font-family: 'OpenSansBold';
     color: #000000;
+    position: relative;
 }
 #vnt-header #vnt-menutop .menutop ul li a{
     display: block;
@@ -129,6 +130,23 @@ body{
 .hover_effect_menu .hover_text{
     z-index: 1;
     position: relative;
+}
+#vnt-header #vnt-menutop .menutop ul li ul.customer_menu{
+    position:absolute;
+    z-index: 10;
+    width:100%;
+    display:none;
+    
+}
+#vnt-header #vnt-menutop .menutop ul li ul.customer_menu li{
+    text-transform:none;
+    font-family: 'Arial';
+    font-size:14px;
+    display:block;
+    border-top: 1px solid #e0e0e0;
+}
+#vnt-header #vnt-menutop .menutop ul li ul.customer_menu li a{
+    background-color: #c7a566;
 }
 #vnt-header #vnt-menutop .menu-tool{
     float: right;
