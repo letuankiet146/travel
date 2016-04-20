@@ -41,3 +41,6 @@ alter TABLE sql61036294.tour ADD fulltext(tour_name);
 alter TABLE sql61036294.tour ADD fulltext(tour_infor);
 alter TABLE sql61036294.arrive_place ADD fulltext(arrive_place_name);
 alter TABLE sql61036294.vehicle ADD fulltext(vehicle_name);
+-----------------------------19/04/2016
+ALTER TABLE `sql61036294`.`form_order` 
+ADD COLUMN `form_order_note` TEXT NULL AFTER `form_order_money`;
