@@ -57,9 +57,6 @@ public class CustomerDto {
 	@Mapping("customerImage")
 	private String customerImageDto;
 	
-	@Mapping("customerUser")
-	private String customerUserDto;
-
 	@Mapping("customerPassword")
 	private String customerPasswordDto;
 
@@ -129,10 +126,6 @@ public class CustomerDto {
 		
 		if (customerDto.getCustomerImageDto() !=null){
 			this.customerImageDto = customerDto.getCustomerImageDto();
-		}
-		
-		if (customerDto.getCustomerUserDto() !=null){
-			this.customerUserDto = customerDto.getCustomerUserDto();
 		}
 		
 		if (customerDto.getCustomerPasswordDto() !=null){

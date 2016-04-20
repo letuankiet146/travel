@@ -66,9 +66,6 @@ public class CustomerEntity {
 	@Column (name = "customer_delete_date")
 	private Date customerDeleteDate;
 	
-	@Column(name = "customer_user")
-	private String customerUser;
-
 	@Column(name = "customer_password")
 	private String customerPassword;
 
