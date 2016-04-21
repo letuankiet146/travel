@@ -16,7 +16,7 @@
 		else{
 			session_start();
 			$_SESSION['id'] = $result['customer_id'];
-			$_SESSION['username'] = $result['customer_name'];
+			$_SESSION['name'] = $result['customer_name'];
 			$_SESSION['group'] = $result['customer_group'];
 			echo "<script>window.location.href='http://localhost/dldd/index.php?page=khach-hang' </script>";
 		}
@@ -24,7 +24,7 @@
 	if(isset($_GET['thoat']))
 	{
 		session_start();
-		unset($_SESSION['username']);	
+		unset($_SESSION['name']);	
 		unset($_SESSION['group']);
 		echo"<script>document.location.href='../index.php?page=trang-chu' </script>";
 	}

@@ -5,8 +5,7 @@
                     <div class="navation">
                         <ul>
                             <li class="home"><a href="index.php">Trang chủ</a></li>
-                            <li><a href="tour-noi-dia.php">Tour nội địa</a></li>
-                            <li>Đặt tour</li>
+                            <li>Thanh toán</li>
                         </ul>
                     </div>
                 </div>
@@ -14,7 +13,7 @@
                 <div class="box_mid">
                     <div class="mid-title">
                         <div class="titleL">
-                            <h1 id="h1">Xác nhận đơn đặt tour</h1>
+                            <h1 id="h1">Thanh toán</h1>
                         </div>
                         <div class="titleR"></div>
                         <div class="clear"></div>
@@ -23,7 +22,23 @@
                         <div class="vnt-order">
                             <div id="thanhtoanok">
                                 <input type="hidden" name="order_id" id="order_id" value="<?php madonhang(); ?>" />
-                                <div> Thanh toán thành công. Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi.</div>
+                                <div class="thongbao"> 
+                                    <?php 
+                                        include 'include/customer.php';
+                                        $id='';
+                                        $customer = listCustomersOne($id); 
+                                    ?>
+                                    <p><strong>Thanh toán thành công.</strong> Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi.</p>
+                                    <p>Hệ thống đã gửi tài khoản quý khách vào email <strong>
+                                        <?php 
+                                            foreach ($customer as $row) {
+                                                echo $row['customer_email'];
+                                            }
+                                        ?>
+                                    </strong></p></br>
+                                    <span>Hệ thống tự động chuyển trang đăng nhập.</span></br></br>
+                                    <span>Quý khách vui lòng không thoát trang này.</span>
+                                </div>
                             </div>
                         </div>
                     </div>

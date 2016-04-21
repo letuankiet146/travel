@@ -280,7 +280,7 @@
 				durartion: 300,
 				done: function(){
 					$.ajax({
-						url: 'http://localhost:8080/spr-data/customer/delete/' + itemID + '/' + idUserAdd,
+						url: 'http://103.47.194.91:8080/spr-data/customer/delete/' + itemID + '/' + idUserAdd,
 						type: 'GET',
 						dataType: 'json',
 						statusCode: {
@@ -348,7 +348,7 @@
 			};
 			console.log(mystatus);
 			$.ajax({
-				url: 'http://localhost:8080/spr-data/customer/update/',
+				url: 'http://103.47.194.91:8080/spr-data/customer/update/',
 				type: 'POST',
 				contentType: 'application/json',
 				data:JSON.stringify(mystatus),

@@ -18,7 +18,9 @@ $(document).ready(function () {
 
     })
     .always(function() {
-
+        setTimeout(function() {
+            window.location.href = "index.php?page=dang-nhap";
+        },5000);
     });
 });
 

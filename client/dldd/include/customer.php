@@ -27,7 +27,9 @@
     }
 
     function listCustomersOne($id){
-        $sql = "SELECT * FROM customer c join group_users g on c.customer_group=g.group_users_id WHERE c.customer_id = " .$id. "";
+        $sql = "SELECT * FROM customer c join group_users g on c.customer_group=g.group_users_id WHERE c.customer_delete_date is null ";
+        if(!empty($id)){$sql .= "AND c.customer_id = '$id'";}
+        else {$sql .= "ORDER BY c.customer_id DESC";}
         $query = mysql_query($sql);
         $customer = array();
         $rows = mysql_fetch_array($query);

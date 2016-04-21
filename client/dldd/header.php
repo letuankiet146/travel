@@ -173,7 +173,7 @@
                             </li>
                             <?php 
                                 session_start();
-                                if(!isset($_SESSION['username'])){
+                                if(!isset($_SESSION['name'])){
                                     if($paged == "dang-nhap"){ echo '<li class="current">';} 
                                     else{echo '<li>';}
                                 ?>
@@ -184,7 +184,7 @@
                                     if($paged == "khach-hang"){ echo '<li class="current" id="customer_menu">';} 
                                     else{echo '<li id="customer_menu">';}
                                 ?>
-                                <a class="hover_effect_menu" href="#"><span class="hover_text" style="text-transform: none;"><?php echo $_SESSION['username']; ?> <i class="fa fa-caret-down" aria-hidden="true"></i></span></a>
+                                <a class="hover_effect_menu" href="#"><span class="hover_text" style="text-transform: none;"><?php echo $_SESSION['name']; ?> <i class="fa fa-caret-down" aria-hidden="true"></i></span></a>
                                 <ul class="customer_menu">
                                     <li><a class="hover_effect_menu" href="index.php?page=khach-hang"><span class="hover_text">Thông tin khách hàng</span></a></li>
                                     <li><a class="hover_effect_menu" href="index.php?page=lich-su-dat-tour" ><span class="hover_text">Lịch sử đặt tour</span></a></li>

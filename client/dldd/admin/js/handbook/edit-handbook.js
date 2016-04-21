@@ -49,7 +49,7 @@ function edit_handbook(){
 	console.log(mydata);
 	
 	$.ajax({
-		url : "http://localhost:8080/spr-data/handbook/update",
+		url : "http://103.47.194.91:8080/spr-data/handbook/update",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 

@@ -137,7 +137,7 @@ function Update_Tour(){
 	};
 	console.log(mydata);
 	$.ajax({
-		url : "http://localhost:8080/spr-data/tour/updateTour",
+		url : "http://103.47.194.91:8080/spr-data/tour/updateTour",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 

@@ -144,7 +144,7 @@ function edit_customer(){
 	};
 	console.log(mydata);
 	$.ajax({
-		url : "http://localhost:8080/spr-data/customer/update/",
+		url : "http://103.47.194.91:8080/spr-data/customer/update/",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 

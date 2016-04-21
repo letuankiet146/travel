@@ -57,7 +57,7 @@ function add_handbook(){
 	console.log(mydata);
 	
 	$.ajax({
-		url : "http://localhost:8080/spr-data/handbook/add",
+		url : "http://103.47.194.91:8080/spr-data/handbook/add",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 

@@ -103,7 +103,7 @@ function add_staff(){
 	console.log(mydata);
 	
 	$.ajax({
-		url : "http://localhost:8080/spr-data/staff/add",
+		url : "http://103.47.194.91:8080/spr-data/staff/add",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 

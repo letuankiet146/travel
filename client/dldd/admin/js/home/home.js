@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 function load_notify(){
 	$.ajax({
-		url: 'http://localhost:8080/spr-data/notification/list',
+		url: 'http://103.47.194.91:8080/spr-data/notification/list',
 		type: 'GET',
 		dataType: 'json',
 	})
@@ -55,7 +55,7 @@ function add_notify(){
 	    };
 	    console.log(mydata);
 		$.ajax({
-			url: 'http://localhost:8080/spr-data/notification/add',
+			url: 'http://103.47.194.91:8080/spr-data/notification/add',
 			type: 'POST',
 			dataType:'json',
 			contentType: 'application/json',

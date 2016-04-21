@@ -1,7 +1,7 @@
 <?php 
 include 'include/customer.php';
 session_start();
-if(isset($_SESSION['username']))
+if(isset($_SESSION['name']))
 {
 ?>   
 <div class="wrapper">
@@ -129,9 +129,11 @@ if(isset($_SESSION['username']))
 								                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Thao tác </br><span class="caret"></span></a>
 								                                <ul class="dropdown-menu">
 								                                    <li><a class="" href="index.php?page=lich-su-dat-tour/chi-tiet&order_id='.$rows["form_order_id"].'">Xem chi tiết</a></li>
-								                                    <li><a class="" href="index.php?page=lich-su-dat-tour/yeu-cau-huy-don-dat-tour">Hủy đơn đặt tour</a></li>
-								                                    <li><a class="" href="">Thanh toán</a></li>
-								                                </ul>
+								                                    <li><a class="" href="index.php?page=lich-su-dat-tour/yeu-cau-huy-don-dat-tour">Hủy đơn đặt tour</a></li>';
+								                                if($rows["form_order_is_pay"] != 5){
+								                                    echo '<li><a class="" href="">Thanh toán</a></li>';
+								                                }
+								                                echo '</ul>
 								                            </div>
 								                        </td>
 										            </tr>';
@@ -245,16 +247,6 @@ if(isset($_SESSION['username']))
 											<label class="col-sm-4 control-label">Nhập lại mật khẩu mới</label>
 											<div class="col-sm-6">
 												<input class="form-control" type="text" name="birthday" value="" />
-											</div>
-											<div class="clear"></div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-4 control-label">Mã bảo mật:</label>
-											<div class="col-sm-3 pdr5">
-												<input class="form-control" type="text" name="email" value="" />
-											</div>
-											<div class="col-sm-3 pdl5">
-												kjhkjfd
 											</div>
 											<div class="clear"></div>
 										</div>

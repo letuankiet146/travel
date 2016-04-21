@@ -16,7 +16,7 @@ function click_edit(){
 	};
 	console.log(mydata);
 	$.ajax({
-		url : "http://localhost:8080/spr-data/updateOrderTour",
+		url : "http://103.47.194.91:8080/spr-data/updateOrderTour",
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json", 
