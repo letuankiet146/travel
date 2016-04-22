@@ -53,12 +53,13 @@
 	border-top: 1px solid #9CA1B0;
 }
 .search-notifi textarea{
-	text-indent: 5px;
+	padding:5px 5px;
 	border-radius:5px;
 	moz-border-radius:5px;
 	webkit-border-radius:5px;
-	width:83%;
+	width:80%;
 	float: left;
+	height:40px;
 }
 .search-notifi input{
 	width:37px;

@@ -7,7 +7,10 @@
 	height: 57px !important;
 	overflow: hidden;
 }
-
+.row textarea#tenTourDto{
+	width: 323px;
+	padding: 4px 4px;
+}
 .info-r{
 	float:right;
 }
@@ -34,7 +37,13 @@
 	display:block;
 	margin:5px 0px;
 }
-
+.error-r{
+	display:block;
+	margin-left:150px;
+	font-size:12px;
+	font-family: 'OpenSansItalic';
+	color: #f00;
+}
 .row .error:nth-child(3),.thumb .error:nth-child(3){
 	display:block;
 	margin-left:150px;

@@ -68,7 +68,7 @@
                                                     </div>
                                                     <div class="i-content">
                                                         <span><i class="fa fa-calendar" aria-hidden="true"></i> ' .$fday_start. ' </span>';
-                                                        if($tour_charge == 0){
+                                                        if($sale_off == 0){
                                                             echo '<span></span>';
                                                         }
                                                         else{
@@ -77,9 +77,14 @@
                                                     echo'   
                                                     </div>
                                                     <div class="i-content">
-                                                        <div><i class="fa fa-clock-o" aria-hidden="true"></i> ' .$Days. ' ngày </div>
-                                                        <div>' .$sale_off. ' VNĐ</div>
-                                                    </div>
+                                                        <div><i class="fa fa-clock-o" aria-hidden="true"></i> ' .$Days. ' ngày </div>';
+                                                        if($sale_off == 0){
+                                                        echo '<div>' .$tour_charge. ' VNĐ</div>';
+                                                        }
+                                                        else{
+                                                            echo '<div>' .$sale_off. ' VNĐ</div>';
+                                                        }
+                                                    echo '</div>
                                                     <div class="clear"></div>
                                                 </div>
                                             </div>

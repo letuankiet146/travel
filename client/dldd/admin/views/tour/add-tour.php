@@ -6,9 +6,6 @@
 				$(b).closest(".row").find(".error").empty();
 			});
 		});
-		$("#imageDto").change(function(event) {
-			$("#imageDto").closest(".thumb").find(".error").empty();
-		});
 
         $(function() {
             $( "#ngayKHDto" ).datepicker({
@@ -46,6 +43,7 @@
 		EL("imageDto").addEventListener("change", readFile, false);
 		
     </script>
+    <script type="text/javascript" src="js/list-tour/add-tour.js"></script>
     <?php
     	include ('../../connectDB.php');
     	include ("../../ckeditor/ckeditor.php"); 
@@ -59,8 +57,9 @@
 						<div class="row">
 							<label for="">Loại tour<span class="red"> ( * )</span>
 							</label>
-							<select id="areaIdDto" name="areaIdDto" onchange="ajax_arrive()">
-							<option value="0">Chọn loại tour</option>
+							<select name="areaIdDto" onchange="ajax_arrive()">
+							<!-- id="areaIdDto" -->
+							<option value="">Chọn loại tour</option>
 							<?php 
 								$sql = "SELECT * FROM area";
 								$query = mysql_query($sql);
@@ -69,7 +68,6 @@
 								<option value="<?php echo $rows['area_id'] ?>"><?php echo $rows['area_name'] ?></option>
 							<?php } ?>
 							</select>
-							<div class="error"></div>
 						</div>
 						<div class="row">
 							<?php 
@@ -83,13 +81,12 @@
 						</div>
 						<div class="row">
 							<label for="">Tên tour <span class="red"> ( * )</span></label>
-							<label><input id="tenTourDto" type="text" name="tenTourDto" value="" placeholder="Nhập tên tour" /></label>
-							<div class="error"></div>
+							<textarea id="tenTourDto" name="tenTourDto" placeholder="Nhập tên tour"></textarea>
 						</div>
 						<div class="row">
 							<label for="">Nơi khởi hành <span class="red"> ( * )</span></label>
-							<select id="tourFromPlaceIdDto" name="tourFromPlaceIdDto">
-								<option value="0">Chọn nơi khỏi hành</option>
+							<select name="tourFromPlaceIdDto">
+								<option value="">Chọn nơi khỏi hành</option>
 							<?php 
 								$sql = "SELECT * FROM from_place";
 								$query = mysql_query($sql);
@@ -98,19 +95,17 @@
 								<option value="<?php echo $rows['from_place_id'] ?>"><?php echo $rows['from_place_name'] ?></option>
 							<?php } ?>
 							</select>
-							<div class="error"></div>
 						</div>
 						<div class="row">
 							<label for="">Địa điểm đến <span class="red"> ( * )</span></label>
-							<select id="tourArrivePlaceIdDto" name="tourArrivePlaceIdDto">
-								<option value="0">Chọn địa điểm đến</option>
+							<select class="tourArrivePlaceIdDto" name="tourArrivePlaceIdDto">
+								<option value="">Chọn địa điểm đến</option>
 							</select>
-							<div class="error"></div>
 						</div>
 						<div class="row">
 							<label for="">Hướng dẫn viên <span class="red"> ( * )</span></label>
-							<select id="tourGuiderIdDto" name="tourGuiderIdDto">
-								<option value="0">Chọn hướng dẫn viên</option>
+							<select name="tourGuiderIdDto">
+								<option value="">Chọn hướng dẫn viên</option>
 							<?php 
 								$sql = "SELECT * FROM guider where guider_delete_date is null";
 								$query = mysql_query($sql);
@@ -119,30 +114,27 @@
 								<option value="<?php echo $rows['guider_id'] ?>"><?php echo $rows['guider_name'] ?></option>
 							<?php } ?>
 							</select>
-							<div class="error"></div>
 						</div>	
 					</div>
 					<div class="info-r">
 						<div class="row">
 							<label for="">Số lượng <span class="red"> ( * )</span></label>
-							<label><input id="soChoDto" type="text" name="soChoDto" value=""
-							placeholder="Nhập số lượng người tham gia" /></label>
-							<div class="error"></div>
+							<input id="soChoDto" type="text" name="soChoDto" value=""
+							placeholder="Nhập số lượng người tham gia" />
 						</div>
 						<div class="row">
 							<label for="">Ngày khởi hành <span class="red"> ( * )</span></label>
-							<label><input id="ngayKHDto" type="text" name="ngayKHDto" value="" placeholder="dd/mm/yyyy" /></label>
-							<div class="error"></div>
+							<input id="ngayKHDto" type="text" name="ngayKHDto" value="" placeholder="dd/mm/yyyy" />
 						</div>
 						<div class="row">
 							<label for="">Ngày kết thúc <span class="red"> ( * )</span></label>
-							<label><input id="ngayKTDto" type="text" name="ngayKTDto" value="" placeholder="dd/mm/yyyy" /></label>
-							<div class="error"></div>
+							<input id="ngayKTDto" type="text" name="ngayKTDto" value="" placeholder="dd/mm/yyyy" />
+							<div class="error-r"></div>
 						</div>
 						<div class="row">
 							<label for="">Dịch vụ <span class="red"> ( * )</span></label>
-							<select id="idDichVuDto" name="idDichVuDto">
-								<option value="0">Chọn loại dịch vụ</option>
+							<select name="idDichVuDto">
+								<option value="">Chọn loại dịch vụ</option>
 								<?php 
 									$sql = "SELECT * FROM services where services_delete_date is null";
 									$query = mysql_query($sql);
@@ -151,17 +143,14 @@
 								<option value="<?php echo $row_service['services_id']; ?>"><?php echo $row_service['services_name']; ?></option>
 								<?php } ?>
 							</select>
-							<div class="error"></div>
 						</div>
 						<div class="row">
-							<label for="">Giá khuyến mãi <span class="red"> ( * )</span></label>
-							<label><input id="giaTourKMDto" type="text" name="giaTourKMDto" value="" placeholder="Nhập giá khuyến mãi" /></label>
-							<div class="error"></div>
+							<label for="">Giá tour <span class="red"> ( * )</span></label>
+							<input id="giaTourDto" type="text" name="giaTourDto" value="" placeholder="Nhập giá tour" />
 						</div>
 						<div class="row">
-							<label for="">Giá tour</label>
-							<label><input id="giaTourDto" type="text" name="giaTourDto" value="0" placeholder="Nhập giá tour" /></label>
-							<div class="error"></div>
+							<label for="">Giá khuyến mãi</label>
+							<input id="giaTourKMDto" type="text" name="giaTourKMDto" value="" placeholder="Nhập giá khuyến mãi" />
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -171,7 +160,6 @@
 					<input id="imageDto" type="file" name="imageDto" value="" />
 					<input id="tourImageDataDto" type="hidden" name="tourImageDataDto" value="" />
 					<div id="img">Chưa có hành ảnh</div>
-					<div class="error"></div>
 				</div>
 				<div class="details">
 					<label>Thông tin chi tiết tour</label>
@@ -181,14 +169,15 @@
 		                $CKEditor->basePath = 'ckeditor/';
 		               $CKEditor->replace("infoDto");
 		            ?>
-		            <div class="error"></div>
+		            <div class="error-r"></div>
 		            <div class="clear"></div>
 		            
 				</div>
 			</div>
 			<div class="btn">
 				<input class="btn-reset" type="reset" name="" value="Nhập lại" />
-				<a class="btn-add" href="#" onclick="click_load()" >Tạo tour</a>
+				<!-- <a class="btn-add" href="#" onclick="click_load()" >Tạo tour</a> -->
+				<button class="btn-add" type="submit">Tạo tour</button>
 				<div class="row">
 					<label for="">Trạng thái</label>
 					<select id="activeDto">

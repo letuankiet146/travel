@@ -52,9 +52,9 @@
                 case '3':
                     $sql .="";break;
                 case '4':
-                    $sql .=" AND t.tour_charge > 0";break;
+                    $sql .=" AND t.tour_sale_off > 0";break;
                 case '5':
-                    $sql .=" AND t.tour_charge = 0";break;
+                    $sql .=" AND t.tour_sale_off = 0";break;
                 default: break;
             }
         }
@@ -107,22 +107,22 @@
             if(!empty($price)){
                 switch ($price) {
                     case '1':
-                        $sql .= "AND t.tour_sale_off < 1000000";break;
+                        $sql .= "AND t.tour_charge < 1000000";break;
                     case '2':
-                        $sql .= "AND t.tour_sale_off BETWEEN  1000000 AND 2000000";break;
+                        $sql .= "AND t.tour_charge BETWEEN  1000000 AND 2000000";break;
                     case '3':
-                        $sql .= "AND t.tour_sale_off BETWEEN  2000000 AND 4000000";break;
+                        $sql .= "AND t.tour_charge BETWEEN  2000000 AND 4000000";break;
                     case '4':
-                        $sql .= "AND t.tour_sale_off BETWEEN  4000000 AND 6000000";break;
+                        $sql .= "AND t.tour_charge BETWEEN  4000000 AND 6000000";break;
                     case '5':
-                        $sql .= "AND t.tour_sale_off BETWEEN  6000000 AND 10000000";break;
+                        $sql .= "AND t.tour_charge BETWEEN  6000000 AND 10000000";break;
                     case '6':
-                        $sql .= "AND t.tour_sale_off > 10000000";break;
+                        $sql .= "AND t.tour_charge > 10000000";break;
                 }
             }
         }
         if(!empty($keyword)){
-            $sql = "SELECT t.*, a.arrive_place_name FROM tour t, arrive_place a WHERE (match(t.tour_name) against('$keyword') OR match(t.tour_infor) against('$keyword') OR match(a.arrive_place_name) against('$keyword')) AND t.tour_delete_date is null AND t.tour_active=1 AND t.tour_arrive_place_id=a.arrive_place_id";
+            $sql = "SELECT t.*, a.arrive_place_name FROM tour t, arrive_place a WHERE (t.tour_name like '%$keyword%' OR t.tour_infor like'%$keyword%' OR a.arrive_place_name like'%$keyword%') AND t.tour_delete_date is null AND t.tour_active=1 AND t.tour_arrive_place_id=a.arrive_place_id";
         }
         if(!empty($lastID)){
             $sql .= " AND t.tour_id < '$lastID'";

@@ -377,6 +377,7 @@ ul.menu-child li{
 	font-weight:bold;
 	line-height:27px;
 	position:relative;
+	vertical-align: top;
 }
 .row select{
 	width:332px;

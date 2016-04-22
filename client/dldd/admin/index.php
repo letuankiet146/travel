@@ -32,6 +32,7 @@ if(isset($_SESSION['username']))
 	<!-- validate -->
 	<script type="text/javascript" src="js/validate/jquery.validate.js"></script>
 	<script type="text/javascript" src="js/numeral/numeral.min.js"></script>
+	<script type="text/javascript" src="js/formatprice/formatprice.js"></script>
 	<!-- MODULE MAIN -->
 <?php 
 	$paged = $_GET['page'];
@@ -45,9 +46,6 @@ if(isset($_SESSION['username']))
 	<!-- LIST_TOUR -->
 	<script type="text/javascript" src="js/list-tour/paging.js"></script>
 	<link rel="stylesheet" type="text/css" href="style/tour/tour.css" />
-	<!--<script type="text/javascript" > var sodong = 8;</script>-->
-	<script type="text/javascript" src="js/list-tour/add-tour.js"></script>
-	<script type="text/javascript" src="js/list-tour/edit-tour.js"></script>
 <?php } ?>
 <?php if($paged == "list-customer"){ ?>
 	<!-- CUSTOMER -->
@@ -161,7 +159,7 @@ if(isset($_SESSION['username']))
 						</ul>
 					</li>
 					<li class="menu">
-						<p><em>Copyright &copy; 2015: </em><strong> CT DL ĐÔNG DƯƠNG</strong></p>
+						<p><em>Copyright &copy; 2015: </em><strong> IUH-Travel</strong></p>
 						<p><em>Thiết kế web: </em><strong>Nhóm đồ án Thảo &#38; Kiệt</strong></p>
 					</li>
 				</ul>

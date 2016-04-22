@@ -1,116 +1,81 @@
 //======================================
 //==========kiểm tra form===============
 //======================================
-function click_load(){
-	var infoDto =CKEDITOR.instances['infoDto'].getData();
-	var giaTourKMDto=document.getElementById("giaTourKMDto");
-	var soChoDto=document.getElementById("soChoDto");
-	var giaTourDto=document.getElementById("giaTourDto");
-	var ngayKHDto =$("#ngayKHDto").val();
-	var ngayKTDto =$("#ngayKTDto").val();
-	var today =$("#today").val();
-	var ngaykh = $.datepicker.parseDate('dd/mm/yy', ngayKHDto);
-	var ngaykt = $.datepicker.parseDate('dd/mm/yy', ngayKTDto);
-	var ngayht = $.datepicker.parseDate('dd/mm/yy', today);
-	var date = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((1[6-9]|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/;
-	var number=/^[0-9.]+$/;
-
-	var fields = $(".row").closest(".info").find( ":input" );
-	jQuery.each( fields, function( i, field ) {
-	 	var b = "#" + field.name;
-	 	if(field.value == "" || field.value <= 0){
-	 		if(b != "#giaTourDto"){
-		 		$(b).closest(".row").find(".error").empty();
-	      		$(b).closest(".row").find(".error").append("Thông tin bắt buộc");
-	      		field.value.focus();
-	      		return false;
-      		}
-	    }
-	    else{
-	    	$(b).closest(".row").find(".error").empty();	
-	    }
-    });
-
-	if(this.soChoDto.value >= 1000) {
-      $("#soChoDto").closest(".row").find(".error").empty();
-	  $("#soChoDto").closest(".row").find(".error").append("số lượng quá lớn");
-      this.soChoDto.focus();
-      return false;
-    }
-    else if(!number.test(soChoDto.value)){
-		$("#soChoDto").closest(".row").find(".error").empty();
-	  	$("#soChoDto").closest(".row").find(".error").append("Số lượng phải là số");
-		this.soChoDto.focus();
-		return(false);
-	}
-	else if(!(date.test(ngayKHDto))){
-      $("#ngayKHDto").closest(".row").find(".error").empty();
-	  $("#ngayKHDto").closest(".row").find(".error").append("Chưa đúng format");
-      this.ngayKHDto.focus();
-      return false;
-    }
-    else if (ngaykh <= ngayht) {
-      	$("#ngayKHDto").closest(".row").find(".error").empty();
-	  	$("#ngayKHDto").closest(".row").find(".error").append("Ngay KH phải lớn ngày hiện tại");
-      	this.ngayKHDto.focus();
-      	return false;
-	}
-	else if(!(date.test(ngayKTDto))){
-      $("#ngayKTDto").closest(".row").find(".error").empty();
-	  $("#ngayKTDto").closest(".row").find(".error").append("Chưa đúng format");
-      this.ngayKTDto.focus();
-      return false;
-    }
-	else if (ngaykt <= ngaykh) {
-      	$("#ngayKTDto").closest(".row").find(".error").empty();
-	  	$("#ngayKTDto").closest(".row").find(".error").append("Ngay Kt phải lớn ngày kh");
-      	this.ngayKTDto.focus();
-      	return false;
-	}
-    else if(!number.test(giaTourKMDto.value)){
-		$("#giaTourKMDto").closest(".row").find(".error").empty();
-	  	$("#giaTourKMDto").closest(".row").find(".error").append("Giá tour KM phải là số");
-		this.giaTourKMDto.focus();
-		return false;
-	}
-    else if(this.giaTourDto.value != "" && !number.test(giaTourDto.value)){
-			$("#giaTourDto").closest(".row").find(".error").empty();
-	  		$("#giaTourDto").closest(".row").find(".error").append("Giá tour phải là số");
-			this.giaTourDto.focus();
-			return false;
-	}
-	else if(this.imageDto.value == "") {
-		$("#imageDto").closest(".thumb").find(".error").empty();
-	  	$("#imageDto").closest(".thumb").find(".error").append("Yêu cầu chọn ảnh đại diện");
-		this.imageDto.focus();
-		return false;
-	}
-	else if(infoDto == "") {
-		$("#infoDto").closest(".details").find(".error").empty();
-	  	$("#infoDto").closest(".details").find(".error").append("Thông tin bắt buộc");
-		this.CKEDITOR.instances['infoDto'].focus();
-		return false;
-	}
-    else{
-		add_tour();
-	}	
-}
+$(document).ready(function () {
+    $("#formAddEdit").validate({
+        rules: {
+            areaIdDto: {required: true},
+            idTourDto: {required: true},
+            tenTourDto: {required: true},
+            tourFromPlaceIdDto: {required: true},
+            tourArrivePlaceIdDto: {required: true},
+            tourGuiderIdDto: {required: true},
+            soChoDto: {required: true, number: true, min: 15, max:50},
+            ngayKHDto: {required: true, dateISO:true},
+            ngayKTDto: {required: true, dateISO:true},
+            idDichVuDto: {required: true},
+            giaTourDto: {required: true, number: true, minlength:7 , maxlength:10},
+            giaTourKMDto: {number: true, minlength: 7, maxlength:10},
+            imageDto: {required: true}
+        },
+        messages: {
+            areaIdDto: {required: "Thông tin bắt buộc"},
+            idTourDto: {required: "Thông tin bắt buộc"},
+            tenTourDto: {required: "Thông tin bắt buộc"},
+            tourFromPlaceIdDto: {required: "Thông tin bắt buộc"},
+            tourArrivePlaceIdDto: {required: "Thông tin bắt buộc"},
+            tourGuiderIdDto: {required: "Thông tin bắt buộc"},
+            soChoDto: {required: "Thông tin bắt buộc",number: "Giá trị phải là số",
+        				min: "Giá trị >= 15",max: "Giá trị <= 50" },
+            ngayKHDto: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"},
+            ngayKTDto: {required: "Thông tin bắt buộc",dateISO: "Định dạng ngày không hợp lệ"},
+            idDichVuDto: {required: "Thông tin bắt buộc"},
+            giaTourDto: {required: "Thông tin bắt buộc", number: "Giá trị phải là số",
+        				minlength: "Giá trị > 100,000vnđ",maxlength: "Giá trị < 100,000,000vnđ"},
+            giaTourKMDto: {number: "Giá trị phải là số", minlength: "Giá trị > 100,000vnđ",
+            			maxlength: "Giá trị < 100,000,000vnđ"},
+            imageDto: {required: "Thông tin bắt buộc"}
+        },
+        // thực hiện sau khi kiểm tra đúng
+        submitHandler: function() {
+        	var infoDto =CKEDITOR.instances['infoDto'].getData();
+			var ngayKHDto =$("#ngayKHDto").val();
+			var ngayKTDto =$("#ngayKTDto").val();
+			var ngaykh = $.datepicker.parseDate('dd/mm/yy', ngayKHDto);
+			var ngaykt = $.datepicker.parseDate('dd/mm/yy', ngayKTDto);
+        	
+			if (ngaykt <= ngaykh) {
+		      	$("#ngayKTDto").closest(".row").find(".error-r").empty();
+			  	$("#ngayKTDto").closest(".row").find(".error-r").append("Ngay Kt phải lớn ngày kh");
+			}
+			else if(infoDto == "") {
+				$("#infoDto").closest(".details").find(".error-r").empty();
+			  	$("#infoDto").closest(".details").find(".error-r").append("Thông tin bắt buộc");
+			}
+			else{
+ 	       		add_tour();
+ 	       	}
+        }
+    }); 
+});
 
 //======================================
 //===========tạo tour===================
 //======================================
 function add_tour(){
 	var giaTourDto =$("#giaTourDto").val();
+	giaTourDto = numeral().unformat(giaTourDto);
 	var soChoDto =$("#soChoDto").val();
 	var giaTourKMDto =$("#giaTourKMDto").val();
+	giaTourKMDto = numeral().unformat(giaTourKMDto);
 	var ngayKHDto =$("#ngayKHDto").val();
 	var ngayKTDto =$("#ngayKTDto").val();
 	var idTourDto =$("#idTourDto").val();
-    var tourFromPlaceIdDto =$("#tourFromPlaceIdDto").val();
-    var tourGuiderIdDto =$("#tourGuiderIdDto").val();
+    var tourFromPlaceIdDto = document.getElementsByName("tourFromPlaceIdDto")[0].value;
+    var tourGuiderIdDto = document.getElementsByName("tourGuiderIdDto")[0].value;
     var tenTourDto =$("#tenTourDto").val();
-    var tourArrivePlaceIdDto =$("#tourArrivePlaceIdDto").val();
-    var idDichVuDto =$("#idDichVuDto").val();
+    var tourArrivePlaceIdDto = document.getElementsByName("tourArrivePlaceIdDto")[0].value;
+    var idDichVuDto = document.getElementsByName("idDichVuDto")[0].value;
     var activeDto =$("#activeDto").val();
     var idUserAdd =$("#idUserAdd").val();
     var infoDto =CKEDITOR.instances['infoDto'].getData();
@@ -158,8 +123,9 @@ function add_tour(){
 				location.reload();
 			},
 			500:function(){
+				$("div").remove('.gif, .f_overlay');
 				alert("Lỗi server!");
-				location.reload();
+				// location.reload();
 			}
 		}
 	});
@@ -169,7 +135,7 @@ function add_tour(){
 //===Load địa điểm đến theo Loại tour===
 //======================================
 function ajax_arrive(){
-    var areaIdDto =$("#areaIdDto").val();
+    var areaIdDto = document.getElementsByName("areaIdDto")[0].value;
 	$.ajax({
 		url : "controller/list-tour.php?type=arrive",
 		type: "POST",
@@ -181,10 +147,39 @@ function ajax_arrive(){
 	})
 	.done(function(data) {
 		var str='';
-		str+='<option value="0">Chọn địa điểm đến</option>';
+		str+='<option value="">Chọn địa điểm đến</option>';
 		$.each(data, function(i, val) {
 			str += '<option value="' + val.arrive_place_id + '">' + val.arrive_place_name + ' </option>';
-			$('#tourArrivePlaceIdDto').html(str);
+			$('.tourArrivePlaceIdDto').html(str);
 		});
 	});
 }
+
+// format money to int 
+var format = function(num){
+	var str = num.toString().replace("$", ""), parts = false, output = [], i = 1, formatted = null;
+	if(str.indexOf(".") > 0) {
+		parts = str.split(".");
+		str = parts[0];
+	}
+	str = str.split("").reverse();
+	for(var j = 0, len = str.length; j < len; j++) {
+		if(str[j] != ",") {
+			output.push(str[j]);
+			if(i%3 == 0 && j < (len - 1)) {
+				output.push(",");
+			}
+			i++;
+		}
+	}
+	formatted = output.reverse().join("");
+	return(formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+};
+$(function(){
+    $("#giaTourDto").keyup(function(e){
+        $(this).val(format($(this).val()));
+    });
+    $("#giaTourKMDto").keyup(function(e){
+        $(this).val(format($(this).val()));
+    });
+});

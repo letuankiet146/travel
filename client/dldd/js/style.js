@@ -61,7 +61,7 @@ $(document).ready(function(){
         $(this).parents("li").addClass("active"); 
         var id = $(this).find('input').val();
         $.ajax({
-            url: 'include/tour/function.php?type=listPlace&area_id=' +id,
+            url: 'include/function.php?type=listPlace&area_id=' +id,
             type: 'POST',
             dataType: 'text',
         })

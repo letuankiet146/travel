@@ -280,9 +280,11 @@
 		function update_status(obj){
 			var status =$(obj).closest('tr').find('.status').val();
 			var itemID = $(obj).closest('tr').attr("item-id");
+			var idUserAdd =$("#idUserAdd").val();
 			var mystatus = {
 				idDto: itemID,
-			   	activeDto: status
+			   	activeDto: status,
+			   	"idUserAdd": idUserAdd
 			};
 			console.log(mystatus);
 			$.ajax({

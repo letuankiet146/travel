@@ -13,7 +13,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-        url: 'http://localhost:8080/spr-data/tour/listTour',
+        url: 'http://103.47.194.91:8080/spr-data/tour/listTour',
         type: 'GET',
         dataType: 'json',
     })

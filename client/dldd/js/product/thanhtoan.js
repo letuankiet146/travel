@@ -2,7 +2,7 @@
 $(document).ready(function () {
     var order_id = $("#order_id").val();
     $.ajax({
-        url: 'http://localhost:8080/spr-data/updateOrderTour',
+        url: 'http://103.47.194.91:8080/spr-data/updateOrderTour',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',

@@ -187,35 +187,40 @@
                                             $sale_off = number_format($rows['tour_sale_off'],0,"",",");
                                             $tour_charge = number_format($rows['tour_charge'],0,"",",");
                                             echo'<div class="item" item-id="' .$rows['tour_id']. '">
-                                                    <div class="i_item">
-                                                        <div class="i-images">
-                                                            <a href="index.php?page=chi-tiet-tour&tour_id=' .$rows['tour_id']. '">
-                                                                <img  src="' .$rows['tour_image_data']. '" alt="' .$rows['tour_name']. '" />
-                                                                <div class="see_details">Xem chi tiết</div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="i-description">
-                                                            <div class="i-title">
-                                                                <a href="index.php?page=chi-tiet-tour&tour_id=' .$rows['tour_id']. '" title="' .$rows['tour_name']. '">' .$rows['tour_name']. '</a>
-                                                            </div>
-                                                            <div class="i-content">
-                                                                <span><i class="fa fa-calendar" aria-hidden="true"></i> ' .$fday_start. ' </span>';
-                                                                if($tour_charge == 0){
-                                                                    echo '<span></span>';
-                                                                }
-                                                                else{
-                                                                    echo '<span>' .$tour_charge. ' VNĐ</span>';
-                                                                }
-                                                            echo'   
-                                                            </div>
-                                                            <div class="i-content">
-                                                                <div><i class="fa fa-clock-o" aria-hidden="true"></i> ' .$Days. ' ngày </div>
-                                                                <div>' .$sale_off. ' VNĐ</div>
-                                                            </div>
-                                                            <div class="clear"></div>
-                                                        </div>
+                                            <div class="i_item">
+                                                <div class="i-images">
+                                                    <a href="index.php?page=chi-tiet-tour&tour_id=' .$rows['tour_id']. '">
+                                                        <img  src="' .$rows['tour_image_data']. '" alt="' .$rows['tour_name']. '" />
+                                                        <div class="see_details">Xem chi tiết</div>
+                                                    </a>
+                                                </div>
+                                                <div class="i-description">
+                                                    <div class="i-title">
+                                                        <a href="index.php?page=chi-tiet-tour&tour_id=' .$rows['tour_id']. '" title="' .$rows['tour_name']. '">' .$rows['tour_name']. '</a>
                                                     </div>
-                                                </div>';
+                                                    <div class="i-content">
+                                                        <span><i class="fa fa-calendar" aria-hidden="true"></i> ' .$fday_start. ' </span>';
+                                                        if($sale_off == 0){
+                                                            echo '<span></span>';
+                                                        }
+                                                        else{
+                                                            echo '<span>' .$tour_charge. ' VNĐ</span>';
+                                                        }
+                                                    echo'   
+                                                    </div>
+                                                    <div class="i-content">
+                                                        <div><i class="fa fa-clock-o" aria-hidden="true"></i> ' .$Days. ' ngày </div>';
+                                                        if($sale_off == 0){
+                                                        echo '<div>' .$tour_charge. ' VNĐ</div>';
+                                                        }
+                                                        else{
+                                                            echo '<div>' .$sale_off. ' VNĐ</div>';
+                                                        }
+                                                    echo '</div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        </div>';
                                         }
                                     }
                                     else{

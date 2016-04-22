@@ -12,15 +12,13 @@
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date",
-              minDate: 0
+              buttonText: "Select date"
             });
             $( "#ngayKTDto" ).datepicker({
               showOn: "button",
               buttonImage: "js/datepicker/images/icon-picker.png",
               buttonImageOnly: true,
-              buttonText: "Select date",
-              minDate: 0
+              buttonText: "Select date"
             });
         });
 
@@ -43,6 +41,7 @@
 		EL("imageDto").addEventListener("change", readFile, false);
 		
     </script>
+    <script type="text/javascript" src="js/list-tour/edit-tour.js"></script>
     <?php 
     	include ('../../connectDB.php');
     	include ("../../ckeditor/ckeditor.php");
@@ -56,38 +55,34 @@
 		$fdayEnd = date("d/m/Y", strtotime($dayEnd));
 		$area_id = $row['arrive_place_area_id'];
 		$today = date("d/m/Y");
-		// echo $row['tour_image_data'];
     ?>
 
     <input type="hidden" id="touridDto" name="touridDto" value="<?php echo $id; ?>" />
-			<form action="" method="post">
+    <input id="today" type="hidden" name="today" value="<?php echo $today ?>" />
+			<form action="" method="post" id="formAddEdit">
 				<div class="info-title"><span>Những mục có dấu (*) là bắt buộc phải nhập</span></div>
 				<div class="warpper">
 					<div class="info">
 						<div class="info-l">
 							<div class="row">
-								<label for="">Loại tour<span class="red"> ( * )</span>
-								</label>
-								<select id="areaIdDto" name="areaIdDto" disabled>
-								<option value="<?php echo $row['arrive_place_area_id']; ?>"><?php echo $row['area_name'];  ?></option>
-								</select>
-								<div class="error"></div>	
+								<label for="">Loại tour<span class="red"> ( * )</span></label>
+								<select name="areaIdDto" disabled>
+									<option value="<?php echo $row['arrive_place_area_id']; ?>"><?php echo $row['area_name'];  ?></option>
+								</select>	
 							</div>
 							<div class="row">
 								<label for="">Mã tour<span class="red"> ( * )</span></label>
-								<label><input id="idTourDto" type="text" name="idTourDto" value="<?php echo $row['tour_code']; ?>" disabled /></label>
-								<div class="error"></div>
+								<input id="idTourDto" type="text" name="idTourDto" value="<?php echo $row['tour_code']; ?>" disabled />
 							</div>
 							<div class="row">
 								<label for="">Tên tour <span class="red"> ( * )</span></label>
-								<label><input id="tenTourDto" type="text" name="tenTourDto" value="<?php echo $row['tour_name']; ?>" /></label>
-								<div class="error"></div>
+								<textarea id="tenTourDto" name="tenTourDto" placeholder="Nhập tên tour"><?php echo $row['tour_name']; ?></textarea>
 							</div>
 							<div class="row">
 								<label for="">Nơi khởi hành <span class="red"> ( * )</span></label>
-								<select id="tourFromPlaceIdDto" name="tourFromPlaceIdDto">
+								<select name="tourFromPlaceIdDto">
 									<option value="<?php echo $row['tour_from_place_id']; ?>"><?php echo $row['from_place_name']; ?></option>
-									<option value="0">---------------------</option>
+									<option value="">---------------------</option>
 								<?php 
 									$sql = "SELECT * FROM from_place";
 									$query = mysql_query($sql);
@@ -95,13 +90,12 @@
 									<option value="<?php echo $rows['from_place_id']; ?>"><?php echo $rows['from_place_name'];; ?></option>
 								<?php } ?>
 								</select>
-								<div class="error"></div>
 							</div>
 							<div class="row">
 								<label for="">Địa điểm đến <span class="red"> ( * )</span></label>
-								<select id="tourArrivePlaceIdDto" name="tourArrivePlaceIdDto">
+								<select class="tourArrivePlaceIdDto" name="tourArrivePlaceIdDto">
 									<option value="<?php echo $row['tour_arrive_place_id']; ?>"><?php echo $row['arrive_place_name'];; ?></option>
-									<option value="0">---------------------</option>
+									<option value="">---------------------</option>
 								<?php 
 									$sql = "SELECT * FROM arrive_place WHERE arrive_place_area_id = " . $area_id;
 									$query = mysql_query($sql);
@@ -110,13 +104,12 @@
 									<option value="<?php echo $rows['arrive_place_id']; ?>"><?php echo $rows['arrive_place_name']; ?></option>
 								<?php } ?>
 								</select>
-								<div class="error"></div>
 							</div>
 							<div class="row">
 								<label for="">Hướng dẫn viên <span class="red"> ( * )</span></label>
-								<select id="tourGuiderIdDto" name="tourGuiderIdDto">
+								<select name="tourGuiderIdDto">
 									<option value="<?php echo $row['tour_guider_id']; ?>"><?php echo $row['guider_name']; ?></option>
-									<option value="0">---------------------</option>
+									<option value="">---------------------</option>
 								<?php 
 									$sql = "SELECT * FROM guider";
 									$query = mysql_query($sql);
@@ -125,31 +118,27 @@
 									<option value="<?php echo $rows['guider_id']; ?>"><?php echo $rows['guider_name']; ?></option>
 								<?php } ?>
 								</select>
-								<div class="error"></div>
 							</div>
 						</div>
 						<div class="info-r">
 							<div class="row">
 								<label for="">Số lượng <span class="red"> ( * )</span></label>
-								<label><input id="soChoDto" type="text" name="soChoDto" value="<?php echo $row['tour_seat_number']; ?>" /></label>
-								<div class="error"></div>
+								<input id="soChoDto" type="text" name="soChoDto" value="<?php echo $row['tour_seat_number']; ?>" placeholder="Nhập số lượng người tham gia" />
 							</div>
 							<div class="row">
 								<label for="">Ngày khởi hành <span class="red"> ( * )</span></label>
-								<label><input id="ngayKHDto" type="text" name="ngayKHDto" value="<?php echo $fdayStart ?>" placeholder="dd/mm/yyyy" /></label>
-								<input id="today" type="hidden" name="today" value="<?php echo $today ?>" />
-								<div class="error"></div>
+								<input id="ngayKHDto" type="text" name="ngayKHDto" value="<?php echo $fdayStart ?>" placeholder="dd/mm/yyyy" />
 							</div>
 							<div class="row">
 								<label for="">Ngày kết thúc <span class="red"> ( * )</span></label>
-								<label><input id="ngayKTDto" type="text" name="ngayKTDto" value="<?php echo $fdayEnd ?>" placeholder="dd/mm/yyyy" /></label>
+								<input id="ngayKTDto" type="text" name="ngayKTDto" value="<?php echo $fdayEnd ?>" placeholder="dd/mm/yyyy" />
 								<div class="error"></div>
 							</div>
 							<div class="row">
 								<label for="">Dịch vụ <span class="red"> ( * )</span></label>
-								<select id="idDichVuDto" name="idDichVuDto">
+								<select name="idDichVuDto">
 									<option value="<?php echo $row['tour_service_id']; ?>"><?php echo $row['services_name'];; ?></option>
-									<option value="0">---------------------</option>
+									<option value="">---------------------</option>
 								<?php 
 									$sql = "SELECT * FROM services";
 									$query = mysql_query($sql);
@@ -158,18 +147,23 @@
 									<option value="<?php echo $rows['services_id']; ?>"><?php echo $rows['services_name']; ?></option>
 								<?php } ?>
 								</select>
-								<div class="error"></div>
 							</div>
 							<div class="row">
-								<label for="">Giá khuyến mãi <span class="red"> ( * )</span></label>
-								<label><input id="giaTourKMDto" name="giaTourKMDto" type="text" value="<?php echo $row['tour_sale_off']; ?>" /></label>
-								<div class="error"></div>
+								<label for="">Giá tour <span class="red"> ( * )</span></label>
+								<input id="giaTourDto" type="text" name="giaTourDto" value="<?php echo number_format($row['tour_charge'],0,"",","); ?>" placeholder="Nhập giá tour" />
 							</div>
 							<div class="row">
-								<label for="">Giá tour</label>
-								<label><input id="giaTourDto" type="text" name="giaTourDto" value="<?php echo $row['tour_charge']; ?>" /></label>
-								<div class="error"></div>
+								<label for="">Giá khuyến mãi </label>
+								<?php
+									if($row['tour_sale_off'] == 0){
+										echo '<input id="giaTourKMDto" name="giaTourKMDto" type="text" value="" placeholder="Nhập giá khuyến mãi" />';
+									}
+									else {
+								?>
+								<input id="giaTourKMDto" name="giaTourKMDto" type="text" value="<?php echo number_format($row['tour_sale_off'],0,"",","); ?>" placeholder="Nhập giá khuyến mãi" />
+								<?php } ?>
 							</div>
+							
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -178,7 +172,6 @@
 						<input id="imageDto" type="file" name="imageDto" value="" />
 						<input id="tourImageDataDto" type="hidden" name="tourImageDataDto" value="<?php echo $row['tour_image_data']; ?>" />
 						<div id="img"><img src="<?php echo $row['tour_image_data']; ?>" alt="" /></div>
-						<div class="error"></div>
 					</div>
 					<div class="details">
 						<label>Thông tin chi tiết tour</label>
@@ -194,7 +187,8 @@
 				</div>
 				<div class="btn">
 					<input class="btn-reset" type="reset" name="" value="Nhập lại" />
-					<a class="btn-add" href="#" onclick="click_edit()" >Cập nhật</a>
+					<!-- <a class="btn-add" href="#" onclick="click_edit()" >Cập nhật</a> -->
+					<button class="btn-add" type="submit">Cập nhật</button
 					<div class="row">
 						<label for="">Trạng thái</label>
 						<select id="activeDto">

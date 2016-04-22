@@ -4,7 +4,7 @@
 *========================================*/
 $(document).ready(function() {
     $.ajax({
-      url: 'http://localhost:8080/spr-data/tour/listTour',
+      url: 'http://103.47.194.91:8080/spr-data/tour/listTour',
       type: 'GET',
       dataType: 'json',
     })
@@ -49,7 +49,7 @@ $(document).ready(function() {
                                 '</div>'+
                                 '<div class="i-content">'+
                                     '<span><i class="fa fa-calendar" aria-hidden="true"></i> ' + data[i]['ngayKHDto'] + ' </span>';
-                                    if(data[i]['giaTourDto'] == 0){
+                                    if(data[i]['giaTourKMDto'] == 0){
                                         html += '<span></span>';
                                     }
                                     else{
@@ -57,12 +57,17 @@ $(document).ready(function() {
                                     }
                                 html +='</div>'+
                                 '<div class="i-content">'+
-                                    '<div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + Days + ' ngày </div>'+
-                                    '<div>' + data[i]['giaTourKMDto'].format(nn, xx) + ' VNĐ</div>'+
-                                '</div>'+
+                                    '<div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + Days + ' ngày </div>';
+                                    if(data[i]['giaTourKMDto'] == 0){
+                                        html +='<div>' + data[i]['giaTourDto'].format(nn, xx) + ' VNĐ</div>';
+                                    }
+                                    else{
+                                        html +='<div>' + data[i]['giaTourKMDto'].format(nn, xx) + ' VNĐ</div>';
+                                    }
+                                 html +='</div>'+
                                 '<div class="clear"></div>'+
                             '</div>'+
-                        '</div>';;
+                        '</div>';
                 if(dem<3){
                     str1 += html;
                     $('#loadData1').html(str1);

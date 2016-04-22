@@ -203,7 +203,7 @@
 				durartion: 300,
 				done: function(){
 					$.ajax({
-						url: 'http://103.47.194.91:8080/spr-data/staff/delete/' + itemID + '/' + idUserAdd,
+						url: 'http://localhost:8080/spr-data/staff/delete/' + itemID + '/' + idUserAdd,
 						type: 'GET',
 						dataType: 'json',
 						statusCode: {

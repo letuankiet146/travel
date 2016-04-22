@@ -65,7 +65,7 @@ function load_check(){
     }
 
     $.ajax({
-        url: 'http://localhost:8080/spr-data/tour/listTour',
+        url: 'http://103.47.194.91:8080/spr-data/tour/listTour',
         type: 'GET',
         dataType: 'json',
     })
@@ -186,7 +186,7 @@ function load_check(){
                         };
                         console.log(mydata);
                           $.ajax({
-                                url: 'http://localhost:8080/spr-data/orderTour',
+                                url: 'http://103.47.194.91:8080/spr-data/orderTour',
                                 type: 'POST',
                                 dataType: 'json',
                                 contentType: 'application/json',

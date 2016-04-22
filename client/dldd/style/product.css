@@ -613,6 +613,7 @@
     font-family: 'OpenSansBold';
 }
 .vnt-tab ul li .vnt-content{
+    background-color:#fff;
     position: absolute;
     top: 100%;
     left: 0px;
