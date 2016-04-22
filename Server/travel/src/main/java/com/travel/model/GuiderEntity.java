@@ -29,7 +29,7 @@ public class GuiderEntity {
 	private Date guiderBirth;
 	
 	@Column(name="guider_sex")
-	private Integer guiderSex;
+	private String guiderSex;
 	
 	@Column(name="guider_phone")
 	private String guiderPhone;

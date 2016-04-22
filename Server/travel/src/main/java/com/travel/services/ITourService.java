@@ -22,8 +22,6 @@ public interface ITourService {
 	
 	public Integer add (TourDto tourDto);
 	
-	public List<TourDto> searchTour(TourDto tourDtoCondition);
-	
 	public String update (TourDto updateDto);
 	
 	public String delete(Integer id, Integer userId);

@@ -84,19 +84,8 @@ public class TourServiceImp implements ITourService {
 		return tourEntity.getId();
 	}
 
-	public List<TourDto> searchTour(TourDto tourDtoCondition) {
-		List<String> conditionList = new ArrayList<String>();
-		conditionList.add(tourDtoCondition.getTenTourDto());
-		conditionList.add(tourDtoCondition.getGiaTourDto().toString());
-		conditionList.add(tourDtoCondition.getArrivePlaceDto().getArrivePlaceName());
-		conditionList.add(MyFormatDate.stringToDate(tourDtoCondition.getNgayKHDto()).toString());
-		conditionList.add(tourDtoCondition.getArrivePlaceDto().getArrivePlaceAreaId().toString());
-		
-		return null;
-	}
-
 	public String update(TourDto updateDto) {
-		TourEntity tourEntity = tourRepo.findOne(updateDto.getIdDto());
+		TourEntity tourEntity = tourRepo.findById(updateDto.getIdDto());
 		TourDto tourDto = mapper.map(tourEntity, TourDto.class);
 		tourDto.setNgayKHDto(MyFormatDate.dateToString(tourEntity.getNgayKH()));
 		tourDto.setNgayKTDto(MyFormatDate.dateToString(tourEntity.getNgayKT()));
