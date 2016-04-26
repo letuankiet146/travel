@@ -380,13 +380,13 @@ http://localhost:8080/handbook/update (Lỗi server 500)
 http://localhost:8080/handbook/delete/1/2
 
 ################## TRANG THAY DOI MAT KHAU ############################
-http://localhost:8080/customer/update/confirmVerify
+http://localhost:8080/spr-data/customer/update/confirmVerify
 {
     "customerId":80,  
     "verifyCode":"fdookvex" 
 }
 __________________
-http://localhost:8080/customer/update/createVerify
+http://localhost:8080/spr-data/customer/update/createVerify
 {
     "customerId":80, 
     "oldPassword":"admin",
@@ -394,7 +394,7 @@ http://localhost:8080/customer/update/createVerify
 }
 
 _______________________
-http://localhost:8080/customer/update/deleteVerify/80
+http://localhost:8080/spr-data/customer/update/deleteVerify/80
 80 là id của customer
 
 
