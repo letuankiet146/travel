@@ -379,7 +379,22 @@ http://localhost:8080/handbook/update (Lỗi server 500)
 }
 http://localhost:8080/handbook/delete/1/2
 
-////////////yeu cau KIET lam /////////////
+################## TRANG THAY DOI MAT KHAU ############################
+http://localhost:8080/customer/update/confirmVerify
+{
+    "customerId":80,  
+    "verifyCode":"fdookvex" 
+}
+__________________
+http://localhost:8080/customer/update/createVerify
+{
+    "customerId":80, 
+    "oldPassword":"admin",
+    "newPassword":"letuankiet"
+}
 
+_______________________
+http://localhost:8080/customer/update/deleteVerify/80
+80 là id của customer
 
 
