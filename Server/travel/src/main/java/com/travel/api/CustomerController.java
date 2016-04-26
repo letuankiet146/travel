@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.dto.CustomerDto;
+import com.travel.dto.PasswordDto;
 import com.travel.services.ICustomerServices;
 
 
@@ -42,6 +43,21 @@ public class CustomerController {
 	@RequestMapping(value ="/update")
 	public String update (@RequestBody CustomerDto customerDto){
 		return customerService.update(customerDto);
+	}
+	
+	@RequestMapping(value= "/update/createVerify")
+	public int updatePassword (@RequestBody PasswordDto passwordDto){
+		return customerService.sendVerifyCode(passwordDto);
+	}
+	
+	@RequestMapping (value="/update/confirmVerify")
+	public int confirmVerifyCode (@RequestBody PasswordDto passwordDto){
+		return customerService.confirmVerifyCode(passwordDto);
+	}
+	
+	@RequestMapping (value="/update/deleteVerify/{idCustomer}")
+	public int confirmVerifyCode (@PathVariable int idCustomer){
+		return customerService.deleteVerifyCode(idCustomer);
 	}
 
 }

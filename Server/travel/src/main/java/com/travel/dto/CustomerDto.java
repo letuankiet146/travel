@@ -81,6 +81,12 @@ public class CustomerDto {
 	@Mapping("customerNote")
 	private String customerNoteDto;
 	
+	@Mapping("customerVerifyCode")
+	private String customerVerifyCodeDto;
+	
+	@Mapping("customerNewPassword")
+	private String customerNewPasswordDto;
+	
 	private Integer idUserAdd;
 	
 	public void setUpdateData (CustomerDto customerDto){
@@ -155,6 +161,11 @@ public class CustomerDto {
 		if (customerDto.getIdUserAdd() !=null){
 			this.idUserAdd = customerDto.getIdUserAdd();
 		}
-		
+		if (customerDto.getCustomerVerifyCodeDto() !=null){
+			this.customerVerifyCodeDto = customerDto.getCustomerVerifyCodeDto();
+		}
+		if (customerDto.getCustomerNewPasswordDto() !=null){
+			this.customerNewPasswordDto = customerDto.getCustomerNewPasswordDto();
+		}
 	}
 }

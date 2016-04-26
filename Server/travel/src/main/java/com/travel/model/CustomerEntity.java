@@ -88,6 +88,12 @@ public class CustomerEntity {
 	private String customerNote;
 	
 	
+	@Column(name="customer_new_password")
+	private String customerNewPassword;
+	
+	@Column(name= "customer_verify_code")
+	private String customerVerifyCode;
+	
 //	public void setData (CustomerDto customerDto){
 //		this.customerId = customerDto.getCustomerIdDto();
 //		this.customerName = customerDto.getCustomerNameDto();
