@@ -161,4 +161,43 @@ $(document).ready(function() {
     });
 });
 
-// load
+// load data handbook
+$(document).ready(function() {
+    $.ajax({
+      url: 'controller/handbook.php?type=list',
+      type: 'POST',
+      dataType: 'json',
+    })
+    .done(function(data) {
+        var str1 ='';
+        var str2 ='';
+        var dem = 0;
+        $.each(data, function(i, val) {
+            if(dem < 4){
+                var html = '';
+                html = '<div class="item">'+
+                            '<div class="i-images">'+
+                                '<a href="index.php?page=chi-tiet-cam-nang&handbook_id=' + val.id + '">'+
+                                    '<img src="' + val.image + '" />'+
+                                '</a>'+
+                            '</div>'+
+                            '<div class="i-description">'+
+                                '<div class="i-title"><a href="index.php?page=chi-tiet-cam-nang&handbook_id=' + val.id + '">' + val.name + '</a></div>'+
+                                '<div class="i-date">' + val.date_create + '</div>'+
+                                '<div class="i-content">' + val.info + '</div>'+
+                            '</div>'+
+                            '<div class="clear"></div>'+
+                        '</div>';
+                if(i<2){
+                    str1 += html;
+                    $("#rows-news1").html(str1);
+                }
+                else {
+                    str2 += html;
+                    $("#rows-news2").html(str2);
+                }
+                dem++;
+            }
+        });
+    });
+});

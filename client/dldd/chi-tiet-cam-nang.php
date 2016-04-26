@@ -1,122 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Trang chủ</title>
-    <!-- DÙNG CHUNG CHO TÒAN SITE -->    
-    <link href="style/font/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />  
-    <link href="js/mmenu/css/jquery.mmenu.all.css" rel="stylesheet" type="text/css" />     
-    <link href="style/screen.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-migrate.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/mmenu/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="js/core.js"></script>
-    <script type="text/javascript" src="js/style.js"></script>
-    <!--===MODULE MAIN==-->
-    <!--===DatePicker==-->
-    <link rel="stylesheet" href="js/datepicker/datepicker.css"/>
-    <script src="js/datepicker/datepicker.js"></script>
-    <!--===DatePicker==-->
-    <link href="style/news.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/news/news.js"></script>
-    <!--===MODULE MAIN==-->
-</head>
-
-<body>
-
-<div id="vnt-wrapper">
-	<div id="vnt-container">
-        <!--=== BEGIN: HEADER ===-->
-    	<div id="vnt-header">
-            <div class="header-top">
-                <div class="wrapper">
-                    <div class="logo">
-                        <h1>
-                            <a href="index.php">
-                                <img src="images/logo.png" alt="Du lịch giải trí Đông Dương" />
-                            </a>
-                        </h1>
-                    </div>
-                    <div class="banner">
-                        <div class="sologan">
-                            <img src="images/slogan.png" alt="Du lịch giải trí Đông Dương" />
-                        </div>
-                    </div>    
-                    <div class="header-tool">
-                        <div class="social">
-                            <ul>
-                                <li><a href="#"><img src="images/weblink/facebook.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/google.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/twitter.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/youtube.png" /></a></li>
-                                <li><a href="#"><img src="images/weblink/instargam.png" /></a></li>
-                            </ul>
-                        </div>
-                        <div class="hotline">
-                            <span>(08) 6291 2468</span>
-                        </div>
-                    </div>   
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <!--=== BEGIN: MENUTOP ===-->
-            <div id="vnt-menutop">
-                <div class="wrapper">
-                    <div class="menutop">
-                      	<ul>
-                            <li>
-                                <a class="hover_effect_menu" href="index.php"><span class="hover_text">Trang chủ</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="cong_ty_du_lich_dong_duong_gioi_thieu_1170_02.html"><span class="hover_text">Giới thiệu</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="tour-noi-dia.php"><span class="hover_text">Tour nội địa</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="tour-quoc-te.php"><span class="hover_text">Tour quốc tế</span></a>
-                            </li><li class="current">
-                                <a class="hover_effect_menu" href="cong_ty_du_lich_dong_duong_cam_nang_du_lich_1170_02.html"><span class="hover_text">Cẩm nang du lịch</span></a>
-                            </li><li>
-                                <a class="hover_effect_menu" href="cong_ty_du_lich_dong_duong_lien_he_1170_02.html"><span class="hover_text">Liên hệ</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu-tool">
-                        <!--===FORMSEARCH==-->
-                        <div class="formSearch">
-                            <form id="formSearch" name="formSearch" method="POST" action="#" class="box_search">
-                                <div class="input-group">
-                                    <input name="keyword" id="keyword" type="text" class="text_search form-control" placeholder="Tìm kiếm" value="" />
-                                    <span class="input-group-btn">
-                                        <button id="btn-search" name="btn-search" type="submit" class="btn" value="" ><span >Search</span></button>
-                                    </span>
-                                <input name="do_search" value="1" type="hidden"/>
-                                </div>
-                            </form>
-                        </div>
-                        <!--===FORMSEARCH==-->
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <!--=== END: MENUTOP ===-->
-            <!--=== BEGIN: MMENU ===-->
-            <div class="vnt-mmenu">
-                <div class="wrapper">
-                    <div class="mmenu"><a href="#menu">Cẩm nang du lịch</a></div>
-                </div>
-            </div>
-            <!--=== END: MMENU ===-->
-        </div>
-        <!--=== END: HEADER ===-->
-        <!--=== BEGIN: CONTENT ===-->
-      	<div id="vnt-content">
-            <!--=== BEGIN: BANNER ===-->
-            <div class="vnt-banner">
-                <img src="images/news/banner.jpg" alt="#" />
-            </div>
-            <!--=== END: BANNER ===-->
+<?php
+    include('model/handbook.php');
+?>
             <div class="wrapper">
                 <!--=== BEGIN: BREADCRUMB ===-->
                 <div id="vnt-navation" class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -131,7 +15,12 @@
                 <div class="box_mid">
                     <div class="mid-title">
                         <div class="titleL n-transform">
-                            <h1>Tháng 10 rủ nhau du lịch Hà Giang ngắm hoa tam giác mạch</h1>
+                        <?php
+                            foreach (listHandBock($_GET['handbook_id']) as $rows) {
+                                echo '<h1>'. $rows['name'] .'</h1>';
+                            }
+                        ?>
+                            
                         </div>
                         <div class="titleR"></div>
                         <div class="clear"></div>
@@ -273,39 +162,14 @@
                         </div>
                         <div id="vnt-main" >
                             <div class="the-content">
-                                <div class="date">Thứ sáu, 22/03/2013, 18:31 GMT+7</div>
+                                <div class="date">Thứ sáu, 22/03/2016, 18:31 GMT+7</div>
                                 <div>
-                                    <p>Những cánh đồng hoa tam giác mạch vùng cao nguyên đá Hà Giang đang sắp bung nở rực rỡ, chắc chắn nhiều người sẽ sốt sắng lên kế hoạch để làm một chuyến du lịch Hà Giang “ngay và luôn”.</p>
-                                    <p><strong>Tháng 10 rủ nhau du lịch Hà Giang ngắm hoa tam giác mạch</strong></p>
-                                    <p>Thời gian lý tưởng “săn” hoa tam giác mạch Mùa tam giác mạch ở Hà Giang kéo dài từ đầu tháng 10 đến hết tháng 12. Bạn chỉ cần dành ra ba ngày là vừa đủ để đi hết những địa điểm du lịch hấp dẫn nhất ở Hà Giang.</p>
-                                    <br />
-                                    <div>
-                                        <img src="images/news/new16.jpg" alt="#" />
-                                    </div>
-                                    <br />
-                                    <p><strong>Phương tiện di chuyển đến Hà Giang</strong></p>
-                                    <p>Di chuyển bằng ô tô: Từ Hà Nội, bạn nên đi xe khách đêm Hà Nội – Hà Giang xuất phát từ bến xe Mỹ Đình lúc 9h tối và tới 5h sáng sẽ đến Hà Giang (xe giường nằm cao cấp, liên hệ đặt chỗ qua điện thoại. Một số nhà xe uy tín là: Bằng Phấn, Hưng Thành, Hải Vân…). Giá từ 260.000 – 300.000 đồng/người. Sau khi đến Hà Giang, bắt xe khách nội tỉnh để di chuyển giữa các địa danh hoặc thuê xe máy để di chuyển.</p>
-                                    <br />
-                                    <div><img src="images/news/new17.jpg" alt="#" /></div>
-                                    <br />
-                                    <div><img src="images/news/new18.jpg" alt="#" /></div>
-                                    <br />
-                                    <div><img src="images/news/new19.jpg" alt="#" /></div>
-                                    <br />
-                                    <div><img src="images/news/new20.jpg" alt="#" /></div>
-                                    <br />
-                                    <div><img src="images/news/new21.jpg" alt="#" /></div>
-                                    <br />
-                                    <div><img src="images/news/new22.jpg" alt="#" /></div>
-                                    <br />
-                                    <div><img src="images/news/new23.jpg" alt="#" /></div>
-                                    <br />
-                                    <div><img src="images/news/new24.jpg" alt="#" /></div>
-                                    <br />
-                                    <p>Sau cột cờ Lũng Cú, bạn có thể lựa chọn quay check cột mốc 428 và sau đó đi Đồng Văn hoặc về thẳng phố cổ Đồng Văn (chú ý vấn đề thời gian vì đi tới mốc 428 hoàn toàn là đi bộ mất tới gần 3 giờ). Ăn tối và nghỉ lại tại Đồng Văn, kết thúc ngày thứ 2.</p>
-                                    <p>Ngày 3: Ăn sáng tại Đồng Văn và lên đường chinh phục Mã Pí Lèng, đi Mèo Vạc, Bắc Mê rồi về lại Hà Giang ăn trưa. Về Hà Nội lúc tối muộn. Đoạn đường này dài hơn 400 km nên bạn cần chuẩn bị sức khỏe, ăn uống, nghỉ ngơi hợp lý đảm bảo cho một chặng hành trình khỏe mạnh và an toàn.</p>
-                                    <p style="text-align: right;">Sưu tầm</p>
-                                </div>
+                                    <?php
+                                        foreach (listHandBock($_GET['handbook_id']) as $rows) {
+                                            echo $rows['info'];
+                                        }
+                                    ?>
+                                </div>  
                             </div>
                             <!--===BEGIN: COMMENT==-->
                             <div class="comment">
@@ -373,12 +237,6 @@
                             <div class="comment-facebook">
                                 <img src="images/news/img-facebook.jpg" />
                             </div>
-                            <!--===BEGIN: TAG==-->
-                            <div class="tag1">
-                                <p><span class="title">TAG: </span><a href="#" title="chất lượng cao">chất lượng cao</a>
-                                <a href="#" title="hàng việt nam"> hàng Việt Nam</a></p>
-                            </div>
-                            <!--===END: TAG==-->
                             <!--===BEGIN: SOCIAL==-->
                             <div class="like_share">
                                 <div class="like_facebook">
@@ -397,18 +255,16 @@
                             <!--===END: SOCIAL==-->
                             <!--===BEGIN: TIN LIÊN QUAN==-->
                             <div class="news_related">
-                                <h4>Các tin cùng ngành khác</h4>
+                                <h4>Các tin liên quan</h4>
                                 <ul>
-                                    <li><a href="#">HKPhone ra mắt điện thoại RACER Air <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Tablet đẳng cấp, pin tốt nhất hiện tại <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Motorola tiết lộ đồng hồ thông minh Android <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Lenovo trình làng bộ ba tablet <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Smartphone chip 8 nhân - HKPhone Revo LEAD8 <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Android lật đổ iPad, dẫn đầu thị trường <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Những smartphone ấn tượng tại WMC 2014 <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Top 10 smartphone hàng đầu hiện nay <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">5 công nghệ khuấy động làng smartphone tương lai <span>(04/04/2014)</span></a></li>
-                                    <li><a href="#">Ý tưởng smart phone Nexus P3 <span>(04/04/2014)</span></a></li>
+                                    <?php
+                                        $id = '';
+                                        $limit = 10;
+                                        foreach (listHandBock($id,$limit) as $rows) {
+                                            $date = date("d/m/Y", strtotime($rows['date_create']));
+                                            echo '<li><a href="#">'. $rows['name'] . '<span>('. $date . ')</span></a></li>';
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                             <!--===END: TIN LIÊN QUAN==-->
@@ -437,77 +293,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!--=== END: CONTENT ===-->
-        <!--=== BEGIN: FOOTER ===-->
-        <div id="vnt-footer">
-        	<div class="top-footer">
-                <div class="wrapper">
-                    <div class="vnt-wrapper">
-                        <div class="fl sendMail">
-                            <div class="title">Đăng ký nhận tin</div>
-                            <form id="sendMail" method="POST" action="#">
-                                <div class="input-group">
-                                    <input type="text" id="i_sendmail" name="i_sendmail" class="form-control" placeholder="Email của bạn" />
-                                    <span class="input-group-btn">
-                                        <button type="submit" name="do_submit" id="do_submit" class="btn" value=""><span>Đăng ký</span></button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="fr">
-                            <div class="social">
-                                <ul>
-                                    <li><a href="#"><img src="images/weblink/icon_share.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/icon-like.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/icon-gplug.png" /></a></li>
-                                </ul>
-                            </div>
-                            <div class="social rotate">
-                                <ul>
-                                    <li><a href="#"><img src="images/weblink/f_facebook.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_google.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_twitter.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_youtube.png" /></a></li>
-                                    <li><a href="#"><img src="images/weblink/f_instargam.png" /></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <div class="wrapper">
-                    <div class="fl">
-                        <p class="DongDuong">Copyright © 2015 <span>CÔNG TY TNHH DỊCH VỤ DU LỊCH GIẢI TRÍ ĐÔNG DƯƠNG</span></p>
-                        <p>
-                           <a href="http://www.thietkeweb.com" target="_blank" title="thiet ke web" rel="dofollow" class="thietkeweb">Thiết kế web :</a> 
-                           <a href="http://www.trust.vn" target="_blank" rel="dofollow"><span>TRUST.vn</span></a>
-                        </p>
-                    </div>
-                    <div class="fr algin-right">
-                        <p>Đang online :   80</p>
-                        <p>Lượt truy cập : 563.214</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-        <!--=== END: FOOTER ===-->
-    </div> 
-</div>
-<!--===MENU MOBILE==-->
-   <nav id="menu">
-        <ul>
-            <li><a href="index.php">Trang chủ</a></li>
-            <li><a href="cong_ty_du_lich_dong_duong_gioi_thieu_1170_02.html">Giới thiệu</a></li>
-            <li><a href="tour-noi-dia.php">Tour nội địa</a></li>
-            <li><a href="tour-quoc-te.php">Tour quốc tế</a></li>
-            <li><a href="cong_ty_du_lich_dong_duong_cam_nang_du_lich_1170_02.html">Cẩm nang du lịch</a></li>
-            <li><a href="cong_ty_du_lich_dong_duong_lien_he_1170_02.html">Liên hệ</a></li>
-        </ul>
-   </nav> 
-<!--===MENU MOBILE==-->
-</body>
-</html>
+    

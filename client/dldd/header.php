@@ -92,6 +92,10 @@
     <link href="style/customer.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/product/product.js"></script>
 <?php } ?>
+<?php if($paged == "chi-tiet-cam-nang"){ ?>
+    <link href="style/news.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/news/news.js"></script>
+<?php } ?>
     <!--===MODULE MAIN==-->
 </head>
 <body>

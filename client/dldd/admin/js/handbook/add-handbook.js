@@ -77,12 +77,9 @@ function add_handbook(){
 				location.reload();
 			},
 			500:function(){
+				$("div").remove(".gif, .f_overlay");
 				alert("Lỗi server!!!");
-				location.reload();
-			},
-			404:function(){
-				alert("Lỗi nhập liệu!!!");
-				location.reload();
+				// location.reload();
 			}
 		}
 	});

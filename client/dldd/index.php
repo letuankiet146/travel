@@ -1,6 +1,6 @@
 <?php 
     include('admin/connectDB.php');
-    include('include/function.php');
+    include('model/function.php');
 
     include('header.php');
     $page="";
@@ -31,6 +31,7 @@
             case 'lich-su-dat-tour/xac-thuc':include("khach-hang.php");break;
             case 'lich-su-dat-tour/thanh-cong':include("khach-hang.php");break;
             case 'dang-nhap':include("dang-nhap.php");break;
+            case 'chi-tiet-cam-nang':include("chi-tiet-cam-nang.php");break;
             default:include("404.php");break;
         }
     }

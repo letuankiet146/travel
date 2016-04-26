@@ -39,64 +39,9 @@
         <div class="n-title">Cẩm nang du lịch</div>
         <div class="n-content">Luôn cập nhật những bí quyết hữu ích giúp bạn có chuyến du lịch thú vị , dễ dàng , tiết kiệm </div>
         <div class="grid-news">
-            <div class="rows-news lazyloading">
-                <div class="item">
-                    <div class="i-images">
-                        <a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">
-                            <img src="images/main/news1.jpg" />
-                        </a>
-                    </div>
-                    <div class="i-description">
-                        <div class="i-title"><a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">Bí kíp du lịch Maldives chỉ 18 triệu đồng của cặp đôi Việt</a></div>
-                        <div class="i-date">11:00 - 09/09/2015 </div>
-                        <div class="i-content">Nhằm phục vụ nhu cầu đi lại tăng cao trong dịp cao điểm Tết Nguyên ...</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item">
-                    <div class="i-images">
-                        <a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">
-                            <img src="images/main/news2.jpg" />
-                        </a>
-                    </div>
-                    <div class="i-description">
-                        <div class="i-title"><a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">Bí kíp du lịch Maldives chỉ 18 triệu đồng của cặp đôi Việt</a></div>
-                        <div class="i-date">11:00 - 09/09/2015 </div>
-                        <div class="i-content">Nhằm phục vụ nhu cầu đi lại tăng cao trong dịp cao điểm Tết Nguyên ...</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="rows-news lazyloading">
-                <div class="item">
-                    <div class="i-images">
-                        <a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">
-                            <img src="images/main/news3.jpg" />
-                        </a>
-                    </div>
-                    <div class="i-description">
-                        <div class="i-title"><a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">Bí kíp du lịch Maldives chỉ 18 triệu đồng của cặp đôi Việt</a></div>
-                        <div class="i-date">11:00 - 09/09/2015 </div>
-                        <div class="i-content">Nhằm phục vụ nhu cầu đi lại tăng cao trong dịp cao điểm Tết Nguyên ...</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item">
-                    <div class="i-images">
-                        <a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">
-                            <img src="images/main/news4.jpg" />
-                        </a>
-                    </div>
-                    <div class="i-description">
-                        <div class="i-title"><a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_chi_tiet_02.html">Bí kíp du lịch Maldives chỉ 18 triệu đồng của cặp đôi Việt</a></div>
-                        <div class="i-date">11:00 - 09/09/2015 </div>
-                        <div class="i-content">Nhằm phục vụ nhu cầu đi lại tăng cao trong dịp cao điểm Tết Nguyên ...</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="clear"></div>
-            </div>
+            <div class="rows-news lazyloading" id="rows-news1"></div>
+            <div class="rows-news lazyloading" id="rows-news2"></div>
+            <div class="clear"></div>
         </div>
         <div class="viewall">
             <a href="cong_ty_du_lich_dong_duong_mobile_cam_nang_du_lich_02.html">Xem thêm</a>

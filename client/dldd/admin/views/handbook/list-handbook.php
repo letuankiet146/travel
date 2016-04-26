@@ -52,7 +52,7 @@
 							<th>Mã cẩm nang</th>
 							<th>Tên cẩm nang</th>
 							<th>Ngày tạo</th>
-							<th>Khu vực</th>
+							<!-- <th>Khu vực</th> -->
 							<th>Trạng thái</th>
 							<th colspan="3">Chức năng</th>
 						</tr>

@@ -1,5 +1,5 @@
 <?php 
-include 'include/customer.php';
+include 'model/customer.php';
 session_start();
 if(isset($_SESSION['name']))
 {

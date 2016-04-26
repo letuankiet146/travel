@@ -21,7 +21,7 @@
                     	<div class="LoginBox">
 						    <div class="well well-sm">
 						        <div class="panel-body">
-						            <form action="include/login.php" method="post" name="" id="" onsubmit="">
+						            <form action="model/login.php" method="post" name="" id="" onsubmit="">
 						            <div class="form" role="form">
 						                <div class="form-group">
 						                    <label class="" for="email">Email</label>
@@ -35,7 +35,7 @@
 						                    <input class="btn btn-block btn-warning" name="login" value="Đăng nhập" type="submit">
 						                </div>
 						                <div class="">
-						                    <a href="/nganluong/userForgetPassword/index.html" class="linktxt">Quên mật khẩu đăng nhập</a>
+						                    <a href="" class="linktxt">Quên mật khẩu đăng nhập</a>
 						                </div>
 						            </div>
 						            </form>

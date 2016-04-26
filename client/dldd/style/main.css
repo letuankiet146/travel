@@ -503,6 +503,12 @@
 .vnt-news .grid-news .rows-news .item .i-description .i-content{
     font-size: 16px;
     line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    max-height: 60px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 .vnt-news .viewall{
     font-size: 16px;

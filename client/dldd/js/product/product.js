@@ -170,7 +170,7 @@ function load_paging(num){
     $(".viewdetail").html("Loading...");
     var lastID = $(".viewdetail").closest('#vnt-main').find('.grid-tour').children(':last').attr("item-id");
     $.ajax({
-        url: 'include/paging.php?type=list',
+        url: 'model/paging.php?type=list',
         type: 'POST',
         dataType: 'text',
         data: {

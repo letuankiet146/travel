@@ -153,8 +153,8 @@
 						var str = 	'<tr item-id="' + val.id + '">'+
 										'<td>' + val.code + '</td>'+
 										'<td>' + val.name + '</td>'+
-										'<td class="text-center" id="from">' + fdayStart + '</td>'+
-										'<td class="text-center" id="to">' + val.area +'</td>'+
+										'<td class="text-center">' + fdayStart + '</td>'+
+										// '<td class="text-center">' + val.area +'</td>'+
 										'<td class="text-center">'+
 											'<select class="status">'+
 												'<option value="' + val.status +'">' + val.status_name +'</option>'+
