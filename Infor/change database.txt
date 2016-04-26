@@ -44,3 +44,8 @@ alter TABLE sql61036294.vehicle ADD fulltext(vehicle_name);
 -----------------------------19/04/2016
 ALTER TABLE `sql61036294`.`form_order` 
 ADD COLUMN `form_order_note` TEXT NULL AFTER `form_order_money`;
+
+
+_______________________________ngay 26/04/2016________________________________
+ALTER TABLE `sql61036294`.`customer` 
+ADD COLUMN `customer_verify_code` VARCHAR(45) NULL AFTER `customer_note`;
