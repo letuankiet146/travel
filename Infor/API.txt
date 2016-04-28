@@ -50,6 +50,7 @@ BODY:
     "formOrderQuantityChildDto": 1,
     "formOrderIsPayDto": 4,
     "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
+    "formOrderNoteDto": "ghi chu"
   }
 
 
