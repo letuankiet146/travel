@@ -99,9 +99,27 @@ BODY:
     "formOrderIsPayDto": 4,
     "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
 }
-##################################################################################################################
 
 
+
+
+########################KIEM TRA TOUR TRUOC KHI DAT TOUR#########################################################################
+NẾU 
+  + là thành viên: "customerIdDto": 106,
+                   "customerEmailDto": null
+
+  + là KHÔNG là thành viên: "customerIdDto": null,
+                            "customerEmailDto": email@gmail.com
+
+BODY
+http://iuh-travel.tk:8080/spr-data/checkTour
+{
+    "formOrderTourIdDto": 892,
+    "formOrderCustomerDto": {
+      "customerIdDto": 106,
+      "customerEmailDto": null
+    }
+}
 
 
 
