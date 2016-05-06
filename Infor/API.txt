@@ -68,18 +68,16 @@ LINK [POST]: http://project-iuhhappytravel.rhcloud.com/spr-data/orderTour (XONG)
 chú ý:  formOrderIdDto, customerIdDto. Nếu thiếu nó thì là API thêm đơn đặt hàng
 BODY: 
   {
-    "formOrderIdDto": 1,
-    "formOrderTourCodeDto": "DDH2",
-    "formOrderCustomerIdDto": 80,
-    "formOrderTourIdDto": 891,
+    "formOrderTourCodeDto": "DDH5",
+    "formOrderTourIdDto": 892,
     "formOrderCustomerDto": {
-      "customerIdDto": 80,
-      "customerCode": "Bình Dương 2",
+      "customerIdDto": null,
+      "customerCode": "Bình Dương 3",
       "customerNameDto": "Lê Tuấn Kiêt",
       "customerBirthDto": "26/02/2016",
       "customerSexDto": "Nam",
       "customerPhoneDto": "0975293398",
-      "customerEmailDto": "letuankiet146@gmail.com",
+      "customerEmailDto": "letuankiet16@gmail.com",
       "customerAddressDto": "Bình Dương",
       "customerVietNamIdDto": "28881048",
       "customerCompanyNameDto": null,
@@ -100,7 +98,7 @@ BODY:
     "formOrderQuantityChildDto": 1,
     "formOrderIsPayDto": 4,
     "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
-  }
+}
 ##################################################################################################################
 
 
