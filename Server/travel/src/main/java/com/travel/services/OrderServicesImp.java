@@ -49,18 +49,11 @@ public class OrderServicesImp implements IOrderServices {
 
 	@Transactional
 	public String addOrderTour(FormOrderDto formOrderDto) {
-		/*
-		 * check trung tour
-		 */
-		int checkFlag = utilMethod.checkOrderTour(formOrderDto);
-		if (checkFlag <0){
-			return ""+checkFlag;
-		}
 		FormOrderEntity formOrderEntity = new FormOrderEntity();
 		TourEntity tourEntity = tourRepo.findOne(formOrderDto
 				.getFormOrderTourIdDto());
 		if (tourEntity==null || tourEntity.getTourDeleteDate()!=null){
-			return "1";
+			return "-4";
 		}
 		// tinh tien
 		int money = CalcMoney.calculateMoney(
@@ -108,8 +101,7 @@ public class OrderServicesImp implements IOrderServices {
 			formOrderEntity.setFormOrderCustomerId(formOrderDto.getFormOrderCustomerDto().getCustomerIdDto());
 		}
 		formOrderEntity.setFormOrderDate(new Date());
-		FormOrderEntity formformOrderEntityNew = formOrderRepo
-				.saveAndFlush(formOrderEntity);
+		formOrderRepo.saveAndFlush(formOrderEntity);
 		/*
 		 * Save history
 		 */
@@ -224,5 +216,17 @@ public class OrderServicesImp implements IOrderServices {
 			return "Xoa thanh cong";
 		}
 		return "Khong tim thay tour ";
+	}
+
+	@Override
+	public String checkOrderTour(FormOrderDto formOrderDto) {
+		/*
+		 * check trung tour
+		 */
+		int checkFlag = utilMethod.checkOrderTour(formOrderDto);
+		if (checkFlag <0){
+			return ""+checkFlag;
+		}
+		return "1";
 	}
 }

@@ -11,4 +11,5 @@ public interface IOrderServices {
 	public String deleteMulti(List<Integer> idList, Integer idUser);
 	public String updateOrderTour(FormOrderDto formOrderDto);
 	public String delete(Integer id, Integer userId);
+	public String checkOrderTour (FormOrderDto formOrderDto);
 }
