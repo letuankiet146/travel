@@ -5,6 +5,8 @@ package com.travel.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import lombok.Data;
 
 import org.dozer.Mapping;
@@ -54,6 +56,9 @@ public class FormOrderDto {
 	@Mapping("formOrderMoney")
 	private Integer formOrderMoneyDto;
 	
+	@Mapping("formOrderNote")
+	private String formOrderNoteDto;
+	
 	private Integer idUserAdd;
 	
 	public void setData (FormOrderDto formOrderDto){
@@ -90,6 +95,10 @@ public class FormOrderDto {
 		}
 		if (formOrderDto.getFormOrderDateDto()!=null){
 			this.formOrderDateDto = formOrderDto.getFormOrderDateDto();
+		}
+		
+		if (formOrderDto.getFormOrderNoteDto() !=null ){
+			this.formOrderNoteDto = formOrderDto.getFormOrderNoteDto();
 		}
 	}
 

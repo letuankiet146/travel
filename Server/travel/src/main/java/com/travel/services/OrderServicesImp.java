@@ -49,30 +49,18 @@ public class OrderServicesImp implements IOrderServices {
 
 	@Transactional
 	public String addOrderTour(FormOrderDto formOrderDto) {
-		CustomerEntity customerEntity = new CustomerEntity();
-
-		customerEntity = mapper.map(formOrderDto.getFormOrderCustomerDto(),
-				CustomerEntity.class);
-		if (formOrderDto.getFormOrderCustomerDto().getCustomerBirthDto()!=null){
-			customerEntity.setCustomerBirth(MyFormatDate.stringToDate(formOrderDto
-					.getFormOrderCustomerDto().getCustomerBirthDto()));
-		}
 		/*
-		 * generate random password 
+		 * check trung tour
 		 */
-		String userPassword = utilMethod.createPassword();
-		String userPasswordMd5 = utilMethod.encodePassword(userPassword);
-		customerEntity.setCustomerPassword(userPasswordMd5);
-
-		// First: save into customer then save into formOrder
-		customerRepo.saveAndFlush(customerEntity);
-		
-
+		int checkFlag = utilMethod.checkOrderTour(formOrderDto);
+		if (checkFlag <0){
+			return ""+checkFlag;
+		}
 		FormOrderEntity formOrderEntity = new FormOrderEntity();
 		TourEntity tourEntity = tourRepo.findOne(formOrderDto
 				.getFormOrderTourIdDto());
 		if (tourEntity==null || tourEntity.getTourDeleteDate()!=null){
-			return "Khong tim thay tour";
+			return "1";
 		}
 		// tinh tien
 		int money = CalcMoney.calculateMoney(
@@ -83,7 +71,42 @@ public class OrderServicesImp implements IOrderServices {
 
 		formOrderDto.setFormOrderMoneyDto(money);
 		formOrderEntity = mapper.map(formOrderDto, FormOrderEntity.class);
-		formOrderEntity.setFormOrderCustomerId(customerEntity.getCustomerId());
+
+		if (formOrderDto.getFormOrderCustomerDto().getCustomerIdDto()==null){
+			CustomerEntity customerEntity = new CustomerEntity();
+			customerEntity = mapper.map(formOrderDto.getFormOrderCustomerDto(),
+					CustomerEntity.class);
+			if (formOrderDto.getFormOrderCustomerDto().getCustomerBirthDto()!=null){
+				customerEntity.setCustomerBirth(MyFormatDate.stringToDate(formOrderDto
+						.getFormOrderCustomerDto().getCustomerBirthDto()));
+			}
+			/*
+			 * generate random password 
+			 */
+			String userPassword = utilMethod.createPassword();
+			String userPasswordMd5 = utilMethod.encodePassword(userPassword);
+			customerEntity.setCustomerPassword(userPasswordMd5);
+			// First: save into customer then save into formOrder
+			customerRepo.saveAndFlush(customerEntity);
+			formOrderEntity.setFormOrderCustomerId(customerEntity.getCustomerId());
+			/*
+			 * Send email to customer
+			 */
+			if (customerEntity.getCustomerEmail() !=null ){
+				String to = customerEntity.getCustomerEmail();
+				String subject = "Tài khoản khách hàng - Công ty du lịch IuhTravel";
+				StringBuilder contentSend = new  StringBuilder();
+				contentSend.append("Xin chào quý khách, đây tài khoản của quý khách");
+				contentSend.append("\n email login: "+ to);
+				contentSend.append("\n pasword: "+ userPassword);
+				ContentEmail content = new ContentEmail(null,to,subject, contentSend);
+				utilMethod.sendEmail(content);
+			}
+			
+		}
+		else {
+			formOrderEntity.setFormOrderCustomerId(formOrderDto.getFormOrderCustomerDto().getCustomerIdDto());
+		}
 		formOrderEntity.setFormOrderDate(new Date());
 		FormOrderEntity formformOrderEntityNew = formOrderRepo
 				.saveAndFlush(formOrderEntity);
@@ -96,19 +119,7 @@ public class OrderServicesImp implements IOrderServices {
 		historyDto.setContent("ID="+formOrderEntity.getFormOrderId().toString());
 		historyInterface.add(historyDto);
 		
-		/*
-		 * Send email to customer
-		 */
-		if (customerEntity.getCustomerEmail() !=null ){
-			String to = customerEntity.getCustomerEmail();
-			String subject = "Tài khoản khách hàng - Công ty du lịch IuhTravel";
-			StringBuilder contentSend = new  StringBuilder();
-			contentSend.append("Xin chào quý khách, đây tài khoản của quý khách");
-			contentSend.append("\n email login: "+ to);
-			contentSend.append("\n pasword: "+ userPassword);
-			ContentEmail content = new ContentEmail(null,to,subject, contentSend);
-			utilMethod.sendEmail(content);
-		}
+	
 		/*
 		 * Count down sit
 		 */
@@ -117,7 +128,7 @@ public class OrderServicesImp implements IOrderServices {
 				+ formOrderDto.getFormOrderQuantityJuvenileDto());
 		tourRepo.saveAndFlush(tourEntity);
 		
-		return "Dat tour thanh cong: ID="+formformOrderEntityNew.getFormOrderId();
+		return "1";
 	}
 
 	public List<FormOrderDto> listAllOrderTour() {

@@ -18,7 +18,9 @@ import com.travel.model.TourEntity;
 @Repository
 public interface TourRepository extends JpaRepository<TourEntity, Integer> {
 
-	@Query("SELECT t FROM TourEntity t WHERE t.tourDeleteDate = null")
+	@Query("SELECT t FROM TourEntity t "
+			+ "WHERE t.tourDeleteDate = null "
+			+ "AND t.active=1")
 	public List<TourEntity> findAll();
 	
 	public TourEntity findById (Integer id);

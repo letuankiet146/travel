@@ -6,5 +6,5 @@ import com.travel.model.CustomerEntity;
 
 
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Integer> {
-
+	public CustomerEntity findByCustomerEmail(String email);
 }
