@@ -97,7 +97,8 @@ BODY:
     "formOrderQuantityJuvenileDto": 1,
     "formOrderQuantityChildDto": 1,
     "formOrderIsPayDto": 4,
-    "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
+    "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác",
+    "idUserAdd": 2
 }
 
 
