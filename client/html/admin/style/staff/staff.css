@@ -1,0 +1,44 @@
+
+.content thead th:nth-child(2){
+	width:200px;
+}
+.content tbody tr{
+	height: 57px !important;
+	overflow: hidden;
+}
+
+.info-r{
+	float:right;
+}
+.thumb{
+	width:100%;
+}
+.thumb label{
+	font-weight:bold;
+	display:block;
+	margin-bottom: 5px;
+}
+.thumb span{
+	font-size:85%;
+	color: #31708f;
+}
+.details {
+	margin-bottom:20px;
+}
+.details textarea{
+	padding:5px;
+}
+.details label{
+	font-weight:bold;
+	display:block;
+	margin:5px 0px;
+}
+
+
+.row .error:nth-child(3){
+	display:block;
+	margin-left:150px;
+	font-size:12px;
+	font-family: 'OpenSansItalic';
+	color: #f00;
+}

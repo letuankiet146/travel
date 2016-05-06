@@ -1,0 +1,76 @@
+.content thead th:last-child{
+	width:10px;
+}
+.content thead th:first-child{
+	width:185px;
+}
+
+.news-right{
+	float: right;
+	width: 30%;
+}
+.notification{
+	width:100%;
+	border: 1px solid #DEDEDE;
+	box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
+	margin-bottom:20px;
+}
+.message_list{
+	height:250px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.messages-box{
+	margin:0px 20px;
+	border-bottom:1px dotted #cccccc;
+}
+.messages-box:last-child{
+	border-bottom:0px dotted #cccccc;
+}
+.user_day p:first-child{
+	font-family: 'OpenSansBold';
+	float:left;
+}
+.user_day p:last-child{
+	text-align:right;
+	font-family: 'OpenSansBold';
+}
+.orders{
+	padding:5px 0px;
+}
+.orders a{
+	color: #333333;
+}
+.orders a span:first-child{
+	float:left;
+}
+.orders a span:last-child{
+	float:right;
+	color:#f00;
+}
+.search-notifi{
+	padding: 4px 13px;
+	border-top: 1px solid #9CA1B0;
+}
+.search-notifi textarea{
+	padding:5px 5px;
+	border-radius:5px;
+	moz-border-radius:5px;
+	webkit-border-radius:5px;
+	width:80%;
+	float: left;
+	height:40px;
+}
+.search-notifi input{
+	width:37px;
+	background: url(../../images/post_message.png) no-repeat;
+	border:none;
+	height:24px;
+	margin:13px 5px 0px 4px; 
+
+}
+.search-notifi input:hover{
+	background: url(../../images/post_message.png) 0px -24px;
+	cursor:pointer;
+}
+
