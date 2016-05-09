@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.travel.dto.ContentEmail;
 import com.travel.dto.CustomerDto;
+import com.travel.dto.FormOrderDto;
 import com.travel.dto.HistoryDto;
 import com.travel.dto.PasswordDto;
 import com.travel.model.CustomerEntity;
+import com.travel.model.FormOrderEntity;
 import com.travel.repository.CustomerRepository;
+import com.travel.repository.FormOrderRepository;
 import com.travel.util.IUtilMethod;
 import com.travel.util.MyFormatDate;
 
@@ -24,6 +27,10 @@ public class CustomerServicesImp implements ICustomerServices {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private FormOrderRepository formOrderRepo;
+	
 	@Autowired
 	private DozerBeanMapper mapper;
 	
@@ -59,8 +66,11 @@ public class CustomerServicesImp implements ICustomerServices {
 		if (customerRepository.exists(id)){
 			CustomerEntity customerEntity = customerRepository.findOne(id);
 			if (customerEntity.getCustomerDeleteDate()==null){
-				customerEntity.setCustomerDeleteDate(new Date());
-				customerRepository.saveAndFlush(customerEntity);
+				List<FormOrderEntity> formList = formOrderRepo.findByFormOrderCustomerId(id);
+				for (FormOrderEntity formEntity : formList){
+					formOrderRepo.delete(formEntity.getFormOrderId());
+				}
+				customerRepository.delete(id);
 				/*
 				 * Save history
 				 */
