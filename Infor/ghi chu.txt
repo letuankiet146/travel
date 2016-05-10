@@ -1,4 +1,3 @@
-khi đặt tour hok lấy dk giờ (2016-05-09 00:00:00) => tg xóa đơn hok đúng
 kiểm trại lại API checktour khi đăng nhập.
 khi xóa đơn đặt tour -> sửa lại API trả lại số chỗ đã đặt.
 update order của nhân viên, khi update trạng thái.. ngày giờ đặt tour bị cập nhật lại thời gian hiện tại
