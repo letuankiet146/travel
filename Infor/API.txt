@@ -70,6 +70,7 @@ BODY:
   {
     "formOrderTourCodeDto": "DDH5",
     "formOrderTourIdDto": 892,
+    "formOrderDateDto": "2016-05-10 14:59:16",
     "formOrderCustomerDto": {
       "customerIdDto": null,
       "customerCode": "Bình Dương 3",
