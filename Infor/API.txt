@@ -22,35 +22,19 @@ BODY:
     "formOrderTourCodeDto": "DDH2",
     "formOrderCustomerIdDto": 80,
     "formOrderTourIdDto": 891,
-    "formOrderCustomerDto": {
-      "customerIdDto": 80,
-      "customerCode": "Bình Dương 2",
-      "customerNameDto": "Lê Tuấn Kiêt",
-      "customerBirthDto": "26/02/2016",
-      "customerSexDto": "Nam",
-      "customerPhoneDto": "0975293398",
-      "customerEmailDto": "letuankiet146@gmail.com",
-      "customerAddressDto": "Bình Dương",
-      "customerVietNamIdDto": "28881048",
-      "customerCompanyNameDto": null,
-      "customerAddressCompanyDto": null,
-      "customerPhoneCompanyDto": null,
-      "customerImageDto": null,
-      "customerUserDto": null,
-      "customerTypeDto": null,
-      "customerLockDto": null,
-      "customerDeleteDateDto": null,
-      "customerGroupDto": 9,
-      "customerCityDto": null,
-      "customerCountryDto": null,
-      "customerNoteDto": "khách hàng khó"
-    },
     "formOrderQuantityAdultsDto": 2,
     "formOrderQuantityJuvenileDto": 1,
     "formOrderQuantityChildDto": 1,
     "formOrderIsPayDto": 4,
     "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
     "formOrderNoteDto": "ghi chu"
+  }
+
+  HOAC dùng để update trạng thái cho đơn đặt tour sang Hủy tour, nếu trạng thái là 10 thì số chổ ngồi tour đó tự động tính lại
+  {
+    "formOrderIdDto": 15,
+    "formOrderIsPayDto": 10,
+    "formOrderUpdateDto": "2016-05-09 00:00:01"
   }
 
 
