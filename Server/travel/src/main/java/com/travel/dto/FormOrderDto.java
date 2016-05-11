@@ -33,6 +33,7 @@ public class FormOrderDto {
 	
 	private TourDto formOrderTourDto;
 
+	@Mapping ("formOrderDate")
 	private String formOrderDateDto;
 	
 	@Mapping ("formOrderDeleteDate")
@@ -58,6 +59,9 @@ public class FormOrderDto {
 	
 	@Mapping("formOrderNote")
 	private String formOrderNoteDto;
+	
+	@Mapping ("formOrderUpdate")
+	private String formOrderUpdateDto;
 	
 	private Integer idUserAdd;
 	
@@ -99,6 +103,9 @@ public class FormOrderDto {
 		
 		if (formOrderDto.getFormOrderNoteDto() !=null ){
 			this.formOrderNoteDto = formOrderDto.getFormOrderNoteDto();
+		}
+		if (formOrderDto.getFormOrderUpdateDto() != null){
+			this.formOrderUpdateDto = formOrderDto.getFormOrderUpdateDto();
 		}
 	}
 

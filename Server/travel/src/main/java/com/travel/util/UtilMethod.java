@@ -160,6 +160,10 @@ public class UtilMethod implements IUtilMethod {
 
 			TourEntity tourEntityKHGanNhat;
 			TourEntity tourEntityKTGanNhat;
+			if ((tourEntityListPast.isEmpty())&&(tourEntityListFuture.isEmpty())){
+				// khach hang la thanh vien nhung bi xoa het tour
+				return 1;
+			}
 			if (!(tourEntityListPast.isEmpty())&&!(tourEntityListFuture.isEmpty())){
 				// tour muon dat nam giua 
 				tourEntityKHGanNhat = tourEntityListFuture.get(0);

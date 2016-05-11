@@ -100,18 +100,7 @@ public class OrderServicesImp implements IOrderServices {
 		else {
 			formOrderEntity.setFormOrderCustomerId(formOrderDto.getFormOrderCustomerDto().getCustomerIdDto());
 		}
-		formOrderEntity.setFormOrderDate(new Date());
 		formOrderRepo.saveAndFlush(formOrderEntity);
-		/*
-		 * Save history
-		 */
-		HistoryDto historyDto = new HistoryDto();
-		historyDto.setUser(formOrderDto.getIdUserAdd());
-		historyDto.setAction("Create_Order");
-		historyDto.setContent("ID="+formOrderEntity.getFormOrderId().toString());
-		historyInterface.add(historyDto);
-		
-	
 		/*
 		 * Count down sit
 		 */
@@ -147,7 +136,6 @@ public class OrderServicesImp implements IOrderServices {
 			// set Customer and Tour for FormDto
 			formOrderDto.setFormOrderCustomerDto(customerDto);
 			formOrderDto.setFormOrderTourDto(tourDto);
-			formOrderDto.setFormOrderDateDto(MyFormatDate.dateToString(formOrderEntity.getFormOrderDate()));
 			
 			formOrderDtoList.add(formOrderDto);
 		}
@@ -180,42 +168,47 @@ public class OrderServicesImp implements IOrderServices {
 		if (formOrderDtoUpdate !=null){
 			FormOrderEntity formOrderEntity = formOrderRepo.findOne(formOrderDtoUpdate.getFormOrderIdDto());
 			FormOrderDto formOrderDto = mapper.map(formOrderEntity, FormOrderDto.class);
-			formOrderDto.setFormOrderDateDto(MyFormatDate.dateToString(formOrderEntity.getFormOrderDate()));
 			if (formOrderEntity !=null){
 				formOrderDto.setData(formOrderDtoUpdate);
 				formOrderEntity = mapper.map(formOrderDto, FormOrderEntity.class);
-				formOrderEntity.setFormOrderDate(MyFormatDate.stringToDate(formOrderDto.getFormOrderDateDto()));
 				formOrderRepo.saveAndFlush(formOrderEntity);
-				/*
-				 * Save history
-				 */
-				HistoryDto historyDto = new HistoryDto();
-				historyDto.setUser(formOrderDtoUpdate.getIdUserAdd());
-				historyDto.setAction("Update_Order");
-				historyDto.setContent(formOrderDtoUpdate.getFormOrderIdDto().toString());
-				historyInterface.add(historyDto);
-				return "Update thanh cong";
+				if (formOrderDto.getFormOrderIsPayDto()==10){
+					// tra lai so cho
+
+					TourEntity tourEntity = tourRepo.findById(formOrderEntity.getFormOrderTourId());
+					/*
+					 * Count down sit
+					 */
+					tourEntity.setTourBooked(tourEntity.getTourBooked()-formOrderEntity.getFormOrderQuantityAdults()
+							- formOrderEntity.getFormOrderQuantityChild()
+							- formOrderEntity.getFormOrderQuantityJuvenile());
+					tourRepo.saveAndFlush(tourEntity);
+				}
 			}
-			return "Khong tim thay don dat tour";
+			return "1";
 		}
-		return "Gia tri update khong hop le";
+		return "-1";
 	}
 
 	@Override
 	public String delete(Integer id, Integer userId) {
 		if (formOrderRepo.exists(id)){
+			FormOrderEntity formOrderEntity = formOrderRepo.findOne(id);
+			int idTour = formOrderRepo.findOne(id).getFormOrderTourId();
+			if (idTour!=0){
+				TourEntity tourEntity = tourRepo.findById(idTour);
+				/*
+				 * Count down sit
+				 */
+				tourEntity.setTourBooked(tourEntity.getTourBooked()-formOrderEntity.getFormOrderQuantityAdults()
+						- formOrderEntity.getFormOrderQuantityChild()
+						- formOrderEntity.getFormOrderQuantityJuvenile());
+				tourRepo.saveAndFlush(tourEntity);
+			}
 			formOrderRepo.delete(id);
-			/*
-			 * Save history
-			 */
-			HistoryDto historyDto = new HistoryDto();
-			historyDto.setUser(userId);
-			historyDto.setAction("Delete_Tour");
-			historyDto.setContent("Xoa tour co id ="+id);
-			historyInterface.add(historyDto);
-			return "Xoa thanh cong";
+			return "1";
 		}
-		return "Khong tim thay tour ";
+		return "-1";
 	}
 
 	@Override

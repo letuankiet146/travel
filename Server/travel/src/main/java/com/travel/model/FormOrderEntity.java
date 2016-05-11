@@ -45,7 +45,7 @@ public class FormOrderEntity {
 	private Integer formOrderCustomerId;
 
 	@Column(name = "form_order_date")
-	private Date formOrderDate;
+	private String formOrderDate;
 	
 	@Column(name = "form_order_delete_date")
 	private Date formOrderDeleteDate;
@@ -70,5 +70,8 @@ public class FormOrderEntity {
 	
 	@Column (name = "form_order_note")
 	private String formOrderNote;
+	
+	@Column (name="form_order_update")
+	private String formOrderUpdate;
 	
 }

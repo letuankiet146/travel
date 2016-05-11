@@ -13,7 +13,8 @@ public interface FormOrderRepository extends JpaRepository<FormOrderEntity,Integ
 	
 	public List<FormOrderEntity> findByFormOrderCustomerId (int id);
 	
-	@Query(value="Select form from FormOrderEntity form WHERE form.formOrderCustomerId = ?1 "
-			+ "AND form.formOrderTourId = ?2")
+	@Query(value="Select form from FormOrderEntity form "
+			+ "WHERE form.formOrderCustomerId = ?1 "
+			+ "AND form.formOrderTourId = ?2 AND form.formOrderIsPay != 10")
 	public FormOrderEntity findCustomerIdAndTourId (int customerId, int tourId);
 }
