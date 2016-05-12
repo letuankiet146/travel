@@ -34,7 +34,8 @@ BODY:
   {
     "formOrderIdDto": 15,
     "formOrderIsPayDto": 10,
-    "formOrderUpdateDto": "2016-05-09 00:00:01"
+    "formOrderUpdateDto": "2016-05-09 00:00:01",
+    "formOrderQuantityOtherRequireDto": "Đây là yêu cầu khác"
   }
 
 
@@ -324,6 +325,7 @@ http://localhost:8080/staff/add (XONG)
     "staffSexDto": "Nam",
     "staffVietNameIdDto": "665656",
     "staffImageDto": null,
+    "privilegedDto": null,
     "idUserAdd": 2
 }
 
@@ -400,4 +402,14 @@ _______________________
 http://localhost:8080/spr-data/customer/update/deleteVerify/80
 80 là id của customer
 
+Tạo mã xác thực trong việc hủy tour
+ 16 là id của đơn đặt tour
+http://localhost:8080/createVerify/16
 
+Xác thực mã trong việc hủy tour
+http://localhost:8080/confirmVerify
+16 là id của đơn đặt tour
+{
+    "customerId":16,  
+    "verifyCode":"qscpjfha" 
+}
