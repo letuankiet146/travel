@@ -8,10 +8,12 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travel.dto.ContentEmail;
 import com.travel.dto.HistoryDto;
 import com.travel.dto.StaffDto;
 import com.travel.model.StaffEntity;
 import com.travel.repository.StaffRepository;
+import com.travel.util.IUtilMethod;
 import com.travel.util.MyFormatDate;
 
 @Service
@@ -25,6 +27,9 @@ public class StaffServcesImp implements IStaffService {
 	
 	@Autowired
 	private DozerBeanMapper mapper;
+	
+	@Autowired
+	private IUtilMethod utilMethod;
 
 	@Override
 	public String add(StaffDto staffDto) {
@@ -35,7 +40,27 @@ public class StaffServcesImp implements IStaffService {
 		if (staffDto.getStaffBirthdayDto()!=null){
 			staffEntity.setStaffBirthday(MyFormatDate.stringToDate(staffDto.getStaffBirthdayDto()));
 		}
+		/*
+		 * generate random password 
+		 */
+		String userPassword = utilMethod.createPassword();
+		String userPasswordMd5 = utilMethod.encodePassword(userPassword);
+		staffEntity.setStaffPassword(userPasswordMd5);
+		// First: save into customer then save into formOrder
 		staffRepository.saveAndFlush(staffEntity);
+		/*
+		 * Send email to customer
+		 */
+		if (staffEntity.getStaffEmail() !=null ){
+			String to = staffEntity.getStaffEmail();
+			String subject = "Tài khoản nhân viên - Công ty du lịch IuhTravel";
+			StringBuilder contentSend = new  StringBuilder();
+			contentSend.append("Thông tin nhân viên:");
+			contentSend.append("\n user login: "+ staffEntity.getStaffUser());
+			contentSend.append("\n pasword: "+ userPassword);
+			ContentEmail content = new ContentEmail(null,to,subject, contentSend);
+			utilMethod.sendEmail(content);
+		}
 		/*
 		 * Save history
 		 */
@@ -44,7 +69,7 @@ public class StaffServcesImp implements IStaffService {
 		historyDto.setAction("Create_Staff");
 		historyDto.setContent("ID="+staffEntity.getStaffId());
 		historyInterface.add(historyDto);
-		return "Them thanh cong";
+		return "1";
 	}
 
 	@Override

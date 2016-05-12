@@ -11,6 +11,7 @@ import com.travel.model.FormOrderEntity;
 
 public interface FormOrderRepository extends JpaRepository<FormOrderEntity,Integer> {
 	
+	@Query(value="Select form from FormOrderEntity form WHERE form.formOrderCustomerId = ?1 AND form.formOrderIsPay != 10 ")
 	public List<FormOrderEntity> findByFormOrderCustomerId (int id);
 	
 	@Query(value="Select form from FormOrderEntity form "

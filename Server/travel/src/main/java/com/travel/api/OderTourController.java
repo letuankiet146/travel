@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.dto.FormOrderDto;
+import com.travel.dto.PasswordDto;
 import com.travel.services.IOrderServices;
 
 @RestController
@@ -20,6 +21,17 @@ import com.travel.services.IOrderServices;
 public class OderTourController {
 	@Autowired(required=true)
 	private IOrderServices orderService;
+	
+	@RequestMapping(value="/createVerify/{formOrderId}" , method=RequestMethod.GET)
+	public String createVerfyCode(@PathVariable int formOrderId ){
+		return orderService.createVerifyCode(formOrderId);
+	}
+	
+	@RequestMapping(value="/confirmVerify" , method=RequestMethod.POST)
+	public String createVerfyCode(@RequestBody PasswordDto verfyCodeIfo ){
+		return orderService.confirmVerifyCode(verfyCodeIfo);
+	}
+	
 	
 	@RequestMapping(value="/orderTour", method=RequestMethod.POST )
 	public String addOrderTour (@RequestBody FormOrderDto formOrder ){

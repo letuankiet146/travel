@@ -63,6 +63,9 @@ public class FormOrderDto {
 	@Mapping ("formOrderUpdate")
 	private String formOrderUpdateDto;
 	
+	@Mapping ("formOrderVerifyCode")
+	private String formOrderVerifyCodeDto;
+	
 	private Integer idUserAdd;
 	
 	public void setData (FormOrderDto formOrderDto){
@@ -106,6 +109,9 @@ public class FormOrderDto {
 		}
 		if (formOrderDto.getFormOrderUpdateDto() != null){
 			this.formOrderUpdateDto = formOrderDto.getFormOrderUpdateDto();
+		}
+		if (formOrderDto.getFormOrderVerifyCodeDto()!=null){
+			this.formOrderVerifyCodeDto = formOrderDto.getFormOrderVerifyCodeDto();
 		}
 	}
 

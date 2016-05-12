@@ -8,11 +8,15 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import ch.qos.logback.classic.pattern.Util;
 
 import com.travel.dto.ContentEmail;
 import com.travel.dto.CustomerDto;
 import com.travel.dto.FormOrderDto;
 import com.travel.dto.HistoryDto;
+import com.travel.dto.PasswordDto;
 import com.travel.dto.TourDto;
 import com.travel.model.CustomerEntity;
 import com.travel.model.FormOrderEntity;
@@ -23,6 +27,7 @@ import com.travel.repository.TourRepository;
 import com.travel.util.CalcMoney;
 import com.travel.util.IUtilMethod;
 import com.travel.util.MyFormatDate;
+import com.travel.util.UtilMethod;
 
 
 
@@ -221,5 +226,43 @@ public class OrderServicesImp implements IOrderServices {
 			return ""+checkFlag;
 		}
 		return "1";
+	}
+
+	@Override
+	public String createVerifyCode(int formOrderId) {
+		if (formOrderRepo.exists(formOrderId)){
+			FormOrderEntity formOrderEntity = formOrderRepo.findOne(formOrderId);
+
+			// gui email
+			CustomerEntity customerEntity = customerRepo
+					.findOne(formOrderEntity.getFormOrderCustomerId());
+			String verifyCode = utilMethod.createPassword();
+			String toEmail = customerEntity.getCustomerEmail();
+			String subject = "[iuh-travle.tk] HỦY TOUR: "
+					+ tourRepo.findOne(formOrderEntity.getFormOrderTourId()).getIdTour();
+			StringBuilder contentEmail = new StringBuilder();
+			contentEmail.append("Bạn đang hủy tour \n\n");
+			contentEmail.append("MÃ XÁC THỰC: ");
+			contentEmail.append(verifyCode);
+			contentEmail.append("\nMã xác thực sẽ mất hiệu lực sau 10 phút");
+			ContentEmail content = new ContentEmail(null, toEmail, subject, contentEmail);
+			formOrderEntity.setFormOrderVerifyCode(verifyCode);
+			formOrderRepo.saveAndFlush(formOrderEntity);
+			utilMethod.sendEmail(content);
+			return "1";
+		
+		}
+		return "-1";
+	}
+
+	@Override
+	public String confirmVerifyCode(PasswordDto verfiyInfo) {
+		FormOrderEntity formOrderEntity = formOrderRepo.findOne(verfiyInfo.getCustomerId());
+		String verify = verfiyInfo.getVerifyCode();
+		String oldVerify = formOrderEntity.getFormOrderVerifyCode();
+		if (verify.equals(oldVerify)){
+			return "1";
+		}
+		return "-1";
 	}
 }

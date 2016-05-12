@@ -74,4 +74,7 @@ public class FormOrderEntity {
 	@Column (name="form_order_update")
 	private String formOrderUpdate;
 	
+	@Column (name="form_order_verify_code")
+	private String formOrderVerifyCode;
+	
 }

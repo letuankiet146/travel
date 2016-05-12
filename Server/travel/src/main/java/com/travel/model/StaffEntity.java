@@ -82,4 +82,7 @@ public class StaffEntity {
 	
 	@Column (name="staff_image")
 	private String staffImage;
+	
+	@Column (name="privileged")
+	private String privileged;
 }

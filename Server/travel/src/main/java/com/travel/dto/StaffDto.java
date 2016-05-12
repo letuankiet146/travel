@@ -70,6 +70,9 @@ public class StaffDto {
 	@Mapping("staffImage")
 	private String staffImageDto;
 	
+	@Mapping ("privileged")
+	private String privilegedDto;
+	
 	private Integer idUserAdd;
 	
 	public void setDataUpdate (StaffDto staffDto){
@@ -132,7 +135,9 @@ public class StaffDto {
 		if (staffDto.getStaffImageDto() != null){
 			this.staffImageDto = staffDto.getStaffImageDto();
 		}
-		
+		if (staffDto.getPrivilegedDto() !=null){
+			this.privilegedDto = staffDto.getPrivilegedDto();
+		}
 	}
 	
 }

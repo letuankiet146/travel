@@ -46,6 +46,27 @@ public class CustomerServicesImp implements ICustomerServices {
 			if (customerDto.getCustomerBirthDto()!=null){
 				customerEntity.setCustomerBirth(MyFormatDate.stringToDate(customerDto.getCustomerBirthDto()));
 			}
+			/*
+			 * generate random password 
+			 */
+			String userPassword = utilMethod.createPassword();
+			String userPasswordMd5 = utilMethod.encodePassword(userPassword);
+			customerEntity.setCustomerPassword(userPasswordMd5);
+			// First: save into customer then save into formOrder
+			customerRepository.saveAndFlush(customerEntity);
+			/*
+			 * Send email to customer
+			 */
+
+			String to = customerEntity.getCustomerEmail();
+			String subject = "Tài khoản khách hàng - Công ty du lịch IuhTravel";
+			StringBuilder contentSend = new  StringBuilder();
+			contentSend.append("Xin chào quý khách, đây tài khoản của quý khách");
+			contentSend.append("\n email login: "+ to);
+			contentSend.append("\n pasword: "+ userPassword);
+			ContentEmail content = new ContentEmail(null,to,subject, contentSend);
+			utilMethod.sendEmail(content);
+		
 			customerRepository.saveAndFlush(customerEntity);
 			
 			/*
@@ -57,9 +78,9 @@ public class CustomerServicesImp implements ICustomerServices {
 			historyDto.setContent("ID="+customerDto.getCustomerCode());
 			historyInterface.add(historyDto);
 			
-			return "Them thanh cong";
+			return "1";
 		}
-		return "Them khong thanh cong";
+		return "-1";
 	}
 
 	public String delete(Integer id,Integer userId) {
