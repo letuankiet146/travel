@@ -19,7 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.travel.dto.HistoryDto;
 import com.travel.dto.TourDto;
+import com.travel.model.FormOrderEntity;
 import com.travel.model.TourEntity;
+import com.travel.repository.FormOrderRepository;
 import com.travel.repository.TourRepository;
 import com.travel.util.MyFormatDate;
 import com.travel.validator.TourValidator;
@@ -34,6 +36,9 @@ import com.travel.validator.TourValidator;
  */
 @Service
 public class TourServiceImp implements ITourService {
+	
+	@Autowired
+	FormOrderRepository formOrderRepo;
 	
 	@Autowired
 	IHistoryServices historyInterface;
@@ -119,8 +124,11 @@ public class TourServiceImp implements ITourService {
 			if (tourRepo.exists(id)){
 				TourEntity tourEntity = tourRepo.findOne(id);
 				if (tourEntity.getTourDeleteDate()==null){
-					tourEntity.setTourDeleteDate(new Date());
-					tourRepo.saveAndFlush(tourEntity);
+					List<FormOrderEntity> formList = formOrderRepo.findByFormOrderTourId(id);
+					for (FormOrderEntity formEntity : formList){
+						formOrderRepo.delete(formEntity.getFormOrderId());
+					}
+					tourRepo.delete(id);
 					/*
 					 * Save history
 					 */

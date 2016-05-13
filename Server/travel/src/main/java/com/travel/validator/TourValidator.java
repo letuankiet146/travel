@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import com.travel.dto.TourDto;
 import com.travel.model.ArrivePlaceEntity;
 import com.travel.model.FromPlaceEntity;
-import com.travel.model.GuiderEntity;
 import com.travel.model.ServicesEntity;
+import com.travel.model.StaffEntity;
 import com.travel.repository.ArrivePlaceRepository;
 import com.travel.repository.FromPlaceRepository;
-import com.travel.repository.GuiderRepository;
 import com.travel.repository.ServicesRepository;
+import com.travel.repository.StaffRepository;
 
 
 @Component
@@ -29,7 +29,7 @@ public class TourValidator {
 	private ServicesRepository servicesRepository;
 	
 	@Autowired
-	private GuiderRepository guiderRepository;
+	private StaffRepository staffRepo;
 	
 	public List<String> checkExist(TourDto tourDto) {
 		List<String> errorList = new ArrayList<String>();
@@ -73,9 +73,9 @@ public class TourValidator {
 			/*
 			 * Kiem tra huong dan vien du lich
 			 */
-			if (guiderRepository.exists(tourDto.getTourGuiderIdDto())){
-				GuiderEntity guiderEntity = guiderRepository.findOne(tourDto.getTourGuiderIdDto());
-				if (guiderEntity==null){
+			if (staffRepo.exists(tourDto.getTourGuiderIdDto())){
+				StaffEntity guider = staffRepo.findOne(tourDto.getTourGuiderIdDto());
+				if (guider.getStaffGroupUser().getGroupUsersId()!=3){
 					errorList.add("Khong tim thay huong dan vien du lich");
 				}
 			}

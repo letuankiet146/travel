@@ -1,7 +1,6 @@
 package com.travel.services;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -11,7 +10,11 @@ import org.springframework.stereotype.Service;
 import com.travel.dto.ContentEmail;
 import com.travel.dto.HistoryDto;
 import com.travel.dto.StaffDto;
+import com.travel.model.HistoryEntity;
+import com.travel.model.NotificationEntity;
 import com.travel.model.StaffEntity;
+import com.travel.repository.HistoryRepository;
+import com.travel.repository.NotificationRepository;
 import com.travel.repository.StaffRepository;
 import com.travel.util.IUtilMethod;
 import com.travel.util.MyFormatDate;
@@ -30,6 +33,12 @@ public class StaffServcesImp implements IStaffService {
 	
 	@Autowired
 	private IUtilMethod utilMethod;
+	
+	@Autowired
+	private HistoryRepository historyRepo;
+	
+	@Autowired
+	private NotificationRepository notificationRepo;
 
 	@Override
 	public String add(StaffDto staffDto) {
@@ -79,9 +88,15 @@ public class StaffServcesImp implements IStaffService {
 			/*
 			 * Save history
 			 */
-			StaffEntity staffEntity = staffRepository.findOne(id);
-			staffEntity.setStaffDeleteDate(new Date());
-			staffRepository.saveAndFlush(staffEntity);
+			List<HistoryEntity> historyEntities = historyRepo.findByUser(id);
+			for (HistoryEntity historyEntity : historyEntities){
+				historyRepo.delete(historyEntity);
+			}
+			List<NotificationEntity> notificationEntities = notificationRepo.findByUser(id);
+			for (NotificationEntity notificationEntity : notificationEntities){
+				notificationRepo.delete(notificationEntity);
+			}
+			staffRepository.delete(id);
 			
 			HistoryDto historyDto = new HistoryDto();
 			historyDto.setUser(idUserAdd);

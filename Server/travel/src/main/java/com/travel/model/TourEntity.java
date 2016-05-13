@@ -86,6 +86,10 @@ public class TourEntity {
 	@JoinColumn(name="tour_from_place_id", updatable = false, insertable = false)
 	private FromPlaceEntity fromPlace;
 	
+	@ManyToOne
+	@JoinColumn(name="tour_guider_id", updatable = false, insertable = false)
+	private StaffEntity tourGuider;
+	
 	@Column(name="tour_guider_id")
 	private Integer tourGuiderId;
 	

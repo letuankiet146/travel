@@ -11,4 +11,6 @@ public interface StaffRepository extends JpaRepository<StaffEntity,Integer> {
 	
 	@Query ("select s FROM StaffEntity s WHERE s.staffDeleteDate =null ")
 	public List<StaffEntity> findAll();
+	
+	
 }
