@@ -126,7 +126,7 @@ public class UtilMethod implements IUtilMethod {
 
 			// lay tat ca danh sach cac tour da dat
 			List<FormOrderEntity> formOrderList = formOrderRepo
-					.findByFormOrderCustomerId(customerDto.getCustomerIdDto()); 
+					.findByFormOrderCustomerIdAndIsPay(customerDto.getCustomerIdDto()); 
 			
 			List<TourEntity> tourEntityListPast = new ArrayList<>();
 			List<TourEntity> tourEntityListFuture = new ArrayList<>();

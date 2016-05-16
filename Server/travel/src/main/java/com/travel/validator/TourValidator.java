@@ -70,18 +70,6 @@ public class TourValidator {
 			else {
 				errorList.add("Khong tim thay goi dich vu");
 			}
-			/*
-			 * Kiem tra huong dan vien du lich
-			 */
-			if (staffRepo.exists(tourDto.getTourGuiderIdDto())){
-				StaffEntity guider = staffRepo.findOne(tourDto.getTourGuiderIdDto());
-				if (guider.getStaffGroupUser().getGroupUsersId()!=3){
-					errorList.add("Khong tim thay huong dan vien du lich");
-				}
-			}
-			else {
-				errorList.add("Khong tim thay huong dan vien du lich");
-			}
 		} else {
 			errorList.add("Gia tri can kiem tra null");
 		}

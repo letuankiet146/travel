@@ -77,15 +77,6 @@ public class TourServiceImp implements ITourService {
 		
 		tourRepo.saveAndFlush(tourEntity);
 		
-		/*
-		 * Save history
-		 */
-		HistoryDto historyDto = new HistoryDto();
-		historyDto.setUser(tourDto.getIdUserAdd());
-		historyDto.setAction("Create_Tour");
-		historyDto.setContent("ID="+tourEntity.getIdTour());
-		historyInterface.add(historyDto);
-		
 		return tourEntity.getId();
 	}
 

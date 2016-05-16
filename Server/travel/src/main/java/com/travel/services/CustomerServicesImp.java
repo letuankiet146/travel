@@ -15,8 +15,10 @@ import com.travel.dto.HistoryDto;
 import com.travel.dto.PasswordDto;
 import com.travel.model.CustomerEntity;
 import com.travel.model.FormOrderEntity;
+import com.travel.model.TourEntity;
 import com.travel.repository.CustomerRepository;
 import com.travel.repository.FormOrderRepository;
+import com.travel.repository.TourRepository;
 import com.travel.util.IUtilMethod;
 import com.travel.util.MyFormatDate;
 
@@ -33,6 +35,9 @@ public class CustomerServicesImp implements ICustomerServices {
 	
 	@Autowired
 	private DozerBeanMapper mapper;
+	
+	@Autowired
+	private TourRepository tourRepo;
 	
 	@Autowired
 	private IHistoryServices historyInterface;
@@ -90,6 +95,18 @@ public class CustomerServicesImp implements ICustomerServices {
 				List<FormOrderEntity> formList = formOrderRepo.findByFormOrderCustomerId(id);
 				for (FormOrderEntity formEntity : formList){
 					formOrderRepo.delete(formEntity.getFormOrderId());
+					int idTour = formEntity.getFormOrderTourId();
+					if (idTour!=0){
+						TourEntity tourEntity = tourRepo.findById(idTour);
+						/*
+						 * Count down sit
+						 */
+						tourEntity.setTourBooked(tourEntity.getTourBooked()-formEntity.getFormOrderQuantityAdults()
+								- formEntity.getFormOrderQuantityChild()
+								- formEntity.getFormOrderQuantityJuvenile());
+						tourRepo.saveAndFlush(tourEntity);
+					
+					}
 				}
 				customerRepository.delete(id);
 				/*

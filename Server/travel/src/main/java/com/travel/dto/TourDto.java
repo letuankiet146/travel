@@ -76,9 +76,6 @@ public class TourDto {
 	@Mapping("fromPlace")
 	private FromPlaceEntity fromPlaceDto;
 
-	@Mapping("tourGuiderId")
-	private Integer tourGuiderIdDto;
-
 	@Mapping("tourDeleteDate")
 	private Date tourDeleteDateDto;
 	
@@ -130,9 +127,6 @@ public class TourDto {
 		}
 		if (tourDto.getTourFromPlaceIdDto() != null) {
 			this.tourFromPlaceIdDto = tourDto.getTourFromPlaceIdDto();
-		}
-		if (tourDto.getTourGuiderIdDto() != null) {
-			this.tourGuiderIdDto = tourDto.getTourGuiderIdDto();
 		}
 		
 		if (tourDto.getIdUserAdd() != null) {
